@@ -1,0 +1,38 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import 'vue2-datepicker/index.css';
+@import 'vue-select/dist/vue-select.css';
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.btn-primary {
+    background: #18A0FB;
+    border-color: transparent !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: darken(#18A0FB, 10%) !important;
+}
+
+.mx-datepicker {
+    width: 100%;
+}
+
+.mx-input {
+    padding: .375rem 30px .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    height: auto;
+}
