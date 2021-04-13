@@ -1,5 +1,5 @@
 <template>
-    <div class="form-group">
+    <div class="form-group addon">
         <label>
             Пациент обратился к врачу по месту жительства. При обследовании было
             выявлено:
@@ -15,14 +15,19 @@
                 </div>
                 <div class="form-item">
                     <v-select
-                        :options="typeOptions"
+                        :options="['МСКТ', 'ПЭТ-КТ', 'МРТ', 'УЗИ']"
                         placeholder="Тип обследования"
                         v-model="fields['Тип обследования']"
                     ></v-select>
                 </div>
                 <div class="form-item">
                     <v-select
-                        :options="objectOptions"
+                        :options="[
+                            'головного мозга',
+                            'органов грудной клетки',
+                            'брюшной полости',
+                            'малого таза',
+                        ]"
                         placeholder="Объект обследования"
                         v-model="fields['Объект обследования']"
                     ></v-select>
@@ -37,8 +42,8 @@
                 ></textarea>
             </div>
         </div>
-        <div class="controls" v-if="index != 0">
-            <button type="button" class="controls__remove" @click="remove()">
+        <div class="addon__controls" v-if="index != 0">
+            <button type="button" class="addon__remove" @click="remove()">
                 ×
             </button>
         </div>
@@ -47,23 +52,11 @@
 
 <script>
 export default {
-    props: ["index"],
+    props: ["index", "test"],
+
     data() {
         return {
-            typeOptions: ["МСКТ", "ПЭТ-КТ", "МРТ", "УЗИ"],
-            objectOptions: [
-                "головного мозга",
-                "органов  грудной клетки",
-                "брюшной полости",
-                "малого таза",
-            ],
-
-            fields: {
-                "Дата обследования": "",
-                "Тип обследования": "",
-                "Объект обследования": "",
-                "Описание и заключение": "",
-            },
+            fields: this.test,
         };
     },
 
@@ -72,34 +65,8 @@ export default {
             this.$emit("remove");
         },
     },
-
-    watch: {
-        fields: {
-            handler() {
-                this.$emit("update", this.fields);
-            },
-            deep: true,
-        },
-    },
 };
 </script>
 
 <style scoped>
-.form-group {
-    position: relative;
-}
-
-.controls {
-    position: absolute;
-    top: -10px;
-    right: 0;
-}
-
-.controls__remove {
-    padding: 0 5px;
-    background: none;
-    border: 0;
-    font-size: 1.8rem;
-    color: #999;
-}
 </style>

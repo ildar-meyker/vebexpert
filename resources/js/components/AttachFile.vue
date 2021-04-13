@@ -1,6 +1,8 @@
 <template>
     <div class="form-group">
-        <label><strong>Прикрепить файл</strong> (не более 5 файлов)</label>
+        <label
+            ><strong>Прикрепить файл</strong> (не более {{ max }} файлов)</label
+        >
 
         <div class="files" v-if="files.length">
             <div v-for="(file, index) in files" :key="index">
@@ -32,16 +34,16 @@
 
 <script>
 export default {
+    props: ["max"],
     data() {
         return {
-            maxCount: 5,
             files: [],
         };
     },
 
     computed: {
         available() {
-            return this.maxCount - this.files.length;
+            return this.max - this.files.length;
         },
     },
 

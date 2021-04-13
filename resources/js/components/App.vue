@@ -15,7 +15,12 @@
         <Step1 v-show="currentStep == 1" @next="next"></Step1>
         <Step2 v-show="currentStep == 2" @next="next" @prev="prev"></Step2>
         <Step3 v-show="currentStep == 3" @next="next" @prev="prev"></Step3>
-        <Step4 v-show="currentStep == 4" @next="next" @prev="prev"></Step4>
+        <Step4
+            v-show="currentStep == 4"
+            @next="next"
+            @prev="prev"
+            :gender="fields['2'] && fields['2']['Пол']"
+        ></Step4>
         <Step5 v-show="currentStep == 5" @prev="prev"></Step5>
     </div>
 </template>
@@ -32,7 +37,7 @@ export default {
     data() {
         return {
             steps: [1, 2, 3, 4, 5],
-            currentStep: 1,
+            currentStep: 4,
 
             fields: {},
         };

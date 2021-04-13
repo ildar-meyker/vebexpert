@@ -158,3 +158,21 @@ h3 {
 .btn-file[disabled] input[type=file] {
   display: none;
 }
+
+.addon {
+  position: relative;
+}
+
+.addon__controls {
+  position: absolute;
+  top: -10px;
+  right: 0;
+}
+
+.addon__remove {
+  padding: 0 5px;
+  background: none;
+  border: 0;
+  font-size: 1.8rem;
+  color: #999;
+}

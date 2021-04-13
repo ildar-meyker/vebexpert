@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col">
                     <v-select
-                        :options="genderOptions"
+                        :options="['Мужчина', 'Женщина']"
                         placeholder="Пол"
                         v-model="fields['Пол']"
                     ></v-select>
@@ -68,13 +68,13 @@
             </div>
         </div>
 
-        <MedicalTest
+        <DiagnosticTest
             v-for="(test, index) in fields['Обследования']"
             :index="index"
-            :key="index"
+            :test="test"
+            :key="test.id"
             @remove="removeTest(index)"
-            @update="updateTest(index, $event)"
-        ></MedicalTest>
+        ></DiagnosticTest>
 
         <div class="form-group">
             <button
@@ -548,14 +548,12 @@
 </template>
 
 <script>
-import MedicalTest from "./MedicalTest";
+import DiagnosticTest from "./DiagnosticTest";
 
 export default {
-    components: { MedicalTest },
+    components: { DiagnosticTest },
     data() {
         return {
-            genderOptions: ["Мужчина", "Женщина"],
-
             fields: {
                 Пол: "",
                 Инициалы: "",
@@ -564,7 +562,7 @@ export default {
                 "Болен с года": "",
                 "Описание жалоб": "",
 
-                Обследования: [{}],
+                Обследования: [],
 
                 "Рентген груди": {
                     Дата: "",
@@ -635,16 +633,17 @@ export default {
 
     methods: {
         addTest() {
-            this.fields["Обследования"].push({});
+            this.fields["Обследования"].push({
+                id: _.uniqueId(),
+                "Дата обследования": "",
+                "Тип обследования": "",
+                "Объект обследования": "",
+                "Описание и заключение": "",
+            });
         },
 
         removeTest(index) {
             this.fields["Обследования"].splice(index, 1);
-        },
-
-        updateTest(index, fields) {
-            console.log(arguments);
-            this.fields["Обследования"][index] = fields;
         },
 
         next() {
@@ -654,6 +653,10 @@ export default {
         prev() {
             this.$emit("prev", this.fields);
         },
+    },
+
+    beforeMount() {
+        this.addTest();
     },
 };
 </script>

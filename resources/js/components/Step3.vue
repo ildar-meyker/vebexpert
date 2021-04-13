@@ -129,25 +129,27 @@
 
         <div class="p-3"></div>
 
-        <div class="row align-items-center">
-            <div class="col-auto">
-                <strong>ЗАКЛЮЧЕНИЕ:</strong> В данном случае имеет место
+        <div class="form-group">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <strong>ЗАКЛЮЧЕНИЕ:</strong> В данном случае имеет место
+                </div>
+                <div class="col-3">
+                    <v-select
+                        :options="['хороший', 'промежуточный', 'плохой']"
+                        placeholder="Выбрать"
+                        v-model="fields['Прогноз по MSKCC']"
+                    ></v-select>
+                </div>
+                <div class="col-auto">прогноз по MSKCC</div>
             </div>
-            <div class="col-2">
-                <v-select
-                    :options="mskccOptions"
-                    placeholder="Выбрать"
-                    v-model="fields['Прогноз по MSKCC']"
-                ></v-select>
-            </div>
-            <div class="col-auto">прогноз по MSKCC</div>
         </div>
 
         <div class="p-4"></div>
 
-        <AttachFile @change="updateFiles"></AttachFile>
+        <AttachFile :max="5" @change="updateFiles"></AttachFile>
 
-        <div class="p-4"></div>
+        <div class="p-3"></div>
 
         <div class="form-group">
             <textarea
@@ -183,8 +185,6 @@
 export default {
     data() {
         return {
-            mskccOptions: ["хороший", "промежуточный", "плохой"],
-
             fields: {
                 "Индекс Карновского (Шкала ECOG)": "",
                 "Время от постановки диагноза до начала терапии": "",
