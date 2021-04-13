@@ -1968,6 +1968,14 @@ __webpack_require__.r(__webpack_exports__);
       return this.max - this.files.length;
     }
   },
+  watch: {
+    files: {
+      deep: true,
+      handler: function handler() {
+        this.$emit("change", this.files);
+      }
+    }
+  },
   methods: {
     addFiles: function addFiles($event) {
       var _this = this;
@@ -2000,14 +2008,6 @@ __webpack_require__.r(__webpack_exports__);
 
       if (file.file && /\.(jpe?g|png|gif)$/i.test(file.file.name)) {
         reader.readAsDataURL(file.file);
-      }
-    }
-  },
-  watch: {
-    files: {
-      deep: true,
-      handler: function handler() {
-        this.$emit("change", this.files);
       }
     }
   }
@@ -2082,8 +2082,22 @@ __webpack_require__.r(__webpack_exports__);
   props: ["index", "test"],
   data: function data() {
     return {
-      fields: this.test
+      fields: _.cloneDeep(this.test)
     };
+  },
+  watch: {
+    test: {
+      deep: true,
+      handler: function handler() {
+        this.fields = _.cloneDeep(this.test);
+      }
+    },
+    fields: {
+      deep: true,
+      handler: function handler() {
+        this.$emit("update", this.fields);
+      }
+    }
   },
   methods: {
     remove: function remove() {
@@ -2136,12 +2150,26 @@ __webpack_require__.r(__webpack_exports__);
   props: ["index", "disease"],
   data: function data() {
     return {
-      fields: this.disease
+      fields: _.cloneDeep(this.disease)
     };
   },
   methods: {
     remove: function remove() {
       this.$emit("remove");
+    }
+  },
+  watch: {
+    disease: {
+      deep: true,
+      handler: function handler() {
+        this.fields = _.cloneDeep(this.disease);
+      }
+    },
+    fields: {
+      deep: true,
+      handler: function handler() {
+        this.$emit("update", this.fields);
+      }
     }
   }
 });
@@ -2850,6 +2878,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2932,6 +2961,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     removeTest: function removeTest(index) {
       this.fields["Обследования"].splice(index, 1);
+    },
+    updateTest: function updateTest(index, fields) {
+      this.fields["Обследования"][index] = fields;
     },
     next: function next() {
       this.$emit("next", this.fields);
@@ -3163,14 +3195,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    updateFiles: function updateFiles(files) {
+      this.fields.files = _.cloneDeep(files);
+    },
     next: function next() {
       this.$emit("next", this.fields);
     },
     prev: function prev() {
       this.$emit("prev", this.fields);
-    },
-    updateFiles: function updateFiles(files) {
-      this.fields.files = _.cloneDeep(files);
     }
   }
 });
@@ -3189,6 +3221,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _OtherDisease__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OtherDisease */ "./resources/js/components/OtherDisease.vue");
+//
 //
 //
 //
@@ -3371,6 +3404,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     removeDisease: function removeDisease(index) {
       this.fields["Сопутствующие заболевания"].splice(index, 1);
+    },
+    updateDisease: function updateDisease(index, fields) {
+      this.fields["Сопутствующие заболевания"][index] = fields;
     }
   },
   beforeMount: function beforeMount() {
@@ -41385,6 +41421,9 @@ var render = function() {
           on: {
             remove: function($event) {
               return _vm.removeTest(index)
+            },
+            update: function($event) {
+              return _vm.updateTest(index, $event)
             }
           }
         })
@@ -43236,12 +43275,15 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _vm._l(_vm.fields["Сопутствующие заболевания"], function(disease, index) {
-        return _c("Disease", {
+        return _c("OtherDisease", {
           key: disease.id,
           attrs: { index: index, disease: disease },
           on: {
             remove: function($event) {
               return _vm.removeDisease(index)
+            },
+            update: function($event) {
+              return _vm.updateDisease(index, $event)
             }
           }
         })

@@ -35,6 +35,7 @@
 <script>
 export default {
     props: ["max"],
+
     data() {
         return {
             files: [],
@@ -44,6 +45,15 @@ export default {
     computed: {
         available() {
             return this.max - this.files.length;
+        },
+    },
+
+    watch: {
+        files: {
+            deep: true,
+            handler() {
+                this.$emit("change", this.files);
+            },
         },
     },
 
@@ -90,15 +100,6 @@ export default {
             if (file.file && /\.(jpe?g|png|gif)$/i.test(file.file.name)) {
                 reader.readAsDataURL(file.file);
             }
-        },
-    },
-
-    watch: {
-        files: {
-            deep: true,
-            handler() {
-                this.$emit("change", this.files);
-            },
         },
     },
 };

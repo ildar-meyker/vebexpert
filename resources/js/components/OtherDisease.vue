@@ -31,13 +31,29 @@ export default {
 
     data() {
         return {
-            fields: this.disease,
+            fields: _.cloneDeep(this.disease),
         };
     },
 
     methods: {
         remove() {
             this.$emit("remove");
+        },
+    },
+
+    watch: {
+        disease: {
+            deep: true,
+            handler() {
+                this.fields = _.cloneDeep(this.disease);
+            },
+        },
+
+        fields: {
+            deep: true,
+            handler() {
+                this.$emit("update", this.fields);
+            },
         },
     },
 };

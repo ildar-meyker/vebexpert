@@ -56,8 +56,24 @@ export default {
 
     data() {
         return {
-            fields: this.test,
+            fields: _.cloneDeep(this.test),
         };
+    },
+
+    watch: {
+        test: {
+            deep: true,
+            handler() {
+                this.fields = _.cloneDeep(this.test);
+            },
+        },
+
+        fields: {
+            deep: true,
+            handler() {
+                this.$emit("update", this.fields);
+            },
+        },
     },
 
     methods: {

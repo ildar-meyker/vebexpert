@@ -74,6 +74,7 @@
             :test="test"
             :key="test.id"
             @remove="removeTest(index)"
+            @update="updateTest(index, $event)"
         ></DiagnosticTest>
 
         <div class="form-group">
@@ -644,6 +645,10 @@ export default {
 
         removeTest(index) {
             this.fields["Обследования"].splice(index, 1);
+        },
+
+        updateTest(index, fields) {
+            this.fields["Обследования"][index] = fields;
         },
 
         next() {

@@ -89,13 +89,14 @@
             </div>
         </div>
 
-        <Disease
+        <OtherDisease
             v-for="(disease, index) in fields['Сопутствующие заболевания']"
             :index="index"
             :disease="disease"
             :key="disease.id"
             @remove="removeDisease(index)"
-        ></Disease>
+            @update="updateDisease(index, $event)"
+        ></OtherDisease>
 
         <div class="form-group">
             <button
@@ -191,6 +192,10 @@ export default {
 
         removeDisease(index) {
             this.fields["Сопутствующие заболевания"].splice(index, 1);
+        },
+
+        updateDisease(index, fields) {
+            this.fields["Сопутствующие заболевания"][index] = fields;
         },
     },
 

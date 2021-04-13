@@ -205,16 +205,16 @@ export default {
     },
 
     methods: {
+        updateFiles(files) {
+            this.fields.files = _.cloneDeep(files);
+        },
+
         next() {
             this.$emit("next", this.fields);
         },
 
         prev() {
             this.$emit("prev", this.fields);
-        },
-
-        updateFiles(files) {
-            this.fields.files = _.cloneDeep(files);
         },
     },
 };
