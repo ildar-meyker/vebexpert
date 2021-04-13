@@ -92,8 +92,11 @@ export default {
     },
 
     watch: {
-        files() {
-            this.$emit("change", this.files);
+        files: {
+            deep: true,
+            handler() {
+                this.$emit("change", this.files);
+            },
         },
     },
 };

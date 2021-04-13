@@ -1997,8 +1997,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    files: function files() {
-      this.$emit("change", this.files);
+    files: {
+      deep: true,
+      handler: function handler() {
+        this.$emit("change", this.files);
+      }
     }
   }
 });
