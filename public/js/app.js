@@ -1888,14 +1888,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       steps: [1, 2, 3, 4, 5],
-      currentStep: 3,
+      currentStep: 1,
       fields: {}
     };
-  },
-  computed: {
-    componentName: function componentName() {
-      return "Step" + this.currentStep;
-    }
   },
   methods: {
     next: function next(fields) {
@@ -40202,9 +40197,64 @@ var render = function() {
         0
       ),
       _vm._v(" "),
-      _c(_vm.componentName, {
-        tag: "component",
+      _c("Step1", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.currentStep == 1,
+            expression: "currentStep == 1"
+          }
+        ],
+        on: { next: _vm.next }
+      }),
+      _vm._v(" "),
+      _c("Step2", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.currentStep == 2,
+            expression: "currentStep == 2"
+          }
+        ],
         on: { next: _vm.next, prev: _vm.prev }
+      }),
+      _vm._v(" "),
+      _c("Step3", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.currentStep == 3,
+            expression: "currentStep == 3"
+          }
+        ],
+        on: { next: _vm.next, prev: _vm.prev }
+      }),
+      _vm._v(" "),
+      _c("Step4", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.currentStep == 4,
+            expression: "currentStep == 4"
+          }
+        ],
+        on: { next: _vm.next, prev: _vm.prev }
+      }),
+      _vm._v(" "),
+      _c("Step5", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.currentStep == 5,
+            expression: "currentStep == 5"
+          }
+        ],
+        on: { prev: _vm.prev }
       })
     ],
     1
