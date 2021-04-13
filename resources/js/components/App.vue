@@ -1,20 +1,22 @@
 <template>
     <div class="wrapper">
-        <div class="container">
-            <h1>Карточка клинического случая</h1>
+        <h1>Карточка клинического случая</h1>
 
-            <div class="steps">
-                <div
-                    v-for="step in steps"
-                    :key="step"
-                    :class="{ active: step <= currentStep }"
-                >
-                    {{ step }}
-                </div>
+        <div class="steps">
+            <div
+                v-for="step in steps"
+                :key="step"
+                :class="{ active: step <= currentStep }"
+            >
+                {{ step }}
             </div>
-
-            <component v-bind:is="componentName" @next="next()"></component>
         </div>
+
+        <component
+            v-bind:is="componentName"
+            @next="next"
+            @prev="prev"
+        ></component>
     </div>
 </template>
 
@@ -30,7 +32,9 @@ export default {
     data() {
         return {
             steps: [1, 2, 3, 4, 5],
-            currentStep: 2,
+            currentStep: 3,
+
+            fields: {},
         };
     },
 
@@ -41,8 +45,14 @@ export default {
     },
 
     methods: {
-        next() {
+        next(fields) {
+            this.fields[this.currentStep] = _.cloneDeep(fields);
             this.currentStep++;
+        },
+
+        prev(fields) {
+            this.fields[this.currentStep] = _.cloneDeep(fields);
+            this.currentStep--;
         },
     },
 };
@@ -50,7 +60,10 @@ export default {
 
 <style scoped>
 .wrapper {
-    padding: 35px 0;
+    padding: 35px;
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 1000px;
 }
 
 .steps {

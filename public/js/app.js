@@ -1870,6 +1870,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -1886,7 +1888,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       steps: [1, 2, 3, 4, 5],
-      currentStep: 2
+      currentStep: 3,
+      fields: {}
     };
   },
   computed: {
@@ -1895,8 +1898,201 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    next: function next() {
+    next: function next(fields) {
+      this.fields[this.currentStep] = _.cloneDeep(fields);
       this.currentStep++;
+    },
+    prev: function prev(fields) {
+      this.fields[this.currentStep] = _.cloneDeep(fields);
+      this.currentStep--;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      maxCount: 5,
+      files: []
+    };
+  },
+  computed: {
+    available: function available() {
+      return this.maxCount - this.files.length;
+    }
+  },
+  methods: {
+    addFiles: function addFiles($event) {
+      var _this = this;
+
+      // slice
+      var files = Array.prototype.slice.call($event.target.files, 0, this.available); // wrap
+
+      files = files.map(function (file) {
+        return {
+          preview: "",
+          hasPreview: false,
+          file: file
+        };
+      });
+      files.forEach(function (file) {
+        _this.loadPreview(file);
+
+        _this.files.push(file);
+      });
+    },
+    removeFile: function removeFile(index) {
+      this.files.splice(index, 1);
+    },
+    loadPreview: function loadPreview(file) {
+      var reader = new FileReader();
+      reader.addEventListener("load", function () {
+        file.preview = reader.result;
+        file.hasPreview = true;
+      }.bind(this), false);
+
+      if (file.file && /\.(jpe?g|png|gif)$/i.test(file.file.name)) {
+        reader.readAsDataURL(file.file);
+      }
+    }
+  },
+  watch: {
+    files: function files() {
+      this.$emit("change", this.files);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["index"],
+  data: function data() {
+    return {
+      typeOptions: ["МСКТ", "ПЭТ-КТ", "МРТ", "УЗИ"],
+      objectOptions: ["головного мозга", "органов  грудной клетки", "брюшной полости", "малого таза"],
+      fields: {
+        "Дата обследования": "",
+        "Тип обследования": "",
+        "Объект обследования": "",
+        "Описание и заключение": ""
+      }
+    };
+  },
+  methods: {
+    remove: function remove() {
+      this.$emit("remove");
+    }
+  },
+  watch: {
+    fields: {
+      handler: function handler() {
+        this.$emit("update", this.fields);
+      },
+      deep: true
     }
   }
 });
@@ -2014,25 +2210,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       fields: {
-        nameOfTheClinicCase: "",
-        date: "",
-        surname: "",
-        name: "",
-        patronymic: "",
-        position: "",
-        job: "",
-        city: "",
-        comment: ""
+        "Название клинического случая": "",
+        Дата: "",
+        Фамилия: "",
+        Имя: "",
+        Отчество: "",
+        Должность: "",
+        "Место работы": "",
+        Город: "",
+        Комментарий: ""
       }
     };
   },
   methods: {
     next: function next() {
-      this.$emit("next");
+      this.$emit("next", this.fields);
     }
   }
 });
@@ -2050,6 +2251,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _MedicalTest__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MedicalTest */ "./resources/js/components/MedicalTest.vue");
 //
 //
 //
@@ -2078,11 +2280,615 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    MedicalTest: _MedicalTest__WEBPACK_IMPORTED_MODULE_0__.default
+  },
   data: function data() {
     return {
-      genderOptions: ["Мужчина", "Женщина"]
+      genderOptions: ["Мужчина", "Женщина"],
+      fields: {
+        Пол: "",
+        Инициалы: "",
+        "Год рождения": "",
+        "Болен с месяца": "",
+        "Болен с года": "",
+        "Описание жалоб": "",
+        Обследования: [{}],
+        "Рентген груди": {
+          Дата: "",
+          "Описание и заключение": ""
+        },
+        "Сцинтиграфия костей": {
+          Дата: "",
+          "Описание и заключение": ""
+        },
+        Биопсия: {
+          "Наименование органа/ткани": "",
+          Дата: "",
+          "Описание и заключение": ""
+        },
+        "Общий анализ крови": {
+          ER: "",
+          Hb: "",
+          Le: "",
+          Tr: "",
+          СОЭ: "",
+          "п/я": "",
+          "с/я": "",
+          Ly: "",
+          Mo: "",
+          Bas: "",
+          Эо: "",
+          АсАт: {
+            value: "",
+            N: ""
+          },
+          АлАт: {
+            value: "",
+            N: ""
+          },
+          ЛДГ: {
+            value: "",
+            N: ""
+          },
+          "Скорректированный Ca2+": {
+            value: "",
+            N: ""
+          },
+          "Мочевина крови": {
+            value: "",
+            N: ""
+          },
+          "Креатинин крови": {
+            value: "",
+            N: ""
+          },
+          Миелоциты: "",
+          Метамиел: ""
+        }
+      }
     };
+  },
+  methods: {
+    addTest: function addTest() {
+      this.fields["Обследования"].push({});
+    },
+    removeTest: function removeTest(index) {
+      this.fields["Обследования"].splice(index, 1);
+    },
+    updateTest: function updateTest(index, fields) {
+      console.log(arguments);
+      this.fields["Обследования"][index] = fields;
+    },
+    next: function next() {
+      this.$emit("next", this.fields);
+    },
+    prev: function prev() {
+      this.$emit("prev", this.fields);
+    }
   }
 });
 
@@ -2119,9 +2925,199 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    return {};
+    return {
+      mskccOptions: ["хороший", "промежуточный", "плохой"],
+      fields: {
+        "Индекс Карновского (Шкала ECOG)": "",
+        "Время от постановки диагноза до начала терапии": "",
+        "Уровень гемоглобина": "",
+        "Уровень лактатдегидрогеназы": "",
+        "Уровень скорректированного кальция": "",
+        "Уровень нейтрофилов": "",
+        "Уровень тромбоцитов": "",
+        "Наличие метастатических очагов": {
+          "Кол-во Meta": "",
+          value: ""
+        },
+        "Прогноз по MSKCC": "",
+        files: [],
+        Комментарий: ""
+      }
+    };
+  },
+  methods: {
+    next: function next() {
+      this.$emit("next", this.fields);
+    },
+    prev: function prev() {
+      this.$emit("prev", this.fields);
+    },
+    updateFiles: function updateFiles(files) {
+      this.fields.files = _.cloneDeep(files);
+    }
   }
 });
 
@@ -2215,13 +3211,14 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/index.esm.js");
 /* harmony import */ var vue2_datepicker_locale_ru__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue2-datepicker/locale/ru */ "./node_modules/vue2-datepicker/locale/ru.js");
 /* harmony import */ var vue2_datepicker_locale_ru__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker_locale_ru__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
+/* harmony import */ var _components_AttachFile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/AttachFile */ "./resources/js/components/AttachFile.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -2230,9 +3227,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_5__.default.component('v-select', (vue_select__WEBPACK_IMPORTED_MODULE_1___default()));
-vue__WEBPACK_IMPORTED_MODULE_5__.default.component('date-picker', vue2_datepicker__WEBPACK_IMPORTED_MODULE_2__.default);
-new vue__WEBPACK_IMPORTED_MODULE_5__.default({
+
+vue__WEBPACK_IMPORTED_MODULE_6__.default.component('v-select', (vue_select__WEBPACK_IMPORTED_MODULE_1___default()));
+vue__WEBPACK_IMPORTED_MODULE_6__.default.component('date-picker', vue2_datepicker__WEBPACK_IMPORTED_MODULE_2__.default);
+vue__WEBPACK_IMPORTED_MODULE_6__.default.component('AttachFile', _components_AttachFile__WEBPACK_IMPORTED_MODULE_5__.default);
+new vue__WEBPACK_IMPORTED_MODULE_6__.default({
   el: '#app',
   components: {
     App: _components_App__WEBPACK_IMPORTED_MODULE_4__.default
@@ -6717,7 +7716,79 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.wrapper[data-v-332fccf4] {\n    padding: 35px 0;\n}\n.steps[data-v-332fccf4] {\n    position: relative;\n    display: flex;\n    justify-content: space-between;\n    margin-bottom: 3rem;\n}\n.steps[data-v-332fccf4]::before {\n    content: \"\";\n    position: absolute;\n    top: 50%;\n    left: 0;\n    width: 100%;\n    border-top: 1px solid #18a0fb;\n}\n.steps div[data-v-332fccf4] {\n    position: relative;\n    width: 42px;\n    height: 42px;\n    line-height: 42px;\n    text-align: center;\n    border: 1px solid #18a0fb;\n    background: #fff;\n    font-size: 18px;\n    font-weight: 500;\n    box-shadow: 0 0 0 12px #fff;\n}\n.steps div.active[data-v-332fccf4] {\n    background: #18a0fb;\n    color: #fff;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.wrapper[data-v-332fccf4] {\n    padding: 35px;\n    margin: 0 auto;\n    max-width: 1200px;\n    min-width: 1000px;\n}\n.steps[data-v-332fccf4] {\n    position: relative;\n    display: flex;\n    justify-content: space-between;\n    margin-bottom: 3rem;\n}\n.steps[data-v-332fccf4]::before {\n    content: \"\";\n    position: absolute;\n    top: 50%;\n    left: 0;\n    width: 100%;\n    border-top: 1px solid #18a0fb;\n}\n.steps div[data-v-332fccf4] {\n    position: relative;\n    width: 42px;\n    height: 42px;\n    line-height: 42px;\n    text-align: center;\n    border: 1px solid #18a0fb;\n    background: #fff;\n    font-size: 18px;\n    font-weight: 500;\n    box-shadow: 0 0 0 12px #fff;\n}\n.steps div.active[data-v-332fccf4] {\n    background: #18a0fb;\n    color: #fff;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.remove[data-v-b1307ce8] {\n    padding: 0 5px;\n    background: none;\n    border: 0;\n    vertical-align: middle;\n    font-size: 1.8rem;\n    line-height: 1;\n    color: #999;\n}\n.preview[data-v-b1307ce8] {\n    width: 80px;\n    height: 80px;\n    -o-object-fit: cover;\n       object-fit: cover;\n    margin-right: 10px;\n}\n.files > div[data-v-b1307ce8] {\n    margin-bottom: 10px;\n}\n.files > div[data-v-b1307ce8]:last-child {\n    margin-bottom: 0;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.form-group[data-v-0d370428] {\n    position: relative;\n}\n.controls[data-v-0d370428] {\n    position: absolute;\n    top: -10px;\n    right: 0;\n}\n.controls__remove[data-v-0d370428] {\n    padding: 0 5px;\n    background: none;\n    border: 0;\n    font-size: 1.8rem;\n    color: #999;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.hang-table[data-v-2007800c] {\n    width: 100%;\n}\n.hang-table td[data-v-2007800c] {\n    padding-left: 30px;\n    vertical-align: middle;\n    padding-bottom: 10px;\n}\n.hang-table td[data-v-2007800c]:first-child {\n    padding-left: 0;\n    width: 40%;\n}\n.hang-table td[data-v-2007800c]:last-child {\n    width: 1%;\n}\n.hang-table input.form-control[data-v-2007800c] {\n    width: 180px;\n}\n.hang-table .name[data-v-2007800c] {\n    padding-bottom: 10px;\n    font-weight: bold;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38485,6 +39556,88 @@ component.options.__file = "resources/js/components/App.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/AttachFile.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/AttachFile.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AttachFile_vue_vue_type_template_id_b1307ce8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AttachFile.vue?vue&type=template&id=b1307ce8&scoped=true& */ "./resources/js/components/AttachFile.vue?vue&type=template&id=b1307ce8&scoped=true&");
+/* harmony import */ var _AttachFile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AttachFile.vue?vue&type=script&lang=js& */ "./resources/js/components/AttachFile.vue?vue&type=script&lang=js&");
+/* harmony import */ var _AttachFile_vue_vue_type_style_index_0_id_b1307ce8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css& */ "./resources/js/components/AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _AttachFile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _AttachFile_vue_vue_type_template_id_b1307ce8_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AttachFile_vue_vue_type_template_id_b1307ce8_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "b1307ce8",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AttachFile.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MedicalTest.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/MedicalTest.vue ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _MedicalTest_vue_vue_type_template_id_0d370428_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MedicalTest.vue?vue&type=template&id=0d370428&scoped=true& */ "./resources/js/components/MedicalTest.vue?vue&type=template&id=0d370428&scoped=true&");
+/* harmony import */ var _MedicalTest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MedicalTest.vue?vue&type=script&lang=js& */ "./resources/js/components/MedicalTest.vue?vue&type=script&lang=js&");
+/* harmony import */ var _MedicalTest_vue_vue_type_style_index_0_id_0d370428_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css& */ "./resources/js/components/MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _MedicalTest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _MedicalTest_vue_vue_type_template_id_0d370428_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _MedicalTest_vue_vue_type_template_id_0d370428_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "0d370428",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MedicalTest.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Step1.vue":
 /*!*******************************************!*\
   !*** ./resources/js/components/Step1.vue ***!
@@ -38576,15 +39729,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Step3_vue_vue_type_template_id_2007800c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Step3.vue?vue&type=template&id=2007800c&scoped=true& */ "./resources/js/components/Step3.vue?vue&type=template&id=2007800c&scoped=true&");
 /* harmony import */ var _Step3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Step3.vue?vue&type=script&lang=js& */ "./resources/js/components/Step3.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Step3_vue_vue_type_style_index_0_id_2007800c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css& */ "./resources/js/components/Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _Step3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _Step3_vue_vue_type_template_id_2007800c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
   _Step3_vue_vue_type_template_id_2007800c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -38696,6 +39851,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/AttachFile.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/AttachFile.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttachFile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttachFile.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttachFile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/MedicalTest.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/MedicalTest.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicalTest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MedicalTest.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicalTest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/Step1.vue?vue&type=script&lang=js&":
 /*!********************************************************************!*\
   !*** ./resources/js/components/Step1.vue?vue&type=script&lang=js& ***!
@@ -38789,6 +39976,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_332fccf4_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_332fccf4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./App.vue?vue&type=template&id=332fccf4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/App.vue?vue&type=template&id=332fccf4&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/AttachFile.vue?vue&type=template&id=b1307ce8&scoped=true&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/AttachFile.vue?vue&type=template&id=b1307ce8&scoped=true& ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttachFile_vue_vue_type_template_id_b1307ce8_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttachFile_vue_vue_type_template_id_b1307ce8_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttachFile_vue_vue_type_template_id_b1307ce8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttachFile.vue?vue&type=template&id=b1307ce8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=template&id=b1307ce8&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MedicalTest.vue?vue&type=template&id=0d370428&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/MedicalTest.vue?vue&type=template&id=0d370428&scoped=true& ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicalTest_vue_vue_type_template_id_0d370428_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicalTest_vue_vue_type_template_id_0d370428_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicalTest_vue_vue_type_template_id_0d370428_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MedicalTest.vue?vue&type=template&id=0d370428&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=template&id=0d370428&scoped=true&");
 
 
 /***/ }),
@@ -38895,6 +40116,57 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css& ***!
+  \*********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AttachFile_vue_vue_type_style_index_0_id_b1307ce8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-style-loader/index.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css& */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AttachFile_vue_vue_type_style_index_0_id_b1307ce8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AttachFile_vue_vue_type_style_index_0_id_b1307ce8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AttachFile_vue_vue_type_style_index_0_id_b1307ce8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AttachFile_vue_vue_type_style_index_0_id_b1307ce8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css& ***!
+  \**********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicalTest_vue_vue_type_style_index_0_id_0d370428_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-style-loader/index.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css& */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicalTest_vue_vue_type_style_index_0_id_0d370428_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicalTest_vue_vue_type_style_index_0_id_0d370428_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicalTest_vue_vue_type_style_index_0_id_0d370428_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicalTest_vue_vue_type_style_index_0_id_0d370428_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css& ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Step3_vue_vue_type_style_index_0_id_2007800c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-style-loader/index.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css& */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Step3_vue_vue_type_style_index_0_id_2007800c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Step3_vue_vue_type_style_index_0_id_2007800c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Step3_vue_vue_type_style_index_0_id_2007800c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Step3_vue_vue_type_style_index_0_id_2007800c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/App.vue?vue&type=template&id=332fccf4&scoped=true&":
 /*!***************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/App.vue?vue&type=template&id=332fccf4&scoped=true& ***!
@@ -38911,37 +40183,261 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrapper" }, [
-    _c(
-      "div",
-      { staticClass: "container" },
-      [
-        _c("h1", [_vm._v("Карточка клинического случая")]),
+  return _c(
+    "div",
+    { staticClass: "wrapper" },
+    [
+      _c("h1", [_vm._v("Карточка клинического случая")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "steps" },
+        _vm._l(_vm.steps, function(step) {
+          return _c(
+            "div",
+            { key: step, class: { active: step <= _vm.currentStep } },
+            [_vm._v("\n            " + _vm._s(step) + "\n        ")]
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(_vm.componentName, {
+        tag: "component",
+        on: { next: _vm.next, prev: _vm.prev }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=template&id=b1307ce8&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=template&id=b1307ce8&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "form-group" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm.files.length
+      ? _c(
+          "div",
+          { staticClass: "files" },
+          [
+            _vm._l(_vm.files, function(file, index) {
+              return _c("div", { key: index }, [
+                file.hasPreview
+                  ? _c("img", {
+                      staticClass: "preview",
+                      attrs: { src: file.preview }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(file.file.name))]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "remove",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.removeFile(index)
+                      }
+                    }
+                  },
+                  [_vm._v("\n                ×\n            ")]
+                )
+              ])
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-2" })
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-file",
+          attrs: { type: "button", disabled: !_vm.available }
+        },
+        [
+          _c("span", [_vm._v("Обзор")]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "file", multiple: "" },
+            on: { change: _vm.addFiles }
+          })
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("strong", [_vm._v("Прикрепить файл")]),
+      _vm._v(" (не более 5 файлов)")
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=template&id=0d370428&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=template&id=0d370428&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "form-group" }, [
+    _c("label", [
+      _vm._v(
+        "\n        Пациент обратился к врачу по месту жительства. При обследовании было\n        выявлено:\n    "
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-3" }, [
+        _c(
+          "div",
+          { staticClass: "form-item" },
+          [
+            _c("date-picker", {
+              attrs: { valueType: "format", placeholder: "Дата обследования" },
+              model: {
+                value: _vm.fields["Дата обследования"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields, "Дата обследования", $$v)
+                },
+                expression: "fields['Дата обследования']"
+              }
+            })
+          ],
+          1
+        ),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "steps" },
-          _vm._l(_vm.steps, function(step) {
-            return _c(
-              "div",
-              { key: step, class: { active: step <= _vm.currentStep } },
-              [_vm._v("\n                " + _vm._s(step) + "\n            ")]
-            )
-          }),
-          0
+          { staticClass: "form-item" },
+          [
+            _c("v-select", {
+              attrs: {
+                options: _vm.typeOptions,
+                placeholder: "Тип обследования"
+              },
+              model: {
+                value: _vm.fields["Тип обследования"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields, "Тип обследования", $$v)
+                },
+                expression: "fields['Тип обследования']"
+              }
+            })
+          ],
+          1
         ),
         _vm._v(" "),
-        _c(_vm.componentName, {
-          tag: "component",
+        _c(
+          "div",
+          { staticClass: "form-item" },
+          [
+            _c("v-select", {
+              attrs: {
+                options: _vm.objectOptions,
+                placeholder: "Объект обследования"
+              },
+              model: {
+                value: _vm.fields["Объект обследования"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields, "Объект обследования", $$v)
+                },
+                expression: "fields['Объект обследования']"
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-9" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields["Описание и заключение"],
+              expression: "fields['Описание и заключение']"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { rows: "5", placeholder: "Описание и заключение" },
+          domProps: { value: _vm.fields["Описание и заключение"] },
           on: {
-            next: function($event) {
-              return _vm.next()
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "Описание и заключение", $event.target.value)
             }
           }
         })
-      ],
-      1
-    )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.index != 0
+      ? _c("div", { staticClass: "controls" }, [
+          _c(
+            "button",
+            {
+              staticClass: "controls__remove",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.remove()
+                }
+              }
+            },
+            [_vm._v("\n            ×\n        ")]
+          )
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -38967,253 +40463,254 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("section", [
-      _c("h2", [_vm._v("Сведения о враче")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-10" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.nameOfTheClinicCase,
-                  expression: "fields.nameOfTheClinicCase"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                placeholder: "Название клинического случая"
-              },
-              domProps: { value: _vm.fields.nameOfTheClinicCase },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.fields,
-                    "nameOfTheClinicCase",
-                    $event.target.value
-                  )
-                }
+  return _c("section", [
+    _c("h2", [_vm._v("Сведения о враче")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-10" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields["Название клинического случая"],
+                expression: "fields['Название клинического случая']"
               }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-2" },
-            [
-              _c("date-picker", {
-                attrs: { placeholder: "Дата" },
-                model: {
-                  value: _vm.fields.date,
-                  callback: function($$v) {
-                    _vm.$set(_vm.fields, "date", $$v)
-                  },
-                  expression: "fields.date"
-                }
-              })
             ],
-            1
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-4" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.name,
-                  expression: "fields.name"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Фамилия" },
-              domProps: { value: _vm.fields.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "name", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-4" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.surname,
-                  expression: "fields.surname"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Имя" },
-              domProps: { value: _vm.fields.surname },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "surname", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-4" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.patronymic,
-                  expression: "fields.patronymic"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Отчество" },
-              domProps: { value: _vm.fields.patronymic },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "patronymic", $event.target.value)
-                }
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-4" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.position,
-                  expression: "fields.position"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Должность" },
-              domProps: { value: _vm.fields.position },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "position", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-4" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.job,
-                  expression: "fields.job"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Место работы" },
-              domProps: { value: _vm.fields.job },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "job", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-4" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.city,
-                  expression: "fields.city"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Город" },
-              domProps: { value: _vm.fields.city },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "city", $event.target.value)
-                }
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.comment,
-              expression: "fields.comment"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { rows: "10", placeholder: "Комментарий" },
-          domProps: { value: _vm.fields.comment },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.fields, "comment", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary",
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              placeholder: "Название клинического случая"
+            },
+            domProps: { value: _vm.fields["Название клинического случая"] },
             on: {
-              click: function($event) {
-                return _vm.next()
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields,
+                  "Название клинического случая",
+                  $event.target.value
+                )
               }
             }
-          },
-          [_vm._v("\n                Продолжить\n            ")]
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-2" },
+          [
+            _c("date-picker", {
+              attrs: { valueType: "format", placeholder: "Дата" },
+              model: {
+                value: _vm.fields["Дата"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields, "Дата", $$v)
+                },
+                expression: "fields['Дата']"
+              }
+            })
+          ],
+          1
         )
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields["Фамилия"],
+                expression: "fields['Фамилия']"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Фамилия" },
+            domProps: { value: _vm.fields["Фамилия"] },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "Фамилия", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields["Имя"],
+                expression: "fields['Имя']"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Имя" },
+            domProps: { value: _vm.fields["Имя"] },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "Имя", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields["Отчество"],
+                expression: "fields['Отчество']"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Отчество" },
+            domProps: { value: _vm.fields["Отчество"] },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "Отчество", $event.target.value)
+              }
+            }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields["Должность"],
+                expression: "fields['Должность']"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Должность" },
+            domProps: { value: _vm.fields["Должность"] },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "Должность", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields["Место работы"],
+                expression: "fields['Место работы']"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Место работы" },
+            domProps: { value: _vm.fields["Место работы"] },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "Место работы", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields["Город"],
+                expression: "fields['Город']"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Город" },
+            domProps: { value: _vm.fields["Город"] },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "Город", $event.target.value)
+              }
+            }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.fields["Комментарий"],
+            expression: "fields['Комментарий']"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { rows: "5", placeholder: "Комментарий" },
+        domProps: { value: _vm.fields["Комментарий"] },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.fields, "Комментарий", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "p-2" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-control",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              return _vm.next()
+            }
+          }
+        },
+        [_vm._v("\n            Продолжить\n        ")]
+      )
     ])
   ])
 }
@@ -39240,8 +40737,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("section", [
+  return _c(
+    "section",
+    [
       _c("h2", [_vm._v("Описание случая")]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
@@ -39251,38 +40749,1375 @@ var render = function() {
             { staticClass: "col" },
             [
               _c("v-select", {
-                attrs: { options: _vm.genderOptions, placeholder: "Пол" }
+                attrs: { options: _vm.genderOptions, placeholder: "Пол" },
+                model: {
+                  value: _vm.fields["Пол"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "Пол", $$v)
+                  },
+                  expression: "fields['Пол']"
+                }
               })
             ],
             1
           ),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "col" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Инициалы"],
+                  expression: "fields['Инициалы']"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Инициалы" },
+              domProps: { value: _vm.fields["Инициалы"] },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.fields, "Инициалы", $event.target.value)
+                }
+              }
+            })
+          ]),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "col" },
-            [_c("date-picker", { attrs: { placeholder: "Год рождения" } })],
+            [
+              _c("date-picker", {
+                attrs: {
+                  valueType: "format",
+                  type: "year",
+                  placeholder: "Год рождения"
+                },
+                model: {
+                  value: _vm.fields["Год рождения"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "Год рождения", $$v)
+                  },
+                  expression: "fields['Год рождения']"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col col-label" }, [
+            _vm.fields.gender == "Женщина"
+              ? _c("span", [
+                  _vm._v(
+                    "\n                    считает себя больной с\n                "
+                  )
+                ])
+              : _c("span", [_vm._v(" считает себя больным с ")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col" },
+            [
+              _c("date-picker", {
+                attrs: {
+                  valueType: "format",
+                  type: "month",
+                  placeholder: "Месяц"
+                },
+                model: {
+                  value: _vm.fields["Болен с месяца"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "Болен с месяца", $$v)
+                  },
+                  expression: "fields['Болен с месяца']"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col" },
+            [
+              _c("date-picker", {
+                attrs: {
+                  valueType: "format",
+                  type: "year",
+                  placeholder: "Год"
+                },
+                model: {
+                  value: _vm.fields["Болен с года"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "Болен с года", $$v)
+                  },
+                  expression: "fields['Болен с года']"
+                }
+              })
+            ],
             1
           )
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-auto col-label" }, [
+            _vm._v(
+              "\n                когда в первые появились жалобы на\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Описание жалоб"],
+                  expression: "fields['Описание жалоб']"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Описание жалоб" },
+              domProps: { value: _vm.fields["Описание жалоб"] },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.fields, "Описание жалоб", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.fields["Обследования"], function(test, index) {
+        return _c("MedicalTest", {
+          key: index,
+          attrs: { index: index },
+          on: {
+            remove: function($event) {
+              return _vm.removeTest(index)
+            },
+            update: function($event) {
+              return _vm.updateTest(index, $event)
+            }
+          }
+        })
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-control",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.addTest()
+              }
+            }
+          },
+          [_vm._v("\n            Добавить\n        ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-6", staticStyle: { "padding-right": "30px" } },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col col-label" }, [
+                  _vm._v(
+                    "\n                        Рентгенография органов грудной клетки\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col col-date" },
+                  [
+                    _c("date-picker", {
+                      attrs: { valueType: "format", placeholder: "Дата" },
+                      model: {
+                        value: _vm.fields["Рентген груди"]["Дата"],
+                        callback: function($$v) {
+                          _vm.$set(_vm.fields["Рентген груди"], "Дата", $$v)
+                        },
+                        expression: "fields['Рентген груди']['Дата']"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Рентген груди"]["Описание и заключение"],
+                    expression:
+                      "\n                        fields['Рентген груди']['Описание и заключение']\n                    "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { rows: "5", placeholder: "Описание и заключение" },
+                domProps: {
+                  value: _vm.fields["Рентген груди"]["Описание и заключение"]
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Рентген груди"],
+                      "Описание и заключение",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-6", staticStyle: { "padding-left": "30px" } },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col col-label" }, [
+                  _vm._v("Сцинтиграфия костей")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col col-date" },
+                  [
+                    _c("date-picker", {
+                      attrs: { valueType: "format", placeholder: "Дата" },
+                      model: {
+                        value: _vm.fields["Сцинтиграфия костей"]["Дата"],
+                        callback: function($$v) {
+                          _vm.$set(
+                            _vm.fields["Сцинтиграфия костей"],
+                            "Дата",
+                            $$v
+                          )
+                        },
+                        expression: "fields['Сцинтиграфия костей']['Дата']"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value:
+                      _vm.fields["Сцинтиграфия костей"][
+                        "Описание и заключение"
+                      ],
+                    expression:
+                      "\n                        fields['Сцинтиграфия костей'][\n                            'Описание и заключение'\n                        ]\n                    "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { rows: "5", placeholder: "Описание и заключение" },
+                domProps: {
+                  value:
+                    _vm.fields["Сцинтиграфия костей"]["Описание и заключение"]
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Сцинтиграфия костей"],
+                      "Описание и заключение",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-auto col-label" }, [
+            _vm._v(
+              "\n                Проведена диагностическая биопсия\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Биопсия"]["Наименование органа/ткани"],
+                  expression: "fields['Биопсия']['Наименование органа/ткани']"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Наименование органа/ткани" },
+              domProps: {
+                value: _vm.fields["Биопсия"]["Наименование органа/ткани"]
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields["Биопсия"],
+                    "Наименование органа/ткани",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col col-date" },
+            [
+              _c("date-picker", {
+                attrs: { valueType: "format", placeholder: "Дата" },
+                model: {
+                  value: _vm.fields["Биопсия"]["Дата"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields["Биопсия"], "Дата", $$v)
+                  },
+                  expression: "fields['Биопсия']['Дата']"
+                }
+              })
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields["Биопсия"]["Описание и заключение"],
+              expression: "fields['Биопсия']['Описание и заключение']"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { rows: "3", placeholder: "Описание и заключение" },
+          domProps: { value: _vm.fields["Биопсия"]["Описание и заключение"] },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(
+                _vm.fields["Биопсия"],
+                "Описание и заключение",
+                $event.target.value
+              )
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-2" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("h3", [_vm._v("Лабораторные исследования")]),
+        _vm._v(" "),
+        _c("label", [_vm._v("Общий анализ крови")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "blood-row" }, [
+          _c("div", { staticClass: "blood-col" }, [
+            _c("div", [
+              _c("div", [_vm._v("ER")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["ER"],
+                      expression: "fields['Общий анализ крови']['ER']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["ER"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "ER",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("1012/л")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Hb")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["Hb"],
+                      expression: "fields['Общий анализ крови']['Hb']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["Hb"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "Hb",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("г/л")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Le")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["Le"],
+                      expression: "fields['Общий анализ крови']['Le']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["Le"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "Le",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("109/л")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Tr")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["Tr"],
+                      expression: "fields['Общий анализ крови']['Tr']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["Tr"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "Tr",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("109/л")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("СОЭ")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["СОЭ"],
+                      expression: "fields['Общий анализ крови']['СОЭ']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["СОЭ"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "СОЭ",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("мм/ч")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("п/я")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["п/я"],
+                      expression: "fields['Общий анализ крови']['п/я']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["п/я"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "п/я",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("%")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("с/я")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["с/я"],
+                      expression: "fields['Общий анализ крови']['с/я']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["с/я"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "с/я",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("%")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Ly")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["Ly"],
+                      expression: "fields['Общий анализ крови']['Ly']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["Ly"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "Ly",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("%")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Mo")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["Mo"],
+                      expression: "fields['Общий анализ крови']['Mo']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["Mo"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "Mo",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("%")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Bas")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["Bas"],
+                      expression: "fields['Общий анализ крови']['Bas']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["Bas"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "Bas",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("%")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Эо")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["Эо"],
+                      expression: "fields['Общий анализ крови']['Эо']"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.fields["Общий анализ крови"]["Эо"] },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "Эо",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("%")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blood-col" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "blood-col" }, [
+            _c("div", [
+              _c("div", [_vm._v("АсАт")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["АсАт"].value,
+                      expression:
+                        "\n                                fields['Общий анализ крови']['АсАт'].value\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value: _vm.fields["Общий анализ крови"]["АсАт"].value
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"]["АсАт"],
+                        "value",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Eд/л")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("АлАт")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["АлАт"].value,
+                      expression:
+                        "\n                                fields['Общий анализ крови']['АлАт'].value\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value: _vm.fields["Общий анализ крови"]["АлАт"].value
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"]["АлАт"],
+                        "value",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Eд/л")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("ЛДГ")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["ЛДГ"].value,
+                      expression:
+                        "\n                                fields['Общий анализ крови']['ЛДГ'].value\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value: _vm.fields["Общий анализ крови"]["ЛДГ"].value
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"]["ЛДГ"],
+                        "value",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Eд/л")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Скорректированный Ca2+")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value:
+                        _vm.fields["Общий анализ крови"][
+                          "Скорректированный Ca2+"
+                        ].value,
+                      expression:
+                        "\n                                fields['Общий анализ крови'][\n                                    'Скорректированный Ca2+'\n                                ].value\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value:
+                      _vm.fields["Общий анализ крови"]["Скорректированный Ca2+"]
+                        .value
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"][
+                          "Скорректированный Ca2+"
+                        ],
+                        "value",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("мМ/л")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Мочевина крови")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value:
+                        _vm.fields["Общий анализ крови"]["Мочевина крови"]
+                          .value,
+                      expression:
+                        "\n                                fields['Общий анализ крови'][\n                                    'Мочевина крови'\n                                ].value\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value:
+                      _vm.fields["Общий анализ крови"]["Мочевина крови"].value
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"]["Мочевина крови"],
+                        "value",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("мМ/л")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Креатинин крови")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value:
+                        _vm.fields["Общий анализ крови"]["Креатинин крови"]
+                          .value,
+                      expression:
+                        "\n                                fields['Общий анализ крови'][\n                                    'Креатинин крови'\n                                ].value\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value:
+                      _vm.fields["Общий анализ крови"]["Креатинин крови"].value
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"]["Креатинин крови"],
+                        "value",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("мМ/л")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Миелоциты")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["Миелоциты"],
+                      expression:
+                        "\n                                fields['Общий анализ крови']['Миелоциты']\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value: _vm.fields["Общий анализ крови"]["Миелоциты"]
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "Миелоциты",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("%")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("Метамиел")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["Метамиел"],
+                      expression:
+                        "\n                                fields['Общий анализ крови']['Метамиел']\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value: _vm.fields["Общий анализ крови"]["Метамиел"]
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"],
+                        "Метамиел",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("%")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blood-col" }, [
+            _c("div", [
+              _c("div", [_vm._v("(N =")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["АсАт"].N,
+                      expression: "fields['Общий анализ крови']['АсАт'].N"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value: _vm.fields["Общий анализ крови"]["АсАт"].N
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"]["АсАт"],
+                        "N",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Eд/л)")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("(N =")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["АлАт"].N,
+                      expression: "fields['Общий анализ крови']['АлАт'].N"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value: _vm.fields["Общий анализ крови"]["АлАт"].N
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"]["АлАт"],
+                        "N",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Eд/л)")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("(N =")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields["Общий анализ крови"]["ЛДГ"].N,
+                      expression: "fields['Общий анализ крови']['ЛДГ'].N"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value: _vm.fields["Общий анализ крови"]["ЛДГ"].N
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"]["ЛДГ"],
+                        "N",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Eд/л)")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("(N =")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value:
+                        _vm.fields["Общий анализ крови"][
+                          "Скорректированный Ca2+"
+                        ].N,
+                      expression:
+                        "\n                                fields['Общий анализ крови'][\n                                    'Скорректированный Ca2+'\n                                ].N\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value:
+                      _vm.fields["Общий анализ крови"]["Скорректированный Ca2+"]
+                        .N
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"][
+                          "Скорректированный Ca2+"
+                        ],
+                        "N",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Eд/л)")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("(N =")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value:
+                        _vm.fields["Общий анализ крови"]["Мочевина крови"].N,
+                      expression:
+                        "\n                                fields['Общий анализ крови'][\n                                    'Мочевина крови'\n                                ].N\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value: _vm.fields["Общий анализ крови"]["Мочевина крови"].N
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"]["Мочевина крови"],
+                        "N",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Eд/л)")])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [_vm._v("(N =")]),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value:
+                        _vm.fields["Общий анализ крови"]["Креатинин крови"].N,
+                      expression:
+                        "\n                                fields['Общий анализ крови'][\n                                    'Креатинин крови'\n                                ].N\n                            "
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: {
+                    value: _vm.fields["Общий анализ крови"]["Креатинин крови"].N
+                  },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields["Общий анализ крови"]["Креатинин крови"],
+                        "N",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Eд/л)")])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-2" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary btn-control",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.prev()
+              }
+            }
+          },
+          [_vm._v("\n            Назад\n        ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-control",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.next()
+              }
+            }
+          },
+          [_vm._v("\n            Продолжить\n        ")]
+        )
       ])
-    ])
-  ])
+    ],
+    2
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Инициал" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39305,33 +42140,448 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "section",
+    [
+      _c("h2", { staticClass: "text-center" }, [
+        _vm._v("Критерии оценки прогноза ПКР по D. Heng*")
+      ]),
+      _vm._v(" "),
+      _c("table", { staticClass: "hang-table" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Индекс Карновского (Шкала ECOG)")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("< 80% (> 1)")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Индекс Карновского (Шкала ECOG)"],
+                  expression: "fields['Индекс Карновского (Шкала ECOG)']"
+                }
+              ],
+              staticClass: "form-control text-center",
+              attrs: { type: "text", placeholder: "+/-" },
+              domProps: {
+                value: _vm.fields["Индекс Карновского (Шкала ECOG)"]
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields,
+                    "Индекс Карновского (Шкала ECOG)",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Время от постановки диагноза до начала терапии")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("менее 12 месяцев")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value:
+                    _vm.fields[
+                      "Время от постановки диагноза до начала терапии"
+                    ],
+                  expression:
+                    "\n                        fields[\n                            'Время от постановки диагноза до начала терапии'\n                        ]\n                    "
+                }
+              ],
+              staticClass: "form-control text-center",
+              attrs: { type: "text", placeholder: "+/-" },
+              domProps: {
+                value:
+                  _vm.fields["Время от постановки диагноза до начала терапии"]
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields,
+                    "Время от постановки диагноза до начала терапии",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Уровень гемоглобина")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("< нижней границы нормы")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Уровень гемоглобина"],
+                  expression: "fields['Уровень гемоглобина']"
+                }
+              ],
+              staticClass: "form-control text-center",
+              attrs: { type: "text", placeholder: "+/-" },
+              domProps: { value: _vm.fields["Уровень гемоглобина"] },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields,
+                    "Уровень гемоглобина",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Уровень лактатдегидрогеназы")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("До 1000 Ед/л")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Уровень лактатдегидрогеназы"],
+                  expression: "fields['Уровень лактатдегидрогеназы']"
+                }
+              ],
+              staticClass: "form-control text-center",
+              attrs: { type: "text", placeholder: "+/-" },
+              domProps: { value: _vm.fields["Уровень лактатдегидрогеназы"] },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields,
+                    "Уровень лактатдегидрогеназы",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Уровень скорректированного кальция")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("> 10 мг/дл (или 2,5 ммоль/л)")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Уровень скорректированного кальция"],
+                  expression: "fields['Уровень скорректированного кальция']"
+                }
+              ],
+              staticClass: "form-control text-center",
+              attrs: { type: "text", placeholder: "+/-" },
+              domProps: {
+                value: _vm.fields["Уровень скорректированного кальция"]
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields,
+                    "Уровень скорректированного кальция",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Уровень нейтрофилов")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("> 6,5 х 109/л")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Уровень нейтрофилов"],
+                  expression: "fields['Уровень нейтрофилов']"
+                }
+              ],
+              staticClass: "form-control text-center",
+              attrs: { type: "text", placeholder: "+/-" },
+              domProps: { value: _vm.fields["Уровень нейтрофилов"] },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields,
+                    "Уровень нейтрофилов",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Уровень тромбоцитов")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("> 320 х 109/л")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Уровень тромбоцитов"],
+                  expression: "fields['Уровень тромбоцитов']"
+                }
+              ],
+              staticClass: "form-control text-center",
+              attrs: { type: "text", placeholder: "+/-" },
+              domProps: { value: _vm.fields["Уровень тромбоцитов"] },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields,
+                    "Уровень тромбоцитов",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Наличие метастатических очагов")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value:
+                    _vm.fields["Наличие метастатических очагов"]["Кол-во Meta"],
+                  expression:
+                    "\n                        fields['Наличие метастатических очагов'][\n                            'Кол-во Meta'\n                        ]\n                    "
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Указать кол-во Meta" },
+              domProps: {
+                value:
+                  _vm.fields["Наличие метастатических очагов"]["Кол-во Meta"]
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields["Наличие метастатических очагов"],
+                    "Кол-во Meta",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Наличие метастатических очагов"].value,
+                  expression: "fields['Наличие метастатических очагов'].value"
+                }
+              ],
+              staticClass: "form-control text-center",
+              attrs: { type: "text", placeholder: "+/-" },
+              domProps: {
+                value: _vm.fields["Наличие метастатических очагов"].value
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields["Наличие метастатических очагов"],
+                    "value",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-3" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row align-items-center" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-2" },
+          [
+            _c("v-select", {
+              attrs: { options: _vm.mskccOptions, placeholder: "Выбрать" },
+              model: {
+                value: _vm.fields["Прогноз по MSKCC"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields, "Прогноз по MSKCC", $$v)
+                },
+                expression: "fields['Прогноз по MSKCC']"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-auto" }, [_vm._v("прогноз по MSKCC")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-4" }),
+      _vm._v(" "),
+      _c("AttachFile", { on: { change: _vm.updateFiles } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-4" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields["Комментарий"],
+              expression: "fields['Комментарий']"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { rows: "5", placeholder: "Комментарий" },
+          domProps: { value: _vm.fields["Комментарий"] },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "Комментарий", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-2" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary btn-control",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.prev()
+              }
+            }
+          },
+          [_vm._v("\n            Назад\n        ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-control",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.next()
+              }
+            }
+          },
+          [_vm._v("\n            Продолжить\n        ")]
+        )
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("section", [
-        _c("h2", [_vm._v("Сведения о враче")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-10" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  placeholder: "Название клинического случая"
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-2" })
-        ])
+    return _c("tr", [
+      _c("td", [_c("div", { staticClass: "name" }, [_vm._v("Факторы риска")])]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "name" }, [_vm._v("Значение показателя")])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "name" }, [_vm._v("Наличие факторов")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("strong", [_vm._v("ЗАКЛЮЧЕНИЕ:")]),
+      _vm._v(" В данном случае имеет место\n        ")
     ])
   }
 ]
@@ -39585,6 +42835,69 @@ if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(/*! !../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
 var update = add("78f483cc", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttachFile.vue?vue&type=style&index=0&id=b1307ce8&scoped=true&lang=css&");
+if(content.__esModule) content = content.default;
+if(typeof content === 'string') content = [[module.id, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(/*! !../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
+var update = add("322b557d", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MedicalTest.vue?vue&type=style&index=0&id=0d370428&scoped=true&lang=css&");
+if(content.__esModule) content = content.default;
+if(typeof content === 'string') content = [[module.id, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(/*! !../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
+var update = add("5744e1ac", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step3.vue?vue&type=style&index=0&id=2007800c&scoped=true&lang=css&");
+if(content.__esModule) content = content.default;
+if(typeof content === 'string') content = [[module.id, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(/*! !../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
+var update = add("01bfe4fa", content, false, {});
 // Hot Module Replacement
 if(false) {}
 

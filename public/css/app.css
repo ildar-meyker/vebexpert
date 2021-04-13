@@ -17,6 +17,16 @@ h1, h2 {
   font-weight: 500;
 }
 
+h3 {
+  margin-bottom: 1.25rem;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.row {
+  flex-wrap: nowrap;
+}
+
 .form-group {
   margin-bottom: 1.25rem;
 }
@@ -40,4 +50,111 @@ h1, h2 {
   font-size: 1rem;
   line-height: 1.5;
   height: auto;
+}
+
+.vs__search,
+.vs__search:focus {
+  margin-top: 7px;
+}
+
+.vs__search::-moz-placeholder {
+  color: #6c757d;
+}
+
+.vs__search:-ms-input-placeholder {
+  color: #6c757d;
+}
+
+.vs__search::placeholder {
+  color: #6c757d;
+}
+
+.vs__dropdown-toggle {
+  padding-bottom: 6px;
+}
+
+.blood-row {
+  display: flex;
+}
+
+.blood-col > div {
+  display: flex;
+  margin-bottom: 1.25rem;
+  align-items: center;
+}
+
+.blood-col > div:last-child {
+  margin-bottom: 0;
+}
+
+.blood-col > div > div:nth-child(2) {
+  width: 110px;
+}
+
+.blood-col > div > div:last-child {
+  padding-left: 20px;
+}
+
+.blood-col > div > div:first-child {
+  padding-right: 20px;
+}
+
+.blood-col:first-child > div > div:first-child {
+  width: 50px;
+}
+
+.blood-col:nth-child(2) {
+  flex-grow: 1;
+}
+
+.blood-col:nth-child(3) > div {
+  justify-content: flex-end;
+}
+
+.blood-col:nth-child(3) > div > div:last-child {
+  width: 80px;
+}
+
+.blood-col:last-child {
+  padding-left: 30px;
+}
+
+.form-item {
+  margin-bottom: 0.65rem;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.col-date {
+  flex: 0 0 150px;
+}
+
+.col-label {
+  align-self: center;
+  white-space: nowrap;
+}
+
+.btn-control {
+  min-width: 120px;
+  margin-right: 10px;
+}
+
+.btn-file {
+  position: relative;
+  min-width: 120px;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  opacity: 0;
+  font-size: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.btn-file[disabled] input[type=file] {
+  display: none;
 }
