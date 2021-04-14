@@ -214,7 +214,7 @@
                 class="form-control"
                 rows="5"
                 placeholder="Комментарий"
-                v-model="fields['Комментарий']"
+                v-model="fields['Комментарий 1']"
             ></textarea>
         </div>
 
@@ -340,6 +340,73 @@
         <div class="p-3"></div>
 
         <div class="form-group">
+            <div class="row align-items-center">
+                <div class="col-auto">Константировано наличие</div>
+                <div class="col-4">
+                    <v-select
+                        :options="[
+                            'стабилизации заболевания',
+                            'частичного ответа',
+                            'полного ответа',
+                            'прогрессирования заболевания',
+                            'рецидива заболевания',
+                            'ремиссии заболевания',
+                        ]"
+                        placeholder="Выбрать из списка"
+                        v-model="fields['Константировано наличие']"
+                    ></v-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <textarea
+                class="form-control"
+                rows="5"
+                placeholder="Комментарий"
+                v-model="fields['Комментарий 2']"
+            ></textarea>
+        </div>
+
+        <div class="p-2"></div>
+
+        <div class="form-group">
+            <label
+                ><strong
+                    >Данный клинический случай может быть представлен на
+                    образовательных мероприятиях:</strong
+                ></label
+            >
+
+            <div class="form-check" v-for="(option, index) in sharingOptions">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    :id="`sharing${index}`"
+                    :value="option"
+                    v-model="
+                        fields[
+                            'Данный клинический случай может быть представлен на образовательных мероприятиях'
+                        ]
+                    "
+                />
+                <label class="form-check-label" :for="`sharing${index}`">
+                    {{ option }}
+                </label>
+            </div>
+        </div>
+
+        <div class="p-2"></div>
+
+        <AttachFile
+            :max="1"
+            label="Прикрепить звуковой файл"
+            @change="updateSounds"
+        ></AttachFile>
+
+        <div class="p-3"></div>
+
+        <div class="form-group">
             <button
                 type="button"
                 class="btn btn-secondary btn-control"
@@ -367,6 +434,12 @@ export default {
 
     data() {
         return {
+            sharingOptions: [
+                "третьими лицам",
+                "только лично автором",
+                "доступен для ознакомления другим специалистам",
+            ],
+
             fields: {
                 "Химиотерапевтическое лечение было начато через": "",
 
@@ -394,7 +467,7 @@ export default {
                     "в дозе": "",
                 },
 
-                Комментарий: "",
+                "Комментарий 1": "",
 
                 Обследования: [],
 
@@ -417,6 +490,14 @@ export default {
                 },
 
                 "Общий анализ крови": {},
+
+                "Константировано наличие": "",
+
+                sounds: [],
+
+                "Комментарий 2": "",
+
+                "Данный клинический случай может быть представлен на образовательных мероприятиях": [],
             },
         };
     },
@@ -484,6 +565,10 @@ export default {
 
         updateFiles(files) {
             this.fields.files = _.cloneDeep(files);
+        },
+
+        updateSounds(files) {
+            this.fields.sounds = _.cloneDeep(files);
         },
 
         updateBloodTest(fields) {

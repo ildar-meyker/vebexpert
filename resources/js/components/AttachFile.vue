@@ -1,8 +1,14 @@
 <template>
     <div class="form-group">
-        <label
-            ><strong>Прикрепить файл</strong> (не более {{ max }} файлов)</label
-        >
+        <label>
+            <span v-if="label"
+                ><strong>{{ label }}</strong></span
+            >
+            <span v-else
+                ><strong>Прикрепить файл</strong> (не более
+                {{ max }} файлов)</span
+            >
+        </label>
 
         <div class="files" v-if="files.length">
             <div v-for="(file, index) in files" :key="index">
@@ -34,7 +40,7 @@
 
 <script>
 export default {
-    props: ["max"],
+    props: ["max", "label"],
 
     data() {
         return {

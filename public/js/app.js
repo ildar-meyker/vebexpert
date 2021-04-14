@@ -1956,8 +1956,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["max"],
+  props: ["max", "label"],
   data: function data() {
     return {
       files: []
@@ -3797,6 +3803,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3806,6 +3879,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      sharingOptions: ["третьими лицам", "только лично автором", "доступен для ознакомления другим специалистам"],
       fields: {
         "Химиотерапевтическое лечение было начато через": "",
         "В качестве терапии 1-й линии начат прием": "",
@@ -3823,7 +3897,7 @@ __webpack_require__.r(__webpack_exports__);
           "через недель": "",
           "в дозе": ""
         },
-        Комментарий: "",
+        "Комментарий 1": "",
         Обследования: [],
         files: [],
         "Рентген груди": {
@@ -3839,7 +3913,11 @@ __webpack_require__.r(__webpack_exports__);
           Дата: "",
           "Описание и заключение": ""
         },
-        "Общий анализ крови": {}
+        "Общий анализ крови": {},
+        "Константировано наличие": "",
+        sounds: [],
+        "Комментарий 2": "",
+        "Данный клинический случай может быть представлен на образовательных мероприятиях": []
       }
     };
   },
@@ -3897,6 +3975,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateFiles: function updateFiles(files) {
       this.fields.files = _.cloneDeep(files);
+    },
+    updateSounds: function updateSounds(files) {
+      this.fields.sounds = _.cloneDeep(files);
     },
     updateBloodTest: function updateBloodTest(fields) {
       this.fields["Общий анализ крови"] = _.cloneDeep(fields);
@@ -41192,8 +41273,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "form-group" }, [
     _c("label", [
-      _c("strong", [_vm._v("Прикрепить файл")]),
-      _vm._v(" (не более " + _vm._s(_vm.max) + " файлов)")
+      _vm.label
+        ? _c("span", [_c("strong", [_vm._v(_vm._s(_vm.label))])])
+        : _c("span", [
+            _c("strong", [_vm._v("Прикрепить файл")]),
+            _vm._v(" (не более\n            " + _vm._s(_vm.max) + " файлов)")
+          ])
     ]),
     _vm._v(" "),
     _vm.files.length
@@ -44318,19 +44403,19 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.fields["Комментарий"],
-              expression: "fields['Комментарий']"
+              value: _vm.fields["Комментарий 1"],
+              expression: "fields['Комментарий 1']"
             }
           ],
           staticClass: "form-control",
           attrs: { rows: "5", placeholder: "Комментарий" },
-          domProps: { value: _vm.fields["Комментарий"] },
+          domProps: { value: _vm.fields["Комментарий 1"] },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.fields, "Комментарий", $event.target.value)
+              _vm.$set(_vm.fields, "Комментарий 1", $event.target.value)
             }
           }
         })
@@ -44615,6 +44700,172 @@ var render = function() {
       _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row align-items-center" }, [
+          _c("div", { staticClass: "col-auto" }, [
+            _vm._v("Константировано наличие")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-4" },
+            [
+              _c("v-select", {
+                attrs: {
+                  options: [
+                    "стабилизации заболевания",
+                    "частичного ответа",
+                    "полного ответа",
+                    "прогрессирования заболевания",
+                    "рецидива заболевания",
+                    "ремиссии заболевания"
+                  ],
+                  placeholder: "Выбрать из списка"
+                },
+                model: {
+                  value: _vm.fields["Константировано наличие"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "Константировано наличие", $$v)
+                  },
+                  expression: "fields['Константировано наличие']"
+                }
+              })
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields["Комментарий 2"],
+              expression: "fields['Комментарий 2']"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { rows: "5", placeholder: "Комментарий" },
+          domProps: { value: _vm.fields["Комментарий 2"] },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "Комментарий 2", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-2" }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-group" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.sharingOptions, function(option, index) {
+            return _c("div", { staticClass: "form-check" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value:
+                      _vm.fields[
+                        "Данный клинический случай может быть представлен на образовательных мероприятиях"
+                      ],
+                    expression:
+                      "\n                    fields[\n                        'Данный клинический случай может быть представлен на образовательных мероприятиях'\n                    ]\n                "
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: { type: "checkbox", id: "sharing" + index },
+                domProps: {
+                  value: option,
+                  checked: Array.isArray(
+                    _vm.fields[
+                      "Данный клинический случай может быть представлен на образовательных мероприятиях"
+                    ]
+                  )
+                    ? _vm._i(
+                        _vm.fields[
+                          "Данный клинический случай может быть представлен на образовательных мероприятиях"
+                        ],
+                        option
+                      ) > -1
+                    : _vm.fields[
+                        "Данный клинический случай может быть представлен на образовательных мероприятиях"
+                      ]
+                },
+                on: {
+                  change: function($event) {
+                    var $$a =
+                        _vm.fields[
+                          "Данный клинический случай может быть представлен на образовательных мероприятиях"
+                        ],
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = option,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(
+                            _vm.fields,
+                            "Данный клинический случай может быть представлен на образовательных мероприятиях",
+                            $$a.concat([$$v])
+                          )
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.fields,
+                            "Данный клинический случай может быть представлен на образовательных мероприятиях",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(
+                        _vm.fields,
+                        "Данный клинический случай может быть представлен на образовательных мероприятиях",
+                        $$c
+                      )
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "form-check-label",
+                  attrs: { for: "sharing" + index }
+                },
+                [
+                  _vm._v(
+                    "\n                " + _vm._s(option) + "\n            "
+                  )
+                ]
+              )
+            ])
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-2" }),
+      _vm._v(" "),
+      _c("AttachFile", {
+        attrs: { max: 1, label: "Прикрепить звуковой файл" },
+        on: { change: _vm.updateSounds }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-3" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
         _c(
           "button",
           {
@@ -44647,7 +44898,20 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("strong", [
+        _vm._v(
+          "Данный клинический случай может быть представлен на\n                образовательных мероприятиях:"
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
