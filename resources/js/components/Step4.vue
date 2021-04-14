@@ -91,14 +91,17 @@
             </div>
         </div>
 
-        <OtherDisease
-            v-for="(disease, index) in fields['Сопутствующие заболевания']"
-            :index="index"
-            :disease="disease"
-            :key="disease.id"
-            @remove="removeDisease(index)"
-            @update="updateDisease(index, $event)"
-        ></OtherDisease>
+        <div class="form-group">
+            <label>Сопутствующие заболевания:</label>
+            <OtherDisease
+                v-for="(disease, index) in fields['Сопутствующие заболевания']"
+                :index="index"
+                :disease="disease"
+                :key="disease.id"
+                @remove="removeDisease(index)"
+                @update="updateDisease(index, $event)"
+            ></OtherDisease>
+        </div>
 
         <div class="form-group">
             <button

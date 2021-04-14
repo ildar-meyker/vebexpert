@@ -1,6 +1,5 @@
 <template>
     <div class="form-group addon">
-        <label>Сопутствующие заболевания:</label>
         <div class="row">
             <div class="col-9">
                 <textarea
@@ -60,7 +59,4 @@ export default {
 </script>
 
 <style scoped>
-.addon__controls {
-    top: 20px;
-}
 </style>
