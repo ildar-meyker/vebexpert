@@ -359,6 +359,18 @@
             </div>
         </div>
 
+        <div class="p-2"></div>
+
+        <div class="form-group">
+            <div class="text-center">
+                <button class="btn btn-primary" @click="addTherapy()">
+                    Добавить линию терапии
+                </button>
+            </div>
+        </div>
+
+        <div class="p-2"></div>
+
         <div class="form-group">
             <textarea
                 class="form-control"
@@ -495,6 +507,8 @@ export default {
 
                 sounds: [],
 
+                "Линии терапии": [],
+
                 "Комментарий 2": "",
 
                 "Данный клинический случай может быть представлен на образовательных мероприятиях": [],
@@ -545,6 +559,8 @@ export default {
     },
 
     methods: {
+        addTherapy() {},
+
         addTest() {
             this.fields["Обследования"].push({
                 id: _.uniqueId(),

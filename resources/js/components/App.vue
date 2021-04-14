@@ -21,7 +21,7 @@
             @prev="prev"
             :gender="fields['2'] && fields['2']['Пол']"
         ></Step4>
-        <Step5 v-show="currentStep == 5" @prev="prev"></Step5>
+        <Step5 v-show="currentStep == 5" @prev="prev" @submit="submit"></Step5>
     </div>
 </template>
 
@@ -52,6 +52,21 @@ export default {
         prev(fields) {
             this.fields[this.currentStep] = _.cloneDeep(fields);
             this.currentStep--;
+        },
+
+        submit() {
+            axios
+                .post("/pdf", this.fields, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                })
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
         },
     },
 };

@@ -1905,6 +1905,17 @@ __webpack_require__.r(__webpack_exports__);
     prev: function prev(fields) {
       this.fields[this.currentStep] = _.cloneDeep(fields);
       this.currentStep--;
+    },
+    submit: function submit() {
+      axios.post("/pdf", this.fields, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.error(error);
+      });
     }
   }
 });
@@ -3870,6 +3881,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3916,6 +3939,7 @@ __webpack_require__.r(__webpack_exports__);
         "Общий анализ крови": {},
         "Константировано наличие": "",
         sounds: [],
+        "Линии терапии": [],
         "Комментарий 2": "",
         "Данный клинический случай может быть представлен на образовательных мероприятиях": []
       }
@@ -3958,6 +3982,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    addTherapy: function addTherapy() {},
     addTest: function addTest() {
       this.fields["Обследования"].push({
         id: _.uniqueId(),
@@ -41242,7 +41267,7 @@ var render = function() {
             expression: "currentStep == 5"
           }
         ],
-        on: { prev: _vm.prev }
+        on: { prev: _vm.prev, submit: _vm.submit }
       })
     ],
     1
@@ -44734,6 +44759,27 @@ var render = function() {
           )
         ])
       ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-2" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "text-center" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              on: {
+                click: function($event) {
+                  return _vm.addTherapy()
+                }
+              }
+            },
+            [_vm._v("\n                Добавить линию терапии\n            ")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-2" }),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("textarea", {
