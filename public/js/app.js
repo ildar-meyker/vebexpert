@@ -42635,7 +42635,7 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "p-2" }),
+    _c("div", { staticClass: "p-3" }),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
       _c(
@@ -43110,7 +43110,7 @@ var render = function() {
       _vm._v(" "),
       _c("BloodTest", { on: { update: _vm.updateBloodTest } }),
       _vm._v(" "),
-      _c("div", { staticClass: "p-3" }),
+      _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c(
@@ -43526,7 +43526,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "p-4" }),
+      _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
       _c("AttachFile", { attrs: { max: 5 }, on: { change: _vm.updateFiles } }),
       _vm._v(" "),
@@ -43556,7 +43556,7 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "p-3" }),
+      _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c(
@@ -43821,7 +43821,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "p-3" }),
+      _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c(
@@ -44863,7 +44863,7 @@ var render = function() {
         on: { change: _vm.updateSounds }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "p-3" }),
+      _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c(

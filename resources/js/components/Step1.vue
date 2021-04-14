@@ -89,7 +89,7 @@
             ></textarea>
         </div>
 
-        <div class="p-2"></div>
+        <div class="p-3"></div>
 
         <div class="form-group">
             <button

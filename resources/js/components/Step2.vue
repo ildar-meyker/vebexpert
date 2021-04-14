@@ -184,7 +184,7 @@
 
         <BloodTest @update="updateBloodTest"></BloodTest>
 
-        <div class="p-3"></div>
+        <div class="p-4"></div>
 
         <div class="form-group">
             <button
