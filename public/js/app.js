@@ -1893,7 +1893,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       steps: [1, 2, 3, 4, 5],
-      currentStep: 4,
+      currentStep: 5,
       fields: {}
     };
   },
@@ -2026,10 +2026,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
 //
 //
 //
@@ -2329,6 +2325,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _DiagnosticTest__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DiagnosticTest */ "./resources/js/components/DiagnosticTest.vue");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3352,6 +3354,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["gender"],
@@ -3380,11 +3384,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     surgery: function surgery(value) {
-      this.fields["Нефрэктомия"]["Вид"] = value == "Да" ? "паллиативная" : "";
-      this.fields["Нефрэктомия"]["Cпособ"] = value == "Да" ? "метастазэктомией" : "";
-
       if (value == "Нет") {
         this.fields["Гистологическое исследование"] = "";
+        this.fields["Нефрэктомия"]["Вид"] = "";
+        this.fields["Нефрэктомия"]["Способ"] = "";
         this.fields["Нефрэктомия"]["Дата"] = "";
       }
     }
@@ -3427,6 +3430,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _DiagnosticTest__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DiagnosticTest */ "./resources/js/components/DiagnosticTest.vue");
 //
 //
 //
@@ -3447,9 +3451,440 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    DiagnosticTest: _DiagnosticTest__WEBPACK_IMPORTED_MODULE_0__.default
+  },
   data: function data() {
-    return {};
+    return {
+      fields: {
+        "Химиотерапевтическое лечение было начато через": "",
+        "В качестве терапии 1-й линии начат прием": "",
+        "Обоснование выбора": "",
+        "На фоне проводимой терапии состояние пациента": "",
+        "Ухудшение состояния связано с": "",
+        "Описание побочных эффектов": "",
+        "Было принято решение о": "",
+        "Cнижение дозы препарата": {
+          c: "",
+          до: ""
+        },
+        "Лечение было": "",
+        "Лечение возобновлено": {
+          "через недель": "",
+          "в дозе": ""
+        },
+        Комментарий: "",
+        Обследования: [],
+        files: [],
+        "Рентген груди": {
+          Дата: "",
+          "Описание и заключение": ""
+        },
+        "Сцинтиграфия костей": {
+          Дата: "",
+          "Описание и заключение": ""
+        },
+        Биопсия: {
+          "Наименование органа/ткани": "",
+          Дата: "",
+          "Описание и заключение": ""
+        }
+      }
+    };
+  },
+  computed: {
+    pillsDicision: function pillsDicision() {
+      return this.fields["Было принято решение о"];
+    },
+    treatmentDiсision: function treatmentDiсision() {
+      return this.fields["Лечение было"];
+    },
+    patientCondition: function patientCondition() {
+      return this.fields["На фоне проводимой терапии состояние пациента"];
+    }
+  },
+  watch: {
+    patientCondition: function patientCondition(value) {
+      if (value != "ухудшилось") {
+        this.fields["Ухудшение состояния связано с"] = "";
+        this.fields["Описание побочных эффектов"] = "";
+        this.fields["Было принято решение о"] = "";
+      }
+    },
+    pillsDicision: function pillsDicision(value) {
+      if (value != "снижении дозы препарата") {
+        this.fields["Cнижение дозы препарата"]["c"] = "";
+        this.fields["Cнижение дозы препарата"]["до"] = "";
+      }
+
+      if (value != "временной отмене препарата") {
+        this.fields["Лечение было"] = "";
+      }
+    },
+    treatmentDiсision: function treatmentDiсision(value) {
+      if (value != "возобновлено") {
+        this.fields["Лечение возобновлено"]["через недель"] = "";
+        this.fields["Лечение возобновлено"]["в дозе"] = "";
+      }
+    }
+  },
+  methods: {
+    addTest: function addTest() {
+      this.fields["Обследования"].push({
+        id: _.uniqueId(),
+        "Дата обследования": "",
+        "Тип обследования": "",
+        "Объект обследования": "",
+        "Описание и заключение": ""
+      });
+    },
+    removeTest: function removeTest(index) {
+      this.fields["Обследования"].splice(index, 1);
+    },
+    updateTest: function updateTest(index, fields) {
+      this.fields["Обследования"][index] = fields;
+    },
+    updateFiles: function updateFiles(files) {
+      this.fields.files = _.cloneDeep(files);
+    },
+    prev: function prev() {
+      this.$emit("prev", this.fields);
+    },
+    submit: function submit() {
+      this.$emit("submit", this.fields);
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.addTest();
   }
 });
 
@@ -8066,7 +8501,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.example[data-v-2015978d] {\n    font-size: 15px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.example[data-v-2015978d] {\n    font-size: 15px;\n}\n.addon__controls[data-v-2015978d] {\n    right: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -40745,12 +41180,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "form-group addon" }, [
-    _c("label", [
-      _vm._v(
-        "\n        Пациент обратился к врачу по месту жительства. При обследовании было\n        выявлено:\n    "
-      )
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-3" }, [
         _c(
@@ -41253,358 +41682,253 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    [
-      _c("h2", [_vm._v("Описание случая")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col" },
-            [
-              _c("v-select", {
-                attrs: { options: ["Мужчина", "Женщина"], placeholder: "Пол" },
-                model: {
-                  value: _vm.fields["Пол"],
-                  callback: function($$v) {
-                    _vm.$set(_vm.fields, "Пол", $$v)
-                  },
-                  expression: "fields['Пол']"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Инициалы"],
-                  expression: "fields['Инициалы']"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Инициалы" },
-              domProps: { value: _vm.fields["Инициалы"] },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "Инициалы", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col" },
-            [
-              _c("date-picker", {
-                attrs: {
-                  valueType: "format",
-                  type: "year",
-                  placeholder: "Год рождения"
-                },
-                model: {
-                  value: _vm.fields["Год рождения"],
-                  callback: function($$v) {
-                    _vm.$set(_vm.fields, "Год рождения", $$v)
-                  },
-                  expression: "fields['Год рождения']"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col col-label" }, [
-            _vm.fields.gender == "Женщина"
-              ? _c("span", [
-                  _vm._v(
-                    "\n                    считает себя больной с\n                "
-                  )
-                ])
-              : _c("span", [_vm._v(" считает себя больным с ")])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col" },
-            [
-              _c("date-picker", {
-                attrs: {
-                  valueType: "format",
-                  type: "month",
-                  placeholder: "Месяц"
-                },
-                model: {
-                  value: _vm.fields["Болен с месяца"],
-                  callback: function($$v) {
-                    _vm.$set(_vm.fields, "Болен с месяца", $$v)
-                  },
-                  expression: "fields['Болен с месяца']"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col" },
-            [
-              _c("date-picker", {
-                attrs: {
-                  valueType: "format",
-                  type: "year",
-                  placeholder: "Год"
-                },
-                model: {
-                  value: _vm.fields["Болен с года"],
-                  callback: function($$v) {
-                    _vm.$set(_vm.fields, "Болен с года", $$v)
-                  },
-                  expression: "fields['Болен с года']"
-                }
-              })
-            ],
-            1
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-auto col-label" }, [
-            _vm._v(
-              "\n                когда в первые появились жалобы на\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Описание жалоб"],
-                  expression: "fields['Описание жалоб']"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Описание жалоб" },
-              domProps: { value: _vm.fields["Описание жалоб"] },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "Описание жалоб", $event.target.value)
-                }
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.fields["Обследования"], function(test, index) {
-        return _c("DiagnosticTest", {
-          key: test.id,
-          attrs: { index: index, test: test },
-          on: {
-            remove: function($event) {
-              return _vm.removeTest(index)
-            },
-            update: function($event) {
-              return _vm.updateTest(index, $event)
-            }
-          }
-        })
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.addTest()
-              }
-            }
-          },
-          [_vm._v("\n            Добавить\n        ")]
-        )
-      ]),
-      _vm._v(" "),
+  return _c("section", [
+    _c("h2", [_vm._v("Описание случая")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
       _c("div", { staticClass: "row" }, [
         _c(
           "div",
-          { staticClass: "col-6", staticStyle: { "padding-right": "30px" } },
+          { staticClass: "col" },
           [
-            _c("div", { staticClass: "form-group" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col col-label" }, [
-                  _vm._v(
-                    "\n                        Рентгенография органов грудной клетки\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col col-date" },
-                  [
-                    _c("date-picker", {
-                      attrs: { valueType: "format", placeholder: "Дата" },
-                      model: {
-                        value: _vm.fields["Рентген груди"]["Дата"],
-                        callback: function($$v) {
-                          _vm.$set(_vm.fields["Рентген груди"], "Дата", $$v)
-                        },
-                        expression: "fields['Рентген груди']['Дата']"
-                      }
-                    })
-                  ],
-                  1
+            _c("v-select", {
+              attrs: { options: ["Мужчина", "Женщина"], placeholder: "Пол" },
+              model: {
+                value: _vm.fields["Пол"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields, "Пол", $$v)
+                },
+                expression: "fields['Пол']"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields["Инициалы"],
+                expression: "fields['Инициалы']"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Инициалы" },
+            domProps: { value: _vm.fields["Инициалы"] },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "Инициалы", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col" },
+          [
+            _c("date-picker", {
+              attrs: {
+                valueType: "format",
+                type: "year",
+                placeholder: "Год рождения"
+              },
+              model: {
+                value: _vm.fields["Год рождения"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields, "Год рождения", $$v)
+                },
+                expression: "fields['Год рождения']"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col col-label" }, [
+          _vm.fields.gender == "Женщина"
+            ? _c("span", [
+                _vm._v(
+                  "\n                    считает себя больной с\n                "
                 )
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields["Рентген груди"]["Описание и заключение"],
-                    expression:
-                      "\n                        fields['Рентген груди']['Описание и заключение']\n                    "
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { rows: "5", placeholder: "Описание и заключение" },
-                domProps: {
-                  value: _vm.fields["Рентген груди"]["Описание и заключение"]
+            : _c("span", [_vm._v(" считает себя больным с ")])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col" },
+          [
+            _c("date-picker", {
+              attrs: {
+                valueType: "format",
+                type: "month",
+                placeholder: "Месяц"
+              },
+              model: {
+                value: _vm.fields["Болен с месяца"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields, "Болен с месяца", $$v)
                 },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.fields["Рентген груди"],
-                      "Описание и заключение",
-                      $event.target.value
-                    )
-                  }
-                }
-              })
-            ])
-          ]
+                expression: "fields['Болен с месяца']"
+              }
+            })
+          ],
+          1
         ),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-6", staticStyle: { "padding-left": "30px" } },
+          { staticClass: "col" },
           [
-            _c("div", { staticClass: "form-group" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col col-label" }, [
-                  _vm._v("Сцинтиграфия костей")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col col-date" },
-                  [
-                    _c("date-picker", {
-                      attrs: { valueType: "format", placeholder: "Дата" },
-                      model: {
-                        value: _vm.fields["Сцинтиграфия костей"]["Дата"],
-                        callback: function($$v) {
-                          _vm.$set(
-                            _vm.fields["Сцинтиграфия костей"],
-                            "Дата",
-                            $$v
-                          )
-                        },
-                        expression: "fields['Сцинтиграфия костей']['Дата']"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value:
-                      _vm.fields["Сцинтиграфия костей"][
-                        "Описание и заключение"
-                      ],
-                    expression:
-                      "\n                        fields['Сцинтиграфия костей'][\n                            'Описание и заключение'\n                        ]\n                    "
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { rows: "5", placeholder: "Описание и заключение" },
-                domProps: {
-                  value:
-                    _vm.fields["Сцинтиграфия костей"]["Описание и заключение"]
+            _c("date-picker", {
+              attrs: { valueType: "format", type: "year", placeholder: "Год" },
+              model: {
+                value: _vm.fields["Болен с года"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields, "Болен с года", $$v)
                 },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.fields["Сцинтиграфия костей"],
-                      "Описание и заключение",
-                      $event.target.value
-                    )
-                  }
-                }
-              })
-            ])
-          ]
+                expression: "fields['Болен с года']"
+              }
+            })
+          ],
+          1
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-auto col-label" }, [
-            _vm._v(
-              "\n                Проведена диагностическая биопсия\n            "
-            )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-auto col-label" }, [
+          _vm._v(
+            "\n                когда в первые появились жалобы на\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields["Описание жалоб"],
+                expression: "fields['Описание жалоб']"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Описание жалоб" },
+            domProps: { value: _vm.fields["Описание жалоб"] },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "Описание жалоб", $event.target.value)
+              }
+            }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "form-group" },
+      [
+        _c("label", [
+          _vm._v(
+            "\n            Пациент обратился к врачу по месту жительства. При обследовании\n            было выявлено:\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.fields["Обследования"], function(test, index) {
+          return _c("DiagnosticTest", {
+            key: test.id,
+            attrs: { index: index, test: test },
+            on: {
+              remove: function($event) {
+                return _vm.removeTest(index)
+              },
+              update: function($event) {
+                return _vm.updateTest(index, $event)
+              }
+            }
+          })
+        })
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-control",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              return _vm.addTest()
+            }
+          }
+        },
+        [_vm._v("\n            Добавить\n        ")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-6", staticStyle: { "padding-right": "30px" } },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col col-label" }, [
+                _vm._v(
+                  "\n                        Рентгенография органов грудной клетки\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col col-date" },
+                [
+                  _c("date-picker", {
+                    attrs: { valueType: "format", placeholder: "Дата" },
+                    model: {
+                      value: _vm.fields["Рентген груди"]["Дата"],
+                      callback: function($$v) {
+                        _vm.$set(_vm.fields["Рентген груди"], "Дата", $$v)
+                      },
+                      expression: "fields['Рентген груди']['Дата']"
+                    }
+                  })
+                ],
+                1
+              )
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col" }, [
-            _c("input", {
+          _c("div", { staticClass: "form-group" }, [
+            _c("textarea", {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.fields["Биопсия"]["Наименование органа/ткани"],
-                  expression: "fields['Биопсия']['Наименование органа/ткани']"
+                  value: _vm.fields["Рентген груди"]["Описание и заключение"],
+                  expression:
+                    "\n                        fields['Рентген груди']['Описание и заключение']\n                    "
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Наименование органа/ткани" },
+              attrs: { rows: "5", placeholder: "Описание и заключение" },
               domProps: {
-                value: _vm.fields["Биопсия"]["Наименование органа/ткани"]
+                value: _vm.fields["Рентген груди"]["Описание и заключение"]
               },
               on: {
                 input: function($event) {
@@ -41612,1026 +41936,1118 @@ var render = function() {
                     return
                   }
                   _vm.$set(
-                    _vm.fields["Биопсия"],
-                    "Наименование органа/ткани",
+                    _vm.fields["Рентген груди"],
+                    "Описание и заключение",
                     $event.target.value
                   )
                 }
               }
             })
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col col-date" },
-            [
-              _c("date-picker", {
-                attrs: { valueType: "format", placeholder: "Дата" },
-                model: {
-                  value: _vm.fields["Биопсия"]["Дата"],
-                  callback: function($$v) {
-                    _vm.$set(_vm.fields["Биопсия"], "Дата", $$v)
-                  },
-                  expression: "fields['Биопсия']['Дата']"
-                }
-              })
-            ],
-            1
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields["Биопсия"]["Описание и заключение"],
-              expression: "fields['Биопсия']['Описание и заключение']"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { rows: "3", placeholder: "Описание и заключение" },
-          domProps: { value: _vm.fields["Биопсия"]["Описание и заключение"] },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(
-                _vm.fields["Биопсия"],
-                "Описание и заключение",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "p-2" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("h3", [_vm._v("Лабораторные исследования")]),
-        _vm._v(" "),
-        _c("label", [_vm._v("Общий анализ крови")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "blood-row" }, [
-          _c("div", { staticClass: "blood-col" }, [
-            _c("div", [
-              _c("div", [_vm._v("ER")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["ER"],
-                      expression: "fields['Общий анализ крови']['ER']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["ER"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "ER",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("1012/л")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Hb")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["Hb"],
-                      expression: "fields['Общий анализ крови']['Hb']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["Hb"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "Hb",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("г/л")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Le")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["Le"],
-                      expression: "fields['Общий анализ крови']['Le']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["Le"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "Le",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("109/л")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Tr")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["Tr"],
-                      expression: "fields['Общий анализ крови']['Tr']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["Tr"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "Tr",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("109/л")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("СОЭ")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["СОЭ"],
-                      expression: "fields['Общий анализ крови']['СОЭ']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["СОЭ"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "СОЭ",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("мм/ч")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("п/я")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["п/я"],
-                      expression: "fields['Общий анализ крови']['п/я']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["п/я"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "п/я",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("%")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("с/я")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["с/я"],
-                      expression: "fields['Общий анализ крови']['с/я']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["с/я"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "с/я",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("%")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Ly")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["Ly"],
-                      expression: "fields['Общий анализ крови']['Ly']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["Ly"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "Ly",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("%")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Mo")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["Mo"],
-                      expression: "fields['Общий анализ крови']['Mo']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["Mo"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "Mo",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("%")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Bas")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["Bas"],
-                      expression: "fields['Общий анализ крови']['Bas']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["Bas"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "Bas",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("%")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Эо")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["Эо"],
-                      expression: "fields['Общий анализ крови']['Эо']"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.fields["Общий анализ крови"]["Эо"] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "Эо",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("%")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "blood-col" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "blood-col" }, [
-            _c("div", [
-              _c("div", [_vm._v("АсАт")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["АсАт"].value,
-                      expression:
-                        "\n                                fields['Общий анализ крови']['АсАт'].value\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value: _vm.fields["Общий анализ крови"]["АсАт"].value
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"]["АсАт"],
-                        "value",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("Eд/л")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("АлАт")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["АлАт"].value,
-                      expression:
-                        "\n                                fields['Общий анализ крови']['АлАт'].value\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value: _vm.fields["Общий анализ крови"]["АлАт"].value
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"]["АлАт"],
-                        "value",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("Eд/л")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("ЛДГ")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["ЛДГ"].value,
-                      expression:
-                        "\n                                fields['Общий анализ крови']['ЛДГ'].value\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value: _vm.fields["Общий анализ крови"]["ЛДГ"].value
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"]["ЛДГ"],
-                        "value",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("Eд/л")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Скорректированный Ca2+")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.fields["Общий анализ крови"][
-                          "Скорректированный Ca2+"
-                        ].value,
-                      expression:
-                        "\n                                fields['Общий анализ крови'][\n                                    'Скорректированный Ca2+'\n                                ].value\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value:
-                      _vm.fields["Общий анализ крови"]["Скорректированный Ca2+"]
-                        .value
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"][
-                          "Скорректированный Ca2+"
-                        ],
-                        "value",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("мМ/л")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Мочевина крови")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.fields["Общий анализ крови"]["Мочевина крови"]
-                          .value,
-                      expression:
-                        "\n                                fields['Общий анализ крови'][\n                                    'Мочевина крови'\n                                ].value\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value:
-                      _vm.fields["Общий анализ крови"]["Мочевина крови"].value
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"]["Мочевина крови"],
-                        "value",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("мМ/л")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Креатинин крови")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.fields["Общий анализ крови"]["Креатинин крови"]
-                          .value,
-                      expression:
-                        "\n                                fields['Общий анализ крови'][\n                                    'Креатинин крови'\n                                ].value\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value:
-                      _vm.fields["Общий анализ крови"]["Креатинин крови"].value
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"]["Креатинин крови"],
-                        "value",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("мМ/л")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Миелоциты")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["Миелоциты"],
-                      expression:
-                        "\n                                fields['Общий анализ крови']['Миелоциты']\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value: _vm.fields["Общий анализ крови"]["Миелоциты"]
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "Миелоциты",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("%")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("Метамиел")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["Метамиел"],
-                      expression:
-                        "\n                                fields['Общий анализ крови']['Метамиел']\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value: _vm.fields["Общий анализ крови"]["Метамиел"]
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"],
-                        "Метамиел",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("%")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "blood-col" }, [
-            _c("div", [
-              _c("div", [_vm._v("(N =")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["АсАт"].N,
-                      expression: "fields['Общий анализ крови']['АсАт'].N"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value: _vm.fields["Общий анализ крови"]["АсАт"].N
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"]["АсАт"],
-                        "N",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("Eд/л)")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("(N =")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["АлАт"].N,
-                      expression: "fields['Общий анализ крови']['АлАт'].N"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value: _vm.fields["Общий анализ крови"]["АлАт"].N
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"]["АлАт"],
-                        "N",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("Eд/л)")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("(N =")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.fields["Общий анализ крови"]["ЛДГ"].N,
-                      expression: "fields['Общий анализ крови']['ЛДГ'].N"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value: _vm.fields["Общий анализ крови"]["ЛДГ"].N
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"]["ЛДГ"],
-                        "N",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("Eд/л)")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("(N =")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.fields["Общий анализ крови"][
-                          "Скорректированный Ca2+"
-                        ].N,
-                      expression:
-                        "\n                                fields['Общий анализ крови'][\n                                    'Скорректированный Ca2+'\n                                ].N\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value:
-                      _vm.fields["Общий анализ крови"]["Скорректированный Ca2+"]
-                        .N
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"][
-                          "Скорректированный Ca2+"
-                        ],
-                        "N",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("Eд/л)")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("(N =")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.fields["Общий анализ крови"]["Мочевина крови"].N,
-                      expression:
-                        "\n                                fields['Общий анализ крови'][\n                                    'Мочевина крови'\n                                ].N\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value: _vm.fields["Общий анализ крови"]["Мочевина крови"].N
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"]["Мочевина крови"],
-                        "N",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("Eд/л)")])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", [_vm._v("(N =")]),
-              _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.fields["Общий анализ крови"]["Креатинин крови"].N,
-                      expression:
-                        "\n                                fields['Общий анализ крови'][\n                                    'Креатинин крови'\n                                ].N\n                            "
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: {
-                    value: _vm.fields["Общий анализ крови"]["Креатинин крови"].N
-                  },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.fields["Общий анализ крови"]["Креатинин крови"],
-                        "N",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("Eд/л)")])
-            ])
           ])
-        ])
-      ]),
+        ]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "p-2" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary btn-control",
-            attrs: { type: "button" },
+      _c(
+        "div",
+        { staticClass: "col-6", staticStyle: { "padding-left": "30px" } },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col col-label" }, [
+                _vm._v("Сцинтиграфия костей")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col col-date" },
+                [
+                  _c("date-picker", {
+                    attrs: { valueType: "format", placeholder: "Дата" },
+                    model: {
+                      value: _vm.fields["Сцинтиграфия костей"]["Дата"],
+                      callback: function($$v) {
+                        _vm.$set(_vm.fields["Сцинтиграфия костей"], "Дата", $$v)
+                      },
+                      expression: "fields['Сцинтиграфия костей']['Дата']"
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value:
+                    _vm.fields["Сцинтиграфия костей"]["Описание и заключение"],
+                  expression:
+                    "\n                        fields['Сцинтиграфия костей'][\n                            'Описание и заключение'\n                        ]\n                    "
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { rows: "5", placeholder: "Описание и заключение" },
+              domProps: {
+                value:
+                  _vm.fields["Сцинтиграфия костей"]["Описание и заключение"]
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields["Сцинтиграфия костей"],
+                    "Описание и заключение",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-auto col-label" }, [
+          _vm._v(
+            "\n                Проведена диагностическая биопсия\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields["Биопсия"]["Наименование органа/ткани"],
+                expression: "fields['Биопсия']['Наименование органа/ткани']"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Наименование органа/ткани" },
+            domProps: {
+              value: _vm.fields["Биопсия"]["Наименование органа/ткани"]
+            },
             on: {
-              click: function($event) {
-                return _vm.prev()
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.fields["Биопсия"],
+                  "Наименование органа/ткани",
+                  $event.target.value
+                )
               }
             }
-          },
-          [_vm._v("\n            Назад\n        ")]
-        ),
+          })
+        ]),
         _vm._v(" "),
         _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.next()
+          "div",
+          { staticClass: "col col-date" },
+          [
+            _c("date-picker", {
+              attrs: { valueType: "format", placeholder: "Дата" },
+              model: {
+                value: _vm.fields["Биопсия"]["Дата"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields["Биопсия"], "Дата", $$v)
+                },
+                expression: "fields['Биопсия']['Дата']"
               }
-            }
-          },
-          [_vm._v("\n            Продолжить\n        ")]
+            })
+          ],
+          1
         )
       ])
-    ],
-    2
-  )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.fields["Биопсия"]["Описание и заключение"],
+            expression: "fields['Биопсия']['Описание и заключение']"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { rows: "3", placeholder: "Описание и заключение" },
+        domProps: { value: _vm.fields["Биопсия"]["Описание и заключение"] },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(
+              _vm.fields["Биопсия"],
+              "Описание и заключение",
+              $event.target.value
+            )
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "p-2" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("h3", [_vm._v("Лабораторные исследования")]),
+      _vm._v(" "),
+      _c("label", [_vm._v("Общий анализ крови")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "blood-row" }, [
+        _c("div", { staticClass: "blood-col" }, [
+          _c("div", [
+            _c("div", [_vm._v("ER")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["ER"],
+                    expression: "fields['Общий анализ крови']['ER']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["ER"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "ER",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("1012/л")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Hb")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["Hb"],
+                    expression: "fields['Общий анализ крови']['Hb']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["Hb"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "Hb",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("г/л")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Le")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["Le"],
+                    expression: "fields['Общий анализ крови']['Le']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["Le"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "Le",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("109/л")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Tr")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["Tr"],
+                    expression: "fields['Общий анализ крови']['Tr']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["Tr"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "Tr",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("109/л")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("СОЭ")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["СОЭ"],
+                    expression: "fields['Общий анализ крови']['СОЭ']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["СОЭ"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "СОЭ",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("мм/ч")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("п/я")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["п/я"],
+                    expression: "fields['Общий анализ крови']['п/я']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["п/я"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "п/я",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("%")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("с/я")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["с/я"],
+                    expression: "fields['Общий анализ крови']['с/я']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["с/я"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "с/я",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("%")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Ly")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["Ly"],
+                    expression: "fields['Общий анализ крови']['Ly']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["Ly"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "Ly",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("%")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Mo")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["Mo"],
+                    expression: "fields['Общий анализ крови']['Mo']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["Mo"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "Mo",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("%")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Bas")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["Bas"],
+                    expression: "fields['Общий анализ крови']['Bas']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["Bas"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "Bas",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("%")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Эо")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["Эо"],
+                    expression: "fields['Общий анализ крови']['Эо']"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["Эо"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "Эо",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("%")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "blood-col" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blood-col" }, [
+          _c("div", [
+            _c("div", [_vm._v("АсАт")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["АсАт"].value,
+                    expression:
+                      "\n                                fields['Общий анализ крови']['АсАт'].value\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value: _vm.fields["Общий анализ крови"]["АсАт"].value
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"]["АсАт"],
+                      "value",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("Eд/л")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("АлАт")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["АлАт"].value,
+                    expression:
+                      "\n                                fields['Общий анализ крови']['АлАт'].value\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value: _vm.fields["Общий анализ крови"]["АлАт"].value
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"]["АлАт"],
+                      "value",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("Eд/л")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("ЛДГ")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["ЛДГ"].value,
+                    expression:
+                      "\n                                fields['Общий анализ крови']['ЛДГ'].value\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value: _vm.fields["Общий анализ крови"]["ЛДГ"].value
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"]["ЛДГ"],
+                      "value",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("Eд/л")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Скорректированный Ca2+")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value:
+                      _vm.fields["Общий анализ крови"]["Скорректированный Ca2+"]
+                        .value,
+                    expression:
+                      "\n                                fields['Общий анализ крови'][\n                                    'Скорректированный Ca2+'\n                                ].value\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value:
+                    _vm.fields["Общий анализ крови"]["Скорректированный Ca2+"]
+                      .value
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"][
+                        "Скорректированный Ca2+"
+                      ],
+                      "value",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("мМ/л")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Мочевина крови")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value:
+                      _vm.fields["Общий анализ крови"]["Мочевина крови"].value,
+                    expression:
+                      "\n                                fields['Общий анализ крови'][\n                                    'Мочевина крови'\n                                ].value\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value:
+                    _vm.fields["Общий анализ крови"]["Мочевина крови"].value
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"]["Мочевина крови"],
+                      "value",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("мМ/л")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Креатинин крови")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value:
+                      _vm.fields["Общий анализ крови"]["Креатинин крови"].value,
+                    expression:
+                      "\n                                fields['Общий анализ крови'][\n                                    'Креатинин крови'\n                                ].value\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value:
+                    _vm.fields["Общий анализ крови"]["Креатинин крови"].value
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"]["Креатинин крови"],
+                      "value",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("мМ/л")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Миелоциты")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["Миелоциты"],
+                    expression:
+                      "\n                                fields['Общий анализ крови']['Миелоциты']\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value: _vm.fields["Общий анализ крови"]["Миелоциты"]
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "Миелоциты",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("%")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("Метамиел")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["Метамиел"],
+                    expression:
+                      "\n                                fields['Общий анализ крови']['Метамиел']\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value: _vm.fields["Общий анализ крови"]["Метамиел"]
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"],
+                      "Метамиел",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("%")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "blood-col" }, [
+          _c("div", [
+            _c("div", [_vm._v("(N =")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["АсАт"].N,
+                    expression: "fields['Общий анализ крови']['АсАт'].N"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["АсАт"].N },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"]["АсАт"],
+                      "N",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("Eд/л)")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("(N =")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["АлАт"].N,
+                    expression: "fields['Общий анализ крови']['АлАт'].N"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["АлАт"].N },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"]["АлАт"],
+                      "N",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("Eд/л)")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("(N =")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["ЛДГ"].N,
+                    expression: "fields['Общий анализ крови']['ЛДГ'].N"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.fields["Общий анализ крови"]["ЛДГ"].N },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"]["ЛДГ"],
+                      "N",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("Eд/л)")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("(N =")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value:
+                      _vm.fields["Общий анализ крови"]["Скорректированный Ca2+"]
+                        .N,
+                    expression:
+                      "\n                                fields['Общий анализ крови'][\n                                    'Скорректированный Ca2+'\n                                ].N\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value:
+                    _vm.fields["Общий анализ крови"]["Скорректированный Ca2+"].N
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"][
+                        "Скорректированный Ca2+"
+                      ],
+                      "N",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("Eд/л)")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("(N =")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Общий анализ крови"]["Мочевина крови"].N,
+                    expression:
+                      "\n                                fields['Общий анализ крови'][\n                                    'Мочевина крови'\n                                ].N\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value: _vm.fields["Общий анализ крови"]["Мочевина крови"].N
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"]["Мочевина крови"],
+                      "N",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("Eд/л)")])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", [_vm._v("(N =")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value:
+                      _vm.fields["Общий анализ крови"]["Креатинин крови"].N,
+                    expression:
+                      "\n                                fields['Общий анализ крови'][\n                                    'Креатинин крови'\n                                ].N\n                            "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: {
+                  value: _vm.fields["Общий анализ крови"]["Креатинин крови"].N
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Общий анализ крови"]["Креатинин крови"],
+                      "N",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("Eд/л)")])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "p-3" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary btn-control",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              return _vm.prev()
+            }
+          }
+        },
+        [_vm._v("\n            Назад\n        ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-control",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              return _vm.next()
+            }
+          }
+        },
+        [_vm._v("\n            Продолжить\n        ")]
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42996,7 +43412,7 @@ var render = function() {
               _c("v-select", {
                 attrs: {
                   options: ["хороший", "промежуточный", "плохой"],
-                  placeholder: "Выбрать"
+                  placeholder: "Выбрать из списка"
                 },
                 model: {
                   value: _vm.fields["Прогноз по MSKCC"],
@@ -43044,7 +43460,7 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "p-2" }),
+      _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c(
@@ -43178,7 +43594,10 @@ var render = function() {
                   { staticClass: "col-3" },
                   [
                     _c("v-select", {
-                      attrs: { options: ["паллиативная", "радикальная"] },
+                      attrs: {
+                        options: ["паллиативная", "радикальная"],
+                        placeholder: "Выбрать из списка"
+                      },
                       model: {
                         value: _vm.fields["Нефрэктомия"]["Вид"],
                         callback: function($$v) {
@@ -43199,14 +43618,15 @@ var render = function() {
                   [
                     _c("v-select", {
                       attrs: {
-                        options: ["метастазэктомией", "без метастазэктомии"]
+                        options: ["метастазэктомией", "без метастазэктомии"],
+                        placeholder: "Выбрать из списка"
                       },
                       model: {
-                        value: _vm.fields["Нефрэктомия"]["Cпособ"],
+                        value: _vm.fields["Нефрэктомия"]["Способ"],
                         callback: function($$v) {
-                          _vm.$set(_vm.fields["Нефрэктомия"], "Cпособ", $$v)
+                          _vm.$set(_vm.fields["Нефрэктомия"], "Способ", $$v)
                         },
-                        expression: "fields['Нефрэктомия']['Cпособ']"
+                        expression: "fields['Нефрэктомия']['Способ']"
                       }
                     })
                   ],
@@ -43305,7 +43725,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "p-5" }),
+      _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c(
@@ -43394,36 +43814,797 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("section", [
-        _c("h2", [_vm._v("Сведения о враче")]),
+  return _c(
+    "section",
+    [
+      _c("h2", [_vm._v("Терапия")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row align-items-center" }, [
+          _c("div", { staticClass: "col-auto" }, [
+            _vm._v(
+              "\n                Химиотерапевтическое лечение было начато через\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value:
+                    _vm.fields[
+                      "Химиотерапевтическое лечение было начато через"
+                    ],
+                  expression:
+                    "\n                        fields[\n                            'Химиотерапевтическое лечение было начато через'\n                        ]\n                    "
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: {
+                value:
+                  _vm.fields["Химиотерапевтическое лечение было начато через"]
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields,
+                    "Химиотерапевтическое лечение было начато через",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-auto" }, [
+            _vm._v("мес. с момента постановки диагноза.")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row align-items-center" }, [
+          _c("div", { staticClass: "col-auto" }, [
+            _vm._v(
+              "\n                В качестве терапии 1-й линии начат прием\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-3" },
+            [
+              _c("v-select", {
+                attrs: {
+                  options: [
+                    "акситиниба",
+                    "акстиниб+пембролизумаб",
+                    "бевацизумаба+IFN-α",
+                    "ипилимумаба",
+                    "кабозантиниба",
+                    "кабозантиниб+ниволумаб",
+                    "ленватиниба",
+                    "ниволумаба",
+                    "ниволумаб+ипилимумаб",
+                    "пазопаниба",
+                    "пембролизумаба",
+                    "сунитиниба",
+                    "сорафениба",
+                    "темсиролимуса",
+                    "эверолимуса",
+                    "IFN-α",
+                    "другое"
+                  ],
+                  placeholder: "Выбрать из списка"
+                },
+                model: {
+                  value: _vm.fields["В качестве терапии 1-й линии начат прием"],
+                  callback: function($$v) {
+                    _vm.$set(
+                      _vm.fields,
+                      "В качестве терапии 1-й линии начат прием",
+                      $$v
+                    )
+                  },
+                  expression:
+                    "\n                        fields['В качестве терапии 1-й линии начат прием']\n                    "
+                }
+              })
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Выбор данной терапевтической опции обусловлен:")]),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-10" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields["Обоснование выбора"],
+              expression: "fields['Обоснование выбора']"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Обоснование выбора" },
+          domProps: { value: _vm.fields["Обоснование выбора"] },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "Обоснование выбора", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row align-items-center" }, [
+          _c("div", { staticClass: "col-auto" }, [
+            _vm._v(
+              "\n                На фоне проводимой терапии состояние пациента\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-3" },
+            [
+              _c("v-select", {
+                attrs: {
+                  options: ["улучшилось", "ухудшилось"],
+                  placeholder: "Выбрать из списка"
+                },
+                model: {
+                  value:
+                    _vm.fields["На фоне проводимой терапии состояние пациента"],
+                  callback: function($$v) {
+                    _vm.$set(
+                      _vm.fields,
+                      "На фоне проводимой терапии состояние пациента",
+                      $$v
+                    )
+                  },
+                  expression:
+                    "\n                        fields[\n                            'На фоне проводимой терапии состояние пациента'\n                        ]\n                    "
+                }
+              })
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.fields["На фоне проводимой терапии состояние пациента"] ==
+      "ухудшилось"
+        ? [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "row align-items-center" }, [
+                _c("div", { staticClass: "col-auto" }, [
+                  _vm._v("Ухудшение состояния связано с")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-4" },
+                  [
+                    _c("v-select", {
+                      attrs: {
+                        options: [
+                          "развитием побочных эффектов",
+                          "прогрессированием заболевания"
+                        ],
+                        placeholder: "Выбрать из списка"
+                      },
+                      model: {
+                        value: _vm.fields["Ухудшение состояния связано с"],
+                        callback: function($$v) {
+                          _vm.$set(
+                            _vm.fields,
+                            "Ухудшение состояния связано с",
+                            $$v
+                          )
+                        },
+                        expression: "fields['Ухудшение состояния связано с']"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-auto" }, [_vm._v("таких как")])
+              ])
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Описание побочных эффектов"],
+                    expression: "fields['Описание побочных эффектов']"
+                  }
+                ],
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
-                  placeholder: "Название клинического случая"
+                  placeholder: "Описание побочных эффектов"
+                },
+                domProps: { value: _vm.fields["Описание побочных эффектов"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields,
+                      "Описание побочных эффектов",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "div",
+                { staticClass: "row align-items-center" },
+                [
+                  _c("div", { staticClass: "col-auto" }, [
+                    _vm._v("Было принято решение о")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-4" },
+                    [
+                      _c("v-select", {
+                        attrs: {
+                          options: [
+                            "снижении дозы препарата",
+                            "временной отмене препарата"
+                          ],
+                          placeholder: "Выбрать из списка"
+                        },
+                        model: {
+                          value: _vm.fields["Было принято решение о"],
+                          callback: function($$v) {
+                            _vm.$set(_vm.fields, "Было принято решение о", $$v)
+                          },
+                          expression: "fields['Было принято решение о']"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm.fields["Было принято решение о"] ==
+                  "снижении дозы препарата"
+                    ? [
+                        _c("div", { staticClass: "col-auto" }, [_vm._v("c")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-1" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.fields["Cнижение дозы препарата"]["c"],
+                                expression:
+                                  "fields['Cнижение дозы препарата']['c']"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text" },
+                            domProps: {
+                              value: _vm.fields["Cнижение дозы препарата"]["c"]
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fields["Cнижение дозы препарата"],
+                                  "c",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-auto" }, [
+                          _vm._v("мг. до")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-1" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.fields["Cнижение дозы препарата"]["до"],
+                                expression:
+                                  "\n                                fields['Cнижение дозы препарата']['до']\n                            "
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text" },
+                            domProps: {
+                              value: _vm.fields["Cнижение дозы препарата"]["до"]
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fields["Cнижение дозы препарата"],
+                                  "до",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-auto" }, [_vm._v("мг.")])
+                      ]
+                    : _vm._e()
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _vm.fields["Было принято решение о"] == "временной отмене препарата"
+              ? [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "div",
+                      { staticClass: "row align-items-center" },
+                      [
+                        _c("div", { staticClass: "col-auto" }, [
+                          _vm._v("Лечение было")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-3" },
+                          [
+                            _c("v-select", {
+                              attrs: {
+                                options: ["возобновлено", "отменено"],
+                                placeholder: "Выбрать из списка"
+                              },
+                              model: {
+                                value: _vm.fields["Лечение было"],
+                                callback: function($$v) {
+                                  _vm.$set(_vm.fields, "Лечение было", $$v)
+                                },
+                                expression: "fields['Лечение было']"
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm.fields["Лечение было"] == "возобновлено"
+                          ? [
+                              _c("div", { staticClass: "col-auto" }, [
+                                _vm._v("через")
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-1" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.fields["Лечение возобновлено"][
+                                          "через недель"
+                                        ],
+                                      expression:
+                                        "\n                                    fields['Лечение возобновлено'][\n                                        'через недель'\n                                    ]\n                                "
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "text" },
+                                  domProps: {
+                                    value:
+                                      _vm.fields["Лечение возобновлено"][
+                                        "через недель"
+                                      ]
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.fields["Лечение возобновлено"],
+                                        "через недель",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-auto" }, [
+                                _vm._v("недель в дозе")
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-1" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.fields["Лечение возобновлено"][
+                                          "в дозе"
+                                        ],
+                                      expression:
+                                        "\n                                    fields['Лечение возобновлено']['в дозе']\n                                "
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { type: "text" },
+                                  domProps: {
+                                    value:
+                                      _vm.fields["Лечение возобновлено"][
+                                        "в дозе"
+                                      ]
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.fields["Лечение возобновлено"],
+                                        "в дозе",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-auto" }, [
+                                _vm._v("мг.")
+                              ])
+                            ]
+                          : _vm._e()
+                      ],
+                      2
+                    )
+                  ])
+                ]
+              : _vm._e()
+          ]
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.fields["Комментарий"],
+              expression: "fields['Комментарий']"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { rows: "5", placeholder: "Комментарий" },
+          domProps: { value: _vm.fields["Комментарий"] },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.fields, "Комментарий", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-group" },
+        [
+          _c("label", [
+            _vm._v("При проведении контрольного обследования выявлено:")
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.fields["Обследования"], function(test, index) {
+            return _c("DiagnosticTest", {
+              key: test.id,
+              attrs: { index: index, test: test },
+              on: {
+                remove: function($event) {
+                  return _vm.removeTest(index)
+                },
+                update: function($event) {
+                  return _vm.updateTest(index, $event)
+                }
+              }
+            })
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-control",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.addTest()
+              }
+            }
+          },
+          [_vm._v("\n            Добавить\n        ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-3" }),
+      _vm._v(" "),
+      _c("AttachFile", { attrs: { max: 5 }, on: { change: _vm.updateFiles } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-3" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-6", staticStyle: { "padding-right": "30px" } },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col col-label" }, [
+                  _vm._v(
+                    "\n                        Рентгенография органов грудной клетки\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col col-date" },
+                  [
+                    _c("date-picker", {
+                      attrs: { valueType: "format", placeholder: "Дата" },
+                      model: {
+                        value: _vm.fields["Рентген груди"]["Дата"],
+                        callback: function($$v) {
+                          _vm.$set(_vm.fields["Рентген груди"], "Дата", $$v)
+                        },
+                        expression: "fields['Рентген груди']['Дата']"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Рентген груди"]["Описание и заключение"],
+                    expression:
+                      "\n                        fields['Рентген груди']['Описание и заключение']\n                    "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { rows: "5", placeholder: "Описание и заключение" },
+                domProps: {
+                  value: _vm.fields["Рентген груди"]["Описание и заключение"]
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Рентген груди"],
+                      "Описание и заключение",
+                      $event.target.value
+                    )
+                  }
                 }
               })
             ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-6", staticStyle: { "padding-left": "30px" } },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col col-label" }, [
+                  _vm._v("Сцинтиграфия костей")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col col-date" },
+                  [
+                    _c("date-picker", {
+                      attrs: { valueType: "format", placeholder: "Дата" },
+                      model: {
+                        value: _vm.fields["Сцинтиграфия костей"]["Дата"],
+                        callback: function($$v) {
+                          _vm.$set(
+                            _vm.fields["Сцинтиграфия костей"],
+                            "Дата",
+                            $$v
+                          )
+                        },
+                        expression: "fields['Сцинтиграфия костей']['Дата']"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value:
+                      _vm.fields["Сцинтиграфия костей"][
+                        "Описание и заключение"
+                      ],
+                    expression:
+                      "\n                        fields['Сцинтиграфия костей'][\n                            'Описание и заключение'\n                        ]\n                    "
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { rows: "5", placeholder: "Описание и заключение" },
+                domProps: {
+                  value:
+                    _vm.fields["Сцинтиграфия костей"]["Описание и заключение"]
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields["Сцинтиграфия костей"],
+                      "Описание и заключение",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-auto col-label" }, [
+            _vm._v(
+              "\n                Проведена диагностическая биопсия\n            "
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-2" })
+          _c("div", { staticClass: "col" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Биопсия"]["Наименование органа/ткани"],
+                  expression: "fields['Биопсия']['Наименование органа/ткани']"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Наименование органа/ткани" },
+              domProps: {
+                value: _vm.fields["Биопсия"]["Наименование органа/ткани"]
+              },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields["Биопсия"],
+                    "Наименование органа/ткани",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col col-date" },
+            [
+              _c("date-picker", {
+                attrs: { valueType: "format", placeholder: "Дата" },
+                model: {
+                  value: _vm.fields["Биопсия"]["Дата"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields["Биопсия"], "Дата", $$v)
+                  },
+                  expression: "fields['Биопсия']['Дата']"
+                }
+              })
+            ],
+            1
+          )
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-3" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary btn-control",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.prev()
+              }
+            }
+          },
+          [_vm._v("\n            Назад\n        ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-control",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.submit()
+              }
+            }
+          },
+          [_vm._v("\n            Сохранить в pdf\n        ")]
+        )
       ])
-    ])
-  }
-]
+    ],
+    2
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

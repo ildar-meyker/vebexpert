@@ -137,7 +137,7 @@
                 <div class="col-3">
                     <v-select
                         :options="['хороший', 'промежуточный', 'плохой']"
-                        placeholder="Выбрать"
+                        placeholder="Выбрать из списка"
                         v-model="fields['Прогноз по MSKCC']"
                     ></v-select>
                 </div>
@@ -160,7 +160,7 @@
             ></textarea>
         </div>
 
-        <div class="p-2"></div>
+        <div class="p-3"></div>
 
         <div class="form-group">
             <button

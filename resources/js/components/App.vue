@@ -37,7 +37,7 @@ export default {
     data() {
         return {
             steps: [1, 2, 3, 4, 5],
-            currentStep: 4,
+            currentStep: 5,
 
             fields: {},
         };

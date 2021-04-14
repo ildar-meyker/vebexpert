@@ -68,14 +68,20 @@
             </div>
         </div>
 
-        <DiagnosticTest
-            v-for="(test, index) in fields['Обследования']"
-            :index="index"
-            :test="test"
-            :key="test.id"
-            @remove="removeTest(index)"
-            @update="updateTest(index, $event)"
-        ></DiagnosticTest>
+        <div class="form-group">
+            <label>
+                Пациент обратился к врачу по месту жительства. При обследовании
+                было выявлено:
+            </label>
+            <DiagnosticTest
+                v-for="(test, index) in fields['Обследования']"
+                :index="index"
+                :test="test"
+                :key="test.id"
+                @remove="removeTest(index)"
+                @update="updateTest(index, $event)"
+            ></DiagnosticTest>
+        </div>
 
         <div class="form-group">
             <button
@@ -527,7 +533,7 @@
             </div>
         </div>
 
-        <div class="p-2"></div>
+        <div class="p-3"></div>
 
         <div class="form-group">
             <button

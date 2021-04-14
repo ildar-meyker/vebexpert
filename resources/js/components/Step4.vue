@@ -28,6 +28,7 @@
                     <div class="col-3">
                         <v-select
                             :options="['паллиативная', 'радикальная']"
+                            placeholder="Выбрать из списка"
                             v-model="fields['Нефрэктомия']['Вид']"
                         ></v-select>
                     </div>
@@ -38,7 +39,8 @@
                                 'метастазэктомией',
                                 'без метастазэктомии',
                             ]"
-                            v-model="fields['Нефрэктомия']['Cпособ']"
+                            placeholder="Выбрать из списка"
+                            v-model="fields['Нефрэктомия']['Способ']"
                         ></v-select>
                     </div>
                     <div class="col-2">
@@ -108,7 +110,7 @@
             </button>
         </div>
 
-        <div class="p-5"></div>
+        <div class="p-3"></div>
 
         <div class="form-group">
             <button
@@ -161,14 +163,10 @@ export default {
 
     watch: {
         surgery(value) {
-            this.fields["Нефрэктомия"]["Вид"] =
-                value == "Да" ? "паллиативная" : "";
-
-            this.fields["Нефрэктомия"]["Cпособ"] =
-                value == "Да" ? "метастазэктомией" : "";
-
             if (value == "Нет") {
                 this.fields["Гистологическое исследование"] = "";
+                this.fields["Нефрэктомия"]["Вид"] = "";
+                this.fields["Нефрэктомия"]["Способ"] = "";
                 this.fields["Нефрэктомия"]["Дата"] = "";
             }
         },
@@ -208,5 +206,9 @@ export default {
 <style scoped>
 .example {
     font-size: 15px;
+}
+
+.addon__controls {
+    right: 0;
 }
 </style>

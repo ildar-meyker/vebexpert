@@ -1,9 +1,5 @@
 <template>
     <div class="form-group addon">
-        <label>
-            Пациент обратился к врачу по месту жительства. При обследовании было
-            выявлено:
-        </label>
         <div class="row">
             <div class="col-3">
                 <div class="form-item">
