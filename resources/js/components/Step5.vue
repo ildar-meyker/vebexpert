@@ -324,6 +324,19 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <textarea
+                rows="3"
+                class="form-control"
+                placeholder="Описание и заключение"
+                v-model="fields['Биопсия']['Описание и заключение']"
+            ></textarea>
+        </div>
+
+        <div class="p-2"></div>
+
+        <BloodTest @update="updateBloodTest"></BloodTest>
+
         <div class="p-3"></div>
 
         <div class="form-group">
@@ -347,9 +360,10 @@
 
 <script>
 import DiagnosticTest from "./DiagnosticTest";
+import BloodTest from "./BloodTest";
 
 export default {
-    components: { DiagnosticTest },
+    components: { DiagnosticTest, BloodTest },
 
     data() {
         return {
@@ -401,6 +415,8 @@ export default {
                     Дата: "",
                     "Описание и заключение": "",
                 },
+
+                "Общий анализ крови": {},
             },
         };
     },
@@ -468,6 +484,10 @@ export default {
 
         updateFiles(files) {
             this.fields.files = _.cloneDeep(files);
+        },
+
+        updateBloodTest(fields) {
+            this.fields["Общий анализ крови"] = _.cloneDeep(fields);
         },
 
         prev() {
