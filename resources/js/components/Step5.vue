@@ -222,6 +222,7 @@
             <label>При проведении контрольного обследования выявлено:</label>
             <DiagnosticTest
                 v-for="(test, index) in fields['Обследования']"
+                :stepId="5"
                 :index="index"
                 :test="test"
                 :key="test.id"
@@ -246,96 +247,11 @@
 
         <div class="p-3"></div>
 
-        <div class="row">
-            <div class="col-6" style="padding-right: 30px">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col col-label">
-                            Рентгенография органов грудной клетки
-                        </div>
-                        <div class="col col-date">
-                            <date-picker
-                                valueType="format"
-                                placeholder="Дата"
-                                v-model="fields['Рентген груди']['Дата']"
-                            ></date-picker>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <textarea
-                        rows="5"
-                        class="form-control"
-                        placeholder="Описание и заключение"
-                        v-model="
-                            fields['Рентген груди']['Описание и заключение']
-                        "
-                    ></textarea>
-                </div>
-            </div>
-            <div class="col-6" style="padding-left: 30px">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col col-label">Сцинтиграфия костей</div>
-                        <div class="col col-date">
-                            <date-picker
-                                valueType="format"
-                                placeholder="Дата"
-                                v-model="fields['Сцинтиграфия костей']['Дата']"
-                            ></date-picker>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <textarea
-                        rows="5"
-                        class="form-control"
-                        placeholder="Описание и заключение"
-                        v-model="
-                            fields['Сцинтиграфия костей'][
-                                'Описание и заключение'
-                            ]
-                        "
-                    ></textarea>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-auto col-label">
-                    Проведена диагностическая биопсия
-                </div>
-                <div class="col">
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Наименование органа/ткани"
-                        v-model="fields['Биопсия']['Наименование органа/ткани']"
-                    />
-                </div>
-                <div class="col col-date">
-                    <date-picker
-                        valueType="format"
-                        placeholder="Дата"
-                        v-model="fields['Биопсия']['Дата']"
-                    ></date-picker>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <textarea
-                rows="3"
-                class="form-control"
-                placeholder="Описание и заключение"
-                v-model="fields['Биопсия']['Описание и заключение']"
-            ></textarea>
-        </div>
+        <GroupOfTests :stepId="5"></GroupOfTests>
 
         <div class="p-2"></div>
 
-        <BloodTest @update="updateBloodTest"></BloodTest>
+        <BloodTest :stepId="5"></BloodTest>
 
         <div class="p-3"></div>
 
@@ -426,11 +342,7 @@
             >
                 Назад
             </button>
-            <button
-                type="button"
-                class="btn btn-primary btn-control"
-                @click="submit()"
-            >
+            <button type="submit" class="btn btn-primary btn-control">
                 Сохранить в pdf
             </button>
         </div>
@@ -484,24 +396,6 @@ export default {
                 Обследования: [],
 
                 files: [],
-
-                "Рентген груди": {
-                    Дата: "",
-                    "Описание и заключение": "",
-                },
-
-                "Сцинтиграфия костей": {
-                    Дата: "",
-                    "Описание и заключение": "",
-                },
-
-                Биопсия: {
-                    "Наименование органа/ткани": "",
-                    Дата: "",
-                    "Описание и заключение": "",
-                },
-
-                "Общий анализ крови": {},
 
                 "Константировано наличие": "",
 
@@ -587,16 +481,8 @@ export default {
             this.fields.sounds = _.cloneDeep(files);
         },
 
-        updateBloodTest(fields) {
-            this.fields["Общий анализ крови"] = _.cloneDeep(fields);
-        },
-
         prev() {
             this.$emit("prev", this.fields);
-        },
-
-        submit() {
-            this.$emit("submit", this.fields);
         },
     },
 

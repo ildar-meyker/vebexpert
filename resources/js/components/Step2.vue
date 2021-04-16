@@ -10,9 +10,15 @@
                         placeholder="Пол"
                         v-model="fields['Пол']"
                     ></v-select>
+                    <input
+                        name="step2[Пол]"
+                        type="hidden"
+                        v-model="fields['Пол']"
+                    />
                 </div>
                 <div class="col">
                     <input
+                        name="step2[Инициалы]"
                         type="text"
                         class="form-control"
                         placeholder="Инициалы"
@@ -21,6 +27,7 @@
                 </div>
                 <div class="col">
                     <date-picker
+                        :input-attr="{ name: 'step2[Год рождения]' }"
                         valueType="format"
                         type="year"
                         placeholder="Год рождения"
@@ -34,15 +41,33 @@
                     <span v-else> считает себя больным с </span>
                 </div>
                 <div class="col">
-                    <date-picker
-                        valueType="format"
-                        type="month"
+                    <v-select
+                        :options="[
+                            'января',
+                            'февраля',
+                            'марта',
+                            'апреля',
+                            'мая',
+                            'июня',
+                            'июля',
+                            'августа',
+                            'сентября',
+                            'октября',
+                            'ноября',
+                            'декабря',
+                        ]"
                         placeholder="Месяц"
                         v-model="fields['Болен с месяца']"
-                    ></date-picker>
+                    ></v-select>
+                    <input
+                        name="step2[Болен с месяца]"
+                        type="hidden"
+                        v-model="fields['Болен с месяца']"
+                    />
                 </div>
                 <div class="col">
                     <date-picker
+                        :input-attr="{ name: 'step2[Болен с года]' }"
                         valueType="format"
                         type="year"
                         placeholder="Год"
@@ -59,6 +84,7 @@
                 </div>
                 <div class="col">
                     <input
+                        name="step2[Описание жалоб]"
                         type="text"
                         class="form-control"
                         placeholder="Описание жалоб"
@@ -75,6 +101,7 @@
             </label>
             <DiagnosticTest
                 v-for="(test, index) in fields['Обследования']"
+                :stepId="2"
                 :index="index"
                 :test="test"
                 :key="test.id"
@@ -93,96 +120,11 @@
             </button>
         </div>
 
-        <div class="row">
-            <div class="col-6" style="padding-right: 30px">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col col-label">
-                            Рентгенография органов грудной клетки
-                        </div>
-                        <div class="col col-date">
-                            <date-picker
-                                valueType="format"
-                                placeholder="Дата"
-                                v-model="fields['Рентген груди']['Дата']"
-                            ></date-picker>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <textarea
-                        rows="5"
-                        class="form-control"
-                        placeholder="Описание и заключение"
-                        v-model="
-                            fields['Рентген груди']['Описание и заключение']
-                        "
-                    ></textarea>
-                </div>
-            </div>
-            <div class="col-6" style="padding-left: 30px">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col col-label">Сцинтиграфия костей</div>
-                        <div class="col col-date">
-                            <date-picker
-                                valueType="format"
-                                placeholder="Дата"
-                                v-model="fields['Сцинтиграфия костей']['Дата']"
-                            ></date-picker>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <textarea
-                        rows="5"
-                        class="form-control"
-                        placeholder="Описание и заключение"
-                        v-model="
-                            fields['Сцинтиграфия костей'][
-                                'Описание и заключение'
-                            ]
-                        "
-                    ></textarea>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-auto col-label">
-                    Проведена диагностическая биопсия
-                </div>
-                <div class="col">
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Наименование органа/ткани"
-                        v-model="fields['Биопсия']['Наименование органа/ткани']"
-                    />
-                </div>
-                <div class="col col-date">
-                    <date-picker
-                        valueType="format"
-                        placeholder="Дата"
-                        v-model="fields['Биопсия']['Дата']"
-                    ></date-picker>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <textarea
-                rows="3"
-                class="form-control"
-                placeholder="Описание и заключение"
-                v-model="fields['Биопсия']['Описание и заключение']"
-            ></textarea>
-        </div>
+        <GroupOfTests :stepId="2"></GroupOfTests>
 
         <div class="p-2"></div>
 
-        <BloodTest @update="updateBloodTest"></BloodTest>
+        <BloodTest :stepId="2"></BloodTest>
 
         <div class="p-4"></div>
 
@@ -206,11 +148,12 @@
 </template>
 
 <script>
+import GroupOfTests from "./GroupOfTests";
 import DiagnosticTest from "./DiagnosticTest";
 import BloodTest from "./BloodTest";
 
 export default {
-    components: { DiagnosticTest, BloodTest },
+    components: { GroupOfTests, DiagnosticTest, BloodTest },
 
     data() {
         return {
@@ -223,24 +166,6 @@ export default {
                 "Описание жалоб": "",
 
                 Обследования: [],
-
-                "Рентген груди": {
-                    Дата: "",
-                    "Описание и заключение": "",
-                },
-
-                "Сцинтиграфия костей": {
-                    Дата: "",
-                    "Описание и заключение": "",
-                },
-
-                Биопсия: {
-                    "Наименование органа/ткани": "",
-                    Дата: "",
-                    "Описание и заключение": "",
-                },
-
-                "Общий анализ крови": {},
             },
         };
     },
@@ -249,9 +174,9 @@ export default {
         addTest() {
             this.fields["Обследования"].push({
                 id: _.uniqueId(),
-                "Дата обследования": "",
-                "Тип обследования": "",
-                "Объект обследования": "",
+                Дата: "",
+                Тип: "",
+                Объект: "",
                 "Описание и заключение": "",
             });
         },
@@ -262,10 +187,6 @@ export default {
 
         updateTest(index, fields) {
             this.fields["Обследования"][index] = fields;
-        },
-
-        updateBloodTest(fields) {
-            this.fields["Общий анализ крови"] = _.cloneDeep(fields);
         },
 
         next() {

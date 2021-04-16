@@ -6,6 +6,7 @@
             <div class="row">
                 <div class="col-10">
                     <input
+                        name="step1[Название клинического случая]"
                         type="text"
                         class="form-control"
                         placeholder="Название клинического случая"
@@ -14,6 +15,7 @@
                 </div>
                 <div class="col-2">
                     <date-picker
+                        :input-attr="{ name: 'step1[Дата]' }"
                         valueType="format"
                         placeholder="Дата"
                         v-model="fields['Дата']"
@@ -26,6 +28,7 @@
             <div class="row">
                 <div class="col-4">
                     <input
+                        name="step1[Фамилия]"
                         type="text"
                         class="form-control"
                         placeholder="Фамилия"
@@ -34,6 +37,7 @@
                 </div>
                 <div class="col-4">
                     <input
+                        name="step1[Имя]"
                         type="text"
                         class="form-control"
                         placeholder="Имя"
@@ -42,6 +46,7 @@
                 </div>
                 <div class="col-4">
                     <input
+                        name="step1[Отчество]"
                         type="text"
                         class="form-control"
                         placeholder="Отчество"
@@ -55,6 +60,7 @@
             <div class="row">
                 <div class="col-4">
                     <input
+                        name="step1[Должность]"
                         type="text"
                         class="form-control"
                         placeholder="Должность"
@@ -63,6 +69,7 @@
                 </div>
                 <div class="col-4">
                     <input
+                        name="step1[Место работы]"
                         type="text"
                         class="form-control"
                         placeholder="Место работы"
@@ -71,6 +78,7 @@
                 </div>
                 <div class="col-4">
                     <input
+                        name="step1[Город]"
                         type="text"
                         class="form-control"
                         placeholder="Город"
@@ -82,6 +90,7 @@
 
         <div class="form-group">
             <textarea
+                name="step1[Комментарий]"
                 rows="5"
                 class="form-control"
                 placeholder="Комментарий"

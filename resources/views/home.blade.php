@@ -12,9 +12,15 @@
     </head>
     <body>
         
-        <div id="app">
+        <form method="POST"
+            action="/create-pdf"
+            enctype="multipart/form-data"
+            target="_blank" id="app">
+
+            {{ csrf_field() }}
+
             <app></app>
-        </div>
+        </form>   
 
         <script src="{{ mix('/js/app.js') }}"></script>
 

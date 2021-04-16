@@ -4,17 +4,36 @@
             <div class="col-3">
                 <div class="form-item">
                     <date-picker
+                        :input-attr="{
+                            name:
+                                'step' +
+                                stepId +
+                                '[Обследования][' +
+                                index +
+                                '][Дата]',
+                        }"
                         valueType="format"
-                        placeholder="Дата обследования"
-                        v-model="fields['Дата обследования']"
+                        placeholder="Дата"
+                        v-model="fields['Дата']"
                     ></date-picker>
                 </div>
                 <div class="form-item">
                     <v-select
                         :options="['МСКТ', 'ПЭТ-КТ', 'МРТ', 'УЗИ']"
-                        placeholder="Тип обследования"
-                        v-model="fields['Тип обследования']"
+                        placeholder="Тип"
+                        v-model="fields['Тип']"
                     ></v-select>
+                    <input
+                        :name="
+                            'step' +
+                            stepId +
+                            '[Обследования][' +
+                            index +
+                            '][Тип]'
+                        "
+                        type="hidden"
+                        v-model="fields['Тип']"
+                    />
                 </div>
                 <div class="form-item">
                     <v-select
@@ -24,13 +43,31 @@
                             'брюшной полости',
                             'малого таза',
                         ]"
-                        placeholder="Объект обследования"
-                        v-model="fields['Объект обследования']"
+                        placeholder="Объект"
+                        v-model="fields['Объект']"
                     ></v-select>
+                    <input
+                        :name="
+                            'step' +
+                            stepId +
+                            '[Обследования][' +
+                            index +
+                            '][Объект]'
+                        "
+                        type="hidden"
+                        v-model="fields['Объект']"
+                    />
                 </div>
             </div>
             <div class="col-9">
                 <textarea
+                    :name="
+                        'step' +
+                        stepId +
+                        '[Обследования][' +
+                        index +
+                        '][Описание и заключение]'
+                    "
                     rows="5"
                     class="form-control"
                     placeholder="Описание и заключение"
@@ -48,7 +85,7 @@
 
 <script>
 export default {
-    props: ["index", "test"],
+    props: ["stepId", "index", "test"],
 
     data() {
         return {

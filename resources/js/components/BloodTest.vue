@@ -11,9 +11,9 @@
                     <div>ER</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][ER]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['ER']"
                         />
                     </div>
                     <div>1012/л</div>
@@ -23,9 +23,9 @@
                     <div>Hb</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][Hb]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['Hb']"
                         />
                     </div>
                     <div>г/л</div>
@@ -35,9 +35,9 @@
                     <div>Le</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][Le]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['Le']"
                         />
                     </div>
                     <div>109/л</div>
@@ -47,9 +47,9 @@
                     <div>Tr</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][Tr]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['Tr']"
                         />
                     </div>
                     <div>109/л</div>
@@ -59,9 +59,9 @@
                     <div>СОЭ</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][СОЭ]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['СОЭ']"
                         />
                     </div>
                     <div>мм/ч</div>
@@ -71,9 +71,9 @@
                     <div>п/я</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][п/я]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['п/я']"
                         />
                     </div>
                     <div>%</div>
@@ -83,9 +83,9 @@
                     <div>с/я</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][с/я]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['с/я']"
                         />
                     </div>
                     <div>%</div>
@@ -95,9 +95,9 @@
                     <div>Ly</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][Ly]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['Ly']"
                         />
                     </div>
                     <div>%</div>
@@ -107,9 +107,9 @@
                     <div>Mo</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][Mo]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['Mo']"
                         />
                     </div>
                     <div>%</div>
@@ -119,9 +119,9 @@
                     <div>Bas</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][Bas]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['Bas']"
                         />
                     </div>
                     <div>%</div>
@@ -131,9 +131,9 @@
                     <div>Эо</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][Эо]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['Эо']"
                         />
                     </div>
                     <div>%</div>
@@ -149,9 +149,9 @@
                     <div>АсАт</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][АсАт][Значение]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['АсАт'].value"
                         />
                     </div>
                     <div>Eд/л</div>
@@ -161,9 +161,9 @@
                     <div>АлАт</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][АлАт][Значение]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['АлАт'].value"
                         />
                     </div>
                     <div>Eд/л</div>
@@ -173,9 +173,9 @@
                     <div>ЛДГ</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][ЛДГ][Значение]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['ЛДГ'].value"
                         />
                     </div>
                     <div>Eд/л</div>
@@ -185,9 +185,13 @@
                     <div>Скорректированный Ca2+</div>
                     <div>
                         <input
+                            :name="
+                                'step' +
+                                stepId +
+                                '[ОАК][Скорректированный Ca2+][Значение]'
+                            "
                             type="text"
                             class="form-control"
-                            v-model="fields['Скорректированный Ca2+'].value"
                         />
                     </div>
                     <div>мМ/л</div>
@@ -197,9 +201,13 @@
                     <div>Мочевина крови</div>
                     <div>
                         <input
+                            :name="
+                                'step' +
+                                stepId +
+                                '[ОАК][Мочевина крови][Значение]'
+                            "
                             type="text"
                             class="form-control"
-                            v-model="fields['Мочевина крови'].value"
                         />
                     </div>
                     <div>мМ/л</div>
@@ -209,9 +217,13 @@
                     <div>Креатинин крови</div>
                     <div>
                         <input
+                            :name="
+                                'step' +
+                                stepId +
+                                '[ОАК][Креатинин крови][Значение]'
+                            "
                             type="text"
                             class="form-control"
-                            v-model="fields['Креатинин крови'].value"
                         />
                     </div>
                     <div>мМ/л</div>
@@ -221,9 +233,9 @@
                     <div>Миелоциты</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][Миелоциты]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['Миелоциты']"
                         />
                     </div>
                     <div>%</div>
@@ -233,9 +245,9 @@
                     <div>Метамиел</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][Метамиел]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['Метамиел']"
                         />
                     </div>
                     <div>%</div>
@@ -249,9 +261,9 @@
                     <div>(N =</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][АсАт][N]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['АсАт'].N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -260,9 +272,9 @@
                     <div>(N =</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][АлАт][N]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['АлАт'].N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -271,9 +283,9 @@
                     <div>(N =</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][ЛДГ][N]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['ЛДГ'].N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -282,9 +294,13 @@
                     <div>(N =</div>
                     <div>
                         <input
+                            :name="
+                                'step' +
+                                stepId +
+                                '[ОАК][Скорректированный Ca2+][N]'
+                            "
                             type="text"
                             class="form-control"
-                            v-model="fields['Скорректированный Ca2+'].N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -293,9 +309,9 @@
                     <div>(N =</div>
                     <div>
                         <input
+                            :name="'step' + stepId + '[ОАК][Мочевина крови][N]'"
                             type="text"
                             class="form-control"
-                            v-model="fields['Мочевина крови'].N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -304,9 +320,11 @@
                     <div>(N =</div>
                     <div>
                         <input
+                            :name="
+                                'step' + stepId + '[ОАК][Креатинин крови][N]'
+                            "
                             type="text"
                             class="form-control"
-                            v-model="fields['Креатинин крови'].N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -319,65 +337,10 @@
 
 <script>
 export default {
+    props: ["stepId"],
+
     data() {
-        return {
-            fields: {
-                ER: "",
-                Hb: "",
-                Le: "",
-                Tr: "",
-                СОЭ: "",
-                "п/я": "",
-                "с/я": "",
-                Ly: "",
-                Mo: "",
-                Bas: "",
-                Эо: "",
-
-                АсАт: {
-                    value: "",
-                    N: "",
-                },
-
-                АлАт: {
-                    value: "",
-                    N: "",
-                },
-
-                ЛДГ: {
-                    value: "",
-                    N: "",
-                },
-
-                "Скорректированный Ca2+": {
-                    value: "",
-                    N: "",
-                },
-
-                "Мочевина крови": {
-                    value: "",
-                    N: "",
-                },
-
-                "Креатинин крови": {
-                    value: "",
-                    N: "",
-                },
-
-                Миелоциты: "",
-
-                Метамиел: "",
-            },
-        };
-    },
-
-    watch: {
-        fields: {
-            deep: true,
-            handler() {
-                this.$emit("update", this.fields);
-            },
-        },
+        return {};
     },
 };
 </script>
