@@ -10,11 +10,30 @@ class CreatePdfController extends Controller
 {
     public function index(Request $request)
     {
-        // return $request->all();
+
         $step1 = $request->input('step1');
         $step2 = $request->input('step2');
+        $step3 = $request->input('step3');
 
-        $html = (string) view('pdf', compact('step1', 'step2'));
+        $step3_images = [];
+
+        if ($request->has('step3.files')) {
+            foreach ($request->step3['files'] as $files) {
+                foreach ($files as $file) {
+                    $mimeType = $file->getMimeType();
+                    if (substr($mimeType, 0, 5) === 'image') {
+                        $step3_images[] = 'data:' . $mimeType . ';base64,' . base64_encode(file_get_contents($file));
+                    }
+                }
+            }
+        }
+
+        $html = (string) view('pdf', compact(
+            'step1',
+            'step2',
+            'step3',
+            'step3_images'
+        ));
 
         // echo $html;
 

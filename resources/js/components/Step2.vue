@@ -22,7 +22,6 @@
                         type="text"
                         class="form-control"
                         placeholder="Инициалы"
-                        v-model="fields['Инициалы']"
                     />
                 </div>
                 <div class="col">
@@ -31,7 +30,6 @@
                         valueType="format"
                         type="year"
                         placeholder="Год рождения"
-                        v-model="fields['Год рождения']"
                     ></date-picker>
                 </div>
                 <div class="col col-label">
@@ -71,7 +69,6 @@
                         valueType="format"
                         type="year"
                         placeholder="Год"
-                        v-model="fields['Болен с года']"
                     ></date-picker>
                 </div>
             </div>
@@ -88,7 +85,6 @@
                         type="text"
                         class="form-control"
                         placeholder="Описание жалоб"
-                        v-model="fields['Описание жалоб']"
                     />
                 </div>
             </div>
@@ -101,7 +97,7 @@
             </label>
             <DiagnosticTest
                 v-for="(test, index) in fields['Обследования']"
-                :stepId="2"
+                stepId="2"
                 :index="index"
                 :test="test"
                 :key="test.id"
@@ -120,11 +116,11 @@
             </button>
         </div>
 
-        <GroupOfTests :stepId="2"></GroupOfTests>
+        <GroupOfTests stepId="2"></GroupOfTests>
 
         <div class="p-2"></div>
 
-        <BloodTest :stepId="2"></BloodTest>
+        <BloodTest stepId="2"></BloodTest>
 
         <div class="p-4"></div>
 
@@ -159,11 +155,7 @@ export default {
         return {
             fields: {
                 Пол: "",
-                Инициалы: "",
-                "Год рождения": "",
                 "Болен с месяца": "",
-                "Болен с года": "",
-                "Описание жалоб": "",
 
                 Обследования: [],
             },

@@ -10,7 +10,6 @@
                         type="text"
                         class="form-control"
                         placeholder="Название клинического случая"
-                        v-model="fields['Название клинического случая']"
                     />
                 </div>
                 <div class="col-2">
@@ -18,7 +17,6 @@
                         :input-attr="{ name: 'step1[Дата]' }"
                         valueType="format"
                         placeholder="Дата"
-                        v-model="fields['Дата']"
                     ></date-picker>
                 </div>
             </div>
@@ -32,7 +30,6 @@
                         type="text"
                         class="form-control"
                         placeholder="Фамилия"
-                        v-model="fields['Фамилия']"
                     />
                 </div>
                 <div class="col-4">
@@ -41,7 +38,6 @@
                         type="text"
                         class="form-control"
                         placeholder="Имя"
-                        v-model="fields['Имя']"
                     />
                 </div>
                 <div class="col-4">
@@ -50,7 +46,6 @@
                         type="text"
                         class="form-control"
                         placeholder="Отчество"
-                        v-model="fields['Отчество']"
                     />
                 </div>
             </div>
@@ -64,7 +59,6 @@
                         type="text"
                         class="form-control"
                         placeholder="Должность"
-                        v-model="fields['Должность']"
                     />
                 </div>
                 <div class="col-4">
@@ -73,7 +67,6 @@
                         type="text"
                         class="form-control"
                         placeholder="Место работы"
-                        v-model="fields['Место работы']"
                     />
                 </div>
                 <div class="col-4">
@@ -82,7 +75,6 @@
                         type="text"
                         class="form-control"
                         placeholder="Город"
-                        v-model="fields['Город']"
                     />
                 </div>
             </div>
@@ -94,7 +86,6 @@
                 rows="5"
                 class="form-control"
                 placeholder="Комментарий"
-                v-model="fields['Комментарий']"
             ></textarea>
         </div>
 
@@ -116,20 +107,7 @@
 export default {
     data() {
         return {
-            fields: {
-                "Название клинического случая": "",
-                Дата: "",
-
-                Фамилия: "",
-                Имя: "",
-                Отчество: "",
-
-                Должность: "",
-                "Место работы": "",
-                Город: "",
-
-                Комментарий: "",
-            },
+            fields: {},
         };
     },
 

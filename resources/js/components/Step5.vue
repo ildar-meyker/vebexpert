@@ -222,7 +222,7 @@
             <label>При проведении контрольного обследования выявлено:</label>
             <DiagnosticTest
                 v-for="(test, index) in fields['Обследования']"
-                :stepId="5"
+                stepId="5"
                 :index="index"
                 :test="test"
                 :key="test.id"
@@ -243,15 +243,15 @@
 
         <div class="p-3"></div>
 
-        <AttachFile :max="5" @change="updateFiles"></AttachFile>
+        <AttachFile stepId="5" count="5"></AttachFile>
 
         <div class="p-3"></div>
 
-        <GroupOfTests :stepId="5"></GroupOfTests>
+        <GroupOfTests stepId="5"></GroupOfTests>
 
         <div class="p-2"></div>
 
-        <BloodTest :stepId="5"></BloodTest>
+        <BloodTest stepId="5"></BloodTest>
 
         <div class="p-3"></div>
 
@@ -300,9 +300,9 @@
 
         <div class="form-group">
             <label
-                ><strong
+                ><b
                     >Данный клинический случай может быть представлен на
-                    образовательных мероприятиях:</strong
+                    образовательных мероприятиях:</b
                 ></label
             >
 
@@ -327,7 +327,8 @@
         <div class="p-2"></div>
 
         <AttachFile
-            :max="1"
+            stepId="5"
+            count="1"
             label="Прикрепить звуковой файл"
             @change="updateSounds"
         ></AttachFile>
@@ -350,11 +351,12 @@
 </template>
 
 <script>
+import GroupOfTests from "./GroupOfTests";
 import DiagnosticTest from "./DiagnosticTest";
 import BloodTest from "./BloodTest";
 
 export default {
-    components: { DiagnosticTest, BloodTest },
+    components: { GroupOfTests, DiagnosticTest, BloodTest },
 
     data() {
         return {
@@ -471,10 +473,6 @@ export default {
 
         updateTest(index, fields) {
             this.fields["Обследования"][index] = fields;
-        },
-
-        updateFiles(files) {
-            this.fields.files = _.cloneDeep(files);
         },
 
         updateSounds(files) {

@@ -1,23 +1,22 @@
 <template>
     <div class="form-group">
         <label>
-            <span v-if="label"
-                ><strong>{{ label }}</strong></span
-            >
-            <span v-else
-                ><strong>Прикрепить файл</strong> (не более
-                {{ max }} файлов)</span
-            >
+            <span v-if="label">
+                <b>{{ label }}</b>
+            </span>
+            <span v-else>
+                <b>Прикрепить файл</b> (не более {{ count }} файлов)
+            </span>
         </label>
 
         <div class="files" v-if="files.length">
-            <div v-for="(file, index) in files" :key="index">
+            <div v-for="(item, index) in files" :key="index">
                 <img
-                    :src="file.preview"
+                    :src="item.preview"
                     class="preview"
-                    v-if="file.hasPreview"
+                    v-if="item.hasPreview"
                 />
-                <span>{{ file.file.name }}</span>
+                <span>{{ item.file.name }}</span>
                 <button type="button" class="remove" @click="removeFile(index)">
                     ×
                 </button>
@@ -25,14 +24,26 @@
             <div class="p-2"></div>
         </div>
 
-        <div>
-            <button
-                type="button"
-                class="btn btn-primary btn-file"
-                :disabled="!available"
-            >
+        <div
+            v-for="(input, index) in inputs"
+            v-show="available > 0 && index === inputs.length - 1"
+            :key="index"
+        >
+            <button type="button" class="btn btn-primary btn-file">
                 <span>Обзор</span>
-                <input type="file" @change="addFiles" multiple />
+                <input
+                    :name="'step' + stepId + '[files][' + index + '][]'"
+                    type="file"
+                    @change="handleFiles"
+                    accept="image/*"
+                    multiple
+                />
+            </button>
+        </div>
+
+        <div v-show="available === 0">
+            <button type="button" class="btn btn-primary btn-file" disabled>
+                Обзор
             </button>
         </div>
     </div>
@@ -40,31 +51,23 @@
 
 <script>
 export default {
-    props: ["max", "label"],
+    props: ["stepId", "label", "count"],
 
     data() {
         return {
             files: [],
+            inputs: [{}],
         };
     },
 
     computed: {
         available() {
-            return this.max - this.files.length;
-        },
-    },
-
-    watch: {
-        files: {
-            deep: true,
-            handler() {
-                this.$emit("change", this.files);
-            },
+            return this.count - this.files.length;
         },
     },
 
     methods: {
-        addFiles($event) {
+        handleFiles($event) {
             // slice
             let files = Array.prototype.slice.call(
                 $event.target.files,
@@ -72,7 +75,7 @@ export default {
                 this.available
             );
 
-            // wrap
+            // add wrapper
             files = files.map((file) => {
                 return {
                     preview: "",
@@ -85,6 +88,8 @@ export default {
                 this.loadPreview(file);
                 this.files.push(file);
             });
+
+            this.addInput();
         },
 
         removeFile(index) {
@@ -106,6 +111,10 @@ export default {
             if (file.file && /\.(jpe?g|png|gif)$/i.test(file.file.name)) {
                 reader.readAsDataURL(file.file);
             }
+        },
+
+        addInput() {
+            this.inputs.push({});
         },
     },
 };

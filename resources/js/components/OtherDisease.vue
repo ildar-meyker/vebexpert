@@ -11,7 +11,7 @@
             </div>
             <div class="col-3">
                 <div class="example">
-                    <strong>Примечание:</strong> <br />
+                    <b>Примечание:</b> <br />
                     каждый диагноз небходимо писать с новой строки
                 </div>
             </div>

@@ -2,7 +2,7 @@
     <section>
         <h2 class="text-center">Критерии оценки прогноза ПКР по D. Heng*</h2>
 
-        <table class="hang-table">
+        <table class="heng-table">
             <tr>
                 <td>
                     <div class="name">Факторы риска</div>
@@ -19,10 +19,10 @@
                 <td>&lt; 80% (> 1)</td>
                 <td>
                     <input
+                        name="step3[Индекс Карновского (Шкала ECOG)]"
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
-                        v-model="fields['Индекс Карновского (Шкала ECOG)']"
                     />
                 </td>
             </tr>
@@ -31,14 +31,10 @@
                 <td>менее 12 месяцев</td>
                 <td>
                     <input
+                        name="step3[Время от постановки диагноза до начала терапии]"
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
-                        v-model="
-                            fields[
-                                'Время от постановки диагноза до начала терапии'
-                            ]
-                        "
                     />
                 </td>
             </tr>
@@ -47,10 +43,10 @@
                 <td>&lt; нижней границы нормы</td>
                 <td>
                     <input
+                        name="step3[Уровень гемоглобина]"
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
-                        v-model="fields['Уровень гемоглобина']"
                     />
                 </td>
             </tr>
@@ -59,10 +55,10 @@
                 <td>До 1000 Ед/л</td>
                 <td>
                     <input
+                        name="step3[Уровень лактатдегидрогеназы]"
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
-                        v-model="fields['Уровень лактатдегидрогеназы']"
                     />
                 </td>
             </tr>
@@ -71,10 +67,10 @@
                 <td>&gt; 10 мг/дл (или 2,5 ммоль/л)</td>
                 <td>
                     <input
+                        name="step3[Уровень скорректированного кальция]"
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
-                        v-model="fields['Уровень скорректированного кальция']"
                     />
                 </td>
             </tr>
@@ -83,10 +79,10 @@
                 <td>&gt; 6,5 х 109/л</td>
                 <td>
                     <input
+                        name="step3[Уровень нейтрофилов]"
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
-                        v-model="fields['Уровень нейтрофилов']"
                     />
                 </td>
             </tr>
@@ -95,10 +91,10 @@
                 <td>&gt; 320 х 109/л</td>
                 <td>
                     <input
+                        name="step3[Уровень тромбоцитов]"
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
-                        v-model="fields['Уровень тромбоцитов']"
                     />
                 </td>
             </tr>
@@ -106,22 +102,18 @@
                 <td>Наличие метастатических очагов</td>
                 <td>
                     <input
+                        name="step3[Количество Meta]"
                         type="text"
                         class="form-control"
                         placeholder="Указать кол-во Meta"
-                        v-model="
-                            fields['Наличие метастатических очагов'][
-                                'Кол-во Meta'
-                            ]
-                        "
                     />
                 </td>
                 <td>
                     <input
+                        name="step3[Наличие метастатических очагов]"
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
-                        v-model="fields['Наличие метастатических очагов'].value"
                     />
                 </td>
             </tr>
@@ -132,7 +124,7 @@
         <div class="form-group">
             <div class="row align-items-center">
                 <div class="col-auto">
-                    <strong>ЗАКЛЮЧЕНИЕ:</strong> В данном случае имеет место
+                    <b>ЗАКЛЮЧЕНИЕ:</b> В данном случае имеет место
                 </div>
                 <div class="col-3">
                     <v-select
@@ -140,6 +132,11 @@
                         placeholder="Выбрать из списка"
                         v-model="fields['Прогноз по MSKCC']"
                     ></v-select>
+                    <input
+                        name="step3[Прогноз по MSKCC]"
+                        type="hidden"
+                        v-model="fields['Прогноз по MSKCC']"
+                    />
                 </div>
                 <div class="col-auto">прогноз по MSKCC</div>
             </div>
@@ -147,16 +144,16 @@
 
         <div class="p-3"></div>
 
-        <AttachFile :max="5" @change="updateFiles"></AttachFile>
+        <AttachFile stepId="3" count="5"></AttachFile>
 
         <div class="p-3"></div>
 
         <div class="form-group">
             <textarea
+                name="step3[Комментарий]"
                 rows="5"
                 class="form-control"
                 placeholder="Комментарий"
-                v-model="fields['Комментарий']"
             ></textarea>
         </div>
 
@@ -186,29 +183,12 @@ export default {
     data() {
         return {
             fields: {
-                "Индекс Карновского (Шкала ECOG)": "",
-                "Время от постановки диагноза до начала терапии": "",
-                "Уровень гемоглобина": "",
-                "Уровень лактатдегидрогеназы": "",
-                "Уровень скорректированного кальция": "",
-                "Уровень нейтрофилов": "",
-                "Уровень тромбоцитов": "",
-                "Наличие метастатических очагов": {
-                    "Кол-во Meta": "",
-                    value: "",
-                },
                 "Прогноз по MSKCC": "",
-                files: [],
-                Комментарий: "",
             },
         };
     },
 
     methods: {
-        updateFiles(files) {
-            this.fields.files = _.cloneDeep(files);
-        },
-
         next() {
             this.$emit("next", this.fields);
         },
@@ -221,30 +201,30 @@ export default {
 </script>
 
 <style scoped>
-.hang-table {
+.heng-table {
     width: 100%;
 }
 
-.hang-table td {
+.heng-table td {
     padding-left: 30px;
     vertical-align: middle;
     padding-bottom: 10px;
 }
 
-.hang-table td:first-child {
+.heng-table td:first-child {
     padding-left: 0;
     width: 40%;
 }
 
-.hang-table td:last-child {
+.heng-table td:last-child {
     width: 1%;
 }
 
-.hang-table input.form-control {
+.heng-table input.form-control {
     width: 180px;
 }
 
-.hang-table .name {
+.heng-table .name {
     padding-bottom: 10px;
     font-weight: bold;
 }

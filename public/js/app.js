@@ -1962,32 +1962,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["max", "label"],
+  props: ["stepId", "label", "count"],
   data: function data() {
     return {
-      files: []
+      files: [],
+      inputs: [{}]
     };
   },
   computed: {
     available: function available() {
-      return this.max - this.files.length;
-    }
-  },
-  watch: {
-    files: {
-      deep: true,
-      handler: function handler() {
-        this.$emit("change", this.files);
-      }
+      return this.count - this.files.length;
     }
   },
   methods: {
-    addFiles: function addFiles($event) {
+    handleFiles: function handleFiles($event) {
       var _this = this;
 
       // slice
-      var files = Array.prototype.slice.call($event.target.files, 0, this.available); // wrap
+      var files = Array.prototype.slice.call($event.target.files, 0, this.available); // add wrapper
 
       files = files.map(function (file) {
         return {
@@ -2001,6 +2005,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.files.push(file);
       });
+      this.addInput();
     },
     removeFile: function removeFile(index) {
       this.files.splice(index, 1);
@@ -2015,6 +2020,9 @@ __webpack_require__.r(__webpack_exports__);
       if (file.file && /\.(jpe?g|png|gif)$/i.test(file.file.name)) {
         reader.readAsDataURL(file.file);
       }
+    },
+    addInput: function addInput() {
+      this.inputs.push({});
     }
   }
 });
@@ -2812,29 +2820,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      fields: {
-        "Название клинического случая": "",
-        Дата: "",
-        Фамилия: "",
-        Имя: "",
-        Отчество: "",
-        Должность: "",
-        "Место работы": "",
-        Город: "",
-        Комментарий: ""
-      }
+      fields: {}
     };
   },
   methods: {
@@ -3005,10 +2994,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -3022,11 +3007,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       fields: {
         Пол: "",
-        Инициалы: "",
-        "Год рождения": "",
         "Болен с месяца": "",
-        "Болен с года": "",
-        "Описание жалоб": "",
         Обследования: []
       }
     };
@@ -3252,34 +3233,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       fields: {
-        "Индекс Карновского (Шкала ECOG)": "",
-        "Время от постановки диагноза до начала терапии": "",
-        "Уровень гемоглобина": "",
-        "Уровень лактатдегидрогеназы": "",
-        "Уровень скорректированного кальция": "",
-        "Уровень нейтрофилов": "",
-        "Уровень тромбоцитов": "",
-        "Наличие метастатических очагов": {
-          "Кол-во Meta": "",
-          value: ""
-        },
-        "Прогноз по MSKCC": "",
-        files: [],
-        Комментарий: ""
+        "Прогноз по MSKCC": ""
       }
     };
   },
   methods: {
-    updateFiles: function updateFiles(files) {
-      this.fields.files = _.cloneDeep(files);
-    },
     next: function next() {
       this.$emit("next", this.fields);
     },
@@ -3513,8 +3475,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _DiagnosticTest__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DiagnosticTest */ "./resources/js/components/DiagnosticTest.vue");
-/* harmony import */ var _BloodTest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BloodTest */ "./resources/js/components/BloodTest.vue");
+/* harmony import */ var _GroupOfTests__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GroupOfTests */ "./resources/js/components/GroupOfTests.vue");
+/* harmony import */ var _DiagnosticTest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DiagnosticTest */ "./resources/js/components/DiagnosticTest.vue");
+/* harmony import */ var _BloodTest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BloodTest */ "./resources/js/components/BloodTest.vue");
 //
 //
 //
@@ -3866,12 +3829,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    DiagnosticTest: _DiagnosticTest__WEBPACK_IMPORTED_MODULE_0__.default,
-    BloodTest: _BloodTest__WEBPACK_IMPORTED_MODULE_1__.default
+    GroupOfTests: _GroupOfTests__WEBPACK_IMPORTED_MODULE_0__.default,
+    DiagnosticTest: _DiagnosticTest__WEBPACK_IMPORTED_MODULE_1__.default,
+    BloodTest: _BloodTest__WEBPACK_IMPORTED_MODULE_2__.default
   },
   data: function data() {
     return {
@@ -3956,9 +3922,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateTest: function updateTest(index, fields) {
       this.fields["Обследования"][index] = fields;
-    },
-    updateFiles: function updateFiles(files) {
-      this.fields.files = _.cloneDeep(files);
     },
     updateSounds: function updateSounds(files) {
       this.fields.sounds = _.cloneDeep(files);
@@ -8537,7 +8500,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.hang-table[data-v-2007800c] {\n    width: 100%;\n}\n.hang-table td[data-v-2007800c] {\n    padding-left: 30px;\n    vertical-align: middle;\n    padding-bottom: 10px;\n}\n.hang-table td[data-v-2007800c]:first-child {\n    padding-left: 0;\n    width: 40%;\n}\n.hang-table td[data-v-2007800c]:last-child {\n    width: 1%;\n}\n.hang-table input.form-control[data-v-2007800c] {\n    width: 180px;\n}\n.hang-table .name[data-v-2007800c] {\n    padding-bottom: 10px;\n    font-weight: bold;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.heng-table[data-v-2007800c] {\n    width: 100%;\n}\n.heng-table td[data-v-2007800c] {\n    padding-left: 30px;\n    vertical-align: middle;\n    padding-bottom: 10px;\n}\n.heng-table td[data-v-2007800c]:first-child {\n    padding-left: 0;\n    width: 40%;\n}\n.heng-table td[data-v-2007800c]:last-child {\n    width: 1%;\n}\n.heng-table input.form-control[data-v-2007800c] {\n    width: 180px;\n}\n.heng-table .name[data-v-2007800c] {\n    padding-bottom: 10px;\n    font-weight: bold;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -41278,72 +41241,122 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group" }, [
-    _c("label", [
-      _vm.label
-        ? _c("span", [_c("strong", [_vm._v(_vm._s(_vm.label))])])
-        : _c("span", [
-            _c("strong", [_vm._v("Прикрепить файл")]),
-            _vm._v(" (не более\n            " + _vm._s(_vm.max) + " файлов)")
-          ])
-    ]),
-    _vm._v(" "),
-    _vm.files.length
-      ? _c(
-          "div",
-          { staticClass: "files" },
-          [
-            _vm._l(_vm.files, function(file, index) {
-              return _c("div", { key: index }, [
-                file.hasPreview
-                  ? _c("img", {
-                      staticClass: "preview",
-                      attrs: { src: file.preview }
-                    })
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(file.file.name))]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "remove",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.removeFile(index)
+  return _c(
+    "div",
+    { staticClass: "form-group" },
+    [
+      _c("label", [
+        _vm.label
+          ? _c("span", [_c("b", [_vm._v(_vm._s(_vm.label))])])
+          : _c("span", [
+              _c("b", [_vm._v("Прикрепить файл")]),
+              _vm._v(" (не более " + _vm._s(_vm.count) + " файлов)\n        ")
+            ])
+      ]),
+      _vm._v(" "),
+      _vm.files.length
+        ? _c(
+            "div",
+            { staticClass: "files" },
+            [
+              _vm._l(_vm.files, function(item, index) {
+                return _c("div", { key: index }, [
+                  item.hasPreview
+                    ? _c("img", {
+                        staticClass: "preview",
+                        attrs: { src: item.preview }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(item.file.name))]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "remove",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.removeFile(index)
+                        }
                       }
-                    }
+                    },
+                    [_vm._v("\n                ×\n            ")]
+                  )
+                ])
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "p-2" })
+            ],
+            2
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.inputs, function(input, index) {
+        return _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.available > 0 && index === _vm.inputs.length - 1,
+                expression: "available > 0 && index === inputs.length - 1"
+              }
+            ],
+            key: index
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary btn-file",
+                attrs: { type: "button" }
+              },
+              [
+                _c("span", [_vm._v("Обзор")]),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: {
+                    name: "step" + _vm.stepId + "[files][" + index + "][]",
+                    type: "file",
+                    accept: "image/*",
+                    multiple: ""
                   },
-                  [_vm._v("\n                ×\n            ")]
-                )
-              ])
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "p-2" })
-          ],
-          2
+                  on: { change: _vm.handleFiles }
+                })
+              ]
+            )
+          ]
         )
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", [
+      }),
+      _vm._v(" "),
       _c(
-        "button",
+        "div",
         {
-          staticClass: "btn btn-primary btn-file",
-          attrs: { type: "button", disabled: !_vm.available }
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.available === 0,
+              expression: "available === 0"
+            }
+          ]
         },
         [
-          _c("span", [_vm._v("Обзор")]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "file", multiple: "" },
-            on: { change: _vm.addFiles }
-          })
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-file",
+              attrs: { type: "button", disabled: "" }
+            },
+            [_vm._v("\n            Обзор\n        ")]
+          )
         ]
       )
-    ])
-  ])
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42216,7 +42229,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-3" }, [
       _c("div", { staticClass: "example" }, [
-        _c("strong", [_vm._v("Примечание:")]),
+        _c("b", [_vm._v("Примечание:")]),
         _vm._v(" "),
         _c("br"),
         _vm._v(
@@ -42253,37 +42266,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-10" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.fields["Название клинического случая"],
-                expression: "fields['Название клинического случая']"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              name: "step1[Название клинического случая]",
-              type: "text",
-              placeholder: "Название клинического случая"
-            },
-            domProps: { value: _vm.fields["Название клинического случая"] },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(
-                  _vm.fields,
-                  "Название клинического случая",
-                  $event.target.value
-                )
-              }
-            }
-          })
-        ]),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "div",
@@ -42294,13 +42277,6 @@ var render = function() {
                 "input-attr": { name: "step1[Дата]" },
                 valueType: "format",
                 placeholder: "Дата"
-              },
-              model: {
-                value: _vm.fields["Дата"],
-                callback: function($$v) {
-                  _vm.$set(_vm.fields, "Дата", $$v)
-                },
-                expression: "fields['Дата']"
               }
             })
           ],
@@ -42309,201 +42285,11 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.fields["Фамилия"],
-                expression: "fields['Фамилия']"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              name: "step1[Фамилия]",
-              type: "text",
-              placeholder: "Фамилия"
-            },
-            domProps: { value: _vm.fields["Фамилия"] },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.fields, "Фамилия", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.fields["Имя"],
-                expression: "fields['Имя']"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { name: "step1[Имя]", type: "text", placeholder: "Имя" },
-            domProps: { value: _vm.fields["Имя"] },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.fields, "Имя", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.fields["Отчество"],
-                expression: "fields['Отчество']"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              name: "step1[Отчество]",
-              type: "text",
-              placeholder: "Отчество"
-            },
-            domProps: { value: _vm.fields["Отчество"] },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.fields, "Отчество", $event.target.value)
-              }
-            }
-          })
-        ])
-      ])
-    ]),
+    _vm._m(1),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.fields["Должность"],
-                expression: "fields['Должность']"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              name: "step1[Должность]",
-              type: "text",
-              placeholder: "Должность"
-            },
-            domProps: { value: _vm.fields["Должность"] },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.fields, "Должность", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.fields["Место работы"],
-                expression: "fields['Место работы']"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              name: "step1[Место работы]",
-              type: "text",
-              placeholder: "Место работы"
-            },
-            domProps: { value: _vm.fields["Место работы"] },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.fields, "Место работы", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.fields["Город"],
-                expression: "fields['Город']"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { name: "step1[Город]", type: "text", placeholder: "Город" },
-            domProps: { value: _vm.fields["Город"] },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.fields, "Город", $event.target.value)
-              }
-            }
-          })
-        ])
-      ])
-    ]),
+    _vm._m(2),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("textarea", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.fields["Комментарий"],
-            expression: "fields['Комментарий']"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: {
-          name: "step1[Комментарий]",
-          rows: "5",
-          placeholder: "Комментарий"
-        },
-        domProps: { value: _vm.fields["Комментарий"] },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.fields, "Комментарий", $event.target.value)
-          }
-        }
-      })
-    ]),
+    _vm._m(3),
     _vm._v(" "),
     _c("div", { staticClass: "p-3" }),
     _vm._v(" "),
@@ -42524,7 +42310,112 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-10" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "step1[Название клинического случая]",
+          type: "text",
+          placeholder: "Название клинического случая"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "step1[Фамилия]",
+              type: "text",
+              placeholder: "Фамилия"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { name: "step1[Имя]", type: "text", placeholder: "Имя" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "step1[Отчество]",
+              type: "text",
+              placeholder: "Отчество"
+            }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "step1[Должность]",
+              type: "text",
+              placeholder: "Должность"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "step1[Место работы]",
+              type: "text",
+              placeholder: "Место работы"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { name: "step1[Город]", type: "text", placeholder: "Город" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: {
+          name: "step1[Комментарий]",
+          rows: "5",
+          placeholder: "Комментарий"
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -42593,33 +42484,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Инициалы"],
-                  expression: "fields['Инициалы']"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                name: "step2[Инициалы]",
-                type: "text",
-                placeholder: "Инициалы"
-              },
-              domProps: { value: _vm.fields["Инициалы"] },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "Инициалы", $event.target.value)
-                }
-              }
-            })
-          ]),
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "div",
@@ -42631,13 +42496,6 @@ var render = function() {
                   valueType: "format",
                   type: "year",
                   placeholder: "Год рождения"
-                },
-                model: {
-                  value: _vm.fields["Год рождения"],
-                  callback: function($$v) {
-                    _vm.$set(_vm.fields, "Год рождения", $$v)
-                  },
-                  expression: "fields['Год рождения']"
                 }
               })
             ],
@@ -42719,13 +42577,6 @@ var render = function() {
                   valueType: "format",
                   type: "year",
                   placeholder: "Год"
-                },
-                model: {
-                  value: _vm.fields["Болен с года"],
-                  callback: function($$v) {
-                    _vm.$set(_vm.fields, "Болен с года", $$v)
-                  },
-                  expression: "fields['Болен с года']"
                 }
               })
             ],
@@ -42734,43 +42585,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-auto col-label" }, [
-            _vm._v(
-              "\n                когда в первые появились жалобы на\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Описание жалоб"],
-                  expression: "fields['Описание жалоб']"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                name: "step2[Описание жалоб]",
-                type: "text",
-                placeholder: "Описание жалоб"
-              },
-              domProps: { value: _vm.fields["Описание жалоб"] },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.fields, "Описание жалоб", $event.target.value)
-                }
-              }
-            })
-          ])
-        ])
-      ]),
+      _vm._m(1),
       _vm._v(" "),
       _c(
         "div",
@@ -42785,7 +42600,7 @@ var render = function() {
           _vm._l(_vm.fields["Обследования"], function(test, index) {
             return _c("DiagnosticTest", {
               key: test.id,
-              attrs: { stepId: 2, index: index, test: test },
+              attrs: { stepId: "2", index: index, test: test },
               on: {
                 remove: function($event) {
                   return _vm.removeTest(index)
@@ -42816,457 +42631,11 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("GroupOfTests", { attrs: { stepId: 2 } }),
+      _c("GroupOfTests", { attrs: { stepId: "2" } }),
       _vm._v(" "),
       _c("div", { staticClass: "p-2" }),
       _vm._v(" "),
-      _c("BloodTest", { attrs: { stepId: 2 } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "p-4" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.prev()
-              }
-            }
-          },
-          [_vm._v("\n            Назад\n        ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.next()
-              }
-            }
-          },
-          [_vm._v("\n            Продолжить\n        ")]
-        )
-      ])
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step3.vue?vue&type=template&id=2007800c&scoped=true&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step3.vue?vue&type=template&id=2007800c&scoped=true& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    [
-      _c("h2", { staticClass: "text-center" }, [
-        _vm._v("Критерии оценки прогноза ПКР по D. Heng*")
-      ]),
-      _vm._v(" "),
-      _c("table", { staticClass: "hang-table" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Индекс Карновского (Шкала ECOG)")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("< 80% (> 1)")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Индекс Карновского (Шкала ECOG)"],
-                  expression: "fields['Индекс Карновского (Шкала ECOG)']"
-                }
-              ],
-              staticClass: "form-control text-center",
-              attrs: { type: "text", placeholder: "+/-" },
-              domProps: {
-                value: _vm.fields["Индекс Карновского (Шкала ECOG)"]
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.fields,
-                    "Индекс Карновского (Шкала ECOG)",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Время от постановки диагноза до начала терапии")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("менее 12 месяцев")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value:
-                    _vm.fields[
-                      "Время от постановки диагноза до начала терапии"
-                    ],
-                  expression:
-                    "\n                        fields[\n                            'Время от постановки диагноза до начала терапии'\n                        ]\n                    "
-                }
-              ],
-              staticClass: "form-control text-center",
-              attrs: { type: "text", placeholder: "+/-" },
-              domProps: {
-                value:
-                  _vm.fields["Время от постановки диагноза до начала терапии"]
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.fields,
-                    "Время от постановки диагноза до начала терапии",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Уровень гемоглобина")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("< нижней границы нормы")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Уровень гемоглобина"],
-                  expression: "fields['Уровень гемоглобина']"
-                }
-              ],
-              staticClass: "form-control text-center",
-              attrs: { type: "text", placeholder: "+/-" },
-              domProps: { value: _vm.fields["Уровень гемоглобина"] },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.fields,
-                    "Уровень гемоглобина",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Уровень лактатдегидрогеназы")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("До 1000 Ед/л")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Уровень лактатдегидрогеназы"],
-                  expression: "fields['Уровень лактатдегидрогеназы']"
-                }
-              ],
-              staticClass: "form-control text-center",
-              attrs: { type: "text", placeholder: "+/-" },
-              domProps: { value: _vm.fields["Уровень лактатдегидрогеназы"] },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.fields,
-                    "Уровень лактатдегидрогеназы",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Уровень скорректированного кальция")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("> 10 мг/дл (или 2,5 ммоль/л)")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Уровень скорректированного кальция"],
-                  expression: "fields['Уровень скорректированного кальция']"
-                }
-              ],
-              staticClass: "form-control text-center",
-              attrs: { type: "text", placeholder: "+/-" },
-              domProps: {
-                value: _vm.fields["Уровень скорректированного кальция"]
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.fields,
-                    "Уровень скорректированного кальция",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Уровень нейтрофилов")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("> 6,5 х 109/л")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Уровень нейтрофилов"],
-                  expression: "fields['Уровень нейтрофилов']"
-                }
-              ],
-              staticClass: "form-control text-center",
-              attrs: { type: "text", placeholder: "+/-" },
-              domProps: { value: _vm.fields["Уровень нейтрофилов"] },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.fields,
-                    "Уровень нейтрофилов",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Уровень тромбоцитов")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("> 320 х 109/л")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Уровень тромбоцитов"],
-                  expression: "fields['Уровень тромбоцитов']"
-                }
-              ],
-              staticClass: "form-control text-center",
-              attrs: { type: "text", placeholder: "+/-" },
-              domProps: { value: _vm.fields["Уровень тромбоцитов"] },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.fields,
-                    "Уровень тромбоцитов",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Наличие метастатических очагов")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value:
-                    _vm.fields["Наличие метастатических очагов"]["Кол-во Meta"],
-                  expression:
-                    "\n                        fields['Наличие метастатических очагов'][\n                            'Кол-во Meta'\n                        ]\n                    "
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Указать кол-во Meta" },
-              domProps: {
-                value:
-                  _vm.fields["Наличие метастатических очагов"]["Кол-во Meta"]
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.fields["Наличие метастатических очагов"],
-                    "Кол-во Meta",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields["Наличие метастатических очагов"].value,
-                  expression: "fields['Наличие метастатических очагов'].value"
-                }
-              ],
-              staticClass: "form-control text-center",
-              attrs: { type: "text", placeholder: "+/-" },
-              domProps: {
-                value: _vm.fields["Наличие метастатических очагов"].value
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.fields["Наличие метастатических очагов"],
-                    "value",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "p-3" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "row align-items-center" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-3" },
-            [
-              _c("v-select", {
-                attrs: {
-                  options: ["хороший", "промежуточный", "плохой"],
-                  placeholder: "Выбрать из списка"
-                },
-                model: {
-                  value: _vm.fields["Прогноз по MSKCC"],
-                  callback: function($$v) {
-                    _vm.$set(_vm.fields, "Прогноз по MSKCC", $$v)
-                  },
-                  expression: "fields['Прогноз по MSKCC']"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-auto" }, [_vm._v("прогноз по MSKCC")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "p-3" }),
-      _vm._v(" "),
-      _c("AttachFile", { attrs: { max: 5 }, on: { change: _vm.updateFiles } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "p-3" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields["Комментарий"],
-              expression: "fields['Комментарий']"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { rows: "5", placeholder: "Комментарий" },
-          domProps: { value: _vm.fields["Комментарий"] },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.fields, "Комментарий", $event.target.value)
-            }
-          }
-        })
-      ]),
+      _c("BloodTest", { attrs: { stepId: "2" } }),
       _vm._v(" "),
       _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
@@ -43308,15 +42677,336 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_c("div", { staticClass: "name" }, [_vm._v("Факторы риска")])]),
-      _vm._v(" "),
-      _c("td", [
-        _c("div", { staticClass: "name" }, [_vm._v("Значение показателя")])
+    return _c("div", { staticClass: "col" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          name: "step2[Инициалы]",
+          type: "text",
+          placeholder: "Инициалы"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-auto col-label" }, [
+          _vm._v(
+            "\n                когда в первые появились жалобы на\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "step2[Описание жалоб]",
+              type: "text",
+              placeholder: "Описание жалоб"
+            }
+          })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step3.vue?vue&type=template&id=2007800c&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step3.vue?vue&type=template&id=2007800c&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "section",
+    [
+      _c("h2", { staticClass: "text-center" }, [
+        _vm._v("Критерии оценки прогноза ПКР по D. Heng*")
       ]),
       _vm._v(" "),
-      _c("td", [
-        _c("div", { staticClass: "name" }, [_vm._v("Наличие факторов")])
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-3" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row align-items-center" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-3" },
+            [
+              _c("v-select", {
+                attrs: {
+                  options: ["хороший", "промежуточный", "плохой"],
+                  placeholder: "Выбрать из списка"
+                },
+                model: {
+                  value: _vm.fields["Прогноз по MSKCC"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "Прогноз по MSKCC", $$v)
+                  },
+                  expression: "fields['Прогноз по MSKCC']"
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Прогноз по MSKCC"],
+                    expression: "fields['Прогноз по MSKCC']"
+                  }
+                ],
+                attrs: { name: "step3[Прогноз по MSKCC]", type: "hidden" },
+                domProps: { value: _vm.fields["Прогноз по MSKCC"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields,
+                      "Прогноз по MSKCC",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-auto" }, [_vm._v("прогноз по MSKCC")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-3" }),
+      _vm._v(" "),
+      _c("AttachFile", { attrs: { stepId: "3", count: "5" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-3" }),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-4" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary btn-control",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.prev()
+              }
+            }
+          },
+          [_vm._v("\n            Назад\n        ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-control",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.next()
+              }
+            }
+          },
+          [_vm._v("\n            Продолжить\n        ")]
+        )
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", { staticClass: "heng-table" }, [
+      _c("tr", [
+        _c("td", [
+          _c("div", { staticClass: "name" }, [_vm._v("Факторы риска")])
+        ]),
+        _vm._v(" "),
+        _c("td", [
+          _c("div", { staticClass: "name" }, [_vm._v("Значение показателя")])
+        ]),
+        _vm._v(" "),
+        _c("td", [
+          _c("div", { staticClass: "name" }, [_vm._v("Наличие факторов")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Индекс Карновского (Шкала ECOG)")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("< 80% (> 1)")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("input", {
+            staticClass: "form-control text-center",
+            attrs: {
+              name: "step3[Индекс Карновского (Шкала ECOG)]",
+              type: "text",
+              placeholder: "+/-"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Время от постановки диагноза до начала терапии")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("менее 12 месяцев")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("input", {
+            staticClass: "form-control text-center",
+            attrs: {
+              name: "step3[Время от постановки диагноза до начала терапии]",
+              type: "text",
+              placeholder: "+/-"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Уровень гемоглобина")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("< нижней границы нормы")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("input", {
+            staticClass: "form-control text-center",
+            attrs: {
+              name: "step3[Уровень гемоглобина]",
+              type: "text",
+              placeholder: "+/-"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Уровень лактатдегидрогеназы")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("До 1000 Ед/л")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("input", {
+            staticClass: "form-control text-center",
+            attrs: {
+              name: "step3[Уровень лактатдегидрогеназы]",
+              type: "text",
+              placeholder: "+/-"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Уровень скорректированного кальция")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("> 10 мг/дл (или 2,5 ммоль/л)")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("input", {
+            staticClass: "form-control text-center",
+            attrs: {
+              name: "step3[Уровень скорректированного кальция]",
+              type: "text",
+              placeholder: "+/-"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Уровень нейтрофилов")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("> 6,5 х 109/л")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("input", {
+            staticClass: "form-control text-center",
+            attrs: {
+              name: "step3[Уровень нейтрофилов]",
+              type: "text",
+              placeholder: "+/-"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Уровень тромбоцитов")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("> 320 х 109/л")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("input", {
+            staticClass: "form-control text-center",
+            attrs: {
+              name: "step3[Уровень тромбоцитов]",
+              type: "text",
+              placeholder: "+/-"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [_vm._v("Наличие метастатических очагов")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "step3[Количество Meta]",
+              type: "text",
+              placeholder: "Указать кол-во Meta"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("td", [
+          _c("input", {
+            staticClass: "form-control text-center",
+            attrs: {
+              name: "step3[Наличие метастатических очагов]",
+              type: "text",
+              placeholder: "+/-"
+            }
+          })
+        ])
       ])
     ])
   },
@@ -43325,8 +43015,23 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-auto" }, [
-      _c("strong", [_vm._v("ЗАКЛЮЧЕНИЕ:")]),
+      _c("b", [_vm._v("ЗАКЛЮЧЕНИЕ:")]),
       _vm._v(" В данном случае имеет место\n            ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: {
+          name: "step3[Комментарий]",
+          rows: "5",
+          placeholder: "Комментарий"
+        }
+      })
     ])
   }
 ]
@@ -43602,9 +43307,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "col-4" }, [
           _c("div", { staticClass: "example" }, [
-            _c("strong", [_vm._v("Пример:")]),
+            _c("b", [_vm._v("Пример:")]),
             _vm._v(
-              " Распространенный\n                    светлоклеточный рак правой почки G3. Состояние после\n                    нефрэктомии справа (ноябрь 2019.). T3b N0 M1 G3/\n                    Промежуточный прогноз по MSKCC\n                "
+              " Распространенный светлоклеточный рак\n                    правой почки G3. Состояние после нефрэктомии справа\n                    (ноябрь 2019.). T3b N0 M1 G3/ Промежуточный прогноз по\n                    MSKCC\n                "
             )
           ])
         ])
@@ -44156,7 +43861,7 @@ var render = function() {
           _vm._l(_vm.fields["Обследования"], function(test, index) {
             return _c("DiagnosticTest", {
               key: test.id,
-              attrs: { stepId: 5, index: index, test: test },
+              attrs: { stepId: "5", index: index, test: test },
               on: {
                 remove: function($event) {
                   return _vm.removeTest(index)
@@ -44189,15 +43894,15 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
-      _c("AttachFile", { attrs: { max: 5 }, on: { change: _vm.updateFiles } }),
+      _c("AttachFile", { attrs: { stepId: "5", count: "5" } }),
       _vm._v(" "),
       _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
-      _c("GroupOfTests", { attrs: { stepId: 5 } }),
+      _c("GroupOfTests", { attrs: { stepId: "5" } }),
       _vm._v(" "),
       _c("div", { staticClass: "p-2" }),
       _vm._v(" "),
-      _c("BloodTest", { attrs: { stepId: 5 } }),
+      _c("BloodTest", { attrs: { stepId: "5" } }),
       _vm._v(" "),
       _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
@@ -44382,7 +44087,7 @@ var render = function() {
       _c("div", { staticClass: "p-2" }),
       _vm._v(" "),
       _c("AttachFile", {
-        attrs: { max: 1, label: "Прикрепить звуковой файл" },
+        attrs: { stepId: "5", count: "1", label: "Прикрепить звуковой файл" },
         on: { change: _vm.updateSounds }
       }),
       _vm._v(" "),
@@ -44422,7 +44127,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", [
-      _c("strong", [
+      _c("b", [
         _vm._v(
           "Данный клинический случай может быть представлен на\n                образовательных мероприятиях:"
         )
