@@ -11,17 +11,18 @@
                     <v-select
                         :options="['Да', 'Нет']"
                         placeholder="Да/Нет"
-                        v-model="
-                            fields['Операция по удалению первичной опухоли']
-                        "
+                        v-model="fields['Проведена операция']"
                     ></v-select>
+                    <input
+                        name="step4[Проведена операция]"
+                        type="hidden"
+                        v-model="fields['Проведена операция']"
+                    />
                 </div>
             </div>
         </div>
 
-        <template
-            v-if="fields['Операция по удалению первичной опухоли'] == 'Да'"
-        >
+        <template v-if="fields['Проведена операция'] == 'Да'">
             <div class="form-group">
                 <div class="row align-items-center">
                     <div class="col-auto">Выполнена</div>
@@ -31,6 +32,11 @@
                             placeholder="Выбрать из списка"
                             v-model="fields['Нефрэктомия']['Вид']"
                         ></v-select>
+                        <input
+                            name="step4[Нефрэктомия][Вид]"
+                            type="hidden"
+                            v-model="fields['Нефрэктомия']['Вид']"
+                        />
                     </div>
                     <div class="col-auto">нефрэктомия</div>
                     <div class="col-3">
@@ -42,9 +48,15 @@
                             placeholder="Выбрать из списка"
                             v-model="fields['Нефрэктомия']['Способ']"
                         ></v-select>
+                        <input
+                            name="step4[Нефрэктомия][Способ]"
+                            type="hidden"
+                            v-model="fields['Нефрэктомия']['Способ']"
+                        />
                     </div>
                     <div class="col-2">
                         <date-picker
+                            :input-attr="{ name: 'step4[Нефрэктомия][Дата]' }"
                             valueType="format"
                             placeholder="Дата"
                             v-model="fields['Нефрэктомия']['Дата']"
@@ -59,6 +71,7 @@
                     гистологическое исследование:</label
                 >
                 <input
+                    name="step4[Гистологическое исследование]"
                     type="text"
                     class="form-control"
                     placeholder="Указать гистологическое исследование"
@@ -75,6 +88,7 @@
             <div class="row">
                 <div class="col-8">
                     <textarea
+                        name="step4[Диагноз]"
                         rows="3"
                         class="form-control"
                         placeholder="Описание и заключение"
@@ -95,6 +109,7 @@
             <label>Сопутствующие заболевания:</label>
             <OtherDisease
                 v-for="(disease, index) in fields['Сопутствующие заболевания']"
+                stepId="4"
                 :index="index"
                 :disease="disease"
                 :key="disease.id"
@@ -145,14 +160,13 @@ export default {
     data() {
         return {
             fields: {
-                "Операция по удалению первичной опухоли": "",
+                "Проведена операция": "",
                 Нефрэктомия: {
                     Вид: "",
                     Способ: "",
                     Дата: "",
                 },
                 "Гистологическое исследование": "",
-                Диагноз: "",
                 "Сопутствующие заболевания": [],
             },
         };
@@ -160,7 +174,7 @@ export default {
 
     computed: {
         surgery() {
-            return this.fields["Операция по удалению первичной опухоли"];
+            return this.fields["Проведена операция"];
         },
     },
 
@@ -187,7 +201,7 @@ export default {
         addDisease() {
             this.fields["Сопутствующие заболевания"].push({
                 id: _.uniqueId(),
-                "Наименование заболевания": "",
+                Диагноз: "",
             });
         },
 

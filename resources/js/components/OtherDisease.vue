@@ -3,10 +3,17 @@
         <div class="row">
             <div class="col-9">
                 <textarea
+                    :name="
+                        'step' +
+                        stepId +
+                        '[Сопутствующие заболевания][' +
+                        index +
+                        '][Диагноз]'
+                    "
                     rows="2"
                     class="form-control"
                     placeholder="Наименование заболевания"
-                    v-model="fields['Наименование заболевания']"
+                    v-model="fields['Диагноз']"
                 ></textarea>
             </div>
             <div class="col-3">
@@ -26,7 +33,7 @@
 
 <script>
 export default {
-    props: ["index", "disease"],
+    props: ["stepId", "index", "disease"],
 
     data() {
         return {

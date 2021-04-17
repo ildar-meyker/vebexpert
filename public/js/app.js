@@ -2674,8 +2674,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["index", "disease"],
+  props: ["stepId", "index", "disease"],
   data: function data() {
     return {
       fields: _.cloneDeep(this.disease)
@@ -3401,6 +3408,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["gender"],
@@ -3410,21 +3432,20 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       fields: {
-        "Операция по удалению первичной опухоли": "",
+        "Проведена операция": "",
         Нефрэктомия: {
           Вид: "",
           Способ: "",
           Дата: ""
         },
         "Гистологическое исследование": "",
-        Диагноз: "",
         "Сопутствующие заболевания": []
       }
     };
   },
   computed: {
     surgery: function surgery() {
-      return this.fields["Операция по удалению первичной опухоли"];
+      return this.fields["Проведена операция"];
     }
   },
   watch: {
@@ -3447,7 +3468,7 @@ __webpack_require__.r(__webpack_exports__);
     addDisease: function addDisease() {
       this.fields["Сопутствующие заболевания"].push({
         id: _.uniqueId(),
-        "Наименование заболевания": ""
+        Диагноз: ""
       });
     },
     removeDisease: function removeDisease(index) {
@@ -42178,23 +42199,28 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.fields["Наименование заболевания"],
-              expression: "fields['Наименование заболевания']"
+              value: _vm.fields["Диагноз"],
+              expression: "fields['Диагноз']"
             }
           ],
           staticClass: "form-control",
-          attrs: { rows: "2", placeholder: "Наименование заболевания" },
-          domProps: { value: _vm.fields["Наименование заболевания"] },
+          attrs: {
+            name:
+              "step" +
+              _vm.stepId +
+              "[Сопутствующие заболевания][" +
+              _vm.index +
+              "][Диагноз]",
+            rows: "2",
+            placeholder: "Наименование заболевания"
+          },
+          domProps: { value: _vm.fields["Диагноз"] },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(
-                _vm.fields,
-                "Наименование заболевания",
-                $event.target.value
-              )
+              _vm.$set(_vm.fields, "Диагноз", $event.target.value)
             }
           }
         })
@@ -43078,16 +43104,36 @@ var render = function() {
               _c("v-select", {
                 attrs: { options: ["Да", "Нет"], placeholder: "Да/Нет" },
                 model: {
-                  value: _vm.fields["Операция по удалению первичной опухоли"],
+                  value: _vm.fields["Проведена операция"],
                   callback: function($$v) {
+                    _vm.$set(_vm.fields, "Проведена операция", $$v)
+                  },
+                  expression: "fields['Проведена операция']"
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Проведена операция"],
+                    expression: "fields['Проведена операция']"
+                  }
+                ],
+                attrs: { name: "step4[Проведена операция]", type: "hidden" },
+                domProps: { value: _vm.fields["Проведена операция"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
                     _vm.$set(
                       _vm.fields,
-                      "Операция по удалению первичной опухоли",
-                      $$v
+                      "Проведена операция",
+                      $event.target.value
                     )
-                  },
-                  expression:
-                    "\n                        fields['Операция по удалению первичной опухоли']\n                    "
+                  }
                 }
               })
             ],
@@ -43096,7 +43142,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm.fields["Операция по удалению первичной опухоли"] == "Да"
+      _vm.fields["Проведена операция"] == "Да"
         ? [
             _c("div", { staticClass: "form-group" }, [
               _c("div", { staticClass: "row align-items-center" }, [
@@ -43117,6 +43163,34 @@ var render = function() {
                           _vm.$set(_vm.fields["Нефрэктомия"], "Вид", $$v)
                         },
                         expression: "fields['Нефрэктомия']['Вид']"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fields["Нефрэктомия"]["Вид"],
+                          expression: "fields['Нефрэктомия']['Вид']"
+                        }
+                      ],
+                      attrs: {
+                        name: "step4[Нефрэктомия][Вид]",
+                        type: "hidden"
+                      },
+                      domProps: { value: _vm.fields["Нефрэктомия"]["Вид"] },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.fields["Нефрэктомия"],
+                            "Вид",
+                            $event.target.value
+                          )
+                        }
                       }
                     })
                   ],
@@ -43141,6 +43215,34 @@ var render = function() {
                         },
                         expression: "fields['Нефрэктомия']['Способ']"
                       }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fields["Нефрэктомия"]["Способ"],
+                          expression: "fields['Нефрэктомия']['Способ']"
+                        }
+                      ],
+                      attrs: {
+                        name: "step4[Нефрэктомия][Способ]",
+                        type: "hidden"
+                      },
+                      domProps: { value: _vm.fields["Нефрэктомия"]["Способ"] },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.fields["Нефрэктомия"],
+                            "Способ",
+                            $event.target.value
+                          )
+                        }
+                      }
                     })
                   ],
                   1
@@ -43151,7 +43253,11 @@ var render = function() {
                   { staticClass: "col-2" },
                   [
                     _c("date-picker", {
-                      attrs: { valueType: "format", placeholder: "Дата" },
+                      attrs: {
+                        "input-attr": { name: "step4[Нефрэктомия][Дата]" },
+                        valueType: "format",
+                        placeholder: "Дата"
+                      },
                       model: {
                         value: _vm.fields["Нефрэктомия"]["Дата"],
                         callback: function($$v) {
@@ -43184,6 +43290,7 @@ var render = function() {
                 ],
                 staticClass: "form-control",
                 attrs: {
+                  name: "step4[Гистологическое исследование]",
                   type: "text",
                   placeholder: "Указать гистологическое исследование"
                 },
@@ -43219,7 +43326,7 @@ var render = function() {
           ) {
             return _c("OtherDisease", {
               key: disease.id,
-              attrs: { index: index, disease: disease },
+              attrs: { stepId: "4", index: index, disease: disease },
               on: {
                 remove: function($event) {
                   return _vm.removeDisease(index)
@@ -43301,7 +43408,11 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-8" }, [
           _c("textarea", {
             staticClass: "form-control",
-            attrs: { rows: "3", placeholder: "Описание и заключение" }
+            attrs: {
+              name: "step4[Диагноз]",
+              rows: "3",
+              placeholder: "Описание и заключение"
+            }
           })
         ]),
         _vm._v(" "),

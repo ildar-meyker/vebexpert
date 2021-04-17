@@ -14,6 +14,7 @@ class CreatePdfController extends Controller
         $step1 = $request->input('step1');
         $step2 = $request->input('step2');
         $step3 = $request->input('step3');
+        $step4 = $request->input('step4');
 
         $step3_images = [];
 
@@ -32,6 +33,7 @@ class CreatePdfController extends Controller
             'step1',
             'step2',
             'step3',
+            'step4',
             'step3_images'
         ));
 
