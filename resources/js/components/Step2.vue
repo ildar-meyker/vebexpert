@@ -97,10 +97,10 @@
             </label>
             <DiagnosticTest
                 v-for="(test, index) in fields['Обследования']"
-                stepId="2"
+                :stepId="2"
                 :index="index"
                 :test="test"
-                :key="test.id"
+                :key="test.uid"
                 @remove="removeTest(index)"
                 @update="updateTest(index, $event)"
             ></DiagnosticTest>
@@ -116,11 +116,11 @@
             </button>
         </div>
 
-        <GroupOfTests stepId="2"></GroupOfTests>
+        <GroupOfTests :stepId="2"></GroupOfTests>
 
         <div class="p-2"></div>
 
-        <BloodTest stepId="2"></BloodTest>
+        <BloodTest :stepId="2"></BloodTest>
 
         <div class="p-4"></div>
 
@@ -165,7 +165,7 @@ export default {
     methods: {
         addTest() {
             this.fields["Обследования"].push({
-                id: _.uniqueId(),
+                uid: _.uniqueId(),
                 Дата: "",
                 Тип: "",
                 Объект: "",

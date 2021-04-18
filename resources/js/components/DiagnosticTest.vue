@@ -8,6 +8,7 @@
                             name:
                                 'step' +
                                 stepId +
+                                prefix +
                                 '[Обследования][' +
                                 index +
                                 '][Дата]',
@@ -27,6 +28,7 @@
                         :name="
                             'step' +
                             stepId +
+                            prefix +
                             '[Обследования][' +
                             index +
                             '][Тип]'
@@ -50,6 +52,7 @@
                         :name="
                             'step' +
                             stepId +
+                            prefix +
                             '[Обследования][' +
                             index +
                             '][Объект]'
@@ -64,6 +67,7 @@
                     :name="
                         'step' +
                         stepId +
+                        prefix +
                         '[Обследования][' +
                         index +
                         '][Описание и заключение]'
@@ -76,7 +80,7 @@
             </div>
         </div>
         <div class="addon__controls" v-if="index != 0">
-            <button type="button" class="addon__remove" @click="remove()">
+            <button type="button" class="btn-remove" @click="remove()">
                 ×
             </button>
         </div>
@@ -85,7 +89,21 @@
 
 <script>
 export default {
-    props: ["stepId", "index", "test"],
+    props: {
+        stepId: {
+            type: Number,
+        },
+        prefix: {
+            type: String,
+            default: "",
+        },
+        index: {
+            type: Number,
+        },
+        test: {
+            type: Object,
+        },
+    },
 
     data() {
         return {

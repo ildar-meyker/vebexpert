@@ -10,11 +10,13 @@ class CreatePdfController extends Controller
 {
     public function index(Request $request)
     {
+        return $request->all();
 
         $step1 = $request->input('step1');
         $step2 = $request->input('step2');
         $step3 = $request->input('step3');
         $step4 = $request->input('step4');
+        $step5 = $request->input('step5');
 
         $step3_images = [];
 
@@ -34,6 +36,7 @@ class CreatePdfController extends Controller
             'step2',
             'step3',
             'step4',
+            'step5',
             'step3_images'
         ));
 

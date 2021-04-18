@@ -144,7 +144,12 @@
 
         <div class="p-3"></div>
 
-        <AttachFile stepId="3" count="5"></AttachFile>
+        <AttachFile
+            :stepId="3"
+            :prefix="'[files]'"
+            :accept="'image/*'"
+            :count="5"
+        ></AttachFile>
 
         <div class="p-3"></div>
 

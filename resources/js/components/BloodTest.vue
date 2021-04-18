@@ -11,7 +11,7 @@
                     <div>ER</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][ER]'"
+                            :name="'step' + stepId + prefix + '[ОАК][ER]'"
                             type="text"
                             class="form-control"
                         />
@@ -23,7 +23,7 @@
                     <div>Hb</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][Hb]'"
+                            :name="'step' + stepId + prefix + '[ОАК][Hb]'"
                             type="text"
                             class="form-control"
                         />
@@ -35,7 +35,7 @@
                     <div>Le</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][Le]'"
+                            :name="'step' + stepId + prefix + '[ОАК][Le]'"
                             type="text"
                             class="form-control"
                         />
@@ -47,7 +47,7 @@
                     <div>Tr</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][Tr]'"
+                            :name="'step' + stepId + prefix + '[ОАК][Tr]'"
                             type="text"
                             class="form-control"
                         />
@@ -59,7 +59,7 @@
                     <div>СОЭ</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][СОЭ]'"
+                            :name="'step' + stepId + prefix + '[ОАК][СОЭ]'"
                             type="text"
                             class="form-control"
                         />
@@ -71,7 +71,7 @@
                     <div>п/я</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][п/я]'"
+                            :name="'step' + stepId + prefix + '[ОАК][п/я]'"
                             type="text"
                             class="form-control"
                         />
@@ -83,7 +83,7 @@
                     <div>с/я</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][с/я]'"
+                            :name="'step' + stepId + prefix + '[ОАК][с/я]'"
                             type="text"
                             class="form-control"
                         />
@@ -95,7 +95,7 @@
                     <div>Ly</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][Ly]'"
+                            :name="'step' + stepId + prefix + '[ОАК][Ly]'"
                             type="text"
                             class="form-control"
                         />
@@ -107,7 +107,7 @@
                     <div>Mo</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][Mo]'"
+                            :name="'step' + stepId + prefix + '[ОАК][Mo]'"
                             type="text"
                             class="form-control"
                         />
@@ -119,7 +119,7 @@
                     <div>Bas</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][Bas]'"
+                            :name="'step' + stepId + prefix + '[ОАК][Bas]'"
                             type="text"
                             class="form-control"
                         />
@@ -131,7 +131,7 @@
                     <div>Эо</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][Эо]'"
+                            :name="'step' + stepId + prefix + '[ОАК][Эо]'"
                             type="text"
                             class="form-control"
                         />
@@ -149,7 +149,12 @@
                     <div>АсАт</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][АсАт][Значение]'"
+                            :name="
+                                'step' +
+                                stepId +
+                                prefix +
+                                '[ОАК][АсАт][Значение]'
+                            "
                             type="text"
                             class="form-control"
                         />
@@ -161,7 +166,12 @@
                     <div>АлАт</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][АлАт][Значение]'"
+                            :name="
+                                'step' +
+                                stepId +
+                                prefix +
+                                '[ОАК][АлАт][Значение]'
+                            "
                             type="text"
                             class="form-control"
                         />
@@ -173,7 +183,12 @@
                     <div>ЛДГ</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][ЛДГ][Значение]'"
+                            :name="
+                                'step' +
+                                stepId +
+                                prefix +
+                                '[ОАК][ЛДГ][Значение]'
+                            "
                             type="text"
                             class="form-control"
                         />
@@ -188,6 +203,7 @@
                             :name="
                                 'step' +
                                 stepId +
+                                prefix +
                                 '[ОАК][Скорректированный Ca2+][Значение]'
                             "
                             type="text"
@@ -204,6 +220,7 @@
                             :name="
                                 'step' +
                                 stepId +
+                                prefix +
                                 '[ОАК][Мочевина крови][Значение]'
                             "
                             type="text"
@@ -220,6 +237,7 @@
                             :name="
                                 'step' +
                                 stepId +
+                                prefix +
                                 '[ОАК][Креатинин крови][Значение]'
                             "
                             type="text"
@@ -233,7 +251,9 @@
                     <div>Миелоциты</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][Миелоциты]'"
+                            :name="
+                                'step' + stepId + prefix + '[ОАК][Миелоциты]'
+                            "
                             type="text"
                             class="form-control"
                         />
@@ -245,7 +265,7 @@
                     <div>Метамиел</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][Метамиел]'"
+                            :name="'step' + stepId + prefix + '[ОАК][Метамиел]'"
                             type="text"
                             class="form-control"
                         />
@@ -261,7 +281,7 @@
                     <div>(N =</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][АсАт][N]'"
+                            :name="'step' + stepId + prefix + '[ОАК][АсАт][N]'"
                             type="text"
                             class="form-control"
                         />
@@ -272,7 +292,7 @@
                     <div>(N =</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][АлАт][N]'"
+                            :name="'step' + stepId + prefix + '[ОАК][АлАт][N]'"
                             type="text"
                             class="form-control"
                         />
@@ -283,7 +303,7 @@
                     <div>(N =</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][ЛДГ][N]'"
+                            :name="'step' + stepId + prefix + '[ОАК][ЛДГ][N]'"
                             type="text"
                             class="form-control"
                         />
@@ -297,6 +317,7 @@
                             :name="
                                 'step' +
                                 stepId +
+                                prefix +
                                 '[ОАК][Скорректированный Ca2+][N]'
                             "
                             type="text"
@@ -309,7 +330,12 @@
                     <div>(N =</div>
                     <div>
                         <input
-                            :name="'step' + stepId + '[ОАК][Мочевина крови][N]'"
+                            :name="
+                                'step' +
+                                stepId +
+                                prefix +
+                                '[ОАК][Мочевина крови][N]'
+                            "
                             type="text"
                             class="form-control"
                         />
@@ -321,7 +347,10 @@
                     <div>
                         <input
                             :name="
-                                'step' + stepId + '[ОАК][Креатинин крови][N]'
+                                'step' +
+                                stepId +
+                                prefix +
+                                '[ОАК][Креатинин крови][N]'
                             "
                             type="text"
                             class="form-control"
@@ -337,7 +366,15 @@
 
 <script>
 export default {
-    props: ["stepId"],
+    props: {
+        stepId: {
+            type: Number,
+        },
+        prefix: {
+            type: String,
+            default: "",
+        },
+    },
 
     data() {
         return {};

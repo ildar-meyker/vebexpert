@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="addon__controls" v-if="index != 0">
-            <button type="button" class="addon__remove" @click="remove()">
+            <button type="button" class="btn-remove" @click="remove()">
                 ×
             </button>
         </div>

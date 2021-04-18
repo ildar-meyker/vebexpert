@@ -109,10 +109,10 @@
             <label>Сопутствующие заболевания:</label>
             <OtherDisease
                 v-for="(disease, index) in fields['Сопутствующие заболевания']"
-                stepId="4"
+                :stepId="4"
                 :index="index"
                 :disease="disease"
-                :key="disease.id"
+                :key="disease.uid"
                 @remove="removeDisease(index)"
                 @update="updateDisease(index, $event)"
             ></OtherDisease>
@@ -200,7 +200,7 @@ export default {
 
         addDisease() {
             this.fields["Сопутствующие заболевания"].push({
-                id: _.uniqueId(),
+                uid: _.uniqueId(),
                 Диагноз: "",
             });
         },

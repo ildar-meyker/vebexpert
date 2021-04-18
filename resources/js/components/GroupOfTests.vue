@@ -13,6 +13,7 @@
                                     name:
                                         'step' +
                                         stepId +
+                                        prefix +
                                         '[Рентгенография][Дата]',
                                 }"
                                 valueType="format"
@@ -26,6 +27,7 @@
                         :name="
                             'step' +
                             stepId +
+                            prefix +
                             '[Рентгенография][Описание и заключение]'
                         "
                         rows="5"
@@ -44,6 +46,7 @@
                                     name:
                                         'step' +
                                         stepId +
+                                        prefix +
                                         '[Сцинтиграфия][Дата]',
                                 }"
                                 valueType="format"
@@ -57,6 +60,7 @@
                         :name="
                             'step' +
                             stepId +
+                            prefix +
                             '[Сцинтиграфия][Описание и заключение]'
                         "
                         rows="5"
@@ -74,7 +78,7 @@
                 </div>
                 <div class="col">
                     <input
-                        :name="'step' + stepId + '[Биопсия][Объект]'"
+                        :name="'step' + stepId + prefix + '[Биопсия][Объект]'"
                         type="text"
                         class="form-control"
                         placeholder="Наименование органа/ткани"
@@ -83,7 +87,7 @@
                 <div class="col col-date">
                     <date-picker
                         :input-attr="{
-                            name: 'step' + stepId + '[Биопсия][Дата]',
+                            name: 'step' + stepId + prefix + '[Биопсия][Дата]',
                         }"
                         valueType="format"
                         placeholder="Дата"
@@ -94,7 +98,12 @@
 
         <div class="form-group">
             <textarea
-                :name="'step' + stepId + '[Биопсия][Описание и заключение]'"
+                :name="
+                    'step' +
+                    stepId +
+                    prefix +
+                    '[Биопсия][Описание и заключение]'
+                "
                 rows="3"
                 class="form-control"
                 placeholder="Описание и заключение"
@@ -105,7 +114,15 @@
 
 <script>
 export default {
-    props: ["stepId"],
+    props: {
+        stepId: {
+            type: Number,
+        },
+        prefix: {
+            type: String,
+            default: "",
+        },
+    },
 
     data() {
         return {};

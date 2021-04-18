@@ -32,10 +32,10 @@
             <button type="button" class="btn btn-primary btn-file">
                 <span>Обзор</span>
                 <input
-                    :name="'step' + stepId + '[files][' + index + '][]'"
+                    :name="'step' + stepId + prefix + '[' + index + '][]'"
                     type="file"
                     @change="handleFiles"
-                    accept="image/*"
+                    :accept="accept"
                     multiple
                 />
             </button>
@@ -51,7 +51,25 @@
 
 <script>
 export default {
-    props: ["stepId", "label", "count"],
+    props: {
+        stepId: {
+            type: Number,
+        },
+        prefix: {
+            type: String,
+            default: "",
+        },
+        accept: {
+            type: String,
+            accept: "*",
+        },
+        label: {
+            type: String,
+        },
+        count: {
+            type: Number,
+        },
+    },
 
     data() {
         return {

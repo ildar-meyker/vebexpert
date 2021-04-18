@@ -139,6 +139,14 @@ h3 {
     margin-right: 10px;
 }
 
+.btn-remove {
+    padding: 0 5px;
+    background: none;
+    border: 0;
+    font-size: 1.8rem;
+    color: #999;
+}
+
 .btn-file {
     position: relative;
     min-width: 120px;
@@ -169,10 +177,3 @@ h3 {
     right: -30px;
 }
 
-.addon__remove {
-    padding: 0 5px;
-    background: none;
-    border: 0;
-    font-size: 1.8rem;
-    color: #999;
-}
