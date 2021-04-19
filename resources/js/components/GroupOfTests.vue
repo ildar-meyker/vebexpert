@@ -9,16 +9,22 @@
                         </div>
                         <div class="col col-date">
                             <date-picker
-                                :input-attr="{
-                                    name:
-                                        'step' +
-                                        stepId +
-                                        prefix +
-                                        '[Рентгенография][Дата]',
-                                }"
                                 valueType="format"
                                 placeholder="Дата"
+                                v-model="fields['Рентгенография']['Дата']"
                             ></date-picker>
+                            <input
+                                :name="
+                                    'step' +
+                                    stepId +
+                                    prefix +
+                                    '[Рентгенография][Дата]'
+                                "
+                                type="text"
+                                class="out-of-screen"
+                                v-model="fields['Рентгенография']['Дата']"
+                                data-label="Дата"
+                            />
                         </div>
                     </div>
                 </div>
@@ -42,16 +48,22 @@
                         <div class="col col-label">Сцинтиграфия костей</div>
                         <div class="col col-date">
                             <date-picker
-                                :input-attr="{
-                                    name:
-                                        'step' +
-                                        stepId +
-                                        prefix +
-                                        '[Сцинтиграфия][Дата]',
-                                }"
                                 valueType="format"
                                 placeholder="Дата"
+                                v-model="fields['Сцинтиграфия']['Дата']"
                             ></date-picker>
+                            <input
+                                :name="
+                                    'step' +
+                                    stepId +
+                                    prefix +
+                                    '[Сцинтиграфия][Дата]'
+                                "
+                                type="text"
+                                class="out-of-screen"
+                                v-model="fields['Сцинтиграфия']['Дата']"
+                                data-label="Дата"
+                            />
                         </div>
                     </div>
                 </div>
@@ -86,12 +98,17 @@
                 </div>
                 <div class="col col-date">
                     <date-picker
-                        :input-attr="{
-                            name: 'step' + stepId + prefix + '[Биопсия][Дата]',
-                        }"
                         valueType="format"
                         placeholder="Дата"
+                        v-model="fields['Сцинтиграфия']['Дата']"
                     ></date-picker>
+                    <input
+                        :name="'step' + stepId + prefix + '[Биопсия][Дата]'"
+                        type="text"
+                        class="out-of-screen"
+                        v-model="fields['Биопсия']['Дата']"
+                        data-label="Дата"
+                    />
                 </div>
             </div>
         </div>
@@ -125,7 +142,21 @@ export default {
     },
 
     data() {
-        return {};
+        return {
+            fields: {
+                Рентгенография: {
+                    Дата: "",
+                },
+
+                Сцинтиграфия: {
+                    Дата: "",
+                },
+
+                Биопсия: {
+                    Дата: "",
+                },
+            },
+        };
     },
 };
 </script>

@@ -2,6 +2,8 @@
     <section>
         <h2>Описание случая</h2>
 
+        <Errors :errors="errors"></Errors>
+
         <div class="form-group">
             <div class="row">
                 <div class="col">
@@ -11,9 +13,11 @@
                         v-model="fields['Пол']"
                     ></v-select>
                     <input
+                        class="out-of-screen"
                         name="step2[Пол]"
-                        type="hidden"
+                        type="text"
                         v-model="fields['Пол']"
+                        data-label="Пол"
                     />
                 </div>
                 <div class="col">
@@ -26,11 +30,18 @@
                 </div>
                 <div class="col">
                     <date-picker
-                        :input-attr="{ name: 'step2[Год рождения]' }"
                         valueType="format"
                         type="year"
                         placeholder="Год рождения"
+                        v-model="fields['Год рождения']"
                     ></date-picker>
+                    <input
+                        name="step2[Год рождения]"
+                        type="text"
+                        class="out-of-screen"
+                        v-model="fields['Год рождения']"
+                        data-label="Год рождения"
+                    />
                 </div>
                 <div class="col col-label">
                     <span v-if="fields.gender == 'Женщина'">
@@ -58,18 +69,27 @@
                         v-model="fields['Болен с месяца']"
                     ></v-select>
                     <input
+                        class="out-of-screen"
                         name="step2[Болен с месяца]"
-                        type="hidden"
+                        type="text"
                         v-model="fields['Болен с месяца']"
+                        data-label="Болен с месяца"
                     />
                 </div>
                 <div class="col">
                     <date-picker
-                        :input-attr="{ name: 'step2[Болен с года]' }"
                         valueType="format"
                         type="year"
                         placeholder="Год"
+                        v-model="fields['Болен с года']"
                     ></date-picker>
+                    <input
+                        name="step2[Болен с года]"
+                        type="text"
+                        class="out-of-screen"
+                        v-model="fields['Болен с года']"
+                        data-label="Болен с года"
+                    />
                 </div>
             </div>
         </div>
@@ -124,38 +144,43 @@
 
         <div class="p-4"></div>
 
-        <div class="form-group">
-            <button
-                type="button"
-                class="btn btn-secondary btn-control"
-                @click="prev()"
-            >
-                Назад
-            </button>
-            <button
-                type="button"
-                class="btn btn-primary btn-control"
-                @click="next()"
-            >
-                Продолжить
-            </button>
-        </div>
+        <NavButtons
+            :env="env"
+            :stepId="stepId"
+            @prev="prev"
+            @next="next"
+            @fill="fill"
+        ></NavButtons>
     </section>
 </template>
 
 <script>
+import $ from "jquery";
 import GroupOfTests from "./GroupOfTests";
 import DiagnosticTest from "./DiagnosticTest";
 import BloodTest from "./BloodTest";
+import mixins from "./mixins";
 
 export default {
+    mixins: [mixins],
+
     components: { GroupOfTests, DiagnosticTest, BloodTest },
+
+    props: {
+        env: {
+            type: String,
+        },
+    },
 
     data() {
         return {
+            stepId: 2,
+            errors: [],
             fields: {
                 Пол: "",
+                "Год рождения": "",
                 "Болен с месяца": "",
+                "Болен с года": "",
 
                 Обследования: [],
             },
@@ -181,12 +206,85 @@ export default {
             this.fields["Обследования"][index] = fields;
         },
 
-        next() {
-            this.$emit("next", this.fields);
-        },
+        fill() {
+            $('[name="step2[Пол]"]').val("Мужчина");
+            $('[name="step2[Инициалы]"]').val("Навальный А.А.");
+            $('[name="step2[Год рождения]"]').val("1976");
+            $('[name="step2[Болен с месяца]"]').val("августа");
+            $('[name="step2[Болен с года]"]').val("2020");
+            $('[name="step2[Описание жалоб]"]').val("Онемение рук и ног");
+            $('[name="step2[Обследования][0][Дата]"]').val("2020-10-07");
+            $('[name="step2[Обследования][0][Тип]"]').val("МСКТ");
+            $('[name="step2[Обследования][0][Объект]"]').val("головного мозга");
+            $('[name="step2[Обследования][0][Описание и заключение]"]').val(
+                "Постоянно ухудшается"
+            );
+            $('[name="step2[Рентгенография][Дата]"]').val("2020-10-07");
+            $('[name="step2[Рентгенография][Описание и заключение]"]').val(
+                "Состояние ухудшается"
+            );
+            $('[name="step2[Сцинтиграфия][Дата]"]').val("2020-10-07");
+            $('[name="step2[Сцинтиграфия][Описание и заключение]"]').val(
+                "Онемение рук и ног"
+            );
+            $('[name="step2[Биопсия][Дата]"]').val("2020-10-07");
+            $('[name="step2[Биопсия][Объект]"]').val("Пищевода");
+            $('[name="step2[Биопсия][Описание и заключение]"]').val(
+                "Раздражение слизистых"
+            );
+            $('[name="step2[ОАК][ER]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][Hb]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][Le]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][Tr]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][СОЭ]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][п/я]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][с/я]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][Ly]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][Mo]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][Bas]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][Эо]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][АсАт][Значение]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][АсАт][N]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][АлАт][Значение]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][АлАт][N]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][ЛДГ][Значение]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][ЛДГ][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+            $('[name="step2[ОАК][Скорректированный Ca2+][Значение]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][Скорректированный Ca2+][N]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][Мочевина крови][Значение]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][Мочевина крови][N]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][Креатинин крови][Значение]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][Креатинин крови][N]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][Миелоциты]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
+            $('[name="step2[ОАК][Метамиел]"]').val(
+                _.random(1.2, 5.6).toFixed(2)
+            );
 
-        prev() {
-            this.$emit("prev", this.fields);
+            this.triggerInputEvent();
         },
     },
 

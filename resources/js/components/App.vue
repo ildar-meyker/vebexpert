@@ -12,16 +12,27 @@
             </div>
         </div>
 
-        <Step1 v-show="currentStep == 1" @next="next"></Step1>
-        <Step2 v-show="currentStep == 2" @next="next" @prev="prev"></Step2>
-        <Step3 v-show="currentStep == 3" @next="next" @prev="prev"></Step3>
+        <Step1 :env="env" v-show="currentStep == 1" @next="next"></Step1>
+        <Step2
+            :env="env"
+            v-show="currentStep == 2"
+            @next="next"
+            @prev="prev"
+        ></Step2>
+        <Step3
+            :env="env"
+            v-show="currentStep == 3"
+            @next="next"
+            @prev="prev"
+        ></Step3>
         <Step4
+            :env="env"
             v-show="currentStep == 4"
             @next="next"
             @prev="prev"
             :gender="fields['2'] && fields['2']['Пол']"
         ></Step4>
-        <Step5 v-show="currentStep == 5" @prev="prev"></Step5>
+        <Step5 :env="env" v-show="currentStep == 5" @prev="prev"></Step5>
     </div>
 </template>
 
@@ -39,6 +50,7 @@ export default {
         return {
             steps: [1, 2, 3, 4, 5],
             currentStep: 1,
+            env: "testing",
 
             fields: {},
         };

@@ -42,8 +42,10 @@
                             index +
                             '][Препарат]'
                         "
-                        type="hidden"
+                        type="text"
+                        class="out-of-screen"
                         v-model="fields['Препарат']"
+                        data-label="Препарат"
                     />
                 </div>
             </div>
@@ -83,8 +85,10 @@
                             index +
                             '][Изменение состояния]'
                         "
-                        type="hidden"
+                        type="text"
+                        class="out-of-screen"
                         v-model="fields['Изменение состояния']"
+                        data-label="Изменение состояния"
                     />
                 </div>
             </div>
@@ -111,7 +115,8 @@
                                 index +
                                 '][Ухудшение связано с]'
                             "
-                            type="hidden"
+                            type="text"
+                            class="out-of-screen"
                             v-model="fields['Ухудшение связано с']"
                         />
                     </div>
@@ -169,7 +174,8 @@
                                 index +
                                 '][Принято решение о]'
                             "
-                            type="hidden"
+                            type="text"
+                            class="out-of-screen"
                             v-model="fields['Принято решение о']"
                         />
                     </div>
@@ -238,7 +244,8 @@
                                 index +
                                 '][Лечение было]'
                             "
-                            type="hidden"
+                            type="text"
+                            class="out-of-screen"
                             v-model="fields['Лечение было']"
                         />
                     </div>
@@ -252,14 +259,12 @@
                                     stepId +
                                     '[Линии терапии][' +
                                     index +
-                                    '][Лечение возобновлено][через недель]'
+                                    '][Лечение возобновлено][через]'
                                 "
                                 type="text"
                                 class="form-control"
                                 v-model="
-                                    fields['Лечение возобновлено'][
-                                        'через недель'
-                                    ]
+                                    fields['Лечение возобновлено']['через']
                                 "
                             />
                         </div>
@@ -330,9 +335,10 @@
 
         <AttachFile
             :stepId="5"
-            :prefix="'[Линии терапии][' + index + '][files]'"
+            :prefix="'[Линии терапии][' + index + ']'"
+            :name="'images'"
+            :max="5"
             :accept="'image/*'"
-            :count="5"
         ></AttachFile>
 
         <div class="p-3"></div>
@@ -365,16 +371,20 @@
                             'ремиссии заболевания',
                         ]"
                         placeholder="Выбрать из списка"
-                        v-model="fields['Константировано наличие']"
+                        v-model="fields['Констатировано наличие']"
                     ></v-select>
                     <input
                         :name="
                             'step' +
                             stepId +
-                            '[Линии терапии][Константировано наличие]'
+                            '[Линии терапии][' +
+                            index +
+                            '][Констатировано наличие]'
                         "
-                        type="hidden"
-                        v-model="fields['Константировано наличие']"
+                        type="text"
+                        class="out-of-screen"
+                        v-model="fields['Констатировано наличие']"
+                        data-label="Констатировано наличие"
                     />
                 </div>
             </div>

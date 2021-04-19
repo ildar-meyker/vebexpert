@@ -14,6 +14,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][ER]'"
                             type="text"
                             class="form-control"
+                            data-label="ER"
                         />
                     </div>
                     <div>1012/л</div>
@@ -26,6 +27,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][Hb]'"
                             type="text"
                             class="form-control"
+                            data-label="Hb"
                         />
                     </div>
                     <div>г/л</div>
@@ -38,6 +40,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][Le]'"
                             type="text"
                             class="form-control"
+                            data-label="Le"
                         />
                     </div>
                     <div>109/л</div>
@@ -50,6 +53,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][Tr]'"
                             type="text"
                             class="form-control"
+                            data-label="Tr"
                         />
                     </div>
                     <div>109/л</div>
@@ -62,6 +66,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][СОЭ]'"
                             type="text"
                             class="form-control"
+                            data-label="СОЭ"
                         />
                     </div>
                     <div>мм/ч</div>
@@ -74,6 +79,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][п/я]'"
                             type="text"
                             class="form-control"
+                            data-label="п/я"
                         />
                     </div>
                     <div>%</div>
@@ -86,6 +92,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][с/я]'"
                             type="text"
                             class="form-control"
+                            data-label="с/я"
                         />
                     </div>
                     <div>%</div>
@@ -98,6 +105,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][Ly]'"
                             type="text"
                             class="form-control"
+                            data-label="Ly"
                         />
                     </div>
                     <div>%</div>
@@ -110,6 +118,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][Mo]'"
                             type="text"
                             class="form-control"
+                            data-label="Mo"
                         />
                     </div>
                     <div>%</div>
@@ -122,6 +131,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][Bas]'"
                             type="text"
                             class="form-control"
+                            data-label="Bas"
                         />
                     </div>
                     <div>%</div>
@@ -134,6 +144,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][Эо]'"
                             type="text"
                             class="form-control"
+                            data-label="Эо"
                         />
                     </div>
                     <div>%</div>
@@ -157,6 +168,7 @@
                             "
                             type="text"
                             class="form-control"
+                            data-label="АсАт"
                         />
                     </div>
                     <div>Eд/л</div>
@@ -174,6 +186,7 @@
                             "
                             type="text"
                             class="form-control"
+                            data-label="АлАт"
                         />
                     </div>
                     <div>Eд/л</div>
@@ -191,6 +204,7 @@
                             "
                             type="text"
                             class="form-control"
+                            data-label="ЛДГ"
                         />
                     </div>
                     <div>Eд/л</div>
@@ -208,6 +222,7 @@
                             "
                             type="text"
                             class="form-control"
+                            data-label="Скорректированный Ca2+"
                         />
                     </div>
                     <div>мМ/л</div>
@@ -225,6 +240,7 @@
                             "
                             type="text"
                             class="form-control"
+                            data-label="Мочевина крови"
                         />
                     </div>
                     <div>мМ/л</div>
@@ -242,6 +258,7 @@
                             "
                             type="text"
                             class="form-control"
+                            data-label="Креатинин крови"
                         />
                     </div>
                     <div>мМ/л</div>
@@ -256,6 +273,7 @@
                             "
                             type="text"
                             class="form-control"
+                            data-label="Миелоциты"
                         />
                     </div>
                     <div>%</div>
@@ -268,6 +286,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][Метамиел]'"
                             type="text"
                             class="form-control"
+                            data-label="Метамиел"
                         />
                     </div>
                     <div>%</div>
@@ -284,6 +303,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][АсАт][N]'"
                             type="text"
                             class="form-control"
+                            data-label="АсАт N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -295,6 +315,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][АлАт][N]'"
                             type="text"
                             class="form-control"
+                            data-label="АлАт N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -306,6 +327,7 @@
                             :name="'step' + stepId + prefix + '[ОАК][ЛДГ][N]'"
                             type="text"
                             class="form-control"
+                            data-label="ЛДГ N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -322,6 +344,7 @@
                             "
                             type="text"
                             class="form-control"
+                            data-label="Скорректированный Ca2+ N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -338,6 +361,7 @@
                             "
                             type="text"
                             class="form-control"
+                            data-label="Мочевина крови N"
                         />
                     </div>
                     <div>Eд/л)</div>
@@ -354,6 +378,7 @@
                             "
                             type="text"
                             class="form-control"
+                            data-label="Креатинин крови N"
                         />
                     </div>
                     <div>Eд/л)</div>

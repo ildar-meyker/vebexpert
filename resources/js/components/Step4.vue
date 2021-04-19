@@ -1,5 +1,7 @@
 <template>
     <section>
+        <Errors :errors="errors"></Errors>
+
         <div class="form-group">
             <div class="row align-items-center">
                 <div class="col-auto">
@@ -15,8 +17,10 @@
                     ></v-select>
                     <input
                         name="step4[Проведена операция]"
-                        type="hidden"
+                        type="text"
+                        class="out-of-screen"
                         v-model="fields['Проведена операция']"
+                        data-label="Проведена операция"
                     />
                 </div>
             </div>
@@ -34,8 +38,10 @@
                         ></v-select>
                         <input
                             name="step4[Нефрэктомия][Вид]"
-                            type="hidden"
+                            type="text"
+                            class="out-of-screen"
                             v-model="fields['Нефрэктомия']['Вид']"
+                            data-label="Вид нефрэктомии"
                         />
                     </div>
                     <div class="col-auto">нефрэктомия</div>
@@ -50,24 +56,32 @@
                         ></v-select>
                         <input
                             name="step4[Нефрэктомия][Способ]"
-                            type="hidden"
+                            type="text"
+                            class="out-of-screen"
                             v-model="fields['Нефрэктомия']['Способ']"
+                            data-label="Cпособ нефрэктомии"
                         />
                     </div>
                     <div class="col-2">
                         <date-picker
-                            :input-attr="{ name: 'step4[Нефрэктомия][Дата]' }"
                             valueType="format"
                             placeholder="Дата"
                             v-model="fields['Нефрэктомия']['Дата']"
                         ></date-picker>
+                        <input
+                            name="step4[Нефрэктомия][Дата]"
+                            type="text"
+                            class="out-of-screen"
+                            v-model="fields['Нефрэктомия']['Дата']"
+                            data-label="Дата"
+                        />
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label
-                    >Выполнена биобсия операционного материала. Проведено
+                    >Выполнена биопсия операционного материала. Проведено
                     гистологическое исследование:</label
                 >
                 <input
@@ -107,7 +121,7 @@
 
         <div class="form-group">
             <label>Сопутствующие заболевания:</label>
-            <OtherDisease
+            <Disease
                 v-for="(disease, index) in fields['Сопутствующие заболевания']"
                 :stepId="4"
                 :index="index"
@@ -115,7 +129,7 @@
                 :key="disease.uid"
                 @remove="removeDisease(index)"
                 @update="updateDisease(index, $event)"
-            ></OtherDisease>
+            ></Disease>
         </div>
 
         <div class="form-group">
@@ -130,35 +144,38 @@
 
         <div class="p-4"></div>
 
-        <div class="form-group">
-            <button
-                type="button"
-                class="btn btn-secondary btn-control"
-                @click="prev()"
-            >
-                Назад
-            </button>
-            <button
-                type="button"
-                class="btn btn-primary btn-control"
-                @click="next()"
-            >
-                Продолжить
-            </button>
-        </div>
+        <NavButtons
+            :env="env"
+            :stepId="stepId"
+            @prev="prev"
+            @next="next"
+            @fill="fill"
+        ></NavButtons>
     </section>
 </template>
 
 <script>
-import OtherDisease from "./OtherDisease";
+import Disease from "./Disease";
+import mixins from "./mixins";
 
 export default {
-    props: ["gender"],
+    mixins: [mixins],
 
-    components: { OtherDisease },
+    props: {
+        env: {
+            type: String,
+        },
+        gender: {
+            type: String,
+        },
+    },
+
+    components: { Disease },
 
     data() {
         return {
+            stepId: 4,
+            errors: [],
             fields: {
                 "Проведена операция": "",
                 Нефрэктомия: {
@@ -166,38 +183,12 @@ export default {
                     Способ: "",
                     Дата: "",
                 },
-                "Гистологическое исследование": "",
                 "Сопутствующие заболевания": [],
             },
         };
     },
 
-    computed: {
-        surgery() {
-            return this.fields["Проведена операция"];
-        },
-    },
-
-    watch: {
-        surgery(value) {
-            if (value == "Нет") {
-                this.fields["Гистологическое исследование"] = "";
-                this.fields["Нефрэктомия"]["Вид"] = "";
-                this.fields["Нефрэктомия"]["Способ"] = "";
-                this.fields["Нефрэктомия"]["Дата"] = "";
-            }
-        },
-    },
-
     methods: {
-        next() {
-            this.$emit("next", this.fields);
-        },
-
-        prev() {
-            this.$emit("prev", this.fields);
-        },
-
         addDisease() {
             this.fields["Сопутствующие заболевания"].push({
                 uid: _.uniqueId(),
@@ -211,6 +202,29 @@ export default {
 
         updateDisease(index, fields) {
             this.fields["Сопутствующие заболевания"][index] = fields;
+        },
+
+        fill() {
+            $('[name="step4[Проведена операция]').val("Да");
+
+            this.triggerInputEvent();
+
+            setTimeout(() => {
+                $('[name="step4[Нефрэктомия][Вид]').val("радикальная");
+                $('[name="step4[Нефрэктомия][Способ]').val("метастазэктомией");
+                $('[name="step4[Нефрэктомия][Дата]').val("2010-06-11");
+                $('[name="step4[Гистологическое исследование]').val(
+                    "Микроскопическое исследование тканей"
+                );
+                $('[name="step4[Диагноз]').val(
+                    "Распространенный светлоклеточный рак правой почки G3."
+                );
+                $('[name="step4[Сопутствующие заболевания][0][Диагноз]').val(
+                    "Туберкулез"
+                );
+
+                this.triggerInputEvent();
+            }, 10);
         },
     },
 

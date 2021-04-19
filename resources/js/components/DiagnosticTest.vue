@@ -4,19 +4,24 @@
             <div class="col-3">
                 <div class="form-item">
                     <date-picker
-                        :input-attr="{
-                            name:
-                                'step' +
-                                stepId +
-                                prefix +
-                                '[Обследования][' +
-                                index +
-                                '][Дата]',
-                        }"
                         valueType="format"
                         placeholder="Дата"
                         v-model="fields['Дата']"
                     ></date-picker>
+                    <input
+                        :name="
+                            'step' +
+                            stepId +
+                            prefix +
+                            '[Обследования][' +
+                            index +
+                            '][Дата]'
+                        "
+                        type="text"
+                        class="out-of-screen"
+                        v-model="fields['Дата']"
+                        data-label="Дата"
+                    />
                 </div>
                 <div class="form-item">
                     <v-select
@@ -33,8 +38,10 @@
                             index +
                             '][Тип]'
                         "
-                        type="hidden"
+                        type="text"
+                        class="out-of-screen"
                         v-model="fields['Тип']"
+                        data-label="Тип"
                     />
                 </div>
                 <div class="form-item">
@@ -57,8 +64,10 @@
                             index +
                             '][Объект]'
                         "
-                        type="hidden"
+                        type="text"
+                        class="out-of-screen"
                         v-model="fields['Объект']"
+                        data-label="Объект"
                     />
                 </div>
             </div>

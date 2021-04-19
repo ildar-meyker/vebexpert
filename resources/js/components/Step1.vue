@@ -2,6 +2,8 @@
     <section>
         <h2>Сведения о враче</h2>
 
+        <Errors :errors="errors"></Errors>
+
         <div class="form-group">
             <div class="row">
                 <div class="col-10">
@@ -14,10 +16,17 @@
                 </div>
                 <div class="col-2">
                     <date-picker
-                        :input-attr="{ name: 'step1[Дата]' }"
                         valueType="format"
                         placeholder="Дата"
+                        v-model="fields['Дата']"
                     ></date-picker>
+                    <input
+                        name="step1[Дата]"
+                        class="out-of-screen"
+                        type="text"
+                        v-model="fields['Дата']"
+                        data-label="Дата"
+                    />
                 </div>
             </div>
         </div>
@@ -91,29 +100,58 @@
 
         <div class="p-3"></div>
 
-        <div class="form-group">
-            <button
-                type="button"
-                class="btn btn-primary btn-control"
-                @click="next()"
-            >
-                Продолжить
-            </button>
-        </div>
+        <NavButtons
+            :env="env"
+            :stepId="stepId"
+            @prev="prev"
+            @next="next"
+            @fill="fill"
+        ></NavButtons>
     </section>
 </template>
 
 <script>
+import $ from "jquery";
+import mixins from "./mixins";
+
 export default {
+    mixins: [mixins],
+
+    props: {
+        env: {
+            type: String,
+        },
+    },
+
     data() {
         return {
-            fields: {},
+            stepId: 1,
+            errors: [],
+            fields: {
+                Дата: "",
+            },
         };
     },
 
     methods: {
-        next() {
-            this.$emit("next", this.fields);
+        fill() {
+            $('[name="step1[Название клинического случая]"]').val(
+                "Отравления боевым ядом «Новичок» пациента 44 лет"
+            );
+            $('[name="step1[Дата]"]').val("2021-03-10");
+            $('[name="step1[Фамилия]"]').val("Исаева");
+            $('[name="step1[Имя]"]').val("Светлана");
+            $('[name="step1[Отчество]"]').val("Николаевна");
+            $('[name="step1[Должность]"]').val(
+                "к.н.м., доцент общей и детской урологии-андрологии"
+            );
+            $('[name="step1[Место работы]"]').val("ФГБОУ ВО СибГМУ М3 России");
+            $('[name="step1[Город]"]').val("Новосибирск");
+            $('[name="step1[Комментарий]"]').val(
+                "Состояние здоровья политика, которому еще недавно чудом удалось выжить после отравления боевым ядом «Новичок», постоянно ухудшается."
+            );
+
+            this.triggerInputEvent();
         },
     },
 };

@@ -2,6 +2,8 @@
     <section>
         <h2 class="text-center">Критерии оценки прогноза ПКР по D. Heng*</h2>
 
+        <Errors :errors="errors"></Errors>
+
         <table class="heng-table">
             <tr>
                 <td>
@@ -23,6 +25,7 @@
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
+                        data-label="Индекс Карновского (Шкала ECOG)"
                     />
                 </td>
             </tr>
@@ -35,6 +38,7 @@
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
+                        data-label="Время от постановки диагноза до начала терапии"
                     />
                 </td>
             </tr>
@@ -47,6 +51,7 @@
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
+                        data-label="Уровень гемоглобина"
                     />
                 </td>
             </tr>
@@ -59,6 +64,7 @@
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
+                        data-label="Уровень лактатдегидрогеназы"
                     />
                 </td>
             </tr>
@@ -71,6 +77,7 @@
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
+                        data-label="Уровень скорректированного кальция"
                     />
                 </td>
             </tr>
@@ -83,6 +90,7 @@
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
+                        data-label="Уровень нейтрофилов"
                     />
                 </td>
             </tr>
@@ -95,6 +103,7 @@
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
+                        data-label="Уровень тромбоцитов"
                     />
                 </td>
             </tr>
@@ -114,6 +123,7 @@
                         type="text"
                         class="form-control text-center"
                         placeholder="+/-"
+                        data-label="Наличие метастатических очагов"
                     />
                 </td>
             </tr>
@@ -134,8 +144,10 @@
                     ></v-select>
                     <input
                         name="step3[Прогноз по MSKCC]"
-                        type="hidden"
+                        type="text"
+                        class="out-of-screen"
                         v-model="fields['Прогноз по MSKCC']"
+                        data-label="Прогноз по MSKCC"
                     />
                 </div>
                 <div class="col-auto">прогноз по MSKCC</div>
@@ -146,9 +158,9 @@
 
         <AttachFile
             :stepId="3"
-            :prefix="'[files]'"
+            :name="'images'"
+            :max="5"
             :accept="'image/*'"
-            :count="5"
         ></AttachFile>
 
         <div class="p-3"></div>
@@ -164,29 +176,32 @@
 
         <div class="p-4"></div>
 
-        <div class="form-group">
-            <button
-                type="button"
-                class="btn btn-secondary btn-control"
-                @click="prev()"
-            >
-                Назад
-            </button>
-            <button
-                type="button"
-                class="btn btn-primary btn-control"
-                @click="next()"
-            >
-                Продолжить
-            </button>
-        </div>
+        <NavButtons
+            :env="env"
+            :stepId="stepId"
+            @prev="prev"
+            @next="next"
+            @fill="fill"
+        ></NavButtons>
     </section>
 </template>
 
 <script>
+import mixins from "./mixins";
+
 export default {
+    mixins: [mixins],
+
+    props: {
+        env: {
+            type: String,
+        },
+    },
+
     data() {
         return {
+            stepId: 3,
+            errors: [],
             fields: {
                 "Прогноз по MSKCC": "",
             },
@@ -194,12 +209,22 @@ export default {
     },
 
     methods: {
-        next() {
-            this.$emit("next", this.fields);
-        },
+        fill() {
+            $('[name="step3[Индекс Карновского (Шкала ECOG)]"]').val("+");
+            $(
+                '[name="step3[Время от постановки диагноза до начала терапии]'
+            ).val("-");
+            $('[name="step3[Уровень гемоглобина]').val("-");
+            $('[name="step3[Уровень лактатдегидрогеназы]').val("+");
+            $('[name="step3[Уровень скорректированного кальция]').val("-");
+            $('[name="step3[Уровень нейтрофилов]').val("+");
+            $('[name="step3[Уровень тромбоцитов]').val("+");
+            $('[name="step3[Наличие метастатических очагов]').val("+");
+            $('[name="step3[Количество Meta]').val(100);
+            $('[name="step3[Прогноз по MSKCC]').val("промежуточный");
+            $('[name="step3[Комментарий]').val("Постоянно ухудшается");
 
-        prev() {
-            this.$emit("prev", this.fields);
+            this.triggerInputEvent();
         },
     },
 };

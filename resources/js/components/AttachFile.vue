@@ -1,25 +1,26 @@
 <template>
     <div class="form-group">
         <label>
-            <span v-if="label">
-                <b>{{ label }}</b>
-            </span>
-            <span v-else>
-                <b>Прикрепить файл</b> (не более {{ count }} файлов)
-            </span>
+            <b>{{ label }}</b> {{ max ? "(не более " + max + " файлов)" : "" }}
         </label>
 
-        <div class="files" v-if="files.length">
-            <div v-for="(item, index) in files" :key="index">
-                <img
-                    :src="item.preview"
-                    class="preview"
-                    v-if="item.hasPreview"
-                />
-                <span>{{ item.file.name }}</span>
-                <button type="button" class="remove" @click="removeFile(index)">
-                    ×
-                </button>
+        <div class="files" v-if="attachedFiles.length">
+            <div v-for="(item, index) in chosenFiles" :key="index">
+                <div v-if="!item.isRemoved">
+                    <img
+                        :src="item.preview"
+                        class="preview"
+                        v-if="item.hasPreview"
+                    />
+                    <span>{{ item.file.name }}</span>
+                    <button
+                        type="button"
+                        class="remove"
+                        @click="removeFile(index)"
+                    >
+                        ×
+                    </button>
+                </div>
             </div>
             <div class="p-2"></div>
         </div>
@@ -32,7 +33,16 @@
             <button type="button" class="btn btn-primary btn-file">
                 <span>Обзор</span>
                 <input
-                    :name="'step' + stepId + prefix + '[' + index + '][]'"
+                    :name="
+                        'step' +
+                        stepId +
+                        prefix +
+                        '[' +
+                        name +
+                        '][files][' +
+                        index +
+                        '][]'
+                    "
                     type="file"
                     @change="handleFiles"
                     :accept="accept"
@@ -46,6 +56,20 @@
                 Обзор
             </button>
         </div>
+
+        <input
+            :name="'step' + stepId + prefix + '[' + name + '][counter]'"
+            type="text"
+            class="out-of-screen"
+            :value="attachedFilesCount"
+            :data-label="label"
+        />
+
+        <input
+            :name="'step' + stepId + prefix + '[' + name + '][removed]'"
+            type="hidden"
+            :value="removedIndexes"
+        />
     </div>
 </template>
 
@@ -59,28 +83,54 @@ export default {
             type: String,
             default: "",
         },
+        name: {
+            type: String,
+            required: true,
+        },
         accept: {
             type: String,
             accept: "*",
         },
         label: {
             type: String,
+            default: "Прикрепить файл",
         },
-        count: {
+        max: {
             type: Number,
         },
     },
 
     data() {
         return {
-            files: [],
+            chosenFiles: [],
             inputs: [{}],
         };
     },
 
     computed: {
         available() {
-            return this.count - this.files.length;
+            return this.max - this.attachedFiles.length;
+        },
+
+        attachedFiles() {
+            return this.chosenFiles.filter((file) => {
+                return file.isRemoved === false;
+            });
+        },
+
+        attachedFilesCount() {
+            const count = this.attachedFiles.length;
+            return count ? count : "";
+        },
+
+        removedIndexes() {
+            const indexes = [];
+            this.chosenFiles.forEach((file, index) => {
+                if (file.isRemoved) {
+                    indexes.push(index);
+                }
+            });
+            return indexes.join(",");
         },
     },
 
@@ -96,6 +146,7 @@ export default {
             // add wrapper
             files = files.map((file) => {
                 return {
+                    isRemoved: false,
                     preview: "",
                     hasPreview: false,
                     file,
@@ -104,14 +155,14 @@ export default {
 
             files.forEach((file) => {
                 this.loadPreview(file);
-                this.files.push(file);
+                this.chosenFiles.push(file);
             });
 
             this.addInput();
         },
 
         removeFile(index) {
-            this.files.splice(index, 1);
+            this.chosenFiles[index].isRemoved = true;
         },
 
         loadPreview(file) {

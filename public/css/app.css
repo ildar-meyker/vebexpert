@@ -127,6 +127,12 @@ h3 {
   margin-bottom: 0;
 }
 
+.out-of-screen {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
 .col-date {
   flex: 0 0 150px;
 }

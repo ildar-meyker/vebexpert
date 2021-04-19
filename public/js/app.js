@@ -1877,6 +1877,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1894,6 +1905,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       steps: [1, 2, 3, 4, 5],
       currentStep: 1,
+      env: "testing",
       fields: {}
     };
   },
@@ -1973,6 +1985,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     stepId: {
@@ -1982,26 +2018,49 @@ __webpack_require__.r(__webpack_exports__);
       type: String,
       "default": ""
     },
+    name: {
+      type: String,
+      required: true
+    },
     accept: {
       type: String,
       accept: "*"
     },
     label: {
-      type: String
+      type: String,
+      "default": "Прикрепить файл"
     },
-    count: {
+    max: {
       type: Number
     }
   },
   data: function data() {
     return {
-      files: [],
+      chosenFiles: [],
       inputs: [{}]
     };
   },
   computed: {
     available: function available() {
-      return this.count - this.files.length;
+      return this.max - this.attachedFiles.length;
+    },
+    attachedFiles: function attachedFiles() {
+      return this.chosenFiles.filter(function (file) {
+        return file.isRemoved === false;
+      });
+    },
+    attachedFilesCount: function attachedFilesCount() {
+      var count = this.attachedFiles.length;
+      return count ? count : "";
+    },
+    removedIndexes: function removedIndexes() {
+      var indexes = [];
+      this.chosenFiles.forEach(function (file, index) {
+        if (file.isRemoved) {
+          indexes.push(index);
+        }
+      });
+      return indexes.join(",");
     }
   },
   methods: {
@@ -2013,6 +2072,7 @@ __webpack_require__.r(__webpack_exports__);
 
       files = files.map(function (file) {
         return {
+          isRemoved: false,
           preview: "",
           hasPreview: false,
           file: file
@@ -2021,12 +2081,12 @@ __webpack_require__.r(__webpack_exports__);
       files.forEach(function (file) {
         _this.loadPreview(file);
 
-        _this.files.push(file);
+        _this.chosenFiles.push(file);
       });
       this.addInput();
     },
     removeFile: function removeFile(index) {
-      this.files.splice(index, 1);
+      this.chosenFiles[index].isRemoved = true;
     },
     loadPreview: function loadPreview(file) {
       var reader = new FileReader();
@@ -2058,6 +2118,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2541,6 +2626,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     stepId: {
@@ -2580,6 +2674,112 @@ __webpack_require__.r(__webpack_exports__);
     remove: function remove() {
       this.$emit("remove");
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Disease.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Disease.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["stepId", "index", "disease"],
+  data: function data() {
+    return {
+      fields: _.cloneDeep(this.disease)
+    };
+  },
+  methods: {
+    remove: function remove() {
+      this.$emit("remove");
+    }
+  },
+  watch: {
+    disease: {
+      deep: true,
+      handler: function handler() {
+        this.fields = _.cloneDeep(this.disease);
+      }
+    },
+    fields: {
+      deep: true,
+      handler: function handler() {
+        this.$emit("update", this.fields);
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Errors.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Errors.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    errors: {
+      type: Array
+    }
+  },
+  data: function data() {
+    return {};
   }
 });
 
@@ -2710,6 +2910,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     stepId: {
@@ -2721,16 +2938,28 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   data: function data() {
-    return {};
+    return {
+      fields: {
+        Рентгенография: {
+          Дата: ""
+        },
+        Сцинтиграфия: {
+          Дата: ""
+        },
+        Биопсия: {
+          Дата: ""
+        }
+      }
+    };
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/OtherDisease.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/OtherDisease.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/NavButtons.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/NavButtons.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2771,30 +3000,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["stepId", "index", "disease"],
-  data: function data() {
-    return {
-      fields: _.cloneDeep(this.disease)
-    };
-  },
-  methods: {
-    remove: function remove() {
-      this.$emit("remove");
+  props: {
+    env: {
+      type: String
+    },
+    stepId: {
+      type: Number
     }
   },
-  watch: {
-    disease: {
-      deep: true,
-      handler: function handler() {
-        this.fields = _.cloneDeep(this.disease);
-      }
+  data: function data() {
+    return {};
+  },
+  methods: {
+    next: function next() {
+      this.$emit("next");
     },
-    fields: {
-      deep: true,
-      handler: function handler() {
-        this.$emit("update", this.fields);
-      }
+    prev: function prev() {
+      this.$emit("prev");
+    },
+    fill: function fill() {
+      this.$emit("fill");
+    },
+    submit: function submit($event) {
+      this.$emit("submit", $event);
     }
   }
 });
@@ -2812,6 +3048,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mixins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mixins */ "./resources/js/components/mixins.js");
 //
 //
 //
@@ -2917,15 +3156,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_mixins__WEBPACK_IMPORTED_MODULE_1__.default],
+  props: {
+    env: {
+      type: String
+    }
+  },
   data: function data() {
     return {
-      fields: {}
+      stepId: 1,
+      errors: [],
+      fields: {
+        Дата: ""
+      }
     };
   },
   methods: {
-    next: function next() {
-      this.$emit("next", this.fields);
+    fill: function fill() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step1[Название клинического случая]"]').val("Отравления боевым ядом «Новичок» пациента 44 лет");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step1[Дата]"]').val("2021-03-10");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step1[Фамилия]"]').val("Исаева");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step1[Имя]"]').val("Светлана");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step1[Отчество]"]').val("Николаевна");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step1[Должность]"]').val("к.н.м., доцент общей и детской урологии-андрологии");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step1[Место работы]"]').val("ФГБОУ ВО СибГМУ М3 России");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step1[Город]"]').val("Новосибирск");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step1[Комментарий]"]').val("Состояние здоровья политика, которому еще недавно чудом удалось выжить после отравления боевым ядом «Новичок», постоянно ухудшается.");
+      this.triggerInputEvent();
     }
   }
 });
@@ -2943,9 +3210,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _GroupOfTests__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GroupOfTests */ "./resources/js/components/GroupOfTests.vue");
-/* harmony import */ var _DiagnosticTest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DiagnosticTest */ "./resources/js/components/DiagnosticTest.vue");
-/* harmony import */ var _BloodTest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BloodTest */ "./resources/js/components/BloodTest.vue");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _GroupOfTests__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GroupOfTests */ "./resources/js/components/GroupOfTests.vue");
+/* harmony import */ var _DiagnosticTest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DiagnosticTest */ "./resources/js/components/DiagnosticTest.vue");
+/* harmony import */ var _BloodTest__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BloodTest */ "./resources/js/components/BloodTest.vue");
+/* harmony import */ var _mixins__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mixins */ "./resources/js/components/mixins.js");
 //
 //
 //
@@ -3091,20 +3361,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_mixins__WEBPACK_IMPORTED_MODULE_4__.default],
   components: {
-    GroupOfTests: _GroupOfTests__WEBPACK_IMPORTED_MODULE_0__.default,
-    DiagnosticTest: _DiagnosticTest__WEBPACK_IMPORTED_MODULE_1__.default,
-    BloodTest: _BloodTest__WEBPACK_IMPORTED_MODULE_2__.default
+    GroupOfTests: _GroupOfTests__WEBPACK_IMPORTED_MODULE_1__.default,
+    DiagnosticTest: _DiagnosticTest__WEBPACK_IMPORTED_MODULE_2__.default,
+    BloodTest: _BloodTest__WEBPACK_IMPORTED_MODULE_3__.default
+  },
+  props: {
+    env: {
+      type: String
+    }
   },
   data: function data() {
     return {
+      stepId: 2,
+      errors: [],
       fields: {
         Пол: "",
+        "Год рождения": "",
         "Болен с месяца": "",
+        "Болен с года": "",
         Обследования: []
       }
     };
@@ -3125,11 +3418,50 @@ __webpack_require__.r(__webpack_exports__);
     updateTest: function updateTest(index, fields) {
       this.fields["Обследования"][index] = fields;
     },
-    next: function next() {
-      this.$emit("next", this.fields);
-    },
-    prev: function prev() {
-      this.$emit("prev", this.fields);
+    fill: function fill() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Пол]"]').val("Мужчина");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Инициалы]"]').val("Навальный А.А.");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Год рождения]"]').val("1976");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Болен с месяца]"]').val("августа");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Болен с года]"]').val("2020");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Описание жалоб]"]').val("Онемение рук и ног");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Обследования][0][Дата]"]').val("2020-10-07");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Обследования][0][Тип]"]').val("МСКТ");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Обследования][0][Объект]"]').val("головного мозга");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Обследования][0][Описание и заключение]"]').val("Постоянно ухудшается");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Рентгенография][Дата]"]').val("2020-10-07");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Рентгенография][Описание и заключение]"]').val("Состояние ухудшается");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Сцинтиграфия][Дата]"]').val("2020-10-07");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Сцинтиграфия][Описание и заключение]"]').val("Онемение рук и ног");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Биопсия][Дата]"]').val("2020-10-07");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Биопсия][Объект]"]').val("Пищевода");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[Биопсия][Описание и заключение]"]').val("Раздражение слизистых");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][ER]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Hb]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Le]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Tr]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][СОЭ]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][п/я]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][с/я]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Ly]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Mo]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Bas]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Эо]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][АсАт][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][АсАт][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][АлАт][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][АлАт][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][ЛДГ][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][ЛДГ][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Скорректированный Ca2+][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Скорректированный Ca2+][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Мочевина крови][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Мочевина крови][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Креатинин крови][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Креатинин крови][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Миелоциты]"]').val(_.random(1.2, 5.6).toFixed(2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Метамиел]"]').val(_.random(1.2, 5.6).toFixed(2));
+      this.triggerInputEvent();
     }
   },
   beforeMount: function beforeMount() {
@@ -3150,6 +3482,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _mixins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mixins */ "./resources/js/components/mixins.js");
 //
 //
 //
@@ -3335,20 +3668,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_mixins__WEBPACK_IMPORTED_MODULE_0__.default],
+  props: {
+    env: {
+      type: String
+    }
+  },
   data: function data() {
     return {
+      stepId: 3,
+      errors: [],
       fields: {
         "Прогноз по MSKCC": ""
       }
     };
   },
   methods: {
-    next: function next() {
-      this.$emit("next", this.fields);
-    },
-    prev: function prev() {
-      this.$emit("prev", this.fields);
+    fill: function fill() {
+      $('[name="step3[Индекс Карновского (Шкала ECOG)]"]').val("+");
+      $('[name="step3[Время от постановки диагноза до начала терапии]').val("-");
+      $('[name="step3[Уровень гемоглобина]').val("-");
+      $('[name="step3[Уровень лактатдегидрогеназы]').val("+");
+      $('[name="step3[Уровень скорректированного кальция]').val("-");
+      $('[name="step3[Уровень нейтрофилов]').val("+");
+      $('[name="step3[Уровень тромбоцитов]').val("+");
+      $('[name="step3[Наличие метастатических очагов]').val("+");
+      $('[name="step3[Количество Meta]').val(100);
+      $('[name="step3[Прогноз по MSKCC]').val("промежуточный");
+      $('[name="step3[Комментарий]').val("Постоянно ухудшается");
+      this.triggerInputEvent();
     }
   }
 });
@@ -3366,7 +3719,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _OtherDisease__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OtherDisease */ "./resources/js/components/OtherDisease.vue");
+/* harmony import */ var _Disease__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Disease */ "./resources/js/components/Disease.vue");
+/* harmony import */ var _mixins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mixins */ "./resources/js/components/mixins.js");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3519,13 +3878,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["gender"],
+  mixins: [_mixins__WEBPACK_IMPORTED_MODULE_1__.default],
+  props: {
+    env: {
+      type: String
+    },
+    gender: {
+      type: String
+    }
+  },
   components: {
-    OtherDisease: _OtherDisease__WEBPACK_IMPORTED_MODULE_0__.default
+    Disease: _Disease__WEBPACK_IMPORTED_MODULE_0__.default
   },
   data: function data() {
     return {
+      stepId: 4,
+      errors: [],
       fields: {
         "Проведена операция": "",
         Нефрэктомия: {
@@ -3533,33 +3903,11 @@ __webpack_require__.r(__webpack_exports__);
           Способ: "",
           Дата: ""
         },
-        "Гистологическое исследование": "",
         "Сопутствующие заболевания": []
       }
     };
   },
-  computed: {
-    surgery: function surgery() {
-      return this.fields["Проведена операция"];
-    }
-  },
-  watch: {
-    surgery: function surgery(value) {
-      if (value == "Нет") {
-        this.fields["Гистологическое исследование"] = "";
-        this.fields["Нефрэктомия"]["Вид"] = "";
-        this.fields["Нефрэктомия"]["Способ"] = "";
-        this.fields["Нефрэктомия"]["Дата"] = "";
-      }
-    }
-  },
   methods: {
-    next: function next() {
-      this.$emit("next", this.fields);
-    },
-    prev: function prev() {
-      this.$emit("prev", this.fields);
-    },
     addDisease: function addDisease() {
       this.fields["Сопутствующие заболевания"].push({
         uid: _.uniqueId(),
@@ -3571,6 +3919,22 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateDisease: function updateDisease(index, fields) {
       this.fields["Сопутствующие заболевания"][index] = fields;
+    },
+    fill: function fill() {
+      var _this = this;
+
+      $('[name="step4[Проведена операция]').val("Да");
+      this.triggerInputEvent();
+      setTimeout(function () {
+        $('[name="step4[Нефрэктомия][Вид]').val("радикальная");
+        $('[name="step4[Нефрэктомия][Способ]').val("метастазэктомией");
+        $('[name="step4[Нефрэктомия][Дата]').val("2010-06-11");
+        $('[name="step4[Гистологическое исследование]').val("Микроскопическое исследование тканей");
+        $('[name="step4[Диагноз]').val("Распространенный светлоклеточный рак правой почки G3.");
+        $('[name="step4[Сопутствующие заболевания][0][Диагноз]').val("Туберкулез");
+
+        _this.triggerInputEvent();
+      }, 10);
     }
   },
   beforeMount: function beforeMount() {
@@ -3591,7 +3955,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _TherapyLine__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TherapyLine */ "./resources/js/components/TherapyLine.vue");
+/* harmony import */ var _Therapy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Therapy */ "./resources/js/components/Therapy.vue");
+/* harmony import */ var _mixins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mixins */ "./resources/js/components/mixins.js");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3701,13 +4073,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_mixins__WEBPACK_IMPORTED_MODULE_1__.default],
   components: {
-    TherapyLine: _TherapyLine__WEBPACK_IMPORTED_MODULE_0__.default
+    Therapy: _Therapy__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  props: {
+    env: {
+      type: String
+    }
   },
   data: function data() {
     return {
-      copyrightOptions: ["третьими лицам", "только лично автором", "доступен для ознакомления другим специалистам"],
+      stepId: 5,
+      errors: [],
       fields: {
         "Линии терапии": []
       }
@@ -3734,7 +4114,7 @@ __webpack_require__.r(__webpack_exports__);
         },
         Комментарий: "",
         Обследования: [],
-        "Константировано наличие": ""
+        "Констатировано наличие": ""
       });
     },
     removeTherapy: function removeTherapy(index) {
@@ -3743,8 +4123,51 @@ __webpack_require__.r(__webpack_exports__);
     updateTherapy: function updateTherapy(index, fields) {
       this.fields["Линии терапии"][index] = fields;
     },
-    prev: function prev() {
-      this.$emit("prev", this.fields);
+    fill: function fill() {
+      $('[name="step5[Лечение начато через]').val(12);
+      $('[name="step5[Линии терапии][0][Препарат]').val("акситиниба");
+      $('[name="step5[Линии терапии][0][Обоснование выбора]').val("акситиниба");
+      $('[name="step5[Линии терапии][0][Изменение состояния]').val("улучшилось");
+      $('[name="step5[Линии терапии][0][Комментарий]').val("улучшилось");
+      $('[name="step5[Линии терапии][0][Обследования][0][Дата]"]').val("2020-10-07");
+      $('[name="step5[Линии терапии][0][Обследования][0][Тип]"]').val("МСКТ");
+      $('[name="step5[Линии терапии][0][Обследования][0][Объект]"]').val("головного мозга");
+      $('[name="step5[Линии терапии][0][Обследования][0][Описание и заключение]"]').val("Постоянно ухудшается");
+      $('[name="step5[Линии терапии][0][Рентгенография][Дата]"]').val("2020-10-07");
+      $('[name="step5[Линии терапии][0][Рентгенография][Описание и заключение]"]').val("Состояние ухудшается");
+      $('[name="step5[Линии терапии][0][Сцинтиграфия][Дата]"]').val("2020-10-07");
+      $('[name="step5[Линии терапии][0][Сцинтиграфия][Описание и заключение]"]').val("Онемение рук и ног");
+      $('[name="step5[Линии терапии][0][Биопсия][Дата]"]').val("2020-10-07");
+      $('[name="step5[Линии терапии][0][Биопсия][Объект]"]').val("Пищевода");
+      $('[name="step5[Линии терапии][0][Биопсия][Описание и заключение]"]').val("Раздражение слизистых");
+      $('[name="step5[Линии терапии][0][ОАК][ER]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Hb]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Le]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Tr]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][СОЭ]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][п/я]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][с/я]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Ly]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Mo]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Bas]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Эо]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][АсАт][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][АсАт][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][АлАт][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][АлАт][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][ЛДГ][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][ЛДГ][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Скорректированный Ca2+][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Скорректированный Ca2+][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Мочевина крови][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Мочевина крови][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Креатинин крови][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Креатинин крови][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Миелоциты]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Линии терапии][0][ОАК][Метамиел]"]').val(_.random(1.2, 5.6).toFixed(2));
+      $('[name="step5[Констатировано наличие]').val("частичного ответа");
+      $('[name="step5[Комментарий]').val("все плохо");
+      this.triggerInputEvent();
     }
   },
   beforeMount: function beforeMount() {
@@ -3754,10 +4177,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3768,6 +4191,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GroupOfTests__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GroupOfTests */ "./resources/js/components/GroupOfTests.vue");
 /* harmony import */ var _DiagnosticTest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DiagnosticTest */ "./resources/js/components/DiagnosticTest.vue");
 /* harmony import */ var _BloodTest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BloodTest */ "./resources/js/components/BloodTest.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4223,7 +4656,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/index.esm.js");
@@ -4231,6 +4664,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_datepicker_locale_ru__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker_locale_ru__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
 /* harmony import */ var _components_AttachFile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/AttachFile */ "./resources/js/components/AttachFile.vue");
+/* harmony import */ var _components_Errors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Errors */ "./resources/js/components/Errors.vue");
+/* harmony import */ var _components_NavButtons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/NavButtons */ "./resources/js/components/NavButtons.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -4240,10 +4675,14 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_6__.default.component('v-select', (vue_select__WEBPACK_IMPORTED_MODULE_1___default()));
-vue__WEBPACK_IMPORTED_MODULE_6__.default.component('date-picker', vue2_datepicker__WEBPACK_IMPORTED_MODULE_2__.default);
-vue__WEBPACK_IMPORTED_MODULE_6__.default.component('AttachFile', _components_AttachFile__WEBPACK_IMPORTED_MODULE_5__.default);
-new vue__WEBPACK_IMPORTED_MODULE_6__.default({
+
+
+vue__WEBPACK_IMPORTED_MODULE_8__.default.component('v-select', (vue_select__WEBPACK_IMPORTED_MODULE_1___default()));
+vue__WEBPACK_IMPORTED_MODULE_8__.default.component('date-picker', vue2_datepicker__WEBPACK_IMPORTED_MODULE_2__.default);
+vue__WEBPACK_IMPORTED_MODULE_8__.default.component('AttachFile', _components_AttachFile__WEBPACK_IMPORTED_MODULE_5__.default);
+vue__WEBPACK_IMPORTED_MODULE_8__.default.component('Errors', _components_Errors__WEBPACK_IMPORTED_MODULE_6__.default);
+vue__WEBPACK_IMPORTED_MODULE_8__.default.component('NavButtons', _components_NavButtons__WEBPACK_IMPORTED_MODULE_7__.default);
+new vue__WEBPACK_IMPORTED_MODULE_8__.default({
   el: '#app',
   components: {
     App: _components_App__WEBPACK_IMPORTED_MODULE_4__.default
@@ -4265,8 +4704,76 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+/***/ }),
+
+/***/ "./resources/js/components/mixins.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/mixins.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    validate: function validate() {
+      this.errors = [];
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name*="step' + this.stepId + '"]').filter(':visible').not('[type="file"]').each(function () {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val()) {
+          return;
+        }
+
+        self.errors.push(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data("label") || jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr("placeholder"));
+      });
+
+      if (this.errors.length) {
+        return false;
+      }
+
+      return true;
+    },
+    triggerInputEvent: function triggerInputEvent() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name*="step' + this.stepId + '"').each(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)[0].dispatchEvent(new CustomEvent("input"));
+      });
+    },
+    scrollTop: function scrollTop() {
+      document.body.scrollTop = 0; // For Safari
+
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    },
+    next: function next() {
+      if (this.validate()) {
+        this.$emit("next", this.fields);
+      }
+
+      this.scrollTop();
+    },
+    prev: function prev() {
+      this.$emit("prev", this.fields);
+      this.scrollTop();
+    },
+    submit: function submit($event) {
+      if (this.validate()) {
+        document.getElementById('app').submit();
+        return;
+      }
+
+      this.scrollTop();
+    }
+  }
+});
 
 /***/ }),
 
@@ -8807,10 +9314,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.example[data-v-2015978d] {\n    fon
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8824,7 +9331,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.therapy[data-v-d6782f3c]:not(:first-child) {\n    position: relative;\n    border-top: 1px solid #d6d6d6;\n    padding-top: 30px;\n    margin-top: 40px;\n}\n.therapy__controls[data-v-d6782f3c] {\n    position: absolute;\n    top: 10px;\n    right: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.therapy[data-v-1f66394e]:not(:first-child) {\n    position: relative;\n    border-top: 1px solid #d6d6d6;\n    padding-top: 30px;\n    margin-top: 40px;\n}\n.therapy__controls[data-v-1f66394e] {\n    position: absolute;\n    top: 10px;\n    right: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -40711,6 +41218,84 @@ component.options.__file = "resources/js/components/DiagnosticTest.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/Disease.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Disease.vue ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Disease_vue_vue_type_template_id_c290063e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Disease.vue?vue&type=template&id=c290063e&scoped=true& */ "./resources/js/components/Disease.vue?vue&type=template&id=c290063e&scoped=true&");
+/* harmony import */ var _Disease_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Disease.vue?vue&type=script&lang=js& */ "./resources/js/components/Disease.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _Disease_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _Disease_vue_vue_type_template_id_c290063e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Disease_vue_vue_type_template_id_c290063e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "c290063e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Disease.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Errors.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Errors.vue ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Errors_vue_vue_type_template_id_45dd1fd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Errors.vue?vue&type=template&id=45dd1fd4&scoped=true& */ "./resources/js/components/Errors.vue?vue&type=template&id=45dd1fd4&scoped=true&");
+/* harmony import */ var _Errors_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Errors.vue?vue&type=script&lang=js& */ "./resources/js/components/Errors.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _Errors_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _Errors_vue_vue_type_template_id_45dd1fd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Errors_vue_vue_type_template_id_45dd1fd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "45dd1fd4",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Errors.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/GroupOfTests.vue":
 /*!**************************************************!*\
   !*** ./resources/js/components/GroupOfTests.vue ***!
@@ -40750,10 +41335,10 @@ component.options.__file = "resources/js/components/GroupOfTests.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/OtherDisease.vue":
-/*!**************************************************!*\
-  !*** ./resources/js/components/OtherDisease.vue ***!
-  \**************************************************/
+/***/ "./resources/js/components/NavButtons.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/NavButtons.vue ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -40761,8 +41346,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _OtherDisease_vue_vue_type_template_id_64026637_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OtherDisease.vue?vue&type=template&id=64026637&scoped=true& */ "./resources/js/components/OtherDisease.vue?vue&type=template&id=64026637&scoped=true&");
-/* harmony import */ var _OtherDisease_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OtherDisease.vue?vue&type=script&lang=js& */ "./resources/js/components/OtherDisease.vue?vue&type=script&lang=js&");
+/* harmony import */ var _NavButtons_vue_vue_type_template_id_ffe682ee_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NavButtons.vue?vue&type=template&id=ffe682ee&scoped=true& */ "./resources/js/components/NavButtons.vue?vue&type=template&id=ffe682ee&scoped=true&");
+/* harmony import */ var _NavButtons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavButtons.vue?vue&type=script&lang=js& */ "./resources/js/components/NavButtons.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -40772,19 +41357,19 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _OtherDisease_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _OtherDisease_vue_vue_type_template_id_64026637_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _OtherDisease_vue_vue_type_template_id_64026637_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _NavButtons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _NavButtons_vue_vue_type_template_id_ffe682ee_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _NavButtons_vue_vue_type_template_id_ffe682ee_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "64026637",
+  "ffe682ee",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/OtherDisease.vue"
+component.options.__file = "resources/js/components/NavButtons.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -40988,10 +41573,10 @@ component.options.__file = "resources/js/components/Step5.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/TherapyLine.vue":
-/*!*************************************************!*\
-  !*** ./resources/js/components/TherapyLine.vue ***!
-  \*************************************************/
+/***/ "./resources/js/components/Therapy.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Therapy.vue ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -40999,9 +41584,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _TherapyLine_vue_vue_type_template_id_d6782f3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TherapyLine.vue?vue&type=template&id=d6782f3c&scoped=true& */ "./resources/js/components/TherapyLine.vue?vue&type=template&id=d6782f3c&scoped=true&");
-/* harmony import */ var _TherapyLine_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TherapyLine.vue?vue&type=script&lang=js& */ "./resources/js/components/TherapyLine.vue?vue&type=script&lang=js&");
-/* harmony import */ var _TherapyLine_vue_vue_type_style_index_0_id_d6782f3c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css& */ "./resources/js/components/TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css&");
+/* harmony import */ var _Therapy_vue_vue_type_template_id_1f66394e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Therapy.vue?vue&type=template&id=1f66394e&scoped=true& */ "./resources/js/components/Therapy.vue?vue&type=template&id=1f66394e&scoped=true&");
+/* harmony import */ var _Therapy_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Therapy.vue?vue&type=script&lang=js& */ "./resources/js/components/Therapy.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Therapy_vue_vue_type_style_index_0_id_1f66394e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css& */ "./resources/js/components/Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -41012,19 +41597,19 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
-  _TherapyLine_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _TherapyLine_vue_vue_type_template_id_d6782f3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _TherapyLine_vue_vue_type_template_id_d6782f3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Therapy_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _Therapy_vue_vue_type_template_id_1f66394e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Therapy_vue_vue_type_template_id_1f66394e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "d6782f3c",
+  "1f66394e",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/TherapyLine.vue"
+component.options.__file = "resources/js/components/Therapy.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -41093,6 +41678,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Disease.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Disease.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Disease_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Disease.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Disease.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Disease_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Errors.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Errors.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Errors_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Errors.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Errors.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Errors_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/GroupOfTests.vue?vue&type=script&lang=js&":
 /*!***************************************************************************!*\
   !*** ./resources/js/components/GroupOfTests.vue?vue&type=script&lang=js& ***!
@@ -41109,10 +41726,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/OtherDisease.vue?vue&type=script&lang=js&":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/OtherDisease.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************/
+/***/ "./resources/js/components/NavButtons.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/NavButtons.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -41120,8 +41737,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OtherDisease_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OtherDisease.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/OtherDisease.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OtherDisease_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NavButtons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./NavButtons.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/NavButtons.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NavButtons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -41205,10 +41822,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/TherapyLine.vue?vue&type=script&lang=js&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/TherapyLine.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************/
+/***/ "./resources/js/components/Therapy.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Therapy.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -41216,8 +41833,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TherapyLine_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TherapyLine.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TherapyLine_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Therapy_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Therapy.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Therapy_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -41289,6 +41906,40 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Disease.vue?vue&type=template&id=c290063e&scoped=true&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Disease.vue?vue&type=template&id=c290063e&scoped=true& ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Disease_vue_vue_type_template_id_c290063e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Disease_vue_vue_type_template_id_c290063e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Disease_vue_vue_type_template_id_c290063e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Disease.vue?vue&type=template&id=c290063e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Disease.vue?vue&type=template&id=c290063e&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Errors.vue?vue&type=template&id=45dd1fd4&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Errors.vue?vue&type=template&id=45dd1fd4&scoped=true& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Errors_vue_vue_type_template_id_45dd1fd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Errors_vue_vue_type_template_id_45dd1fd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Errors_vue_vue_type_template_id_45dd1fd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Errors.vue?vue&type=template&id=45dd1fd4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Errors.vue?vue&type=template&id=45dd1fd4&scoped=true&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/GroupOfTests.vue?vue&type=template&id=0e1b0d14&scoped=true&":
 /*!*********************************************************************************************!*\
   !*** ./resources/js/components/GroupOfTests.vue?vue&type=template&id=0e1b0d14&scoped=true& ***!
@@ -41306,19 +41957,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/OtherDisease.vue?vue&type=template&id=64026637&scoped=true&":
-/*!*********************************************************************************************!*\
-  !*** ./resources/js/components/OtherDisease.vue?vue&type=template&id=64026637&scoped=true& ***!
-  \*********************************************************************************************/
+/***/ "./resources/js/components/NavButtons.vue?vue&type=template&id=ffe682ee&scoped=true&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/NavButtons.vue?vue&type=template&id=ffe682ee&scoped=true& ***!
+  \*******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OtherDisease_vue_vue_type_template_id_64026637_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OtherDisease_vue_vue_type_template_id_64026637_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavButtons_vue_vue_type_template_id_ffe682ee_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavButtons_vue_vue_type_template_id_ffe682ee_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OtherDisease_vue_vue_type_template_id_64026637_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OtherDisease.vue?vue&type=template&id=64026637&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/OtherDisease.vue?vue&type=template&id=64026637&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavButtons_vue_vue_type_template_id_ffe682ee_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./NavButtons.vue?vue&type=template&id=ffe682ee&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/NavButtons.vue?vue&type=template&id=ffe682ee&scoped=true&");
 
 
 /***/ }),
@@ -41408,19 +42059,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/TherapyLine.vue?vue&type=template&id=d6782f3c&scoped=true&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/TherapyLine.vue?vue&type=template&id=d6782f3c&scoped=true& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/components/Therapy.vue?vue&type=template&id=1f66394e&scoped=true&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Therapy.vue?vue&type=template&id=1f66394e&scoped=true& ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TherapyLine_vue_vue_type_template_id_d6782f3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TherapyLine_vue_vue_type_template_id_d6782f3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Therapy_vue_vue_type_template_id_1f66394e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Therapy_vue_vue_type_template_id_1f66394e_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TherapyLine_vue_vue_type_template_id_d6782f3c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TherapyLine.vue?vue&type=template&id=d6782f3c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=template&id=d6782f3c&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Therapy_vue_vue_type_template_id_1f66394e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Therapy.vue?vue&type=template&id=1f66394e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=template&id=1f66394e&scoped=true&");
 
 
 /***/ }),
@@ -41493,18 +42144,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css&":
-/*!**********************************************************************************************************!*\
-  !*** ./resources/js/components/TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css& ***!
-  \**********************************************************************************************************/
+/***/ "./resources/js/components/Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css& ***!
+  \******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TherapyLine_vue_vue_type_style_index_0_id_d6782f3c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-style-loader/index.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css& */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TherapyLine_vue_vue_type_style_index_0_id_d6782f3c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TherapyLine_vue_vue_type_style_index_0_id_d6782f3c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Therapy_vue_vue_type_style_index_0_id_1f66394e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-style-loader/index.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css& */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Therapy_vue_vue_type_style_index_0_id_1f66394e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Therapy_vue_vue_type_style_index_0_id_1f66394e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TherapyLine_vue_vue_type_style_index_0_id_d6782f3c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TherapyLine_vue_vue_type_style_index_0_id_d6782f3c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Therapy_vue_vue_type_style_index_0_id_1f66394e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Therapy_vue_vue_type_style_index_0_id_1f66394e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 
 
@@ -41554,6 +42205,7 @@ var render = function() {
             expression: "currentStep == 1"
           }
         ],
+        attrs: { env: _vm.env },
         on: { next: _vm.next }
       }),
       _vm._v(" "),
@@ -41566,6 +42218,7 @@ var render = function() {
             expression: "currentStep == 2"
           }
         ],
+        attrs: { env: _vm.env },
         on: { next: _vm.next, prev: _vm.prev }
       }),
       _vm._v(" "),
@@ -41578,6 +42231,7 @@ var render = function() {
             expression: "currentStep == 3"
           }
         ],
+        attrs: { env: _vm.env },
         on: { next: _vm.next, prev: _vm.prev }
       }),
       _vm._v(" "),
@@ -41590,7 +42244,10 @@ var render = function() {
             expression: "currentStep == 4"
           }
         ],
-        attrs: { gender: _vm.fields["2"] && _vm.fields["2"]["Пол"] },
+        attrs: {
+          env: _vm.env,
+          gender: _vm.fields["2"] && _vm.fields["2"]["Пол"]
+        },
         on: { next: _vm.next, prev: _vm.prev }
       }),
       _vm._v(" "),
@@ -41603,6 +42260,7 @@ var render = function() {
             expression: "currentStep == 5"
           }
         ],
+        attrs: { env: _vm.env },
         on: { prev: _vm.prev }
       })
     ],
@@ -41637,43 +42295,47 @@ var render = function() {
     { staticClass: "form-group" },
     [
       _c("label", [
-        _vm.label
-          ? _c("span", [_c("b", [_vm._v(_vm._s(_vm.label))])])
-          : _c("span", [
-              _c("b", [_vm._v("Прикрепить файл")]),
-              _vm._v(" (не более " + _vm._s(_vm.count) + " файлов)\n        ")
-            ])
+        _c("b", [_vm._v(_vm._s(_vm.label))]),
+        _vm._v(
+          " " +
+            _vm._s(_vm.max ? "(не более " + _vm.max + " файлов)" : "") +
+            "\n    "
+        )
       ]),
       _vm._v(" "),
-      _vm.files.length
+      _vm.attachedFiles.length
         ? _c(
             "div",
             { staticClass: "files" },
             [
-              _vm._l(_vm.files, function(item, index) {
+              _vm._l(_vm.chosenFiles, function(item, index) {
                 return _c("div", { key: index }, [
-                  item.hasPreview
-                    ? _c("img", {
-                        staticClass: "preview",
-                        attrs: { src: item.preview }
-                      })
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(item.file.name))]),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "remove",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.removeFile(index)
-                        }
-                      }
-                    },
-                    [_vm._v("\n                ×\n            ")]
-                  )
+                  !item.isRemoved
+                    ? _c("div", [
+                        item.hasPreview
+                          ? _c("img", {
+                              staticClass: "preview",
+                              attrs: { src: item.preview }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("span", [_vm._v(_vm._s(item.file.name))]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "remove",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.removeFile(index)
+                              }
+                            }
+                          },
+                          [_vm._v("\n                    ×\n                ")]
+                        )
+                      ])
+                    : _vm._e()
                 ])
               }),
               _vm._v(" "),
@@ -41710,7 +42372,14 @@ var render = function() {
                 _c("input", {
                   attrs: {
                     name:
-                      "step" + _vm.stepId + _vm.prefix + "[" + index + "][]",
+                      "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[" +
+                      _vm.name +
+                      "][files][" +
+                      index +
+                      "][]",
                     type: "file",
                     accept: _vm.accept,
                     multiple: ""
@@ -41745,7 +42414,27 @@ var render = function() {
             [_vm._v("\n            Обзор\n        ")]
           )
         ]
-      )
+      ),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "out-of-screen",
+        attrs: {
+          name:
+            "step" + _vm.stepId + _vm.prefix + "[" + _vm.name + "][counter]",
+          type: "text",
+          "data-label": _vm.label
+        },
+        domProps: { value: _vm.attachedFilesCount }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: {
+          name:
+            "step" + _vm.stepId + _vm.prefix + "[" + _vm.name + "][removed]",
+          type: "hidden"
+        },
+        domProps: { value: _vm.removedIndexes }
+      })
     ],
     2
   )
@@ -41788,7 +42477,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][ER]",
-                type: "text"
+                type: "text",
+                "data-label": "ER"
               }
             })
           ]),
@@ -41804,7 +42494,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Hb]",
-                type: "text"
+                type: "text",
+                "data-label": "Hb"
               }
             })
           ]),
@@ -41820,7 +42511,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Le]",
-                type: "text"
+                type: "text",
+                "data-label": "Le"
               }
             })
           ]),
@@ -41836,7 +42528,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Tr]",
-                type: "text"
+                type: "text",
+                "data-label": "Tr"
               }
             })
           ]),
@@ -41852,7 +42545,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][СОЭ]",
-                type: "text"
+                type: "text",
+                "data-label": "СОЭ"
               }
             })
           ]),
@@ -41868,7 +42562,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][п/я]",
-                type: "text"
+                type: "text",
+                "data-label": "п/я"
               }
             })
           ]),
@@ -41884,7 +42579,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][с/я]",
-                type: "text"
+                type: "text",
+                "data-label": "с/я"
               }
             })
           ]),
@@ -41900,7 +42596,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Ly]",
-                type: "text"
+                type: "text",
+                "data-label": "Ly"
               }
             })
           ]),
@@ -41916,7 +42613,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Mo]",
-                type: "text"
+                type: "text",
+                "data-label": "Mo"
               }
             })
           ]),
@@ -41932,7 +42630,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Bas]",
-                type: "text"
+                type: "text",
+                "data-label": "Bas"
               }
             })
           ]),
@@ -41948,7 +42647,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Эо]",
-                type: "text"
+                type: "text",
+                "data-label": "Эо"
               }
             })
           ]),
@@ -41969,7 +42669,8 @@ var render = function() {
               attrs: {
                 name:
                   "step" + _vm.stepId + _vm.prefix + "[ОАК][АсАт][Значение]",
-                type: "text"
+                type: "text",
+                "data-label": "АсАт"
               }
             })
           ]),
@@ -41986,7 +42687,8 @@ var render = function() {
               attrs: {
                 name:
                   "step" + _vm.stepId + _vm.prefix + "[ОАК][АлАт][Значение]",
-                type: "text"
+                type: "text",
+                "data-label": "АлАт"
               }
             })
           ]),
@@ -42002,7 +42704,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][ЛДГ][Значение]",
-                type: "text"
+                type: "text",
+                "data-label": "ЛДГ"
               }
             })
           ]),
@@ -42022,7 +42725,8 @@ var render = function() {
                   _vm.stepId +
                   _vm.prefix +
                   "[ОАК][Скорректированный Ca2+][Значение]",
-                type: "text"
+                type: "text",
+                "data-label": "Скорректированный Ca2+"
               }
             })
           ]),
@@ -42042,7 +42746,8 @@ var render = function() {
                   _vm.stepId +
                   _vm.prefix +
                   "[ОАК][Мочевина крови][Значение]",
-                type: "text"
+                type: "text",
+                "data-label": "Мочевина крови"
               }
             })
           ]),
@@ -42062,7 +42767,8 @@ var render = function() {
                   _vm.stepId +
                   _vm.prefix +
                   "[ОАК][Креатинин крови][Значение]",
-                type: "text"
+                type: "text",
+                "data-label": "Креатинин крови"
               }
             })
           ]),
@@ -42078,7 +42784,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Миелоциты]",
-                type: "text"
+                type: "text",
+                "data-label": "Миелоциты"
               }
             })
           ]),
@@ -42094,7 +42801,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Метамиел]",
-                type: "text"
+                type: "text",
+                "data-label": "Метамиел"
               }
             })
           ]),
@@ -42112,7 +42820,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][АсАт][N]",
-                type: "text"
+                type: "text",
+                "data-label": "АсАт N"
               }
             })
           ]),
@@ -42128,7 +42837,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][АлАт][N]",
-                type: "text"
+                type: "text",
+                "data-label": "АлАт N"
               }
             })
           ]),
@@ -42144,7 +42854,8 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][ЛДГ][N]",
-                type: "text"
+                type: "text",
+                "data-label": "ЛДГ N"
               }
             })
           ]),
@@ -42164,7 +42875,8 @@ var render = function() {
                   _vm.stepId +
                   _vm.prefix +
                   "[ОАК][Скорректированный Ca2+][N]",
-                type: "text"
+                type: "text",
+                "data-label": "Скорректированный Ca2+ N"
               }
             })
           ]),
@@ -42181,7 +42893,8 @@ var render = function() {
               attrs: {
                 name:
                   "step" + _vm.stepId + _vm.prefix + "[ОАК][Мочевина крови][N]",
-                type: "text"
+                type: "text",
+                "data-label": "Мочевина крови N"
               }
             })
           ]),
@@ -42201,7 +42914,8 @@ var render = function() {
                   _vm.stepId +
                   _vm.prefix +
                   "[ОАК][Креатинин крови][N]",
-                type: "text"
+                type: "text",
+                "data-label": "Креатинин крови N"
               }
             })
           ]),
@@ -42243,25 +42957,45 @@ var render = function() {
           { staticClass: "form-item" },
           [
             _c("date-picker", {
-              attrs: {
-                "input-attr": {
-                  name:
-                    "step" +
-                    _vm.stepId +
-                    _vm.prefix +
-                    "[Обследования][" +
-                    _vm.index +
-                    "][Дата]"
-                },
-                valueType: "format",
-                placeholder: "Дата"
-              },
+              attrs: { valueType: "format", placeholder: "Дата" },
               model: {
                 value: _vm.fields["Дата"],
                 callback: function($$v) {
                   _vm.$set(_vm.fields, "Дата", $$v)
                 },
                 expression: "fields['Дата']"
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Дата"],
+                  expression: "fields['Дата']"
+                }
+              ],
+              staticClass: "out-of-screen",
+              attrs: {
+                name:
+                  "step" +
+                  _vm.stepId +
+                  _vm.prefix +
+                  "[Обследования][" +
+                  _vm.index +
+                  "][Дата]",
+                type: "text",
+                "data-label": "Дата"
+              },
+              domProps: { value: _vm.fields["Дата"] },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.fields, "Дата", $event.target.value)
+                }
               }
             })
           ],
@@ -42295,6 +43029,7 @@ var render = function() {
                   expression: "fields['Тип']"
                 }
               ],
+              staticClass: "out-of-screen",
               attrs: {
                 name:
                   "step" +
@@ -42303,7 +43038,8 @@ var render = function() {
                   "[Обследования][" +
                   _vm.index +
                   "][Тип]",
-                type: "hidden"
+                type: "text",
+                "data-label": "Тип"
               },
               domProps: { value: _vm.fields["Тип"] },
               on: {
@@ -42351,6 +43087,7 @@ var render = function() {
                   expression: "fields['Объект']"
                 }
               ],
+              staticClass: "out-of-screen",
               attrs: {
                 name:
                   "step" +
@@ -42359,7 +43096,8 @@ var render = function() {
                   "[Обследования][" +
                   _vm.index +
                   "][Объект]",
-                type: "hidden"
+                type: "text",
+                "data-label": "Объект"
               },
               domProps: { value: _vm.fields["Объект"] },
               on: {
@@ -42437,192 +43175,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GroupOfTests.vue?vue&type=template&id=0e1b0d14&scoped=true&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GroupOfTests.vue?vue&type=template&id=0e1b0d14&scoped=true& ***!
-  \************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-6", staticStyle: { "padding-right": "30px" } },
-        [
-          _c("div", { staticClass: "form-group" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col col-label" }, [
-                _vm._v(
-                  "\n                        Рентгенография органов грудной клетки\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col col-date" },
-                [
-                  _c("date-picker", {
-                    attrs: {
-                      "input-attr": {
-                        name:
-                          "step" +
-                          _vm.stepId +
-                          _vm.prefix +
-                          "[Рентгенография][Дата]"
-                      },
-                      valueType: "format",
-                      placeholder: "Дата"
-                    }
-                  })
-                ],
-                1
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("textarea", {
-              staticClass: "form-control",
-              attrs: {
-                name:
-                  "step" +
-                  _vm.stepId +
-                  _vm.prefix +
-                  "[Рентгенография][Описание и заключение]",
-                rows: "5",
-                placeholder: "Описание и заключение"
-              }
-            })
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-6", staticStyle: { "padding-left": "30px" } },
-        [
-          _c("div", { staticClass: "form-group" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col col-label" }, [
-                _vm._v("Сцинтиграфия костей")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col col-date" },
-                [
-                  _c("date-picker", {
-                    attrs: {
-                      "input-attr": {
-                        name:
-                          "step" +
-                          _vm.stepId +
-                          _vm.prefix +
-                          "[Сцинтиграфия][Дата]"
-                      },
-                      valueType: "format",
-                      placeholder: "Дата"
-                    }
-                  })
-                ],
-                1
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("textarea", {
-              staticClass: "form-control",
-              attrs: {
-                name:
-                  "step" +
-                  _vm.stepId +
-                  _vm.prefix +
-                  "[Сцинтиграфия][Описание и заключение]",
-                rows: "5",
-                placeholder: "Описание и заключение"
-              }
-            })
-          ])
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-auto col-label" }, [
-          _vm._v(
-            "\n                Проведена диагностическая биопсия\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              name: "step" + _vm.stepId + _vm.prefix + "[Биопсия][Объект]",
-              type: "text",
-              placeholder: "Наименование органа/ткани"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col col-date" },
-          [
-            _c("date-picker", {
-              attrs: {
-                "input-attr": {
-                  name: "step" + _vm.stepId + _vm.prefix + "[Биопсия][Дата]"
-                },
-                valueType: "format",
-                placeholder: "Дата"
-              }
-            })
-          ],
-          1
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: {
-          name:
-            "step" +
-            _vm.stepId +
-            _vm.prefix +
-            "[Биопсия][Описание и заключение]",
-          rows: "3",
-          placeholder: "Описание и заключение"
-        }
-      })
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/OtherDisease.vue?vue&type=template&id=64026637&scoped=true&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/OtherDisease.vue?vue&type=template&id=64026637&scoped=true& ***!
-  \************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Disease.vue?vue&type=template&id=c290063e&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Disease.vue?vue&type=template&id=c290063e&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -42715,6 +43271,387 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Errors.vue?vue&type=template&id=45dd1fd4&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Errors.vue?vue&type=template&id=45dd1fd4&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.errors.length
+      ? _c("div", { staticClass: "alert alert-warning" }, [
+          _vm._v("\n        Не заполнено: "),
+          _c("b", [_vm._v(_vm._s(_vm.errors.join(", ")))])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GroupOfTests.vue?vue&type=template&id=0e1b0d14&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GroupOfTests.vue?vue&type=template&id=0e1b0d14&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-6", staticStyle: { "padding-right": "30px" } },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col col-label" }, [
+                _vm._v(
+                  "\n                        Рентгенография органов грудной клетки\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col col-date" },
+                [
+                  _c("date-picker", {
+                    attrs: { valueType: "format", placeholder: "Дата" },
+                    model: {
+                      value: _vm.fields["Рентгенография"]["Дата"],
+                      callback: function($$v) {
+                        _vm.$set(_vm.fields["Рентгенография"], "Дата", $$v)
+                      },
+                      expression: "fields['Рентгенография']['Дата']"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields["Рентгенография"]["Дата"],
+                        expression: "fields['Рентгенография']['Дата']"
+                      }
+                    ],
+                    staticClass: "out-of-screen",
+                    attrs: {
+                      name:
+                        "step" +
+                        _vm.stepId +
+                        _vm.prefix +
+                        "[Рентгенография][Дата]",
+                      type: "text",
+                      "data-label": "Дата"
+                    },
+                    domProps: { value: _vm.fields["Рентгенография"]["Дата"] },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.fields["Рентгенография"],
+                          "Дата",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("textarea", {
+              staticClass: "form-control",
+              attrs: {
+                name:
+                  "step" +
+                  _vm.stepId +
+                  _vm.prefix +
+                  "[Рентгенография][Описание и заключение]",
+                rows: "5",
+                placeholder: "Описание и заключение"
+              }
+            })
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-6", staticStyle: { "padding-left": "30px" } },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col col-label" }, [
+                _vm._v("Сцинтиграфия костей")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col col-date" },
+                [
+                  _c("date-picker", {
+                    attrs: { valueType: "format", placeholder: "Дата" },
+                    model: {
+                      value: _vm.fields["Сцинтиграфия"]["Дата"],
+                      callback: function($$v) {
+                        _vm.$set(_vm.fields["Сцинтиграфия"], "Дата", $$v)
+                      },
+                      expression: "fields['Сцинтиграфия']['Дата']"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields["Сцинтиграфия"]["Дата"],
+                        expression: "fields['Сцинтиграфия']['Дата']"
+                      }
+                    ],
+                    staticClass: "out-of-screen",
+                    attrs: {
+                      name:
+                        "step" +
+                        _vm.stepId +
+                        _vm.prefix +
+                        "[Сцинтиграфия][Дата]",
+                      type: "text",
+                      "data-label": "Дата"
+                    },
+                    domProps: { value: _vm.fields["Сцинтиграфия"]["Дата"] },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.fields["Сцинтиграфия"],
+                          "Дата",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("textarea", {
+              staticClass: "form-control",
+              attrs: {
+                name:
+                  "step" +
+                  _vm.stepId +
+                  _vm.prefix +
+                  "[Сцинтиграфия][Описание и заключение]",
+                rows: "5",
+                placeholder: "Описание и заключение"
+              }
+            })
+          ])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-auto col-label" }, [
+          _vm._v(
+            "\n                Проведена диагностическая биопсия\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "step" + _vm.stepId + _vm.prefix + "[Биопсия][Объект]",
+              type: "text",
+              placeholder: "Наименование органа/ткани"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col col-date" },
+          [
+            _c("date-picker", {
+              attrs: { valueType: "format", placeholder: "Дата" },
+              model: {
+                value: _vm.fields["Сцинтиграфия"]["Дата"],
+                callback: function($$v) {
+                  _vm.$set(_vm.fields["Сцинтиграфия"], "Дата", $$v)
+                },
+                expression: "fields['Сцинтиграфия']['Дата']"
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields["Биопсия"]["Дата"],
+                  expression: "fields['Биопсия']['Дата']"
+                }
+              ],
+              staticClass: "out-of-screen",
+              attrs: {
+                name: "step" + _vm.stepId + _vm.prefix + "[Биопсия][Дата]",
+                type: "text",
+                "data-label": "Дата"
+              },
+              domProps: { value: _vm.fields["Биопсия"]["Дата"] },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.fields["Биопсия"], "Дата", $event.target.value)
+                }
+              }
+            })
+          ],
+          1
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: {
+          name:
+            "step" +
+            _vm.stepId +
+            _vm.prefix +
+            "[Биопсия][Описание и заключение]",
+          rows: "3",
+          placeholder: "Описание и заключение"
+        }
+      })
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/NavButtons.vue?vue&type=template&id=ffe682ee&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/NavButtons.vue?vue&type=template&id=ffe682ee&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "form-group" }, [
+    _vm.stepId > 1
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary btn-control",
+            attrs: { type: "button" },
+            on: { click: _vm.prev }
+          },
+          [_vm._v("\n        Назад\n    ")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.stepId < 5
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-control",
+            attrs: { type: "button" },
+            on: { click: _vm.next }
+          },
+          [_vm._v("\n        Продолжить\n    ")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.stepId === 5
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-control",
+            attrs: { type: "submit" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.submit($event)
+              }
+            }
+          },
+          [_vm._v("\n        Сохранить в pdf\n    ")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.env === "testing"
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-light btn-control",
+            attrs: { type: "button" },
+            on: { click: _vm.fill }
+          },
+          [_vm._v("\n        Заполнить\n    ")]
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step1.vue?vue&type=template&id=1feb510a&scoped=true&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Step1.vue?vue&type=template&id=1feb510a&scoped=true& ***!
@@ -42731,54 +43668,78 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", [
-    _c("h2", [_vm._v("Сведения о враче")]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "row" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-2" },
-          [
-            _c("date-picker", {
-              attrs: {
-                "input-attr": { name: "step1[Дата]" },
-                valueType: "format",
-                placeholder: "Дата"
-              }
-            })
-          ],
-          1
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _vm._m(2),
-    _vm._v(" "),
-    _vm._m(3),
-    _vm._v(" "),
-    _c("div", { staticClass: "p-3" }),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary btn-control",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              return _vm.next()
-            }
-          }
-        },
-        [_vm._v("\n            Продолжить\n        ")]
-      )
-    ])
-  ])
+  return _c(
+    "section",
+    [
+      _c("h2", [_vm._v("Сведения о враче")]),
+      _vm._v(" "),
+      _c("Errors", { attrs: { errors: _vm.errors } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-2" },
+            [
+              _c("date-picker", {
+                attrs: { valueType: "format", placeholder: "Дата" },
+                model: {
+                  value: _vm.fields["Дата"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "Дата", $$v)
+                  },
+                  expression: "fields['Дата']"
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Дата"],
+                    expression: "fields['Дата']"
+                  }
+                ],
+                staticClass: "out-of-screen",
+                attrs: {
+                  name: "step1[Дата]",
+                  type: "text",
+                  "data-label": "Дата"
+                },
+                domProps: { value: _vm.fields["Дата"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.fields, "Дата", $event.target.value)
+                  }
+                }
+              })
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-3" }),
+      _vm._v(" "),
+      _c("NavButtons", {
+        attrs: { env: _vm.env, stepId: _vm.stepId },
+        on: { prev: _vm.prev, next: _vm.next, fill: _vm.fill }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -42913,6 +43874,8 @@ var render = function() {
     [
       _c("h2", [_vm._v("Описание случая")]),
       _vm._v(" "),
+      _c("Errors", { attrs: { errors: _vm.errors } }),
+      _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("div", { staticClass: "row" }, [
           _c(
@@ -42939,7 +43902,12 @@ var render = function() {
                     expression: "fields['Пол']"
                   }
                 ],
-                attrs: { name: "step2[Пол]", type: "hidden" },
+                staticClass: "out-of-screen",
+                attrs: {
+                  name: "step2[Пол]",
+                  type: "text",
+                  "data-label": "Пол"
+                },
                 domProps: { value: _vm.fields["Пол"] },
                 on: {
                   input: function($event) {
@@ -42962,10 +43930,42 @@ var render = function() {
             [
               _c("date-picker", {
                 attrs: {
-                  "input-attr": { name: "step2[Год рождения]" },
                   valueType: "format",
                   type: "year",
                   placeholder: "Год рождения"
+                },
+                model: {
+                  value: _vm.fields["Год рождения"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "Год рождения", $$v)
+                  },
+                  expression: "fields['Год рождения']"
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Год рождения"],
+                    expression: "fields['Год рождения']"
+                  }
+                ],
+                staticClass: "out-of-screen",
+                attrs: {
+                  name: "step2[Год рождения]",
+                  type: "text",
+                  "data-label": "Год рождения"
+                },
+                domProps: { value: _vm.fields["Год рождения"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.fields, "Год рождения", $event.target.value)
+                  }
                 }
               })
             ],
@@ -43022,7 +44022,12 @@ var render = function() {
                     expression: "fields['Болен с месяца']"
                   }
                 ],
-                attrs: { name: "step2[Болен с месяца]", type: "hidden" },
+                staticClass: "out-of-screen",
+                attrs: {
+                  name: "step2[Болен с месяца]",
+                  type: "text",
+                  "data-label": "Болен с месяца"
+                },
                 domProps: { value: _vm.fields["Болен с месяца"] },
                 on: {
                   input: function($event) {
@@ -43043,10 +44048,42 @@ var render = function() {
             [
               _c("date-picker", {
                 attrs: {
-                  "input-attr": { name: "step2[Болен с года]" },
                   valueType: "format",
                   type: "year",
                   placeholder: "Год"
+                },
+                model: {
+                  value: _vm.fields["Болен с года"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "Болен с года", $$v)
+                  },
+                  expression: "fields['Болен с года']"
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields["Болен с года"],
+                    expression: "fields['Болен с года']"
+                  }
+                ],
+                staticClass: "out-of-screen",
+                attrs: {
+                  name: "step2[Болен с года]",
+                  type: "text",
+                  "data-label": "Болен с года"
+                },
+                domProps: { value: _vm.fields["Болен с года"] },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.fields, "Болен с года", $event.target.value)
+                  }
                 }
               })
             ],
@@ -43109,35 +44146,10 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.prev()
-              }
-            }
-          },
-          [_vm._v("\n            Назад\n        ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.next()
-              }
-            }
-          },
-          [_vm._v("\n            Продолжить\n        ")]
-        )
-      ])
+      _c("NavButtons", {
+        attrs: { env: _vm.env, stepId: _vm.stepId },
+        on: { prev: _vm.prev, next: _vm.next, fill: _vm.fill }
+      })
     ],
     1
   )
@@ -43213,6 +44225,8 @@ var render = function() {
         _vm._v("Критерии оценки прогноза ПКР по D. Heng*")
       ]),
       _vm._v(" "),
+      _c("Errors", { attrs: { errors: _vm.errors } }),
+      _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "p-3" }),
@@ -43248,7 +44262,12 @@ var render = function() {
                     expression: "fields['Прогноз по MSKCC']"
                   }
                 ],
-                attrs: { name: "step3[Прогноз по MSKCC]", type: "hidden" },
+                staticClass: "out-of-screen",
+                attrs: {
+                  name: "step3[Прогноз по MSKCC]",
+                  type: "text",
+                  "data-label": "Прогноз по MSKCC"
+                },
                 domProps: { value: _vm.fields["Прогноз по MSKCC"] },
                 on: {
                   input: function($event) {
@@ -43274,7 +44293,7 @@ var render = function() {
       _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
       _c("AttachFile", {
-        attrs: { stepId: 3, prefix: "[files]", accept: "image/*", count: 5 }
+        attrs: { stepId: 3, name: "images", max: 5, accept: "image/*" }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "p-3" }),
@@ -43283,35 +44302,10 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.prev()
-              }
-            }
-          },
-          [_vm._v("\n            Назад\n        ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.next()
-              }
-            }
-          },
-          [_vm._v("\n            Продолжить\n        ")]
-        )
-      ])
+      _c("NavButtons", {
+        attrs: { env: _vm.env, stepId: _vm.stepId },
+        on: { prev: _vm.prev, next: _vm.next, fill: _vm.fill }
+      })
     ],
     1
   )
@@ -43347,7 +44341,8 @@ var staticRenderFns = [
             attrs: {
               name: "step3[Индекс Карновского (Шкала ECOG)]",
               type: "text",
-              placeholder: "+/-"
+              placeholder: "+/-",
+              "data-label": "Индекс Карновского (Шкала ECOG)"
             }
           })
         ])
@@ -43364,7 +44359,8 @@ var staticRenderFns = [
             attrs: {
               name: "step3[Время от постановки диагноза до начала терапии]",
               type: "text",
-              placeholder: "+/-"
+              placeholder: "+/-",
+              "data-label": "Время от постановки диагноза до начала терапии"
             }
           })
         ])
@@ -43381,7 +44377,8 @@ var staticRenderFns = [
             attrs: {
               name: "step3[Уровень гемоглобина]",
               type: "text",
-              placeholder: "+/-"
+              placeholder: "+/-",
+              "data-label": "Уровень гемоглобина"
             }
           })
         ])
@@ -43398,7 +44395,8 @@ var staticRenderFns = [
             attrs: {
               name: "step3[Уровень лактатдегидрогеназы]",
               type: "text",
-              placeholder: "+/-"
+              placeholder: "+/-",
+              "data-label": "Уровень лактатдегидрогеназы"
             }
           })
         ])
@@ -43415,7 +44413,8 @@ var staticRenderFns = [
             attrs: {
               name: "step3[Уровень скорректированного кальция]",
               type: "text",
-              placeholder: "+/-"
+              placeholder: "+/-",
+              "data-label": "Уровень скорректированного кальция"
             }
           })
         ])
@@ -43432,7 +44431,8 @@ var staticRenderFns = [
             attrs: {
               name: "step3[Уровень нейтрофилов]",
               type: "text",
-              placeholder: "+/-"
+              placeholder: "+/-",
+              "data-label": "Уровень нейтрофилов"
             }
           })
         ])
@@ -43449,7 +44449,8 @@ var staticRenderFns = [
             attrs: {
               name: "step3[Уровень тромбоцитов]",
               type: "text",
-              placeholder: "+/-"
+              placeholder: "+/-",
+              "data-label": "Уровень тромбоцитов"
             }
           })
         ])
@@ -43475,7 +44476,8 @@ var staticRenderFns = [
             attrs: {
               name: "step3[Наличие метастатических очагов]",
               type: "text",
-              placeholder: "+/-"
+              placeholder: "+/-",
+              "data-label": "Наличие метастатических очагов"
             }
           })
         ])
@@ -43532,6 +44534,8 @@ var render = function() {
   return _c(
     "section",
     [
+      _c("Errors", { attrs: { errors: _vm.errors } }),
+      _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("div", { staticClass: "row align-items-center" }, [
           _c("div", { staticClass: "col-auto" }, [
@@ -43567,7 +44571,12 @@ var render = function() {
                     expression: "fields['Проведена операция']"
                   }
                 ],
-                attrs: { name: "step4[Проведена операция]", type: "hidden" },
+                staticClass: "out-of-screen",
+                attrs: {
+                  name: "step4[Проведена операция]",
+                  type: "text",
+                  "data-label": "Проведена операция"
+                },
                 domProps: { value: _vm.fields["Проведена операция"] },
                 on: {
                   input: function($event) {
@@ -43621,9 +44630,11 @@ var render = function() {
                           expression: "fields['Нефрэктомия']['Вид']"
                         }
                       ],
+                      staticClass: "out-of-screen",
                       attrs: {
                         name: "step4[Нефрэктомия][Вид]",
-                        type: "hidden"
+                        type: "text",
+                        "data-label": "Вид нефрэктомии"
                       },
                       domProps: { value: _vm.fields["Нефрэктомия"]["Вид"] },
                       on: {
@@ -43672,9 +44683,11 @@ var render = function() {
                           expression: "fields['Нефрэктомия']['Способ']"
                         }
                       ],
+                      staticClass: "out-of-screen",
                       attrs: {
                         name: "step4[Нефрэктомия][Способ]",
-                        type: "hidden"
+                        type: "text",
+                        "data-label": "Cпособ нефрэктомии"
                       },
                       domProps: { value: _vm.fields["Нефрэктомия"]["Способ"] },
                       on: {
@@ -43699,17 +44712,43 @@ var render = function() {
                   { staticClass: "col-2" },
                   [
                     _c("date-picker", {
-                      attrs: {
-                        "input-attr": { name: "step4[Нефрэктомия][Дата]" },
-                        valueType: "format",
-                        placeholder: "Дата"
-                      },
+                      attrs: { valueType: "format", placeholder: "Дата" },
                       model: {
                         value: _vm.fields["Нефрэктомия"]["Дата"],
                         callback: function($$v) {
                           _vm.$set(_vm.fields["Нефрэктомия"], "Дата", $$v)
                         },
                         expression: "fields['Нефрэктомия']['Дата']"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fields["Нефрэктомия"]["Дата"],
+                          expression: "fields['Нефрэктомия']['Дата']"
+                        }
+                      ],
+                      staticClass: "out-of-screen",
+                      attrs: {
+                        name: "step4[Нефрэктомия][Дата]",
+                        type: "text",
+                        "data-label": "Дата"
+                      },
+                      domProps: { value: _vm.fields["Нефрэктомия"]["Дата"] },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.fields["Нефрэктомия"],
+                            "Дата",
+                            $event.target.value
+                          )
+                        }
                       }
                     })
                   ],
@@ -43721,7 +44760,7 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c("label", [
                 _vm._v(
-                  "Выполнена биобсия операционного материала. Проведено\n                гистологическое исследование:"
+                  "Выполнена биопсия операционного материала. Проведено\n                гистологическое исследование:"
                 )
               ]),
               _vm._v(" "),
@@ -43770,7 +44809,7 @@ var render = function() {
             disease,
             index
           ) {
-            return _c("OtherDisease", {
+            return _c("Disease", {
               key: disease.uid,
               attrs: { stepId: 4, index: index, disease: disease },
               on: {
@@ -43805,35 +44844,10 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.prev()
-              }
-            }
-          },
-          [_vm._v("\n            Назад\n        ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.next()
-              }
-            }
-          },
-          [_vm._v("\n            Продолжить\n        ")]
-        )
-      ])
+      _c("NavButtons", {
+        attrs: { env: _vm.env, stepId: _vm.stepId },
+        on: { prev: _vm.prev, next: _vm.next, fill: _vm.fill }
+      })
     ],
     2
   )
@@ -43901,12 +44915,14 @@ var render = function() {
     [
       _c("h2", [_vm._v("Терапия")]),
       _vm._v(" "),
+      _c("Errors", { attrs: { errors: _vm.errors } }),
+      _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
         _vm._l(_vm.fields["Линии терапии"], function(therapy, index) {
-          return _c("TherapyLine", {
+          return _c("Therapy", {
             key: therapy.uid,
             attrs: { stepId: 5, index: index, therapy: therapy },
             on: {
@@ -43950,32 +44966,39 @@ var render = function() {
         [
           _vm._m(2),
           _vm._v(" "),
-          _vm._l(_vm.copyrightOptions, function(option, index) {
-            return _c("div", { staticClass: "form-check" }, [
-              _c("input", {
-                staticClass: "form-check-input",
-                attrs: {
-                  name: "step5[Копирайт][]",
-                  type: "checkbox",
-                  id: "copyright" + index
-                },
-                domProps: { value: option }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "form-check-label",
-                  attrs: { for: "copyright" + index }
-                },
-                [
-                  _vm._v(
-                    "\n                " + _vm._s(option) + "\n            "
-                  )
-                ]
-              )
-            ])
-          })
+          _vm._l(
+            [
+              "третьими лицам",
+              "только лично автором",
+              "доступен для ознакомления другим специалистам"
+            ],
+            function(option, index) {
+              return _c("div", { key: index, staticClass: "form-check" }, [
+                _c("input", {
+                  staticClass: "form-check-input",
+                  attrs: {
+                    name: "step5[Копирайт][]",
+                    type: "checkbox",
+                    id: "copyright" + index
+                  },
+                  domProps: { value: option }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "copyright" + index }
+                  },
+                  [
+                    _vm._v(
+                      "\n                " + _vm._s(option) + "\n            "
+                    )
+                  ]
+                )
+              ])
+            }
+          )
         ],
         2
       ),
@@ -43985,39 +45008,24 @@ var render = function() {
       _c("AttachFile", {
         attrs: {
           stepId: 5,
-          count: 1,
-          prefix: "[sounds]",
-          accept: "audio/*",
-          label: "Прикрепить звуковой файл"
+          name: "sounds",
+          max: 1,
+          label: "Прикрепить звуковой файл",
+          accept: "audio/*"
         }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary btn-control",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.prev()
-              }
-            }
-          },
-          [_vm._v("\n            Назад\n        ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-control",
-            attrs: { type: "submit" }
-          },
-          [_vm._v("\n            Сохранить в pdf\n        ")]
-        )
-      ])
+      _c("NavButtons", {
+        attrs: { env: _vm.env, stepId: _vm.stepId },
+        on: {
+          prev: _vm.prev,
+          next: _vm.next,
+          fill: _vm.fill,
+          submit: _vm.submit
+        }
+      })
     ],
     1
   )
@@ -44038,7 +45046,11 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-1" }, [
           _c("input", {
             staticClass: "form-control",
-            attrs: { name: "step5[Лечение начато через]", type: "text" }
+            attrs: {
+              name: "step5[Лечение начато через]",
+              type: "text",
+              "data-label": "Лечение начато через"
+            }
           })
         ]),
         _vm._v(" "),
@@ -44082,10 +45094,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=template&id=d6782f3c&scoped=true&":
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=template&id=d6782f3c&scoped=true& ***!
-  \***********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=template&id=1f66394e&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=template&id=1f66394e&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -44165,6 +45177,7 @@ var render = function() {
                     expression: "fields['Препарат']"
                   }
                 ],
+                staticClass: "out-of-screen",
                 attrs: {
                   name:
                     "step" +
@@ -44172,7 +45185,8 @@ var render = function() {
                     "[Линии терапии][" +
                     _vm.index +
                     "][Препарат]",
-                  type: "hidden"
+                  type: "text",
+                  "data-label": "Препарат"
                 },
                 domProps: { value: _vm.fields["Препарат"] },
                 on: {
@@ -44258,6 +45272,7 @@ var render = function() {
                     expression: "fields['Изменение состояния']"
                   }
                 ],
+                staticClass: "out-of-screen",
                 attrs: {
                   name:
                     "step" +
@@ -44265,7 +45280,8 @@ var render = function() {
                     "[Линии терапии][" +
                     _vm.index +
                     "][Изменение состояния]",
-                  type: "hidden"
+                  type: "text",
+                  "data-label": "Изменение состояния"
                 },
                 domProps: { value: _vm.fields["Изменение состояния"] },
                 on: {
@@ -44325,6 +45341,7 @@ var render = function() {
                           expression: "fields['Ухудшение связано с']"
                         }
                       ],
+                      staticClass: "out-of-screen",
                       attrs: {
                         name:
                           "step" +
@@ -44332,7 +45349,7 @@ var render = function() {
                           "[Линии терапии][" +
                           _vm.index +
                           "][Ухудшение связано с]",
-                        type: "hidden"
+                        type: "text"
                       },
                       domProps: { value: _vm.fields["Ухудшение связано с"] },
                       on: {
@@ -44441,6 +45458,7 @@ var render = function() {
                             expression: "fields['Принято решение о']"
                           }
                         ],
+                        staticClass: "out-of-screen",
                         attrs: {
                           name:
                             "step" +
@@ -44448,7 +45466,7 @@ var render = function() {
                             "[Линии терапии][" +
                             _vm.index +
                             "][Принято решение о]",
-                          type: "hidden"
+                          type: "text"
                         },
                         domProps: { value: _vm.fields["Принято решение о"] },
                         on: {
@@ -44601,6 +45619,7 @@ var render = function() {
                                 expression: "fields['Лечение было']"
                               }
                             ],
+                            staticClass: "out-of-screen",
                             attrs: {
                               name:
                                 "step" +
@@ -44608,7 +45627,7 @@ var render = function() {
                                 "[Линии терапии][" +
                                 _vm.index +
                                 "][Лечение было]",
-                              type: "hidden"
+                              type: "text"
                             },
                             domProps: { value: _vm.fields["Лечение было"] },
                             on: {
@@ -44642,10 +45661,10 @@ var render = function() {
                                     rawName: "v-model",
                                     value:
                                       _vm.fields["Лечение возобновлено"][
-                                        "через недель"
+                                        "через"
                                       ],
                                     expression:
-                                      "\n                                fields['Лечение возобновлено'][\n                                    'через недель'\n                                ]\n                            "
+                                      "\n                                fields['Лечение возобновлено']['через']\n                            "
                                   }
                                 ],
                                 staticClass: "form-control",
@@ -44655,14 +45674,12 @@ var render = function() {
                                     _vm.stepId +
                                     "[Линии терапии][" +
                                     _vm.index +
-                                    "][Лечение возобновлено][через недель]",
+                                    "][Лечение возобновлено][через]",
                                   type: "text"
                                 },
                                 domProps: {
                                   value:
-                                    _vm.fields["Лечение возобновлено"][
-                                      "через недель"
-                                    ]
+                                    _vm.fields["Лечение возобновлено"]["через"]
                                 },
                                 on: {
                                   input: function($event) {
@@ -44671,7 +45688,7 @@ var render = function() {
                                     }
                                     _vm.$set(
                                       _vm.fields["Лечение возобновлено"],
-                                      "через недель",
+                                      "через",
                                       $event.target.value
                                     )
                                   }
@@ -44824,9 +45841,10 @@ var render = function() {
       _c("AttachFile", {
         attrs: {
           stepId: 5,
-          prefix: "[Линии терапии][" + _vm.index + "][files]",
-          accept: "image/*",
-          count: 5
+          prefix: "[Линии терапии][" + _vm.index + "]",
+          name: "images",
+          max: 5,
+          accept: "image/*"
         }
       }),
       _vm._v(" "),
@@ -44867,11 +45885,11 @@ var render = function() {
                   placeholder: "Выбрать из списка"
                 },
                 model: {
-                  value: _vm.fields["Константировано наличие"],
+                  value: _vm.fields["Констатировано наличие"],
                   callback: function($$v) {
-                    _vm.$set(_vm.fields, "Константировано наличие", $$v)
+                    _vm.$set(_vm.fields, "Констатировано наличие", $$v)
                   },
-                  expression: "fields['Константировано наличие']"
+                  expression: "fields['Констатировано наличие']"
                 }
               }),
               _vm._v(" "),
@@ -44880,18 +45898,22 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.fields["Константировано наличие"],
-                    expression: "fields['Константировано наличие']"
+                    value: _vm.fields["Констатировано наличие"],
+                    expression: "fields['Констатировано наличие']"
                   }
                 ],
+                staticClass: "out-of-screen",
                 attrs: {
                   name:
                     "step" +
                     _vm.stepId +
-                    "[Линии терапии][Константировано наличие]",
-                  type: "hidden"
+                    "[Линии терапии][" +
+                    _vm.index +
+                    "][Констатировано наличие]",
+                  type: "text",
+                  "data-label": "Констатировано наличие"
                 },
-                domProps: { value: _vm.fields["Константировано наличие"] },
+                domProps: { value: _vm.fields["Констатировано наличие"] },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
@@ -44899,7 +45921,7 @@ var render = function() {
                     }
                     _vm.$set(
                       _vm.fields,
-                      "Константировано наличие",
+                      "Констатировано наличие",
                       $event.target.value
                     )
                   }
@@ -45147,22 +46169,22 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TherapyLine.vue?vue&type=style&index=0&id=d6782f3c&scoped=true&lang=css&");
+var content = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Therapy.vue?vue&type=style&index=0&id=1f66394e&scoped=true&lang=css&");
 if(content.__esModule) content = content.default;
 if(typeof content === 'string') content = [[module.id, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(/*! !../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
-var update = add("d86dff7e", content, false, {});
+var update = add("36b09676", content, false, {});
 // Hot Module Replacement
 if(false) {}
 
