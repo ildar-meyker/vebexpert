@@ -22,6 +22,10 @@
                 padding: 0;
             }
 
+            .spacer-2 {
+                height: 2pt;
+            }
+
 
             .text-center {
                 text-align: center;
@@ -332,11 +336,12 @@
 
             <p>
                 <b>Сопутствующие заболевания:</b>
-                <ol>
-                    @foreach ($step4['Сопутствующие заболевания'] as $disease)
-                        <li>{{ $disease['Диагноз'] }}</li>
-                    @endforeach
-                </ol>
+            </p>
+
+            <p>
+                @foreach ($step4['Сопутствующие заболевания'] as $disease)
+                    - {{ $disease['Диагноз'] }}<br>
+                @endforeach
             </p>
         </div>
         {{-- /page 4 --}}
@@ -352,7 +357,7 @@
 
             @foreach ($step5['Линии терапии'] as $index => $therapy)
                 <p>
-                    <br>В качестве {{ $index + 1 }}-й линии начат прием: <b>{{ $therapy['Препарат'] }}</b>.
+                    В качестве {{ $index + 1 }}-й линии начат прием: <b>{{ $therapy['Препарат'] }}</b>.
                 
                     <br>Выбор данной терапевтической опции обусловлен: 
                     
@@ -497,15 +502,17 @@
                 <p>Миелоциты {{ $therapy['ОАК']['Миелоциты'] }} %</p>
                 
                 <p>Метамиел {{ $therapy['ОАК']['Метамиел'] }} %</p>
-  
+
+                <div class="spacer-2"></div>
+
                 <p>
                     Констатировано наличие <b>{{ $therapy['Констатировано наличие']}}</b>.
                 </p>
  
             @endforeach
 
-            <div class="p-2"></div>
-            
+            <div class="spacer-2"></div>
+
             <p>
                 Комментарий: <b>{{ $step5['Комментарий'] }}</b>.
             </p>
@@ -513,11 +520,11 @@
             @if (isset($step5['Копирайт']))
                 <p>
                     Данный клинический случай может быть представлен на образовательных мероприятиях:
-                    <ul>
-                        @foreach ($step5['Копирайт'] as $copyright)
-                            <li><b>{{ $copyright }}</b></li>                          
-                        @endforeach
-                    </ul>
+                </p>
+                <p>
+                    @foreach ($step5['Копирайт'] as $copyright)
+                        - <b>{{ $copyright }}</b><br>                         
+                    @endforeach
                 </p>
             @endif
             
