@@ -119,6 +119,13 @@ h3 {
   padding-left: 30px;
 }
 
+.wrapper {
+  padding: 35px;
+  margin: 0 auto;
+  max-width: 1200px;
+  min-width: 1000px;
+}
+
 .form-item {
   margin-bottom: 0.65rem;
 }
@@ -192,4 +199,41 @@ h3 {
   position: absolute;
   top: -10px;
   right: -30px;
+}
+
+.header__logo {
+  max-width: 150px;
+}
+
+.header__button {
+  float: right;
+  display: inline-block;
+  line-height: 37px;
+  color: #000000;
+  border: 2px solid #0056d3;
+  border-radius: 30px;
+  font-weight: 400;
+  height: 40px;
+  font-size: 14px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-decoration: none;
+}
+
+.footer {
+  padding-top: 75px;
+  padding-bottom: 75px;
+  background-color: #003b79;
+}
+
+.footer__text {
+  color: #ffffff;
+  margin-top: 21px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.footer__logo {
+  max-width: 120px;
 }

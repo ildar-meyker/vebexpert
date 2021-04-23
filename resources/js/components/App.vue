@@ -71,13 +71,6 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-    padding: 35px;
-    margin: 0 auto;
-    max-width: 1200px;
-    min-width: 1000px;
-}
-
 .steps {
     position: relative;
     display: flex;
