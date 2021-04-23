@@ -11,6 +11,11 @@
                         :options="['Мужчина', 'Женщина']"
                         placeholder="Пол"
                         v-model="fields['Пол']"
+                        :class="[
+                            {
+                                error: !!errors['step2[Пол]'],
+                            },
+                        ]"
                     ></v-select>
                     <input
                         class="out-of-screen"
@@ -24,7 +29,12 @@
                     <input
                         name="step2[Инициалы]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step2[Инициалы]'],
+                            },
+                        ]"
                         placeholder="Инициалы"
                     />
                 </div>
@@ -34,6 +44,12 @@
                         type="year"
                         placeholder="Год рождения"
                         v-model="fields['Год рождения']"
+                        :input-class="[
+                            'mx-input',
+                            {
+                                error: !!errors['step2[Год рождения]'],
+                            },
+                        ]"
                     ></date-picker>
                     <input
                         name="step2[Год рождения]"
@@ -67,6 +83,11 @@
                         ]"
                         placeholder="Месяц"
                         v-model="fields['Болен с месяца']"
+                        :class="[
+                            {
+                                error: !!errors['step2[Болен с месяца]'],
+                            },
+                        ]"
                     ></v-select>
                     <input
                         class="out-of-screen"
@@ -82,6 +103,12 @@
                         type="year"
                         placeholder="Год"
                         v-model="fields['Болен с года']"
+                        :input-class="[
+                            'mx-input',
+                            {
+                                error: !!errors['step2[Болен с года]'],
+                            },
+                        ]"
                     ></date-picker>
                     <input
                         name="step2[Болен с года]"
@@ -103,7 +130,12 @@
                     <input
                         name="step2[Описание жалоб]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step2[Описание жалоб]'],
+                            },
+                        ]"
                         placeholder="Описание жалоб"
                     />
                 </div>
@@ -117,6 +149,7 @@
             </label>
             <DiagnosticTest
                 v-for="(test, index) in fields['Обследования']"
+                :errors="errors"
                 :stepId="2"
                 :index="index"
                 :test="test"
@@ -136,11 +169,11 @@
             </button>
         </div>
 
-        <GroupOfTests :stepId="2"></GroupOfTests>
+        <GroupOfTests :errors="errors" :stepId="2"></GroupOfTests>
 
         <div class="p-2"></div>
 
-        <BloodTest :stepId="2"></BloodTest>
+        <BloodTest :errors="errors" :stepId="2"></BloodTest>
 
         <div class="p-4"></div>
 
@@ -174,8 +207,8 @@ export default {
 
     data() {
         return {
+            errors: {},
             stepId: 2,
-            errors: [],
             fields: {
                 Пол: "",
                 "Год рождения": "",

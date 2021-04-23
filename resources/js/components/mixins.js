@@ -1,9 +1,7 @@
-import $ from 'jquery';
-
 export default {
     methods: {
         validate() {
-            this.errors = [];
+            this.errors = {};
 
             const self = this;
 
@@ -15,13 +13,11 @@ export default {
                     if ($(this).val()) {
                         return;
                     }
-
-                    self.errors.push(
-                        $(this).data("label") || $(this).attr("placeholder")
-                    );
+                    
+                    self.errors[$(this).attr('name')] = $(this).data("label") || $(this).attr("placeholder")
                 });
 
-            if (this.errors.length) {
+            if (!_.isEmpty(this.errors)) {
                 return false;
             }
 

@@ -23,7 +23,15 @@
                     <input
                         name="step3[Индекс Карновского (Шкала ECOG)]"
                         type="text"
-                        class="form-control text-center"
+                        :class="[
+                            'form-control',
+                            'text-center',
+                            {
+                                error: !!errors[
+                                    'step3[Индекс Карновского (Шкала ECOG)]'
+                                ],
+                            },
+                        ]"
                         placeholder="+/-"
                         data-label="Индекс Карновского (Шкала ECOG)"
                     />
@@ -36,7 +44,15 @@
                     <input
                         name="step3[Время от постановки диагноза до начала терапии]"
                         type="text"
-                        class="form-control text-center"
+                        :class="[
+                            'form-control',
+                            'text-center',
+                            {
+                                error: !!errors[
+                                    'step3[Время от постановки диагноза до начала терапии]'
+                                ],
+                            },
+                        ]"
                         placeholder="+/-"
                         data-label="Время от постановки диагноза до начала терапии"
                     />
@@ -49,7 +65,13 @@
                     <input
                         name="step3[Уровень гемоглобина]"
                         type="text"
-                        class="form-control text-center"
+                        :class="[
+                            'form-control',
+                            'text-center',
+                            {
+                                error: !!errors['step3[Уровень гемоглобина]'],
+                            },
+                        ]"
                         placeholder="+/-"
                         data-label="Уровень гемоглобина"
                     />
@@ -62,7 +84,15 @@
                     <input
                         name="step3[Уровень лактатдегидрогеназы]"
                         type="text"
-                        class="form-control text-center"
+                        :class="[
+                            'form-control',
+                            'text-center',
+                            {
+                                error: !!errors[
+                                    'step3[Уровень лактатдегидрогеназы]'
+                                ],
+                            },
+                        ]"
                         placeholder="+/-"
                         data-label="Уровень лактатдегидрогеназы"
                     />
@@ -75,7 +105,15 @@
                     <input
                         name="step3[Уровень скорректированного кальция]"
                         type="text"
-                        class="form-control text-center"
+                        :class="[
+                            'form-control',
+                            'text-center',
+                            {
+                                error: !!errors[
+                                    'step3[Уровень скорректированного кальция]'
+                                ],
+                            },
+                        ]"
                         placeholder="+/-"
                         data-label="Уровень скорректированного кальция"
                     />
@@ -88,7 +126,13 @@
                     <input
                         name="step3[Уровень нейтрофилов]"
                         type="text"
-                        class="form-control text-center"
+                        :class="[
+                            'form-control',
+                            'text-center',
+                            {
+                                error: !!errors['step3[Уровень нейтрофилов]'],
+                            },
+                        ]"
                         placeholder="+/-"
                         data-label="Уровень нейтрофилов"
                     />
@@ -101,7 +145,13 @@
                     <input
                         name="step3[Уровень тромбоцитов]"
                         type="text"
-                        class="form-control text-center"
+                        :class="[
+                            'form-control',
+                            'text-center',
+                            {
+                                error: !!errors['step3[Уровень тромбоцитов]'],
+                            },
+                        ]"
                         placeholder="+/-"
                         data-label="Уровень тромбоцитов"
                     />
@@ -113,7 +163,12 @@
                     <input
                         name="step3[Количество Meta]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step3[Количество Meta]'],
+                            },
+                        ]"
                         placeholder="Указать кол-во Meta"
                     />
                 </td>
@@ -121,7 +176,15 @@
                     <input
                         name="step3[Наличие метастатических очагов]"
                         type="text"
-                        class="form-control text-center"
+                        :class="[
+                            'form-control',
+                            'text-center',
+                            {
+                                error: !!errors[
+                                    'step3[Наличие метастатических очагов]'
+                                ],
+                            },
+                        ]"
                         placeholder="+/-"
                         data-label="Наличие метастатических очагов"
                     />
@@ -141,6 +204,11 @@
                         :options="['хороший', 'промежуточный', 'плохой']"
                         placeholder="Выбрать из списка"
                         v-model="fields['Прогноз по MSKCC']"
+                        :class="[
+                            {
+                                error: !!errors['step3[Прогноз по MSKCC]'],
+                            },
+                        ]"
                     ></v-select>
                     <input
                         name="step3[Прогноз по MSKCC]"
@@ -157,6 +225,7 @@
         <div class="p-3"></div>
 
         <AttachFile
+            :errors="errors"
             :stepId="3"
             :name="'images'"
             :max="5"
@@ -169,7 +238,12 @@
             <textarea
                 name="step3[Комментарий]"
                 rows="5"
-                class="form-control"
+                :class="[
+                    'form-control',
+                    {
+                        error: !!errors['step3[Комментарий]'],
+                    },
+                ]"
                 placeholder="Комментарий"
             ></textarea>
         </div>
@@ -200,8 +274,8 @@ export default {
 
     data() {
         return {
+            errors: {},
             stepId: 3,
-            errors: [],
             fields: {
                 "Прогноз по MSKCC": "",
             },

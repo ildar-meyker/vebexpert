@@ -10,7 +10,14 @@
                     <input
                         name="step1[Название клинического случая]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors[
+                                    'step1[Название клинического случая]'
+                                ],
+                            },
+                        ]"
                         placeholder="Название клинического случая"
                     />
                 </div>
@@ -19,6 +26,12 @@
                         valueType="format"
                         placeholder="Дата"
                         v-model="fields['Дата']"
+                        :input-class="[
+                            'mx-input',
+                            {
+                                error: !!errors['step1[Дата]'],
+                            },
+                        ]"
                     ></date-picker>
                     <input
                         name="step1[Дата]"
@@ -37,7 +50,12 @@
                     <input
                         name="step1[Фамилия]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step1[Фамилия]'],
+                            },
+                        ]"
                         placeholder="Фамилия"
                     />
                 </div>
@@ -45,7 +63,12 @@
                     <input
                         name="step1[Имя]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step1[Имя]'],
+                            },
+                        ]"
                         placeholder="Имя"
                     />
                 </div>
@@ -53,7 +76,12 @@
                     <input
                         name="step1[Отчество]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step1[Отчество]'],
+                            },
+                        ]"
                         placeholder="Отчество"
                     />
                 </div>
@@ -66,7 +94,12 @@
                     <input
                         name="step1[Должность]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step1[Должность]'],
+                            },
+                        ]"
                         placeholder="Должность"
                     />
                 </div>
@@ -74,7 +107,12 @@
                     <input
                         name="step1[Место работы]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step1[Место работы]'],
+                            },
+                        ]"
                         placeholder="Место работы"
                     />
                 </div>
@@ -82,7 +120,12 @@
                     <input
                         name="step1[Город]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step1[Город]'],
+                            },
+                        ]"
                         placeholder="Город"
                     />
                 </div>
@@ -93,7 +136,12 @@
             <textarea
                 name="step1[Комментарий]"
                 rows="5"
-                class="form-control"
+                :class="[
+                    'form-control',
+                    {
+                        error: !!errors['step1[Комментарий]'],
+                    },
+                ]"
                 placeholder="Комментарий"
             ></textarea>
         </div>
@@ -125,8 +173,8 @@ export default {
 
     data() {
         return {
+            errors: {},
             stepId: 1,
-            errors: [],
             fields: {
                 Дата: "",
             },

@@ -14,6 +14,11 @@
                         :options="['Да', 'Нет']"
                         placeholder="Да/Нет"
                         v-model="fields['Проведена операция']"
+                        :class="[
+                            {
+                                error: !!errors['step4[Проведена операция]'],
+                            },
+                        ]"
                     ></v-select>
                     <input
                         name="step4[Проведена операция]"
@@ -35,6 +40,11 @@
                             :options="['паллиативная', 'радикальная']"
                             placeholder="Выбрать из списка"
                             v-model="fields['Нефрэктомия']['Вид']"
+                            :class="[
+                                {
+                                    error: !!errors['step4[Нефрэктомия][Вид]'],
+                                },
+                            ]"
                         ></v-select>
                         <input
                             name="step4[Нефрэктомия][Вид]"
@@ -53,6 +63,13 @@
                             ]"
                             placeholder="Выбрать из списка"
                             v-model="fields['Нефрэктомия']['Способ']"
+                            :class="[
+                                {
+                                    error: !!errors[
+                                        'step4[Нефрэктомия][Способ]'
+                                    ],
+                                },
+                            ]"
                         ></v-select>
                         <input
                             name="step4[Нефрэктомия][Способ]"
@@ -67,6 +84,12 @@
                             valueType="format"
                             placeholder="Дата"
                             v-model="fields['Нефрэктомия']['Дата']"
+                            :input-class="[
+                                'mx-input',
+                                {
+                                    error: !!errors['step4[Нефрэктомия][Дата]'],
+                                },
+                            ]"
                         ></date-picker>
                         <input
                             name="step4[Нефрэктомия][Дата]"
@@ -87,7 +110,14 @@
                 <input
                     name="step4[Гистологическое исследование]"
                     type="text"
-                    class="form-control"
+                    :class="[
+                        'form-control',
+                        {
+                            error: !!errors[
+                                'step4[Гистологическое исследование]'
+                            ],
+                        },
+                    ]"
                     placeholder="Указать гистологическое исследование"
                     v-model="fields['Гистологическое исследование']"
                 />
@@ -104,7 +134,12 @@
                     <textarea
                         name="step4[Диагноз]"
                         rows="3"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step4[Диагноз]'],
+                            },
+                        ]"
                         placeholder="Описание и заключение"
                     ></textarea>
                 </div>
@@ -123,6 +158,7 @@
             <label>Сопутствующие заболевания:</label>
             <Disease
                 v-for="(disease, index) in fields['Сопутствующие заболевания']"
+                :errors="errors"
                 :stepId="4"
                 :index="index"
                 :disease="disease"
@@ -174,8 +210,8 @@ export default {
 
     data() {
         return {
+            errors: {},
             stepId: 4,
-            errors: [],
             fields: {
                 "Проведена операция": "",
                 Нефрэктомия: {

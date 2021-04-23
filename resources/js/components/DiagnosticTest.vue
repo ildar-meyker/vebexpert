@@ -7,6 +7,19 @@
                         valueType="format"
                         placeholder="Дата"
                         v-model="fields['Дата']"
+                        :input-class="[
+                            'mx-input',
+                            {
+                                error: !!errors[
+                                    'step' +
+                                        stepId +
+                                        prefix +
+                                        '[Обследования][' +
+                                        index +
+                                        '][Дата]'
+                                ],
+                            },
+                        ]"
                     ></date-picker>
                     <input
                         :name="
@@ -28,6 +41,18 @@
                         :options="['МСКТ', 'ПЭТ-КТ', 'МРТ', 'УЗИ']"
                         placeholder="Тип"
                         v-model="fields['Тип']"
+                        :class="[
+                            {
+                                error: !!errors[
+                                    'step' +
+                                        stepId +
+                                        prefix +
+                                        '[Обследования][' +
+                                        index +
+                                        '][Тип]'
+                                ],
+                            },
+                        ]"
                     ></v-select>
                     <input
                         :name="
@@ -54,6 +79,18 @@
                         ]"
                         placeholder="Объект"
                         v-model="fields['Объект']"
+                        :class="[
+                            {
+                                error: !!errors[
+                                    'step' +
+                                        stepId +
+                                        prefix +
+                                        '[Обследования][' +
+                                        index +
+                                        '][Объект]'
+                                ],
+                            },
+                        ]"
                     ></v-select>
                     <input
                         :name="
@@ -82,7 +119,19 @@
                         '][Описание и заключение]'
                     "
                     rows="5"
-                    class="form-control"
+                    :class="[
+                        'form-control',
+                        {
+                            error: !!errors[
+                                'step' +
+                                    stepId +
+                                    prefix +
+                                    '[Обследования][' +
+                                    index +
+                                    '][Описание и заключение]'
+                            ],
+                        },
+                    ]"
                     placeholder="Описание и заключение"
                     v-model="fields['Описание и заключение']"
                 ></textarea>
@@ -99,6 +148,9 @@
 <script>
 export default {
     props: {
+        errors: {
+            type: Object,
+        },
         stepId: {
             type: Number,
         },

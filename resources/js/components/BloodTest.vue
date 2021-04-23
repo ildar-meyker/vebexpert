@@ -13,7 +13,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][ER]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][ER]'
+                                    ],
+                                },
+                            ]"
                             data-label="ER"
                         />
                     </div>
@@ -26,7 +33,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][Hb]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][Hb]'
+                                    ],
+                                },
+                            ]"
                             data-label="Hb"
                         />
                     </div>
@@ -39,7 +53,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][Le]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][Le]'
+                                    ],
+                                },
+                            ]"
                             data-label="Le"
                         />
                     </div>
@@ -52,7 +73,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][Tr]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][Tr]'
+                                    ],
+                                },
+                            ]"
                             data-label="Tr"
                         />
                     </div>
@@ -65,7 +93,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][СОЭ]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][СОЭ]'
+                                    ],
+                                },
+                            ]"
                             data-label="СОЭ"
                         />
                     </div>
@@ -78,7 +113,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][п/я]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][п/я]'
+                                    ],
+                                },
+                            ]"
                             data-label="п/я"
                         />
                     </div>
@@ -91,7 +133,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][с/я]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][с/я]'
+                                    ],
+                                },
+                            ]"
                             data-label="с/я"
                         />
                     </div>
@@ -104,7 +153,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][Ly]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][Ly]'
+                                    ],
+                                },
+                            ]"
                             data-label="Ly"
                         />
                     </div>
@@ -117,7 +173,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][Mo]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][Mo]'
+                                    ],
+                                },
+                            ]"
                             data-label="Mo"
                         />
                     </div>
@@ -130,7 +193,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][Bas]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][Bas]'
+                                    ],
+                                },
+                            ]"
                             data-label="Bas"
                         />
                     </div>
@@ -143,7 +213,14 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][Эо]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' + stepId + prefix + '[ОАК][Эо]'
+                                    ],
+                                },
+                            ]"
                             data-label="Эо"
                         />
                     </div>
@@ -167,7 +244,17 @@
                                 '[ОАК][АсАт][Значение]'
                             "
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][АсАт][Значение]'
+                                    ],
+                                },
+                            ]"
                             data-label="АсАт"
                         />
                     </div>
@@ -185,7 +272,17 @@
                                 '[ОАК][АлАт][Значение]'
                             "
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][АлАт][Значение]'
+                                    ],
+                                },
+                            ]"
                             data-label="АлАт"
                         />
                     </div>
@@ -203,7 +300,17 @@
                                 '[ОАК][ЛДГ][Значение]'
                             "
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][ЛДГ][Значение]'
+                                    ],
+                                },
+                            ]"
                             data-label="ЛДГ"
                         />
                     </div>
@@ -221,7 +328,17 @@
                                 '[ОАК][Скорректированный Ca2+][Значение]'
                             "
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Скорректированный Ca2+][Значение]'
+                                    ],
+                                },
+                            ]"
                             data-label="Скорректированный Ca2+"
                         />
                     </div>
@@ -239,7 +356,17 @@
                                 '[ОАК][Мочевина крови][Значение]'
                             "
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Мочевина крови][Значение]'
+                                    ],
+                                },
+                            ]"
                             data-label="Мочевина крови"
                         />
                     </div>
@@ -257,7 +384,17 @@
                                 '[ОАК][Креатинин крови][Значение]'
                             "
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Креатинин крови][Значение]'
+                                    ],
+                                },
+                            ]"
                             data-label="Креатинин крови"
                         />
                     </div>
@@ -272,7 +409,17 @@
                                 'step' + stepId + prefix + '[ОАК][Миелоциты]'
                             "
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Миелоциты]'
+                                    ],
+                                },
+                            ]"
                             data-label="Миелоциты"
                         />
                     </div>
@@ -285,7 +432,17 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][Метамиел]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Метамиел]'
+                                    ],
+                                },
+                            ]"
                             data-label="Метамиел"
                         />
                     </div>
@@ -302,7 +459,17 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][АсАт][N]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][АсАт][N]'
+                                    ],
+                                },
+                            ]"
                             data-label="АсАт N"
                         />
                     </div>
@@ -314,7 +481,17 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][АлАт][N]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][АлАт][N]'
+                                    ],
+                                },
+                            ]"
                             data-label="АлАт N"
                         />
                     </div>
@@ -326,7 +503,17 @@
                         <input
                             :name="'step' + stepId + prefix + '[ОАК][ЛДГ][N]'"
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][ЛДГ][N]'
+                                    ],
+                                },
+                            ]"
                             data-label="ЛДГ N"
                         />
                     </div>
@@ -343,7 +530,17 @@
                                 '[ОАК][Скорректированный Ca2+][N]'
                             "
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Скорректированный Ca2+][N]'
+                                    ],
+                                },
+                            ]"
                             data-label="Скорректированный Ca2+ N"
                         />
                     </div>
@@ -360,7 +557,17 @@
                                 '[ОАК][Мочевина крови][N]'
                             "
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Мочевина крови][N]'
+                                    ],
+                                },
+                            ]"
                             data-label="Мочевина крови N"
                         />
                     </div>
@@ -377,7 +584,17 @@
                                 '[ОАК][Креатинин крови][N]'
                             "
                             type="text"
-                            class="form-control"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Креатинин крови][N]'
+                                    ],
+                                },
+                            ]"
                             data-label="Креатинин крови N"
                         />
                     </div>
@@ -392,6 +609,9 @@
 <script>
 export default {
     props: {
+        errors: {
+            type: Object,
+        },
         stepId: {
             type: Number,
         },

@@ -173,6 +173,17 @@ h3 {
   display: none;
 }
 
+.form-control.error,
+.mx-input.error,
+.v-select.error .vs__dropdown-toggle {
+  border-color: #ff5858;
+}
+
+.form-control.error:focus,
+.mx-input.error:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 171, 171, 0.5);
+}
+
 .addon {
   position: relative;
 }

@@ -14,6 +14,18 @@
                     class="form-control"
                     placeholder="Наименование заболевания"
                     v-model="fields['Диагноз']"
+                    :class="[
+                        'form-control',
+                        {
+                            error: !!errors[
+                                'step' +
+                                    stepId +
+                                    '[Сопутствующие заболевания][' +
+                                    index +
+                                    '][Диагноз]'
+                            ],
+                        },
+                    ]"
                 ></textarea>
             </div>
             <div class="col-3">
@@ -33,7 +45,20 @@
 
 <script>
 export default {
-    props: ["stepId", "index", "disease"],
+    props: {
+        errors: {
+            type: Object,
+        },
+        stepId: {
+            type: Number,
+        },
+        index: {
+            type: Number,
+        },
+        disease: {
+            type: Object,
+        },
+    },
 
     data() {
         return {

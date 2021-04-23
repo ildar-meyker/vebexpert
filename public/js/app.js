@@ -2509,8 +2509,228 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
+    errors: {
+      type: Object
+    },
     stepId: {
       type: Number
     },
@@ -2635,8 +2855,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
+    errors: {
+      type: Object
+    },
     stepId: {
       type: Number
     },
@@ -2723,8 +2995,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["stepId", "index", "disease"],
+  props: {
+    errors: {
+      type: Object
+    },
+    stepId: {
+      type: Number
+    },
+    index: {
+      type: Number
+    },
+    disease: {
+      type: Object
+    }
+  },
   data: function data() {
     return {
       fields: _.cloneDeep(this.disease)
@@ -2775,11 +3072,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     errors: {
-      type: Array
+      type: Object
     }
   },
   data: function data() {
-    return {};
+    return {
+      labels: []
+    };
+  },
+  watch: {
+    errors: function errors() {
+      this.labels = Object.values(this.errors);
+    }
   }
 });
 
@@ -2927,8 +3231,81 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
+    errors: {
+      type: Object
+    },
     stepId: {
       type: Number
     },
@@ -3163,6 +3540,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3174,8 +3599,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      errors: {},
       stepId: 1,
-      errors: [],
       fields: {
         Дата: ""
       }
@@ -3372,6 +3797,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3391,8 +3849,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      errors: {},
       stepId: 2,
-      errors: [],
       fields: {
         Пол: "",
         "Год рождения": "",
@@ -3671,6 +4129,80 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_mixins__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -3681,8 +4213,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      errors: {},
       stepId: 3,
-      errors: [],
       fields: {
         "Прогноз по MSKCC": ""
       }
@@ -3877,6 +4409,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3894,8 +4462,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      errors: {},
       stepId: 4,
-      errors: [],
       fields: {
         "Проведена операция": "",
         Нефрэктомия: {
@@ -4072,6 +4640,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4086,8 +4666,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      errors: {},
       stepId: 5,
-      errors: [],
       fields: {
         "Линии терапии": []
       }
@@ -4590,6 +5170,157 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4599,7 +5330,20 @@ __webpack_require__.r(__webpack_exports__);
     DiagnosticTest: _DiagnosticTest__WEBPACK_IMPORTED_MODULE_1__.default,
     BloodTest: _BloodTest__WEBPACK_IMPORTED_MODULE_2__.default
   },
-  props: ["stepId", "index", "therapy"],
+  props: {
+    errors: {
+      type: Object
+    },
+    stepId: {
+      type: Number
+    },
+    index: {
+      type: Number
+    },
+    therapy: {
+      type: Object
+    }
+  },
   data: function data() {
     return {
       fields: _.cloneDeep(this.therapy)
@@ -4697,16 +5441,10 @@ new vue__WEBPACK_IMPORTED_MODULE_8__.default({
   \***********************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
-window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 /***/ }),
 
@@ -4721,31 +5459,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     validate: function validate() {
-      this.errors = [];
+      this.errors = {};
       var self = this;
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name*="step' + this.stepId + '"]').filter(':visible').not('[type="file"]').each(function () {
-        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val()) {
+      $('[name*="step' + this.stepId + '"]').filter(':visible').not('[type="file"]').each(function () {
+        if ($(this).val()) {
           return;
         }
 
-        self.errors.push(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data("label") || jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr("placeholder"));
+        self.errors[$(this).attr('name')] = $(this).data("label") || $(this).attr("placeholder");
       });
 
-      if (this.errors.length) {
+      if (!_.isEmpty(this.errors)) {
         return false;
       }
 
       return true;
     },
     triggerInputEvent: function triggerInputEvent() {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name*="step' + this.stepId + '"').each(function () {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)[0].dispatchEvent(new CustomEvent("input"));
+      $('[name*="step' + this.stepId + '"').each(function () {
+        $(this)[0].dispatchEvent(new CustomEvent("input"));
       });
     },
     scrollTop: function scrollTop() {
@@ -42474,7 +43209,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][ER]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][ER]",
                 type: "text",
@@ -42491,7 +43233,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Hb]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Hb]",
                 type: "text",
@@ -42508,7 +43257,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Le]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Le]",
                 type: "text",
@@ -42525,7 +43281,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Tr]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Tr]",
                 type: "text",
@@ -42542,7 +43305,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][СОЭ]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][СОЭ]",
                 type: "text",
@@ -42559,7 +43329,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][п/я]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][п/я]",
                 type: "text",
@@ -42576,7 +43353,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][с/я]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][с/я]",
                 type: "text",
@@ -42593,7 +43377,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Ly]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Ly]",
                 type: "text",
@@ -42610,7 +43401,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Mo]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Mo]",
                 type: "text",
@@ -42627,7 +43425,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Bas]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Bas]",
                 type: "text",
@@ -42644,7 +43449,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Эо]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Эо]",
                 type: "text",
@@ -42665,7 +43477,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][АсАт][Значение]"
+                  ]
+                }
+              ],
               attrs: {
                 name:
                   "step" + _vm.stepId + _vm.prefix + "[ОАК][АсАт][Значение]",
@@ -42683,7 +43502,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][АлАт][Значение]"
+                  ]
+                }
+              ],
               attrs: {
                 name:
                   "step" + _vm.stepId + _vm.prefix + "[ОАК][АлАт][Значение]",
@@ -42701,7 +43527,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][ЛДГ][Значение]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][ЛДГ][Значение]",
                 type: "text",
@@ -42718,7 +43551,17 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[ОАК][Скорректированный Ca2+][Значение]"
+                  ]
+                }
+              ],
               attrs: {
                 name:
                   "step" +
@@ -42739,7 +43582,17 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[ОАК][Мочевина крови][Значение]"
+                  ]
+                }
+              ],
               attrs: {
                 name:
                   "step" +
@@ -42760,7 +43613,17 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[ОАК][Креатинин крови][Значение]"
+                  ]
+                }
+              ],
               attrs: {
                 name:
                   "step" +
@@ -42781,7 +43644,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Миелоциты]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Миелоциты]",
                 type: "text",
@@ -42798,7 +43668,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Метамиел]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Метамиел]",
                 type: "text",
@@ -42817,7 +43694,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][АсАт][N]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][АсАт][N]",
                 type: "text",
@@ -42834,7 +43718,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][АлАт][N]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][АлАт][N]",
                 type: "text",
@@ -42851,7 +43742,14 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][ЛДГ][N]"
+                  ]
+                }
+              ],
               attrs: {
                 name: "step" + _vm.stepId + _vm.prefix + "[ОАК][ЛДГ][N]",
                 type: "text",
@@ -42868,7 +43766,17 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[ОАК][Скорректированный Ca2+][N]"
+                  ]
+                }
+              ],
               attrs: {
                 name:
                   "step" +
@@ -42889,7 +43797,17 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[ОАК][Мочевина крови][N]"
+                  ]
+                }
+              ],
               attrs: {
                 name:
                   "step" + _vm.stepId + _vm.prefix + "[ОАК][Мочевина крови][N]",
@@ -42907,7 +43825,17 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("input", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[ОАК][Креатинин крови][N]"
+                  ]
+                }
+              ],
               attrs: {
                 name:
                   "step" +
@@ -42957,7 +43885,23 @@ var render = function() {
           { staticClass: "form-item" },
           [
             _c("date-picker", {
-              attrs: { valueType: "format", placeholder: "Дата" },
+              attrs: {
+                valueType: "format",
+                placeholder: "Дата",
+                "input-class": [
+                  "mx-input",
+                  {
+                    error: !!_vm.errors[
+                      "step" +
+                        _vm.stepId +
+                        _vm.prefix +
+                        "[Обследования][" +
+                        _vm.index +
+                        "][Дата]"
+                    ]
+                  }
+                ]
+              },
               model: {
                 value: _vm.fields["Дата"],
                 callback: function($$v) {
@@ -43007,6 +43951,18 @@ var render = function() {
           { staticClass: "form-item" },
           [
             _c("v-select", {
+              class: [
+                {
+                  error: !!_vm.errors[
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[Обследования][" +
+                      _vm.index +
+                      "][Тип]"
+                  ]
+                }
+              ],
               attrs: {
                 options: ["МСКТ", "ПЭТ-КТ", "МРТ", "УЗИ"],
                 placeholder: "Тип"
@@ -43060,6 +44016,18 @@ var render = function() {
           { staticClass: "form-item" },
           [
             _c("v-select", {
+              class: [
+                {
+                  error: !!_vm.errors[
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[Обследования][" +
+                      _vm.index +
+                      "][Объект]"
+                  ]
+                }
+              ],
               attrs: {
                 options: [
                   "головного мозга",
@@ -43124,7 +44092,19 @@ var render = function() {
               expression: "fields['Описание и заключение']"
             }
           ],
-          staticClass: "form-control",
+          class: [
+            "form-control",
+            {
+              error: !!_vm.errors[
+                "step" +
+                  _vm.stepId +
+                  _vm.prefix +
+                  "[Обследования][" +
+                  _vm.index +
+                  "][Описание и заключение]"
+              ]
+            }
+          ],
           attrs: {
             name:
               "step" +
@@ -43204,6 +44184,18 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
+          class: [
+            "form-control",
+            {
+              error: !!_vm.errors[
+                "step" +
+                  _vm.stepId +
+                  "[Сопутствующие заболевания][" +
+                  _vm.index +
+                  "][Диагноз]"
+              ]
+            }
+          ],
           attrs: {
             name:
               "step" +
@@ -43288,10 +44280,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.errors.length
+    _vm.labels.length
       ? _c("div", { staticClass: "alert alert-warning" }, [
           _vm._v("\n        Не заполнено: "),
-          _c("b", [_vm._v(_vm._s(_vm.errors.join(", ")))])
+          _c("b", [_vm._v(_vm._s(_vm.labels.join(", ")))])
         ])
       : _vm._e()
   ])
@@ -43338,7 +44330,21 @@ var render = function() {
                 { staticClass: "col col-date" },
                 [
                   _c("date-picker", {
-                    attrs: { valueType: "format", placeholder: "Дата" },
+                    attrs: {
+                      valueType: "format",
+                      placeholder: "Дата",
+                      "input-class": [
+                        "mx-input",
+                        {
+                          error: !!_vm.errors[
+                            "step" +
+                              _vm.stepId +
+                              _vm.prefix +
+                              "[Рентгенография][Дата]"
+                          ]
+                        }
+                      ]
+                    },
                     model: {
                       value: _vm.fields["Рентгенография"]["Дата"],
                       callback: function($$v) {
@@ -43389,7 +44395,17 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("textarea", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[Рентгенография][Описание и заключение]"
+                  ]
+                }
+              ],
               attrs: {
                 name:
                   "step" +
@@ -43419,7 +44435,21 @@ var render = function() {
                 { staticClass: "col col-date" },
                 [
                   _c("date-picker", {
-                    attrs: { valueType: "format", placeholder: "Дата" },
+                    attrs: {
+                      valueType: "format",
+                      placeholder: "Дата",
+                      "input-class": [
+                        "mx-input",
+                        {
+                          error: !!_vm.errors[
+                            "step" +
+                              _vm.stepId +
+                              _vm.prefix +
+                              "[Сцинтиграфия][Дата]"
+                          ]
+                        }
+                      ]
+                    },
                     model: {
                       value: _vm.fields["Сцинтиграфия"]["Дата"],
                       callback: function($$v) {
@@ -43470,7 +44500,17 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("textarea", {
-              staticClass: "form-control",
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[Сцинтиграфия][Описание и заключение]"
+                  ]
+                }
+              ],
               attrs: {
                 name:
                   "step" +
@@ -43496,7 +44536,14 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col" }, [
           _c("input", {
-            staticClass: "form-control",
+            class: [
+              "form-control",
+              {
+                error: !!_vm.errors[
+                  "step" + _vm.stepId + _vm.prefix + "[Биопсия][Объект]"
+                ]
+              }
+            ],
             attrs: {
               name: "step" + _vm.stepId + _vm.prefix + "[Биопсия][Объект]",
               type: "text",
@@ -43510,13 +44557,24 @@ var render = function() {
           { staticClass: "col col-date" },
           [
             _c("date-picker", {
-              attrs: { valueType: "format", placeholder: "Дата" },
+              attrs: {
+                valueType: "format",
+                placeholder: "Дата",
+                "input-class": [
+                  "mx-input",
+                  {
+                    error: !!_vm.errors[
+                      "step" + _vm.stepId + _vm.prefix + "[Биопсия][Дата]"
+                    ]
+                  }
+                ]
+              },
               model: {
-                value: _vm.fields["Сцинтиграфия"]["Дата"],
+                value: _vm.fields["Биопсия"]["Дата"],
                 callback: function($$v) {
-                  _vm.$set(_vm.fields["Сцинтиграфия"], "Дата", $$v)
+                  _vm.$set(_vm.fields["Биопсия"], "Дата", $$v)
                 },
-                expression: "fields['Сцинтиграфия']['Дата']"
+                expression: "fields['Биопсия']['Дата']"
               }
             }),
             _vm._v(" "),
@@ -43553,7 +44611,17 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
       _c("textarea", {
-        staticClass: "form-control",
+        class: [
+          "form-control",
+          {
+            error: !!_vm.errors[
+              "step" +
+                _vm.stepId +
+                _vm.prefix +
+                "[Биопсия][Описание и заключение]"
+            ]
+          }
+        ],
         attrs: {
           name:
             "step" +
@@ -43677,14 +44745,37 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("div", { staticClass: "row" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "col-10" }, [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step1[Название клинического случая]"]
+                }
+              ],
+              attrs: {
+                name: "step1[Название клинического случая]",
+                type: "text",
+                placeholder: "Название клинического случая"
+              }
+            })
+          ]),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "col-2" },
             [
               _c("date-picker", {
-                attrs: { valueType: "format", placeholder: "Дата" },
+                attrs: {
+                  valueType: "format",
+                  placeholder: "Дата",
+                  "input-class": [
+                    "mx-input",
+                    {
+                      error: !!_vm.errors["step1[Дата]"]
+                    }
+                  ]
+                },
                 model: {
                   value: _vm.fields["Дата"],
                   callback: function($$v) {
@@ -43725,11 +44816,121 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-4" }, [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step1[Фамилия]"]
+                }
+              ],
+              attrs: {
+                name: "step1[Фамилия]",
+                type: "text",
+                placeholder: "Фамилия"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-4" }, [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step1[Имя]"]
+                }
+              ],
+              attrs: { name: "step1[Имя]", type: "text", placeholder: "Имя" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-4" }, [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step1[Отчество]"]
+                }
+              ],
+              attrs: {
+                name: "step1[Отчество]",
+                type: "text",
+                placeholder: "Отчество"
+              }
+            })
+          ])
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-4" }, [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step1[Должность]"]
+                }
+              ],
+              attrs: {
+                name: "step1[Должность]",
+                type: "text",
+                placeholder: "Должность"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-4" }, [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step1[Место работы]"]
+                }
+              ],
+              attrs: {
+                name: "step1[Место работы]",
+                type: "text",
+                placeholder: "Место работы"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-4" }, [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step1[Город]"]
+                }
+              ],
+              attrs: {
+                name: "step1[Город]",
+                type: "text",
+                placeholder: "Город"
+              }
+            })
+          ])
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(3),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          class: [
+            "form-control",
+            {
+              error: !!_vm.errors["step1[Комментарий]"]
+            }
+          ],
+          attrs: {
+            name: "step1[Комментарий]",
+            rows: "5",
+            placeholder: "Комментарий"
+          }
+        })
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
@@ -43741,112 +44942,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-10" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          name: "step1[Название клинического случая]",
-          type: "text",
-          placeholder: "Название клинического случая"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              name: "step1[Фамилия]",
-              type: "text",
-              placeholder: "Фамилия"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { name: "step1[Имя]", type: "text", placeholder: "Имя" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              name: "step1[Отчество]",
-              type: "text",
-              placeholder: "Отчество"
-            }
-          })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              name: "step1[Должность]",
-              type: "text",
-              placeholder: "Должность"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              name: "step1[Место работы]",
-              type: "text",
-              placeholder: "Место работы"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { name: "step1[Город]", type: "text", placeholder: "Город" }
-          })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: {
-          name: "step1[Комментарий]",
-          rows: "5",
-          placeholder: "Комментарий"
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -43883,6 +44979,11 @@ var render = function() {
             { staticClass: "col" },
             [
               _c("v-select", {
+                class: [
+                  {
+                    error: !!_vm.errors["step2[Пол]"]
+                  }
+                ],
                 attrs: { options: ["Мужчина", "Женщина"], placeholder: "Пол" },
                 model: {
                   value: _vm.fields["Пол"],
@@ -43922,7 +45023,21 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "col" }, [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step2[Инициалы]"]
+                }
+              ],
+              attrs: {
+                name: "step2[Инициалы]",
+                type: "text",
+                placeholder: "Инициалы"
+              }
+            })
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -43932,7 +45047,13 @@ var render = function() {
                 attrs: {
                   valueType: "format",
                   type: "year",
-                  placeholder: "Год рождения"
+                  placeholder: "Год рождения",
+                  "input-class": [
+                    "mx-input",
+                    {
+                      error: !!_vm.errors["step2[Год рождения]"]
+                    }
+                  ]
                 },
                 model: {
                   value: _vm.fields["Год рождения"],
@@ -43987,6 +45108,11 @@ var render = function() {
             { staticClass: "col" },
             [
               _c("v-select", {
+                class: [
+                  {
+                    error: !!_vm.errors["step2[Болен с месяца]"]
+                  }
+                ],
                 attrs: {
                   options: [
                     "января",
@@ -44050,7 +45176,13 @@ var render = function() {
                 attrs: {
                   valueType: "format",
                   type: "year",
-                  placeholder: "Год"
+                  placeholder: "Год",
+                  "input-class": [
+                    "mx-input",
+                    {
+                      error: !!_vm.errors["step2[Болен с года]"]
+                    }
+                  ]
                 },
                 model: {
                   value: _vm.fields["Болен с года"],
@@ -44092,7 +45224,31 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-auto col-label" }, [
+            _vm._v(
+              "\n                когда в первые появились жалобы на\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col" }, [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step2[Описание жалоб]"]
+                }
+              ],
+              attrs: {
+                name: "step2[Описание жалоб]",
+                type: "text",
+                placeholder: "Описание жалоб"
+              }
+            })
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -44107,7 +45263,12 @@ var render = function() {
           _vm._l(_vm.fields["Обследования"], function(test, index) {
             return _c("DiagnosticTest", {
               key: test.uid,
-              attrs: { stepId: 2, index: index, test: test },
+              attrs: {
+                errors: _vm.errors,
+                stepId: 2,
+                index: index,
+                test: test
+              },
               on: {
                 remove: function($event) {
                   return _vm.removeTest(index)
@@ -44138,11 +45299,11 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("GroupOfTests", { attrs: { stepId: 2 } }),
+      _c("GroupOfTests", { attrs: { errors: _vm.errors, stepId: 2 } }),
       _vm._v(" "),
       _c("div", { staticClass: "p-2" }),
       _vm._v(" "),
-      _c("BloodTest", { attrs: { stepId: 2 } }),
+      _c("BloodTest", { attrs: { errors: _vm.errors, stepId: 2 } }),
       _vm._v(" "),
       _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
@@ -44154,48 +45315,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          name: "step2[Инициалы]",
-          type: "text",
-          placeholder: "Инициалы"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-auto col-label" }, [
-          _vm._v(
-            "\n                когда в первые появились жалобы на\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              name: "step2[Описание жалоб]",
-              type: "text",
-              placeholder: "Описание жалоб"
-            }
-          })
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -44227,7 +45347,219 @@ var render = function() {
       _vm._v(" "),
       _c("Errors", { attrs: { errors: _vm.errors } }),
       _vm._v(" "),
-      _vm._m(0),
+      _c("table", { staticClass: "heng-table" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Индекс Карновского (Шкала ECOG)")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("< 80% (> 1)")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              class: [
+                "form-control",
+                "text-center",
+                {
+                  error: !!_vm.errors["step3[Индекс Карновского (Шкала ECOG)]"]
+                }
+              ],
+              attrs: {
+                name: "step3[Индекс Карновского (Шкала ECOG)]",
+                type: "text",
+                placeholder: "+/-",
+                "data-label": "Индекс Карновского (Шкала ECOG)"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Время от постановки диагноза до начала терапии")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("менее 12 месяцев")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              class: [
+                "form-control",
+                "text-center",
+                {
+                  error: !!_vm.errors[
+                    "step3[Время от постановки диагноза до начала терапии]"
+                  ]
+                }
+              ],
+              attrs: {
+                name: "step3[Время от постановки диагноза до начала терапии]",
+                type: "text",
+                placeholder: "+/-",
+                "data-label": "Время от постановки диагноза до начала терапии"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Уровень гемоглобина")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("< нижней границы нормы")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              class: [
+                "form-control",
+                "text-center",
+                {
+                  error: !!_vm.errors["step3[Уровень гемоглобина]"]
+                }
+              ],
+              attrs: {
+                name: "step3[Уровень гемоглобина]",
+                type: "text",
+                placeholder: "+/-",
+                "data-label": "Уровень гемоглобина"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Уровень лактатдегидрогеназы")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("До 1000 Ед/л")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              class: [
+                "form-control",
+                "text-center",
+                {
+                  error: !!_vm.errors["step3[Уровень лактатдегидрогеназы]"]
+                }
+              ],
+              attrs: {
+                name: "step3[Уровень лактатдегидрогеназы]",
+                type: "text",
+                placeholder: "+/-",
+                "data-label": "Уровень лактатдегидрогеназы"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Уровень скорректированного кальция")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("> 10 мг/дл (или 2,5 ммоль/л)")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              class: [
+                "form-control",
+                "text-center",
+                {
+                  error: !!_vm.errors[
+                    "step3[Уровень скорректированного кальция]"
+                  ]
+                }
+              ],
+              attrs: {
+                name: "step3[Уровень скорректированного кальция]",
+                type: "text",
+                placeholder: "+/-",
+                "data-label": "Уровень скорректированного кальция"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Уровень нейтрофилов")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("> 6,5 х 109/л")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              class: [
+                "form-control",
+                "text-center",
+                {
+                  error: !!_vm.errors["step3[Уровень нейтрофилов]"]
+                }
+              ],
+              attrs: {
+                name: "step3[Уровень нейтрофилов]",
+                type: "text",
+                placeholder: "+/-",
+                "data-label": "Уровень нейтрофилов"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Уровень тромбоцитов")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("> 320 х 109/л")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              class: [
+                "form-control",
+                "text-center",
+                {
+                  error: !!_vm.errors["step3[Уровень тромбоцитов]"]
+                }
+              ],
+              attrs: {
+                name: "step3[Уровень тромбоцитов]",
+                type: "text",
+                placeholder: "+/-",
+                "data-label": "Уровень тромбоцитов"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("Наличие метастатических очагов")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step3[Количество Meta]"]
+                }
+              ],
+              attrs: {
+                name: "step3[Количество Meta]",
+                type: "text",
+                placeholder: "Указать кол-во Meta"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _c("input", {
+              class: [
+                "form-control",
+                "text-center",
+                {
+                  error: !!_vm.errors["step3[Наличие метастатических очагов]"]
+                }
+              ],
+              attrs: {
+                name: "step3[Наличие метастатических очагов]",
+                type: "text",
+                placeholder: "+/-",
+                "data-label": "Наличие метастатических очагов"
+              }
+            })
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
@@ -44240,6 +45572,11 @@ var render = function() {
             { staticClass: "col-3" },
             [
               _c("v-select", {
+                class: [
+                  {
+                    error: !!_vm.errors["step3[Прогноз по MSKCC]"]
+                  }
+                ],
                 attrs: {
                   options: ["хороший", "промежуточный", "плохой"],
                   placeholder: "Выбрать из списка"
@@ -44293,12 +45630,32 @@ var render = function() {
       _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
       _c("AttachFile", {
-        attrs: { stepId: 3, name: "images", max: 5, accept: "image/*" }
+        attrs: {
+          errors: _vm.errors,
+          stepId: 3,
+          name: "images",
+          max: 5,
+          accept: "image/*"
+        }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          class: [
+            "form-control",
+            {
+              error: !!_vm.errors["step3[Комментарий]"]
+            }
+          ],
+          attrs: {
+            name: "step3[Комментарий]",
+            rows: "5",
+            placeholder: "Комментарий"
+          }
+        })
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "p-4" }),
       _vm._v(" "),
@@ -44315,172 +45672,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "heng-table" }, [
-      _c("tr", [
-        _c("td", [
-          _c("div", { staticClass: "name" }, [_vm._v("Факторы риска")])
-        ]),
-        _vm._v(" "),
-        _c("td", [
-          _c("div", { staticClass: "name" }, [_vm._v("Значение показателя")])
-        ]),
-        _vm._v(" "),
-        _c("td", [
-          _c("div", { staticClass: "name" }, [_vm._v("Наличие факторов")])
-        ])
+    return _c("tr", [
+      _c("td", [_c("div", { staticClass: "name" }, [_vm._v("Факторы риска")])]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "name" }, [_vm._v("Значение показателя")])
       ]),
       _vm._v(" "),
-      _c("tr", [
-        _c("td", [_vm._v("Индекс Карновского (Шкала ECOG)")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("< 80% (> 1)")]),
-        _vm._v(" "),
-        _c("td", [
-          _c("input", {
-            staticClass: "form-control text-center",
-            attrs: {
-              name: "step3[Индекс Карновского (Шкала ECOG)]",
-              type: "text",
-              placeholder: "+/-",
-              "data-label": "Индекс Карновского (Шкала ECOG)"
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("td", [_vm._v("Время от постановки диагноза до начала терапии")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("менее 12 месяцев")]),
-        _vm._v(" "),
-        _c("td", [
-          _c("input", {
-            staticClass: "form-control text-center",
-            attrs: {
-              name: "step3[Время от постановки диагноза до начала терапии]",
-              type: "text",
-              placeholder: "+/-",
-              "data-label": "Время от постановки диагноза до начала терапии"
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("td", [_vm._v("Уровень гемоглобина")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("< нижней границы нормы")]),
-        _vm._v(" "),
-        _c("td", [
-          _c("input", {
-            staticClass: "form-control text-center",
-            attrs: {
-              name: "step3[Уровень гемоглобина]",
-              type: "text",
-              placeholder: "+/-",
-              "data-label": "Уровень гемоглобина"
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("td", [_vm._v("Уровень лактатдегидрогеназы")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("До 1000 Ед/л")]),
-        _vm._v(" "),
-        _c("td", [
-          _c("input", {
-            staticClass: "form-control text-center",
-            attrs: {
-              name: "step3[Уровень лактатдегидрогеназы]",
-              type: "text",
-              placeholder: "+/-",
-              "data-label": "Уровень лактатдегидрогеназы"
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("td", [_vm._v("Уровень скорректированного кальция")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("> 10 мг/дл (или 2,5 ммоль/л)")]),
-        _vm._v(" "),
-        _c("td", [
-          _c("input", {
-            staticClass: "form-control text-center",
-            attrs: {
-              name: "step3[Уровень скорректированного кальция]",
-              type: "text",
-              placeholder: "+/-",
-              "data-label": "Уровень скорректированного кальция"
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("td", [_vm._v("Уровень нейтрофилов")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("> 6,5 х 109/л")]),
-        _vm._v(" "),
-        _c("td", [
-          _c("input", {
-            staticClass: "form-control text-center",
-            attrs: {
-              name: "step3[Уровень нейтрофилов]",
-              type: "text",
-              placeholder: "+/-",
-              "data-label": "Уровень нейтрофилов"
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("td", [_vm._v("Уровень тромбоцитов")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("> 320 х 109/л")]),
-        _vm._v(" "),
-        _c("td", [
-          _c("input", {
-            staticClass: "form-control text-center",
-            attrs: {
-              name: "step3[Уровень тромбоцитов]",
-              type: "text",
-              placeholder: "+/-",
-              "data-label": "Уровень тромбоцитов"
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tr", [
-        _c("td", [_vm._v("Наличие метастатических очагов")]),
-        _vm._v(" "),
-        _c("td", [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              name: "step3[Количество Meta]",
-              type: "text",
-              placeholder: "Указать кол-во Meta"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("td", [
-          _c("input", {
-            staticClass: "form-control text-center",
-            attrs: {
-              name: "step3[Наличие метастатических очагов]",
-              type: "text",
-              placeholder: "+/-",
-              "data-label": "Наличие метастатических очагов"
-            }
-          })
-        ])
+      _c("td", [
+        _c("div", { staticClass: "name" }, [_vm._v("Наличие факторов")])
       ])
     ])
   },
@@ -44491,21 +45691,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-auto" }, [
       _c("b", [_vm._v("ЗАКЛЮЧЕНИЕ:")]),
       _vm._v(" В данном случае имеет место\n            ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: {
-          name: "step3[Комментарий]",
-          rows: "5",
-          placeholder: "Комментарий"
-        }
-      })
     ])
   }
 ]
@@ -44552,6 +45737,11 @@ var render = function() {
             { staticClass: "col-2" },
             [
               _c("v-select", {
+                class: [
+                  {
+                    error: !!_vm.errors["step4[Проведена операция]"]
+                  }
+                ],
                 attrs: { options: ["Да", "Нет"], placeholder: "Да/Нет" },
                 model: {
                   value: _vm.fields["Проведена операция"],
@@ -44608,6 +45798,11 @@ var render = function() {
                   { staticClass: "col-3" },
                   [
                     _c("v-select", {
+                      class: [
+                        {
+                          error: !!_vm.errors["step4[Нефрэктомия][Вид]"]
+                        }
+                      ],
                       attrs: {
                         options: ["паллиативная", "радикальная"],
                         placeholder: "Выбрать из списка"
@@ -44661,6 +45856,11 @@ var render = function() {
                   { staticClass: "col-3" },
                   [
                     _c("v-select", {
+                      class: [
+                        {
+                          error: !!_vm.errors["step4[Нефрэктомия][Способ]"]
+                        }
+                      ],
                       attrs: {
                         options: ["метастазэктомией", "без метастазэктомии"],
                         placeholder: "Выбрать из списка"
@@ -44712,7 +45912,16 @@ var render = function() {
                   { staticClass: "col-2" },
                   [
                     _c("date-picker", {
-                      attrs: { valueType: "format", placeholder: "Дата" },
+                      attrs: {
+                        valueType: "format",
+                        placeholder: "Дата",
+                        "input-class": [
+                          "mx-input",
+                          {
+                            error: !!_vm.errors["step4[Нефрэктомия][Дата]"]
+                          }
+                        ]
+                      },
                       model: {
                         value: _vm.fields["Нефрэктомия"]["Дата"],
                         callback: function($$v) {
@@ -44773,7 +45982,12 @@ var render = function() {
                     expression: "fields['Гистологическое исследование']"
                   }
                 ],
-                staticClass: "form-control",
+                class: [
+                  "form-control",
+                  {
+                    error: !!_vm.errors["step4[Гистологическое исследование]"]
+                  }
+                ],
                 attrs: {
                   name: "step4[Гистологическое исследование]",
                   type: "text",
@@ -44797,7 +46011,33 @@ var render = function() {
           ]
         : _vm._e(),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [
+          _vm._v(
+            "Таким образом, на основании данных обследования установлен\n            диагноз:"
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-8" }, [
+            _c("textarea", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step4[Диагноз]"]
+                }
+              ],
+              attrs: {
+                name: "step4[Диагноз]",
+                rows: "3",
+                placeholder: "Описание и заключение"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -44811,7 +46051,12 @@ var render = function() {
           ) {
             return _c("Disease", {
               key: disease.uid,
-              attrs: { stepId: 4, index: index, disease: disease },
+              attrs: {
+                errors: _vm.errors,
+                stepId: 4,
+                index: index,
+                disease: disease
+              },
               on: {
                 remove: function($event) {
                   return _vm.removeDisease(index)
@@ -44857,33 +46102,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [
+    return _c("div", { staticClass: "col-4" }, [
+      _c("div", { staticClass: "example" }, [
+        _c("b", [_vm._v("Пример:")]),
         _vm._v(
-          "Таким образом, на основании данных обследования установлен\n            диагноз:"
+          " Распространенный светлоклеточный рак\n                    правой почки G3. Состояние после нефрэктомии справа\n                    (ноябрь 2019.). T3b N0 M1 G3/ Промежуточный прогноз по\n                    MSKCC\n                "
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-8" }, [
-          _c("textarea", {
-            staticClass: "form-control",
-            attrs: {
-              name: "step4[Диагноз]",
-              rows: "3",
-              placeholder: "Описание и заключение"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _c("div", { staticClass: "example" }, [
-            _c("b", [_vm._v("Пример:")]),
-            _vm._v(
-              " Распространенный светлоклеточный рак\n                    правой почки G3. Состояние после нефрэктомии справа\n                    (ноябрь 2019.). T3b N0 M1 G3/ Промежуточный прогноз по\n                    MSKCC\n                "
-            )
-          ])
-        ])
       ])
     ])
   }
@@ -44917,14 +46141,47 @@ var render = function() {
       _vm._v(" "),
       _c("Errors", { attrs: { errors: _vm.errors } }),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "row align-items-center" }, [
+          _c("div", { staticClass: "col-auto" }, [
+            _vm._v(
+              "\n                Химиотерапевтическое лечение было начато через\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-1" }, [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors["step5[Лечение начато через]"]
+                }
+              ],
+              attrs: {
+                name: "step5[Лечение начато через]",
+                type: "text",
+                "data-label": "Лечение начато через"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-auto" }, [
+            _vm._v("мес. с момента постановки диагноза.")
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "div",
         _vm._l(_vm.fields["Линии терапии"], function(therapy, index) {
           return _c("Therapy", {
             key: therapy.uid,
-            attrs: { stepId: 5, index: index, therapy: therapy },
+            attrs: {
+              errors: _vm.errors,
+              stepId: 5,
+              index: index,
+              therapy: therapy
+            },
             on: {
               remove: function($event) {
                 return _vm.removeTherapy(index)
@@ -44956,7 +46213,21 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "p-2" }),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          class: [
+            "form-control",
+            {
+              error: !!_vm.errors["step5[Комментарий]"]
+            }
+          ],
+          attrs: {
+            name: "step5[Комментарий]",
+            rows: "5",
+            placeholder: "Комментарий"
+          }
+        })
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "p-2" }),
       _vm._v(" "),
@@ -44964,7 +46235,7 @@ var render = function() {
         "div",
         { staticClass: "form-group" },
         [
-          _vm._m(2),
+          _vm._m(0),
           _vm._v(" "),
           _vm._l(
             [
@@ -45007,6 +46278,7 @@ var render = function() {
       _vm._v(" "),
       _c("AttachFile", {
         attrs: {
+          errors: _vm.errors,
           stepId: 5,
           name: "sounds",
           max: 1,
@@ -45031,50 +46303,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "row align-items-center" }, [
-        _c("div", { staticClass: "col-auto" }, [
-          _vm._v(
-            "\n                Химиотерапевтическое лечение было начато через\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-1" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              name: "step5[Лечение начато через]",
-              type: "text",
-              "data-label": "Лечение начато через"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-auto" }, [
-          _vm._v("мес. с момента постановки диагноза.")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: {
-          name: "step5[Комментарий]",
-          rows: "5",
-          placeholder: "Комментарий"
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -45137,6 +46365,17 @@ var render = function() {
             { staticClass: "col-3" },
             [
               _c("v-select", {
+                class: [
+                  {
+                    error: !!_vm.errors[
+                      "step" +
+                        _vm.stepId +
+                        "[Линии терапии][" +
+                        _vm.index +
+                        "][Препарат]"
+                    ]
+                  }
+                ],
                 attrs: {
                   options: [
                     "акситиниба",
@@ -45216,7 +46455,18 @@ var render = function() {
               expression: "fields['Обоснование выбора']"
             }
           ],
-          staticClass: "form-control",
+          class: [
+            "form-control",
+            {
+              error: !!_vm.errors[
+                "step" +
+                  _vm.stepId +
+                  "[Линии терапии][" +
+                  _vm.index +
+                  "][Обоснование выбора]"
+              ]
+            }
+          ],
           attrs: {
             name:
               "step" +
@@ -45250,6 +46500,17 @@ var render = function() {
             { staticClass: "col-3" },
             [
               _c("v-select", {
+                class: [
+                  {
+                    error: !!_vm.errors[
+                      "step" +
+                        _vm.stepId +
+                        "[Линии терапии][" +
+                        _vm.index +
+                        "][Изменение состояния]"
+                    ]
+                  }
+                ],
                 attrs: {
                   options: ["улучшилось", "ухудшилось"],
                   placeholder: "Выбрать из списка"
@@ -45316,6 +46577,17 @@ var render = function() {
                   { staticClass: "col-4" },
                   [
                     _c("v-select", {
+                      class: [
+                        {
+                          error: !!_vm.errors[
+                            "step" +
+                              _vm.stepId +
+                              "[Линии терапии][" +
+                              _vm.index +
+                              "][Ухудшение связано с]"
+                          ]
+                        }
+                      ],
                       attrs: {
                         options: [
                           "развитием побочных эффектов",
@@ -45349,7 +46621,8 @@ var render = function() {
                           "[Линии терапии][" +
                           _vm.index +
                           "][Ухудшение связано с]",
-                        type: "text"
+                        type: "text",
+                        "data-label": "Ухудшение связано с"
                       },
                       domProps: { value: _vm.fields["Ухудшение связано с"] },
                       on: {
@@ -45391,7 +46664,18 @@ var render = function() {
                         expression: "fields['Побочные эффекты']"
                       }
                     ],
-                    staticClass: "form-control",
+                    class: [
+                      "form-control",
+                      {
+                        error: !!_vm.errors[
+                          "step" +
+                            _vm.stepId +
+                            "[Линии терапии][" +
+                            _vm.index +
+                            "][Побочные эффекты]"
+                        ]
+                      }
+                    ],
                     attrs: {
                       name:
                         "step" +
@@ -45433,6 +46717,17 @@ var render = function() {
                     { staticClass: "col-4" },
                     [
                       _c("v-select", {
+                        class: [
+                          {
+                            error: !!_vm.errors[
+                              "step" +
+                                _vm.stepId +
+                                "[Линии терапии][" +
+                                _vm.index +
+                                "][Принято решение о]"
+                            ]
+                          }
+                        ],
                         attrs: {
                           options: [
                             "снижении дозы препарата",
@@ -45466,7 +46761,8 @@ var render = function() {
                             "[Линии терапии][" +
                             _vm.index +
                             "][Принято решение о]",
-                          type: "text"
+                          type: "text",
+                          "data-label": "Принято решение о"
                         },
                         domProps: { value: _vm.fields["Принято решение о"] },
                         on: {
@@ -45502,7 +46798,18 @@ var render = function() {
                                   "fields['Cнижение дозы препарата']['c']"
                               }
                             ],
-                            staticClass: "form-control",
+                            class: [
+                              "form-control",
+                              {
+                                error: !!_vm.errors[
+                                  "step" +
+                                    _vm.stepId +
+                                    "[Линии терапии][" +
+                                    _vm.index +
+                                    "][Cнижение дозы препарата][c]"
+                                ]
+                              }
+                            ],
                             attrs: {
                               name:
                                 "step" +
@@ -45510,7 +46817,8 @@ var render = function() {
                                 "[Линии терапии][" +
                                 _vm.index +
                                 "][Cнижение дозы препарата][c]",
-                              type: "text"
+                              type: "text",
+                              "data-label": "c"
                             },
                             domProps: {
                               value: _vm.fields["Cнижение дозы препарата"]["c"]
@@ -45546,7 +46854,18 @@ var render = function() {
                                   "\n                                fields['Cнижение дозы препарата']['до']\n                            "
                               }
                             ],
-                            staticClass: "form-control",
+                            class: [
+                              "form-control",
+                              {
+                                error: !!_vm.errors[
+                                  "step" +
+                                    _vm.stepId +
+                                    "[Линии терапии][" +
+                                    _vm.index +
+                                    "][Cнижение дозы препарата][до]"
+                                ]
+                              }
+                            ],
                             attrs: {
                               name:
                                 "step" +
@@ -45554,7 +46873,8 @@ var render = function() {
                                 "[Линии терапии][" +
                                 _vm.index +
                                 "][Cнижение дозы препарата][до]",
-                              type: "text"
+                              type: "text",
+                              "data-label": "до"
                             },
                             domProps: {
                               value: _vm.fields["Cнижение дозы препарата"]["до"]
@@ -45597,6 +46917,17 @@ var render = function() {
                         { staticClass: "col-3" },
                         [
                           _c("v-select", {
+                            class: [
+                              {
+                                error: !!_vm.errors[
+                                  "step" +
+                                    _vm.stepId +
+                                    "[Линии терапии][" +
+                                    _vm.index +
+                                    "][Лечение было]"
+                                ]
+                              }
+                            ],
                             attrs: {
                               options: ["возобновлено", "отменено"],
                               placeholder: "Выбрать из списка"
@@ -45667,7 +46998,18 @@ var render = function() {
                                       "\n                                fields['Лечение возобновлено']['через']\n                            "
                                   }
                                 ],
-                                staticClass: "form-control",
+                                class: [
+                                  "form-control",
+                                  {
+                                    error: !!_vm.errors[
+                                      "step" +
+                                        _vm.stepId +
+                                        "[Линии терапии][" +
+                                        _vm.index +
+                                        "][Лечение возобновлено][через]"
+                                    ]
+                                  }
+                                ],
                                 attrs: {
                                   name:
                                     "step" +
@@ -45714,7 +47056,18 @@ var render = function() {
                                       "\n                                fields['Лечение возобновлено']['в дозе']\n                            "
                                   }
                                 ],
-                                staticClass: "form-control",
+                                class: [
+                                  "form-control",
+                                  {
+                                    error: !!_vm.errors[
+                                      "step" +
+                                        _vm.stepId +
+                                        "[Линии терапии][" +
+                                        _vm.index +
+                                        "][Лечение возобновлено][в дозе]"
+                                    ]
+                                  }
+                                ],
                                 attrs: {
                                   name:
                                     "step" +
@@ -45766,7 +47119,18 @@ var render = function() {
               expression: "fields['Комментарий']"
             }
           ],
-          staticClass: "form-control",
+          class: [
+            "form-control",
+            {
+              error: !!_vm.errors[
+                "step" +
+                  _vm.stepId +
+                  "[Линии терапии][" +
+                  _vm.index +
+                  "][Комментарий]"
+              ]
+            }
+          ],
           attrs: {
             name:
               "step" +
@@ -45801,6 +47165,7 @@ var render = function() {
             return _c("DiagnosticTest", {
               key: test.uid,
               attrs: {
+                errors: _vm.errors,
                 stepId: 5,
                 prefix: "[Линии терапии][" + index + "]",
                 index: index,
@@ -45840,6 +47205,7 @@ var render = function() {
       _vm._v(" "),
       _c("AttachFile", {
         attrs: {
+          errors: _vm.errors,
           stepId: 5,
           prefix: "[Линии терапии][" + _vm.index + "]",
           name: "images",
@@ -45851,13 +47217,21 @@ var render = function() {
       _c("div", { staticClass: "p-3" }),
       _vm._v(" "),
       _c("GroupOfTests", {
-        attrs: { stepId: 5, prefix: "[Линии терапии][" + _vm.index + "]" }
+        attrs: {
+          errors: _vm.errors,
+          stepId: 5,
+          prefix: "[Линии терапии][" + _vm.index + "]"
+        }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "p-2" }),
       _vm._v(" "),
       _c("BloodTest", {
-        attrs: { stepId: 5, prefix: "[Линии терапии][" + _vm.index + "]" }
+        attrs: {
+          errors: _vm.errors,
+          stepId: 5,
+          prefix: "[Линии терапии][" + _vm.index + "]"
+        }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "p-3" }),
@@ -45873,6 +47247,17 @@ var render = function() {
             { staticClass: "col-4" },
             [
               _c("v-select", {
+                class: [
+                  {
+                    error: !!_vm.errors[
+                      "step" +
+                        _vm.stepId +
+                        "[Линии терапии][" +
+                        _vm.index +
+                        "][Констатировано наличие]"
+                    ]
+                  }
+                ],
                 attrs: {
                   options: [
                     "стабилизации заболевания",

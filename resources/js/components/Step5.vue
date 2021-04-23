@@ -13,7 +13,12 @@
                     <input
                         name="step5[Лечение начато через]"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors['step5[Лечение начато через]'],
+                            },
+                        ]"
                         data-label="Лечение начато через"
                     />
                 </div>
@@ -24,6 +29,7 @@
         <div>
             <Therapy
                 v-for="(therapy, index) in fields['Линии терапии']"
+                :errors="errors"
                 :stepId="5"
                 :index="index"
                 :therapy="therapy"
@@ -52,7 +58,12 @@
         <div class="form-group">
             <textarea
                 name="step5[Комментарий]"
-                class="form-control"
+                :class="[
+                    'form-control',
+                    {
+                        error: !!errors['step5[Комментарий]'],
+                    },
+                ]"
                 rows="5"
                 placeholder="Комментарий"
             ></textarea>
@@ -93,6 +104,7 @@
         <div class="p-2"></div>
 
         <AttachFile
+            :errors="errors"
             :stepId="5"
             :name="'sounds'"
             :max="1"
@@ -130,9 +142,8 @@ export default {
 
     data() {
         return {
+            errors: {},
             stepId: 5,
-            errors: [],
-
             fields: {
                 "Линии терапии": [],
             },

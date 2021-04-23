@@ -12,6 +12,17 @@
                                 valueType="format"
                                 placeholder="Дата"
                                 v-model="fields['Рентгенография']['Дата']"
+                                :input-class="[
+                                    'mx-input',
+                                    {
+                                        error: !!errors[
+                                            'step' +
+                                                stepId +
+                                                prefix +
+                                                '[Рентгенография][Дата]'
+                                        ],
+                                    },
+                                ]"
                             ></date-picker>
                             <input
                                 :name="
@@ -37,7 +48,17 @@
                             '[Рентгенография][Описание и заключение]'
                         "
                         rows="5"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors[
+                                    'step' +
+                                        stepId +
+                                        prefix +
+                                        '[Рентгенография][Описание и заключение]'
+                                ],
+                            },
+                        ]"
                         placeholder="Описание и заключение"
                     ></textarea>
                 </div>
@@ -51,6 +72,17 @@
                                 valueType="format"
                                 placeholder="Дата"
                                 v-model="fields['Сцинтиграфия']['Дата']"
+                                :input-class="[
+                                    'mx-input',
+                                    {
+                                        error: !!errors[
+                                            'step' +
+                                                stepId +
+                                                prefix +
+                                                '[Сцинтиграфия][Дата]'
+                                        ],
+                                    },
+                                ]"
                             ></date-picker>
                             <input
                                 :name="
@@ -76,7 +108,17 @@
                             '[Сцинтиграфия][Описание и заключение]'
                         "
                         rows="5"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors[
+                                    'step' +
+                                        stepId +
+                                        prefix +
+                                        '[Сцинтиграфия][Описание и заключение]'
+                                ],
+                            },
+                        ]"
                         placeholder="Описание и заключение"
                     ></textarea>
                 </div>
@@ -92,7 +134,17 @@
                     <input
                         :name="'step' + stepId + prefix + '[Биопсия][Объект]'"
                         type="text"
-                        class="form-control"
+                        :class="[
+                            'form-control',
+                            {
+                                error: !!errors[
+                                    'step' +
+                                        stepId +
+                                        prefix +
+                                        '[Биопсия][Объект]'
+                                ],
+                            },
+                        ]"
                         placeholder="Наименование органа/ткани"
                     />
                 </div>
@@ -100,7 +152,15 @@
                     <date-picker
                         valueType="format"
                         placeholder="Дата"
-                        v-model="fields['Сцинтиграфия']['Дата']"
+                        v-model="fields['Биопсия']['Дата']"
+                        :input-class="[
+                            'mx-input',
+                            {
+                                error: !!errors[
+                                    'step' + stepId + prefix + '[Биопсия][Дата]'
+                                ],
+                            },
+                        ]"
                     ></date-picker>
                     <input
                         :name="'step' + stepId + prefix + '[Биопсия][Дата]'"
@@ -122,7 +182,17 @@
                     '[Биопсия][Описание и заключение]'
                 "
                 rows="3"
-                class="form-control"
+                :class="[
+                    'form-control',
+                    {
+                        error: !!errors[
+                            'step' +
+                                stepId +
+                                prefix +
+                                '[Биопсия][Описание и заключение]'
+                        ],
+                    },
+                ]"
                 placeholder="Описание и заключение"
             ></textarea>
         </div>
@@ -132,6 +202,9 @@
 <script>
 export default {
     props: {
+        errors: {
+            type: Object,
+        },
         stepId: {
             type: Number,
         },

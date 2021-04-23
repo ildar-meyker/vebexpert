@@ -33,6 +33,17 @@
                         ]"
                         placeholder="Выбрать из списка"
                         v-model="fields['Препарат']"
+                        :class="[
+                            {
+                                error: !!errors[
+                                    'step' +
+                                        stepId +
+                                        '[Линии терапии][' +
+                                        index +
+                                        '][Препарат]'
+                                ],
+                            },
+                        ]"
                     ></v-select>
                     <input
                         :name="
@@ -62,7 +73,18 @@
                     '][Обоснование выбора]'
                 "
                 type="text"
-                class="form-control"
+                :class="[
+                    'form-control',
+                    {
+                        error: !!errors[
+                            'step' +
+                                stepId +
+                                '[Линии терапии][' +
+                                index +
+                                '][Обоснование выбора]'
+                        ],
+                    },
+                ]"
                 placeholder="Обоснование выбора"
                 v-model="fields['Обоснование выбора']"
             />
@@ -76,6 +98,17 @@
                         :options="['улучшилось', 'ухудшилось']"
                         placeholder="Выбрать из списка"
                         v-model="fields['Изменение состояния']"
+                        :class="[
+                            {
+                                error: !!errors[
+                                    'step' +
+                                        stepId +
+                                        '[Линии терапии][' +
+                                        index +
+                                        '][Изменение состояния]'
+                                ],
+                            },
+                        ]"
                     ></v-select>
                     <input
                         :name="
@@ -106,6 +139,17 @@
                             ]"
                             placeholder="Выбрать из списка"
                             v-model="fields['Ухудшение связано с']"
+                            :class="[
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            '[Линии терапии][' +
+                                            index +
+                                            '][Ухудшение связано с]'
+                                    ],
+                                },
+                            ]"
                         ></v-select>
                         <input
                             :name="
@@ -118,6 +162,7 @@
                             type="text"
                             class="out-of-screen"
                             v-model="fields['Ухудшение связано с']"
+                            data-label="Ухудшение связано с"
                         />
                     </div>
                     <div
@@ -148,7 +193,18 @@
                         '][Побочные эффекты]'
                     "
                     type="text"
-                    class="form-control"
+                    :class="[
+                        'form-control',
+                        {
+                            error: !!errors[
+                                'step' +
+                                    stepId +
+                                    '[Линии терапии][' +
+                                    index +
+                                    '][Побочные эффекты]'
+                            ],
+                        },
+                    ]"
                     placeholder="Описание побочных эффектов"
                     v-model="fields['Побочные эффекты']"
                 />
@@ -165,6 +221,17 @@
                             ]"
                             placeholder="Выбрать из списка"
                             v-model="fields['Принято решение о']"
+                            :class="[
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            '[Линии терапии][' +
+                                            index +
+                                            '][Принято решение о]'
+                                    ],
+                                },
+                            ]"
                         ></v-select>
                         <input
                             :name="
@@ -177,6 +244,7 @@
                             type="text"
                             class="out-of-screen"
                             v-model="fields['Принято решение о']"
+                            data-label="Принято решение о"
                         />
                     </div>
                     <template
@@ -196,8 +264,20 @@
                                     '][Cнижение дозы препарата][c]'
                                 "
                                 type="text"
-                                class="form-control"
+                                :class="[
+                                    'form-control',
+                                    {
+                                        error: !!errors[
+                                            'step' +
+                                                stepId +
+                                                '[Линии терапии][' +
+                                                index +
+                                                '][Cнижение дозы препарата][c]'
+                                        ],
+                                    },
+                                ]"
                                 v-model="fields['Cнижение дозы препарата']['c']"
+                                data-label="c"
                             />
                         </div>
                         <div class="col-auto">мг. до</div>
@@ -211,10 +291,22 @@
                                     '][Cнижение дозы препарата][до]'
                                 "
                                 type="text"
-                                class="form-control"
+                                :class="[
+                                    'form-control',
+                                    {
+                                        error: !!errors[
+                                            'step' +
+                                                stepId +
+                                                '[Линии терапии][' +
+                                                index +
+                                                '][Cнижение дозы препарата][до]'
+                                        ],
+                                    },
+                                ]"
                                 v-model="
                                     fields['Cнижение дозы препарата']['до']
                                 "
+                                data-label="до"
                             />
                         </div>
                         <div class="col-auto">мг.</div>
@@ -235,6 +327,17 @@
                             :options="['возобновлено', 'отменено']"
                             placeholder="Выбрать из списка"
                             v-model="fields['Лечение было']"
+                            :class="[
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            '[Линии терапии][' +
+                                            index +
+                                            '][Лечение было]'
+                                    ],
+                                },
+                            ]"
                         ></v-select>
                         <input
                             :name="
@@ -262,7 +365,18 @@
                                     '][Лечение возобновлено][через]'
                                 "
                                 type="text"
-                                class="form-control"
+                                :class="[
+                                    'form-control',
+                                    {
+                                        error: !!errors[
+                                            'step' +
+                                                stepId +
+                                                '[Линии терапии][' +
+                                                index +
+                                                '][Лечение возобновлено][через]'
+                                        ],
+                                    },
+                                ]"
                                 v-model="
                                     fields['Лечение возобновлено']['через']
                                 "
@@ -279,7 +393,18 @@
                                     '][Лечение возобновлено][в дозе]'
                                 "
                                 type="text"
-                                class="form-control"
+                                :class="[
+                                    'form-control',
+                                    {
+                                        error: !!errors[
+                                            'step' +
+                                                stepId +
+                                                '[Линии терапии][' +
+                                                index +
+                                                '][Лечение возобновлено][в дозе]'
+                                        ],
+                                    },
+                                ]"
                                 v-model="
                                     fields['Лечение возобновлено']['в дозе']
                                 "
@@ -300,7 +425,18 @@
                     index +
                     '][Комментарий]'
                 "
-                class="form-control"
+                :class="[
+                    'form-control',
+                    {
+                        error: !!errors[
+                            'step' +
+                                stepId +
+                                '[Линии терапии][' +
+                                index +
+                                '][Комментарий]'
+                        ],
+                    },
+                ]"
                 rows="5"
                 placeholder="Комментарий"
                 v-model="fields['Комментарий']"
@@ -311,6 +447,7 @@
             <label>При проведении контрольного обследования выявлено:</label>
             <DiagnosticTest
                 v-for="(test, index) in fields['Обследования']"
+                :errors="errors"
                 :stepId="5"
                 :prefix="'[Линии терапии][' + index + ']'"
                 :index="index"
@@ -334,6 +471,7 @@
         <div class="p-3"></div>
 
         <AttachFile
+            :errors="errors"
             :stepId="5"
             :prefix="'[Линии терапии][' + index + ']'"
             :name="'images'"
@@ -344,6 +482,7 @@
         <div class="p-3"></div>
 
         <GroupOfTests
+            :errors="errors"
             :stepId="5"
             :prefix="'[Линии терапии][' + index + ']'"
         ></GroupOfTests>
@@ -351,6 +490,7 @@
         <div class="p-2"></div>
 
         <BloodTest
+            :errors="errors"
             :stepId="5"
             :prefix="'[Линии терапии][' + index + ']'"
         ></BloodTest>
@@ -372,6 +512,17 @@
                         ]"
                         placeholder="Выбрать из списка"
                         v-model="fields['Констатировано наличие']"
+                        :class="[
+                            {
+                                error: !!errors[
+                                    'step' +
+                                        stepId +
+                                        '[Линии терапии][' +
+                                        index +
+                                        '][Констатировано наличие]'
+                                ],
+                            },
+                        ]"
                     ></v-select>
                     <input
                         :name="
@@ -405,8 +556,20 @@ import BloodTest from "./BloodTest";
 export default {
     components: { GroupOfTests, DiagnosticTest, BloodTest },
 
-    props: ["stepId", "index", "therapy"],
-
+    props: {
+        errors: {
+            type: Object,
+        },
+        stepId: {
+            type: Number,
+        },
+        index: {
+            type: Number,
+        },
+        therapy: {
+            type: Object,
+        },
+    },
     data() {
         return {
             fields: _.cloneDeep(this.therapy),
