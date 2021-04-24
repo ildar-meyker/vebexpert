@@ -1,7 +1,6 @@
 require('./bootstrap');
 
 
-import "bootstrap";
 import Vue from 'vue';
 import vSelect from 'vue-select';
 import DatePicker from "vue2-datepicker";
@@ -23,3 +22,4 @@ new Vue({
     el: '#app',
     components: { App }
 });
+

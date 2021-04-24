@@ -50,7 +50,7 @@ export default {
         return {
             steps: [1, 2, 3, 4, 5],
             currentStep: 1,
-            env: "testing",
+            env: process.env.NODE_ENV,
 
             fields: {},
         };

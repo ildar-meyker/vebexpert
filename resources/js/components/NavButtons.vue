@@ -30,7 +30,7 @@
         <button
             type="button"
             class="btn btn-light btn-control"
-            v-if="env === 'testing'"
+            v-if="env === 'development'"
             @click="fill"
         >
             Заполнить
