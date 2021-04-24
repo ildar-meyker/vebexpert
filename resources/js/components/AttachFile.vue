@@ -57,6 +57,15 @@
             </button>
         </div>
 
+        <div
+            class="invalid-feedback d-block"
+            v-if="
+                !!errors['step' + stepId + prefix + '[' + name + '][counter]']
+            "
+        >
+            Не выбраны файлы
+        </div>
+
         <input
             :name="'step' + stepId + prefix + '[' + name + '][counter]'"
             type="text"
@@ -76,6 +85,9 @@
 <script>
 export default {
     props: {
+        errors: {
+            type: Object,
+        },
         stepId: {
             type: Number,
         },

@@ -446,15 +446,15 @@
         <div class="form-group">
             <label>При проведении контрольного обследования выявлено:</label>
             <DiagnosticTest
-                v-for="(test, index) in fields['Обследования']"
+                v-for="(test, testIndex) in fields['Обследования']"
                 :errors="errors"
                 :stepId="5"
                 :prefix="'[Линии терапии][' + index + ']'"
-                :index="index"
+                :index="testIndex"
                 :test="test"
                 :key="test.uid"
-                @remove="removeTest(index)"
-                @update="updateTest(index, $event)"
+                @remove="removeTest(testIndex)"
+                @update="updateTest(testIndex, $event)"
             ></DiagnosticTest>
         </div>
 

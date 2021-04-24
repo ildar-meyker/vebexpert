@@ -2009,8 +2009,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
+    errors: {
+      type: Object
+    },
     stepId: {
       type: Number
     },
@@ -43151,6 +43163,14 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
+      !!_vm.errors[
+        "step" + _vm.stepId + _vm.prefix + "[" + _vm.name + "][counter]"
+      ]
+        ? _c("div", { staticClass: "invalid-feedback d-block" }, [
+            _vm._v("\n        Не выбраны файлы\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c("input", {
         staticClass: "out-of-screen",
         attrs: {
@@ -47161,22 +47181,22 @@ var render = function() {
             _vm._v("При проведении контрольного обследования выявлено:")
           ]),
           _vm._v(" "),
-          _vm._l(_vm.fields["Обследования"], function(test, index) {
+          _vm._l(_vm.fields["Обследования"], function(test, testIndex) {
             return _c("DiagnosticTest", {
               key: test.uid,
               attrs: {
                 errors: _vm.errors,
                 stepId: 5,
-                prefix: "[Линии терапии][" + index + "]",
-                index: index,
+                prefix: "[Линии терапии][" + _vm.index + "]",
+                index: testIndex,
                 test: test
               },
               on: {
                 remove: function($event) {
-                  return _vm.removeTest(index)
+                  return _vm.removeTest(testIndex)
                 },
                 update: function($event) {
-                  return _vm.updateTest(index, $event)
+                  return _vm.updateTest(testIndex, $event)
                 }
               }
             })
