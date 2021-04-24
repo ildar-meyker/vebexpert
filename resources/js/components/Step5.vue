@@ -106,7 +106,7 @@
         <AttachFile
             :errors="errors"
             :stepId="5"
-            :name="'sounds'"
+            :name="'audios'"
             :max="1"
             :label="'Прикрепить звуковой файл'"
             :accept="'audio/*'"

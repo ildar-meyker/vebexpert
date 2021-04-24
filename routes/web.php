@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CreatePdfController;
+use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +19,4 @@ Route::get('/', function () {
 });
 
 
-Route::post('/create-pdf', [CreatePdfController::class, 'index']);
+Route::post('/create-pdf', [PdfController::class, 'index']);
