@@ -905,6 +905,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     errors: {
@@ -2099,6 +2154,8 @@ __webpack_require__.r(__webpack_exports__);
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Мочевина крови][N]"]').val(_.random(1.2, 5.6).toFixed(2));
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Креатинин крови][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Креатинин крови][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Общий белок][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Общий белок][N]"]').val(_.random(1.2, 5.6).toFixed(2));
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Миелоциты]"]').val(_.random(1.2, 5.6).toFixed(2));
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="step2[ОАК][Метамиел]"]').val(_.random(1.2, 5.6).toFixed(2));
         this.triggerInputEvent();
@@ -2931,6 +2988,8 @@ __webpack_require__.r(__webpack_exports__);
         $('[name="step5[Линии терапии][0][ОАК][Мочевина крови][N]"]').val(_.random(1.2, 5.6).toFixed(2));
         $('[name="step5[Линии терапии][0][ОАК][Креатинин крови][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
         $('[name="step5[Линии терапии][0][ОАК][Креатинин крови][N]"]').val(_.random(1.2, 5.6).toFixed(2));
+        $('[name="step5[Линии терапии][0][ОАК][Общий белок][Значение]"]').val(_.random(1.2, 5.6).toFixed(2));
+        $('[name="step5[Линии терапии][0][ОАК][Общий белок][N]"]').val(_.random(1.2, 5.6).toFixed(2));
         $('[name="step5[Линии терапии][0][ОАК][Миелоциты]"]').val(_.random(1.2, 5.6).toFixed(2));
         $('[name="step5[Линии терапии][0][ОАК][Метамиел]"]').val(_.random(1.2, 5.6).toFixed(2));
         $('[name="step5[Линии терапии][0][Констатировано наличие]').val("частичного ответа");
@@ -34392,6 +34451,54 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", [_vm._v("%")])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("div", { staticClass: "blood-110" }, [_vm._v("Миелоциты")]),
+          _vm._v(" "),
+          _c("div", [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Миелоциты]"
+                  ]
+                }
+              ],
+              attrs: {
+                name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Миелоциты]",
+                type: "text",
+                "data-label": "Миелоциты"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", [_vm._v("%")])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("div", { staticClass: "blood-110" }, [_vm._v("Метамиел")]),
+          _vm._v(" "),
+          _c("div", [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Метамиел]"
+                  ]
+                }
+              ],
+              attrs: {
+                name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Метамиел]",
+                type: "text",
+                "data-label": "Метамиел"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", [_vm._v("%")])
         ])
       ]),
       _vm._v(" "),
@@ -34566,7 +34673,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", [
-          _c("div", [_vm._v("Миелоциты")]),
+          _c("div", [_vm._v("Общий белок")]),
           _vm._v(" "),
           _c("div", [
             _c("input", {
@@ -34574,43 +34681,26 @@ var render = function() {
                 "form-control",
                 {
                   error: !!_vm.errors[
-                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Миелоциты]"
+                    "step" +
+                      _vm.stepId +
+                      _vm.prefix +
+                      "[ОАК][Общий белок][Значение]"
                   ]
                 }
               ],
               attrs: {
-                name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Миелоциты]",
+                name:
+                  "step" +
+                  _vm.stepId +
+                  _vm.prefix +
+                  "[ОАК][Общий белок][Значение]",
                 type: "text",
-                "data-label": "Миелоциты"
+                "data-label": "Общий белок"
               }
             })
           ]),
           _vm._v(" "),
-          _c("div", [_vm._v("%")])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("div", [_vm._v("Метамиел")]),
-          _vm._v(" "),
-          _c("div", [
-            _c("input", {
-              class: [
-                "form-control",
-                {
-                  error: !!_vm.errors[
-                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Метамиел]"
-                  ]
-                }
-              ],
-              attrs: {
-                name: "step" + _vm.stepId + _vm.prefix + "[ОАК][Метамиел]",
-                type: "text",
-                "data-label": "Метамиел"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", [_vm._v("%")])
+          _c("div", [_vm._v("г/л")])
         ])
       ]),
       _vm._v(" "),
@@ -34770,6 +34860,31 @@ var render = function() {
                   "[ОАК][Креатинин крови][N]",
                 type: "text",
                 "data-label": "Креатинин крови N"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", [_vm._v("Eд/л)")])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("div", [_vm._v("(N =")]),
+          _vm._v(" "),
+          _c("div", [
+            _c("input", {
+              class: [
+                "form-control",
+                {
+                  error: !!_vm.errors[
+                    "step" + _vm.stepId + _vm.prefix + "[ОАК][Общий белок][N]"
+                  ]
+                }
+              ],
+              attrs: {
+                name:
+                  "step" + _vm.stepId + _vm.prefix + "[ОАК][Общий белок][N]",
+                type: "text",
+                "data-label": "Общий белок N"
               }
             })
           ]),

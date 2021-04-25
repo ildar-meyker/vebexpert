@@ -226,6 +226,54 @@
                     </div>
                     <div>%</div>
                 </div>
+
+                <div>
+                    <div class="blood-110">Миелоциты</div>
+                    <div>
+                        <input
+                            :name="
+                                'step' + stepId + prefix + '[ОАК][Миелоциты]'
+                            "
+                            type="text"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Миелоциты]'
+                                    ],
+                                },
+                            ]"
+                            data-label="Миелоциты"
+                        />
+                    </div>
+                    <div>%</div>
+                </div>
+
+                <div>
+                    <div class="blood-110">Метамиел</div>
+                    <div>
+                        <input
+                            :name="'step' + stepId + prefix + '[ОАК][Метамиел]'"
+                            type="text"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Метамиел]'
+                                    ],
+                                },
+                            ]"
+                            data-label="Метамиел"
+                        />
+                    </div>
+                    <div>%</div>
+                </div>
             </div>
             <!-- /col 1 -->
 
@@ -402,11 +450,14 @@
                 </div>
 
                 <div>
-                    <div>Миелоциты</div>
+                    <div>Общий белок</div>
                     <div>
                         <input
                             :name="
-                                'step' + stepId + prefix + '[ОАК][Миелоциты]'
+                                'step' +
+                                stepId +
+                                prefix +
+                                '[ОАК][Общий белок][Значение]'
                             "
                             type="text"
                             :class="[
@@ -416,37 +467,14 @@
                                         'step' +
                                             stepId +
                                             prefix +
-                                            '[ОАК][Миелоциты]'
+                                            '[ОАК][Общий белок][Значение]'
                                     ],
                                 },
                             ]"
-                            data-label="Миелоциты"
+                            data-label="Общий белок"
                         />
                     </div>
-                    <div>%</div>
-                </div>
-
-                <div>
-                    <div>Метамиел</div>
-                    <div>
-                        <input
-                            :name="'step' + stepId + prefix + '[ОАК][Метамиел]'"
-                            type="text"
-                            :class="[
-                                'form-control',
-                                {
-                                    error: !!errors[
-                                        'step' +
-                                            stepId +
-                                            prefix +
-                                            '[ОАК][Метамиел]'
-                                    ],
-                                },
-                            ]"
-                            data-label="Метамиел"
-                        />
-                    </div>
-                    <div>%</div>
+                    <div>г/л</div>
                 </div>
             </div>
             <!-- /col-2 -->
@@ -596,6 +624,33 @@
                                 },
                             ]"
                             data-label="Креатинин крови N"
+                        />
+                    </div>
+                    <div>Eд/л)</div>
+                </div>
+                <div>
+                    <div>(N =</div>
+                    <div>
+                        <input
+                            :name="
+                                'step' +
+                                stepId +
+                                prefix +
+                                '[ОАК][Общий белок][N]'
+                            "
+                            type="text"
+                            :class="[
+                                'form-control',
+                                {
+                                    error: !!errors[
+                                        'step' +
+                                            stepId +
+                                            prefix +
+                                            '[ОАК][Общий белок][N]'
+                                    ],
+                                },
+                            ]"
+                            data-label="Общий белок N"
                         />
                     </div>
                     <div>Eд/л)</div>

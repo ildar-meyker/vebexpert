@@ -323,6 +323,12 @@ export default {
                 $('[name="step2[ОАК][Креатинин крови][N]"]').val(
                     _.random(1.2, 5.6).toFixed(2)
                 );
+                $('[name="step2[ОАК][Общий белок][Значение]"]').val(
+                    _.random(1.2, 5.6).toFixed(2)
+                );
+                $('[name="step2[ОАК][Общий белок][N]"]').val(
+                    _.random(1.2, 5.6).toFixed(2)
+                );
                 $('[name="step2[ОАК][Миелоциты]"]').val(
                     _.random(1.2, 5.6).toFixed(2)
                 );

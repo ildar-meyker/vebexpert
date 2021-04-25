@@ -76,6 +76,10 @@ class PdfController extends Controller
                 );
 
             foreach ($step5_audios as $audio) {
+                if ($audio === "") {
+                    continue;
+                }
+
                 $message->attachData(
                     $audio->get(),
                     $audio->getClientOriginalName(),

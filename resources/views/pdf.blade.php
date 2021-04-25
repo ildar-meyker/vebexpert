@@ -4,12 +4,20 @@
         <meta charset="utf-8">
 
         <style>
+
+            @page {
+                margin: 0;
+            }
+
             body { 
+                padding: 1cm;
+                background: #dfeffe;
                 font-family: DejaVu Sans;
                 font-size: 10pt;
                 line-height: 1.5;
             }
 
+         
             h3 {
                 margin-bottom: 1.5em;
                 font-size: 12pt;
@@ -51,7 +59,7 @@
             }
 
             .page1__author {
-                max-width: 50%;
+                max-width: 70%;
                 margin: 0 auto;
                 text-align: center;
             }
@@ -62,9 +70,9 @@
 
             .page1__comment {
                 position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;   
+                bottom: 1cm;
+                left: 1cm;
+                right: 1cm;   
             }
 
 
@@ -89,12 +97,32 @@
                 text-align: center;
             }
 
+            #watermark {
+                position: fixed;
+                bottom: 1.5cm;
+                left: 1cm;
+                right: 1cm;
+                z-index: -1000;
+                font-size: .8em;
+            }
+
+            #watermark * {
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+                opacity: 0.7;
+            }
             
         </style>
         
     </head>
     <body>
 
+        <div id="watermark">
+            <span>Клинический случай подготовлен при поддержке </span>
+            <img src="data:image/png;base64,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
+" alt="Vebexpert">
+        </div>
 
         {{--  page 1 --}}
         <div class="page1__title">
@@ -211,6 +239,10 @@
             <p>Bas {{ $step2['ОАК']['Bas'] }} %</p>
             
             <p>Эо {{ $step2['ОАК']['Эо'] }} %</p>
+
+            <p>Миелоциты {{ $step2['ОАК']['Миелоциты'] }} %</p>
+            
+            <p>Метамиел {{ $step2['ОАК']['Метамиел'] }} %</p>
             
             <p>АсАт {{ $step2['ОАК']['АсАт']['Значение'] }} Eд/л 
                 (N = {{ $step2['ОАК']['АсАт']['N'] }} Eд/л)</p>
@@ -230,10 +262,8 @@
             <p>Креатинин крови {{ $step2['ОАК']['Креатинин крови']['Значение'] }} мМ/л 
                 (N = {{ $step2['ОАК']['Креатинин крови']['N'] }} Eд/л)</p>
             
-            <p>Миелоциты {{ $step2['ОАК']['Миелоциты'] }} %</p>
-            
-            <p>Метамиел {{ $step2['ОАК']['Метамиел'] }} %</p>
-  
+            <p>Общий белок {{ $step2['ОАК']['Общий белок']['Значение'] }} г/л 
+                (N = {{ $step2['ОАК']['Общий белок']['N'] }} Eд/л)</p>
 
         </div>
         {{-- /page 2 --}}
@@ -480,6 +510,10 @@
                 <p>Bas {{ $therapy['ОАК']['Bas'] }} %</p>
                 
                 <p>Эо {{ $therapy['ОАК']['Эо'] }} %</p>
+
+                <p>Миелоциты {{ $therapy['ОАК']['Миелоциты'] }} %</p>
+                
+                <p>Метамиел {{ $therapy['ОАК']['Метамиел'] }} %</p>
                 
                 <p>АсАт {{ $therapy['ОАК']['АсАт']['Значение'] }} Eд/л 
                     (N = {{ $therapy['ОАК']['АсАт']['N'] }} Eд/л)</p>
@@ -499,9 +533,8 @@
                 <p>Креатинин крови {{ $therapy['ОАК']['Креатинин крови']['Значение'] }} мМ/л 
                     (N = {{ $therapy['ОАК']['Креатинин крови']['N'] }} Eд/л)</p>
                 
-                <p>Миелоциты {{ $therapy['ОАК']['Миелоциты'] }} %</p>
-                
-                <p>Метамиел {{ $therapy['ОАК']['Метамиел'] }} %</p>
+                <p>Общий белок {{ $step2['ОАК']['Общий белок']['Значение'] }} г/л 
+                (N = {{ $step2['ОАК']['Общий белок']['N'] }} Eд/л)</p>
 
                 <div class="spacer-2"></div>
 
